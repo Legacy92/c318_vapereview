@@ -1,8 +1,3 @@
-# vapereview
+# Juice Query Site
 
-### members
-- Corey
-- Sam
-- Andrew
-- Mark
-- Brett
+np

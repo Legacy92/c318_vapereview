@@ -1,0 +1,31 @@
+{
+  "name": "juice-query-back-end-node-server",
+  "version": "1.0.0",
+  "description": "The backend server for the Juice Query site.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev:server": "nodemon index.js",
+    "dev:client": "npm start --prefix client",
+    "dev": "npm-run-all --parallel dev:*",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Learning-Fuze/c318_vapereview"
+  },
+  "author": "Brett Albright",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Learning-Fuze/c318_vapereview/issues"
+  },
+  "homepage": "https://github.com/Learning-Fuze/c318_vapereview#readme",
+  "dependencies": {
+    "cors": "^2.8.4",
+    "express": "^4.16.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.4",
+    "npm-run-all": "^4.1.3"
+  }
+}
