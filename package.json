@@ -22,7 +22,8 @@
   "homepage": "https://github.com/Learning-Fuze/c318_vapereview#readme",
   "dependencies": {
     "cors": "^2.8.4",
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "mysql": "^2.15.0"
   },
   "devDependencies": {
     "nodemon": "^1.17.4",

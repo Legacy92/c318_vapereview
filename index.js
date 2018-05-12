@@ -1,13 +1,27 @@
 const express = require("express");
+const mysql = require('mysql');
 const cors = require("cors");
 const {resolve} = require("path");
+const credentials = require('./config/credentials');
 const PORT = process.env.PORT || 9000;
 
 const app = express();
 
+const database = mysql.createConnection(credentials);
+
+database.connect((err)=>{
+    if(err) throw err;
+
+    console.log('databse connection established');
+});
+
 app.use(cors());
 app.use(express.json());
 app.use(express.static(resolve(__dirname, "client", "dist")));
+
+app.get("/api",(req, res) => {
+    res.send('tis working');
+});
 
 app.post("/api/send-data", (req, res) => {
     console.log("Data sent:", req.body);
