@@ -10,15 +10,22 @@ import Header from './nav';
 import CreateAccount from './create_account_modal';
 import AddReview from './add_review';
 import HambugerMenu from './hamburger_menu';
+import AddProduct from "./add_product"
+import MultipleResults from "./multiple_results";
+import SingleResults from "./single_results";
+
 
 const App = () => (
     <div>
         <div className="app">
+            <h1>Welcome to Juice Query!</h1>
             <Header/>
+            <Route path = "/multiple-results" component = {MultipleResults}/>
+            <Route path = "/single-results" component = {SingleResults}/>
+            <Route path = "/add-product" component = {AddProduct}/>
             <Route path = "/hamburger_menu" compnent = {HambugerMenu}/>
-            <Route path = "/add_review" component = {AddReview}/>
+            <Route path = "/add-review" component = {AddReview}/>
             <Route path = "/create_account_modal" component = {CreateAccount}/>
-            <h1>Welcome to React</h1>
             <Route path="/advanced-search" component={AdvancedSearchModal}/>
             <Route path="/user-sign-in" component={UserSignInModal}/>
             <Route exact path="/" component={LandingPage}/>
