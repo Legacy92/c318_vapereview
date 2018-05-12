@@ -11,8 +11,6 @@ class AddReview extends Component {
             {/* <Link to = "/add-flavor-modal" /> */}
             <div className="star-rating">
                 <h2>Rating:</h2>
-                <div id = "app"/>
-                <span className = "fa fa-star"></span>
             </div>
             <div className = "add-review">
                 <h2>Add Review:</h2>
