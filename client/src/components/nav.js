@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react';
 import HamburgerMenu from './hamburger_menu';
 
 class Header extends Component {
