@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NavLInk } from 'react-router-dom';
 
 class HamburgerMenu extends Component {
 
@@ -11,10 +12,13 @@ class HamburgerMenu extends Component {
     // }
 
     render() {
+        return (
         <div className="hamburger-container">
-            
+            <h1>test hamburger</h1>
         </div>
+        )
     }
+
 }
 
 export default HamburgerMenu;
