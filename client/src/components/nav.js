@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
+import HamburgerMenu from './hamburger_menu';
 
 class Nav extends Component {
     render() {
+
+
+
         return (
             <div>
-                <h1>nav test</h1>
+                <HamburgerMenu/>
+                <h1>Header</h1>
                 <button className = "btn btn-success">Sign In</button>
             </div>
         )

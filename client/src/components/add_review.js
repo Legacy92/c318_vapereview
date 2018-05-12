@@ -7,3 +7,5 @@ class AddReview extends Component {
         </div>
     }
 }
+
+export default AddReview;
