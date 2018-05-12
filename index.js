@@ -25,7 +25,7 @@ app.get("/api",(req, res, next) => {
     // res.send('tis working');
 
     let query = 'SELECT * FROM ??';
-    let inserts =['items'];
+    let inserts =['juices'];
 
     let sql = mysql.format(query, inserts);
 
