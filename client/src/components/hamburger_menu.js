@@ -24,6 +24,9 @@ class HamburgerMenu extends Component {
             <h1>test hamburger</h1>
             <ul>
                 <li>
+                    <Link to="/">Home</Link>
+                </li>
+                <li>
                     <Link to="/add-review">Add Review</Link>
                 </li>
                 <li>
@@ -36,7 +39,7 @@ class HamburgerMenu extends Component {
                     <Link to="/add-product">Add Product</Link>
                 </li>
                 <li>
-                    <Link to="/create_account_modal">Create Account Modal</Link>
+                    <Link to="/create-account-modal">Create Account Modal</Link>
                 </li>
                 <li>
                     <Link to="/advanced-search">Advanced Search</Link>

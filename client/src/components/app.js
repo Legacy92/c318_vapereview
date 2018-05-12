@@ -23,9 +23,9 @@ const App = () => (
             <Route path = "/multiple-results" component = {MultipleResults}/>
             <Route path = "/single-results" component = {SingleResults}/>
             <Route path = "/add-product" component = {AddProduct}/>
-            <Route path = "/hamburger_menu" compnent = {HambugerMenu}/>
+            <Route path = "/hamburger-menu" compnent = {HambugerMenu}/>
             <Route path = "/add-review" component = {AddReview}/>
-            <Route path = "/create_account_modal" component = {CreateAccount}/>
+            <Route path = "/create-account-modal" component = {CreateAccount}/>
             <Route path="/advanced-search" component={AdvancedSearchModal}/>
             <Route path="/user-sign-in" component={UserSignInModal}/>
             <Route exact path="/" component={LandingPage}/>
