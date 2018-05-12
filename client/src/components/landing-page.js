@@ -9,9 +9,9 @@ class LandingPage extends Component {
             <div>
                 <h1>This is the Landing page!</h1>
                 <input type="text" placeholder = "search" />
-                <Link to = "/multiple_results">Browse</Link>
-                <Link to = "/add-product">Add Juice</Link>
-                <Link to = "/single-results">Random</Link>
+               <Link to = "/multiple_results">Browse</Link>
+               <Link to = "/add-product">Add Juice</Link>
+               <Link to = "/single-results">Random</Link>
             </div>
         )
     }
