@@ -9,6 +9,7 @@ class Test extends Component{
         this.getUserData();
         this.getArticle();
         this.sendData();
+        this.basicConnect();
     }
 
     async sendData() {
@@ -32,6 +33,12 @@ class Test extends Component{
         const response = await axios.get("/api/user-data");
 
         console.log("UserData Response:", response);
+    }
+
+    async basicConnect(){
+        const response = await axios.get("/api");
+
+        console.log("basicConnect Response:", response);
     }
 
     render() {
