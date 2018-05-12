@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
+import { Link } from 'react';
 import HamburgerMenu from './hamburger_menu';
 
-class Nav extends Component {
+class Header extends Component {
     render() {
-
-
-
         return (
             <div>
                 <HamburgerMenu/>
@@ -16,4 +14,4 @@ class Nav extends Component {
     }
 }
 
-export default Nav;
+export default Header;
