@@ -26,10 +26,9 @@ const App = () => (
             <Route path = "/hamburger-menu" compnent = {HambugerMenu}/>
             <Route path = "/add-review" component = {AddReview}/>
             <Route path = "/create-account-modal" component = {CreateAccount}/>
-            <Route path="/advanced-search" component={AdvancedSearchModal}/>
-            <Route path="/user-sign-in" component={UserSignInModal}/>
-            <Route exact path="/" component={LandingPage}/>
-            <Test/>
+            <Route path = "/advanced-search" component={AdvancedSearchModal}/>
+            <Route path = "/user-sign-in" component={UserSignInModal}/>
+            <Route exact path= "/" component={LandingPage}/>
         </div>
     </div>
 );
