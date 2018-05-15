@@ -35,7 +35,7 @@ app.get("/api",(req, res, next) => {
         if(err) return next (err);
 
         const output = {
-            succes: true,
+            success: true,
             data: results
         }
         res.json(output);
