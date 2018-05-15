@@ -21,7 +21,7 @@ app.use(express.static(resolve(__dirname, "client", "dist")));
 
 
 // example response
-app.get("/api",(req, res, next) => {
+app.get("/api/test",(req, res, next) => {
 
     let query = 'SELECT * FROM ??';
     let inserts =['juices'];
