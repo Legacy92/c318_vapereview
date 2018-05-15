@@ -6,40 +6,26 @@ class Test extends Component{
 
 
     componentDidMount(){
-        this.getUserData();
-        this.getArticle();
-        this.sendData();
-        this.basicConnect();
+        this.testConnect();
     }
 
-    async sendData() {
-        const dataToSend = {
-            "something": "here is stuff",
-            "moreStuff": "as promised, more stuff",
-            "lastStuff": "last stuff"
-        };
 
-        const response = await axios.post("api/send-data", dataToSend);
-        console.log("Send Data:", response);
-    }
 
-    async getArticle() {
-        const response = await axios.get("/api/get-article");
 
-        console.log("Article Data:", response)
-    }
 
-    async getUserData(){
-        const response = await axios.get("/api/user-data");
 
-        console.log("UserData Response:", response);
-    }
 
-    async basicConnect(){
+    // example response
+    async testConnect(){
         const response = await axios.get("/api");
 
         console.log("basicConnect Response:", response);
     }
+
+
+
+
+
 
     render() {
         return <h1>This is a test</h1>

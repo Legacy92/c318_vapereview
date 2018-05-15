@@ -5,7 +5,7 @@
   "main": "index.js",
   "proxy": {
     "/api/*": {
-      "target": "http://localhost:9000"
+      "target": "http://localhost:9000/api/"
     }
   },
   "scripts": {
@@ -27,7 +27,9 @@
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
-    "redux": "^3.7.2"
+    "redux": "^3.7.2",
+    "redux-form": "^7.3.0",
+    "redux-promise": "^0.6.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
