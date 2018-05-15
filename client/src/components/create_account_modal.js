@@ -1,22 +1,50 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from "react-redux";
+import { reduxForm, Field } from "redux-form";
+
 
 class CreateAccount extends Component {
+
+    handleCreateAccountSubmission(values) {
+        console.log("Form Values:", values);
+
+
+
+
+    }
+
+
+
+
+
+
+    renderInput({label, input, meta: {touched, error}}) {
+        console.log(label, input);
+        return (
+            <div>
+                <label>{label}</label>
+                <input {...input} type="text" autoComplete="off"/>
+                <p className="red-text text-darken-2">{touched && error}</p>
+            </div>
+        )
+    }
+
+
+
     render() {
+        const {handleSubmit} = this.props;
         return (
             <div className="create-account">
                 <div className ="modal-content">
                     
                     <div className="modal-body">
-                        <div className="user-name">
-                            <input type="text" name = "User Name" value = "" placeholder = "username"/>
-                        </div>
-                        <div className="password">
-                            <input type="text" name = "Password" value = "" placeholder = "password"/>
-                        </div>
-                        <div className="verify-password">
-                            <input type="text" name = "Password" value = "" placeholder = "verify password"/>
-                        </div>
+                        <form onSubmit={handleSubmit(this.handleCreateAccountSubmission.bind(this))}>
+                          <Field name="username" label="Enter Username" component={this.renderInput}/>
+                          <Field name="password" label="Enter Password" component={this.renderInput}/>
+                          <Field name="confirm_password" label="Confirm Password" component={this.renderInput}/>
+                            <button>Create Account</button>
+                      </form>
                     </div>
                     <div className="modal-footer">
                         <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
@@ -30,5 +58,34 @@ class CreateAccount extends Component {
         );
     }
 }
+
+
+function validate({username, password, confirm_password}){
+    const errors = {};
+
+    if(!username) {
+        errors.username = "Please enter your username.";
+
+    }
+    if(!password) {
+        errors.password = "Please enter your password.";
+
+    }
+    if(!confirm_password) {
+        errors.confirm_password = "Please confirm your password.";
+
+    }
+
+
+
+    return errors;
+}
+
+CreateAccount = reduxForm({
+    form: "create_account_page",
+    validate: validate
+})(CreateAccount);
+
+
 
 export default CreateAccount; 

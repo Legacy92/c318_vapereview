@@ -15,7 +15,7 @@ class AddProduct extends Component {
 
         // this.props.history.push("/");
 
-        console.log("Add Item Props:", this.props);
+        // console.log("Add Item Props:", this.props);
     }
 
 
