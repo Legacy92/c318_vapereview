@@ -1,6 +1,8 @@
-import {combineReducers} from "redux";
-import temp from './temp_reducer';
+import { combineReducers } from "redux";
+import { reducer as formReducer } from "redux-form";
+
 
 export default combineReducers({
-    temp
+    form: formReducer
 });
+
