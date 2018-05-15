@@ -3,9 +3,7 @@ import {Route} from "react-router-dom";
 import '../assets/css/app.css';
 import AdvancedSearchModal from "./advanced-search-modal";
 import UserSignInModal from "./user-sign-in-modal"
-import logo from '../assets/images/logo.svg';
 import LandingPage from "./landing-page";
-import Test from "./test";
 import Header from './nav';
 import CreateAccount from './create_account_modal';
 import AddReview from './add_review';
