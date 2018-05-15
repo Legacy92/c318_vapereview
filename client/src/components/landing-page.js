@@ -10,9 +10,8 @@ class LandingPage extends Component {
     }
 
 
-
     handleLandingPageSearch(values) {
-        console.log("Form Values:", values);
+        console.log("Landing Page Values:", values);
     }
     renderInput({label, input, meta: {touched, error}}) {
         console.log(label, input);
@@ -33,7 +32,8 @@ class LandingPage extends Component {
             <div>
                 <h1>This is the Landing page!</h1>
                 <form onSubmit={handleSubmit(this.handleLandingPageSearch.bind(this))}>
-                    <Field name="search_field" label= "Search For Juice Here: " component={this.renderInput} />
+                    <Field name = "landing_page" label = "Search For Juice Here: "placeholder = "search" component = {this.renderInput} />
+
                     <button>Go!</button>
                 </form>
                 <br/>
@@ -46,12 +46,12 @@ class LandingPage extends Component {
     }
 }
 
-function validate({search_field}){
+
+function validate({landing_page}){
     const errors = {};
 
-    if(!search_field) {
-
-        errors.search_field = "Please enter a juice query.";
+    if(!landing_page) {
+        errors.landing_page = "Please enter juice query.";
     }
 
     return errors;
@@ -63,9 +63,5 @@ LandingPage = reduxForm({
 })(LandingPage);
 
 
-
-
-
 export default LandingPage;
 // export default connect(null, {addProduct})(AddProduct);
-
