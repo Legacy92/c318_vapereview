@@ -17,7 +17,7 @@ class Test extends Component{
 
     // example response
     async testConnect(){
-        const response = await axios.get("/api");
+        const response = await axios.get("/api/test");
 
         console.log("basicConnect Response:", response);
     }
