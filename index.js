@@ -41,6 +41,27 @@ app.get("/api/test",(req, res, next) => {
     });
 });
 
+//Get Review Data
+app.get("/api/multiple-results",(req, res, next) => {
+
+    let query = 'SELECT * FROM ??';
+    let inserts =['review'];
+
+    let sql = mysql.format(query, inserts);
+
+    console.log(sql);
+
+    database.query(sql, (err,results,field)=>{
+        if(err) return next (err);
+
+        const output = {
+            success: true,
+            data: results
+        }
+        res.json(output);
+    });
+});
+
 // create user
 app.post("/api/create-user",(req, res, next) => {
     const {username, password} = req.body;
