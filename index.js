@@ -41,8 +41,82 @@ app.get("/api/test",(req, res, next) => {
     });
 });
 
+// create user
+app.post("/api/create-user",(req, res, next) => {
+    const {username, password} = req.body;
 
+    let query = 'INSERT INTO ?? (??, ??, ??) VALUES (?, ?, ?)';
+    let inserts = ['users', 'id', 'username', 'password', 'email', 'created', 'role', 'NULL', username, password, 'NULL', 'CURRENT_TIMESTAMP', '1'];
 
+    let sql = mysql.format(query, inserts);
+    console.log("This is the formatted SQL", sql);
+    connection.query(sql, (err, results, fields) => {
+        if (err) return next(err);
+        const output = {
+            success : true,
+            data: results
+        }
+        res.json(output);
+    })
+});
+
+//add product
+app.post('/api/add-product', (req,res,next)=>{
+    const {name, manufacturer, description, site} = req.body;
+
+    let query = 'INSERT INTO ?? (??, ??, ??) VALUES (?, ?, ?)';
+    let inserts = ['juices', 'id', 'name', 'manufacturer', 'description', 'site', 'NULL', name, manufacturer, description, site];
+
+    let sql = mysql.format(query, inserts);
+    console.log("This is the formatted SQL", sql);
+    connection.query(sql, (err, results, fields) => {
+        if (err) return next(err);
+        const output = {
+            success : true,
+            data: results
+        }
+        res.json(output);
+    })
+});
+
+//add review
+app.post('/api/add-review', (req,res,next)=>{
+    const {rating, description, juice_id, user_id} = req.body;
+
+    let query = 'INSERT INTO ?? (??, ??, ??) VALUES (?, ?, ?)';
+    let inserts = ['reviews', 'id', 'rating', 'description', 'juice_id', 'user_id', 'NULL', rating, description, juice_id, user_id];
+
+    let sql = mysql.format(query, inserts);
+    console.log("This is the formatted SQL", sql);
+    connection.query(sql, (err, results, fields) => {
+        if (err) return next(err);
+        const output = {
+            success : true,
+            data: results
+        }
+        res.json(output);
+    })
+});
+
+//authenticate user
+app.get('/api/log-in', (req,res,next)=>{
+    const  {username, password} = req.body;
+
+    let query = 'SELECT `username`, `password` FROM `users` WHERE `username` = ??';
+    let inserts = [username];
+
+    let sql = mysql.format(query, inserts);
+    console.log("This is the formatted SQL", sql);
+    connection.query(sql, (err, results, fields) => {
+        if (err) return next(err);
+        //authenticate user, start session
+        const output = {
+            success : true,
+            data: results
+        }
+        res.json(output);
+    })
+});
 
 
 

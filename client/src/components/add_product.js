@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import { reduxForm, Field } from "redux-form";
 import { connect } from "react-redux";
+import {Route} from "react-router-dom";
 import { addProduct } from "../actions";
 import {Link} from "react-router-dom";
+import Test from './test';
+import axios from 'axios';
 
 class AddProduct extends Component {
 
 
     handleAddProduct(values) {
         console.log("Form Values:", values);
-
+        // this.addProduct(values);
 
         // await this.props.addToDoItem(values);
 
@@ -20,7 +23,7 @@ class AddProduct extends Component {
 
 
     renderInput({label, input, meta: {touched, error}}) {
-        console.log(label, input);
+        // console.log(label, input);
         return (
             <div>
                 <label>{label}</label>
@@ -47,6 +50,7 @@ class AddProduct extends Component {
                     <button className="btn">Add Product</button>
                 </form>
                 <Link to="/add-review">Add Review</Link>
+                <Route path= "/test" component={Test}/>
             </div>
         )
     }
