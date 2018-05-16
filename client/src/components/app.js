@@ -28,6 +28,7 @@ const App = () => (
             <Route path = "/user-sign-in" component={UserSignInModal}/>
             <Route exact path= "/" component={LandingPage}/>
             <Route path= "/test" component={Test}/>
+            <Route path= "/add-product" component={Test}/>
         </div>
     </div>
 );
