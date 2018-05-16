@@ -7,8 +7,9 @@ class Test extends Component{
 
     componentDidMount(){
         this.testConnect();
-        this.addProduct();
-        this.createUser();
+        // this.addProduct();
+        // this.createUser();
+        this.getReviewData();
     }
 
 
@@ -16,6 +17,12 @@ class Test extends Component{
     async testConnect(){
         const response = await axios.get("/api/test");
         console.log("basicConnect Response:", response);
+    }
+
+    // pull all review data
+    async getReviewData(){
+        const response = await axios.get("/api/multiple-results");
+        console.log("Review Data:", response);
     }
 
      // create user
