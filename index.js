@@ -41,11 +41,13 @@ app.get("/api/test",(req, res, next) => {
     });
 });
 
-//Get Review Data
+//Get Data by Flavor ID
 app.get("/api/multiple-results",(req, res, next) => {
+    let { flavor } = req.body;
+    flavor = 1;
 
-    let query = 'SELECT * FROM ??';
-    let inserts =['review'];
+    let query = 'SELECT * FROM ?? JOIN ?? ON ?? = ?? JOIN ?? ON ?? = ?? WHERE ?? = ?';
+    let inserts =['juices-flavors', 'review', 'juices-flavors.review_id', 'review.id', 'juices', 'review.juice_id', 'juices.id', 'juices-flavors.flavor_id', flavor];
 
     let sql = mysql.format(query, inserts);
 
@@ -61,6 +63,53 @@ app.get("/api/multiple-results",(req, res, next) => {
         res.json(output);
     });
 });
+
+//Get Single Juice Results
+app.get("/api/single-results",(req, res, next) => {
+    let { singleJuice } = req.body;
+    singleJuice = 3;
+
+    let query = 'SELECT * FROM ?? JOIN ?? ON ?? = ?? WHERE ?? = ?';
+    let inserts =['juices','review','juices.id','review.juice_id', 'juices.id', singleJuice];
+
+    let sql = mysql.format(query, inserts);
+
+    console.log(sql);
+
+    database.query(sql, (err,results,field)=>{
+        if(err) return next (err);
+
+        const output = {
+            success: true,
+            data: results
+        }
+        res.json(output);
+    });
+});
+
+//Get Flavors for Chart
+app.get("/api/single-results",(req, res, next) => {
+    let { flavors } = req.body;
+    flavors = 3;
+// SELECT * from `review` JOIN `juices-flavors` ON `juices-flavors`.`review_id` = `review`.`juice_id` WHERE `review`.`juice_id` = 3
+    let query = 'SELECT * FROM ?? JOIN ?? ON ?? = ?? WHERE ?? = ?';
+    let inserts =['juices','review','juices.id','review.juice_id', 'juices.id', flavors];
+
+    let sql = mysql.format(query, inserts);
+
+    console.log(sql);
+
+    database.query(sql, (err,results,field)=>{
+        if(err) return next (err);
+
+        const output = {
+            success: true,
+            data: results
+        }
+        res.json(output);
+    });
+});
+
 
 // create user
 app.post("/api/create-user",(req, res, next) => {
