@@ -134,7 +134,7 @@ app.post("/api/create-user",(req, res, next) => {
 app.post('/api/add-product', (req,res,next)=>{
     const {name, manufacturer, description, site} = req.body;
 
-    let query = 'INSERT INTO ?? (??, ??, ??) VALUES (?, ?, ?)';
+    let query = 'INSERT INTO ?? (??, ??, ??, ??, ??) VALUES (?, ?, ?, ?, ?)';
     let inserts = ['juices', 'id', 'name', 'manufacturer', 'description', 'site', 'NULL', name, manufacturer, description, site];
 
     let sql = mysql.format(query, inserts);
