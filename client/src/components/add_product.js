@@ -12,7 +12,7 @@ class AddProduct extends Component {
 
     handleAddProduct(values) {
         console.log("Form Values:", values);
-        // this.addProduct(values);
+         this.props.addProduct(values);
 
         // await this.props.addToDoItem(values);
 
@@ -43,10 +43,10 @@ class AddProduct extends Component {
             <div>
                 <h1>Add Product</h1>
                 <form onSubmit={handleSubmit(this.handleAddProduct.bind(this))}>
-                    <Field name="juice_name" label="Juice Name" component={this.renderInput}/>
-                    <Field name="manufacturer_name" label="Manufacturer Name" component={this.renderInput}/>
-                    <Field name="manufacturer_site" label="Manufacturer Site" component={this.renderInput}/>
-                    <Field name="manufacturer_desc" label="Manufacturer Description" component={this.renderInput}/>
+                    <Field name="name" label="Juice Name" component={this.renderInput}/>
+                    <Field name="manufacturer" label="Manufacturer Name" component={this.renderInput}/>
+                    <Field name="description" label="Manufacturer Description" component={this.renderInput}/>
+                    <Field name="site" label="Manufacturer Site" component={this.renderInput}/>
                     <button className="btn">Add Product</button>
                 </form>
                 <Link to="/add-review">Add Review</Link>

@@ -1,16 +1,14 @@
 import types from "./types";
 import axios from "axios";
 
-const BASE_URL = "http://api.reactprototypes.com";
-const API_KEY = "?key=bigPimpin";
 
 
 
-export function addProduct(item) {
-    const response = axios.post(`${BASE_URL}/todos${API_KEY}`, item);
+export function addProduct(values) {
+    const response = axios.post("/api/add-product", values);
 
     return {
-        type: types.ADD_ITEM,
+        type: types.ADD_PRODUCT,
         payload: response
     }
 
