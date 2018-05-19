@@ -13,3 +13,13 @@ export function addProduct(values) {
     }
 
 }
+
+export function addReview(values) {
+    const response = axios.post("/api/add-review", values);
+
+    return {
+        type: types.ADD_REVIEW,
+        payload: response
+    }
+
+}
