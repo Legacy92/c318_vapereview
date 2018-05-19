@@ -15,6 +15,7 @@ class LandingPage extends Component {
     async handleLandingPageSearch(values) {
         console.log("Landing Page Values:", values);
         await this.props.pullJuiceData();
+        await this.props.searchByFlavorName();
 
     }
     renderInput({label, input, meta: {touched, error}}) {
@@ -22,14 +23,14 @@ class LandingPage extends Component {
         return (
             <div>
                 <label>{label}</label>
-                <input {...input} type="text" autoComplete="off"/>
+                <input className="input-field" {...input} type="text" autoComplete="off"/>
                 <p className="red-text text-darken-2">{touched && error}</p>
             </div>
         )
     }
 
     render(){
-            console.log("State Props:", this.props.all);
+            console.log("State Props:", this.props.all, this.props.juice);
         const {handleSubmit} = this.props;
 
         return (
@@ -66,7 +67,8 @@ function validate({landing_page}){
  }
 function mapStateToProps(state) {
     return {
-        all: state.juiceInfo.all
+        all: state.juiceInfo.all,
+        juice: state.juiceInfo.juice
     };
 
 }

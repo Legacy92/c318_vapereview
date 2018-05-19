@@ -4,5 +4,6 @@ export default {
     ADD_PRODUCT: "add_product",
     CREATE_ACCOUNT: "create_account",
     ADD_REVIEW: "add_review",
-    PULL_JUICE_DATA: "pull_juice_data"
+    PULL_JUICE_DATA: "pull_juice_data",
+    SEARCH_BY_NAME: "search_by_name"
 };

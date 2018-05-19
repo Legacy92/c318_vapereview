@@ -151,8 +151,9 @@ app.post('/api/add-product', (req,res,next)=>{
 
 //add review
 app.post('/api/add-review', (req,res,next)=>{
-    const {rating, description, juice_id, user_id} = req.body;
-
+    const {rating, description} = req.body;
+    let juice_id= 1;
+    let user_id=2;
     let query = 'INSERT INTO ?? (??, ??, ??, ??) VALUES (?, ?, ?, ?)';
     let inserts = ['reviews', 'rating', 'description', 'juice_id', 'user_id', rating, description, juice_id, user_id];
 

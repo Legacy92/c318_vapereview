@@ -12,6 +12,10 @@ export default (state = DEFAULT_STATE, action) => {
             console.log("JuiceDataAction:", action);
             return {...state, all : action.payload.data.data};
 
+            case types.SEARCH_BY_NAME:
+            console.log("JuiceDataAction:", action);
+            return {...state, all : action.payload.data.data, juice: action.payload.data.data[0].juice_id};
+
         default:
             return state;
     }
