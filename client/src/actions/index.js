@@ -35,3 +35,34 @@ export function addReview(values) {
 
 }
 
+export function pullJuiceData() {
+    const response = axios.get("/api/test");
+
+    return {
+        type: types.PULL_JUICE_DATA,
+        payload: response
+    }
+
+
+
+}
+
+// app.get("/api/test",(req, res, next) => {
+//
+//     let query = 'SELECT * FROM ??';
+//     let inserts =['juices'];
+//
+//     let sql = mysql.format(query, inserts);
+//
+//     console.log(sql);
+//
+//     database.query(sql, (err,results,field)=>{
+//         if(err) return next (err);
+//
+//         const output = {
+//             success: true,
+//             data: results
+//         }
+//         res.json(output);
+//     });
+// });

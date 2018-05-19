@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 import { reduxForm, Field } from "redux-form";
 import { connect } from "react-redux";
+import * as actions from "../actions";
+
 
 
 class LandingPage extends Component {
@@ -10,8 +12,10 @@ class LandingPage extends Component {
     }
 
 
-    handleLandingPageSearch(values) {
+    async handleLandingPageSearch(values) {
         console.log("Landing Page Values:", values);
+        await this.props.pullJuiceData();
+
     }
     renderInput({label, input, meta: {touched, error}}) {
         console.log(label, input);
@@ -25,7 +29,7 @@ class LandingPage extends Component {
     }
 
     render(){
-
+            console.log("State Props:", this.props.all);
         const {handleSubmit} = this.props;
 
         return (
@@ -45,6 +49,10 @@ class LandingPage extends Component {
         )
     }
 }
+LandingPage = reduxForm({
+    form: "landing_page",
+    validate: validate
+})(LandingPage);
 
 
 function validate({landing_page}){
@@ -55,13 +63,12 @@ function validate({landing_page}){
     }
 
     return errors;
+ }
+function mapStateToProps(state) {
+    return {
+        all: state.juiceInfo.all
+    };
+
 }
 
-LandingPage = reduxForm({
-    form: "landing_page",
-    validate: validate
-})(LandingPage);
-
-
-export default LandingPage;
-// export default connect(null, {addProduct})(AddProduct);
+export default connect(mapStateToProps, actions)(LandingPage);
