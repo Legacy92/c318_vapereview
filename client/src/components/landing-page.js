@@ -38,12 +38,12 @@ class LandingPage extends Component {
                 <form onSubmit={handleSubmit(this.handleLandingPageSearch.bind(this))}>
                     <Field name = "landing_page" label = "Search For Juice Here: "placeholder = "search" component = {this.renderInput} />
 
-                    <button>Go!</button>
+                    <button  className="btn white-text">Go!</button>
                 </form>
                 <br/>
-               <button><Link to = "/multiple_results">Browse</Link></button>
-               <button><Link to = "/add-product">Add Juice</Link></button>
-               <button><Link to = "/single-results">Random</Link></button>
+               <Link className="btn white-text" to = "/multiple_results">Browse</Link>
+               <Link className="btn white-text" to = "/add-product">Add Juice</Link>
+               <Link className="btn white-text" to = "/single-results">Random</Link>
 
             </div>
         )
