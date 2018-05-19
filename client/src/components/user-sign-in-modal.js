@@ -36,7 +36,7 @@ class UserSignInModal extends Component {
             <div>
                 <form onSubmit={handleSubmit(this.handleUserSignInModal.bind(this))}>
                     <Field name = "user_signin" label = "Log In: "placeholder = "username" component = {this.renderInput} />
-                    <button>Go!</button>
+                    <button className="btn">Go!</button>
                 </form>
             </div>
         )
