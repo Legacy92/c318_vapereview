@@ -42,6 +42,28 @@ app.get("/api/multiple-results",(req, res, next) => {
     });
 });
 
+//Get Data by Flavor Name
+app.get("/api/multiple-results",(req, res, next) => {
+    let { flavor } = req.body;
+
+    let query = 'SELECT * FROM ?? JOIN ?? ON ?? = ?? JOIN ?? ON ?? = ?? JOIN ?? ON ?? = ?? WHERE ?? = ?';
+    let inserts =['`flavors`', 'juices-flavors` b', '`b`.`flavor_id`', '`f`.`id`', '`reviews` r', '`r`.`id`', '`b`.`review_id`',  '`juices` j', '`j`.`id`', '`r`.`juice_id`', ' `f`.`flavor`', flavor];
+
+    let sql = mysql.format(query, inserts);
+
+    console.log(sql);
+
+    database.query(sql, (err,results,field)=>{
+        if(err) return next (err);
+
+        const output = {
+            success: true,
+            data: results
+        }
+        res.json(output);
+    });
+});
+
 //Get Single Juice Results
 app.get("/api/single-results",(req, res, next) => {
     let { singleJuice } = req.body;
