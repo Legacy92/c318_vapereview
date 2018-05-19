@@ -10,7 +10,7 @@ const app = express();
 const database = mysql.createConnection(credentials);
 
 database.connect((err)=>{
-    if(err) throw err;
+    if(err) return console.log('CONNECTION ERROR:', err.message);
 
     console.log('database connection established');
 });
@@ -93,12 +93,12 @@ app.get("/api/single-results",(req, res, next) => {
 app.post("/api/create-user",(req, res, next) => {
     const {username, password} = req.body;
 
-    let query = 'INSERT INTO ?? (??, ??, ??, ??, ??, ??) VALUES (?, ?, ?, ?, ?, ?)';
-    let inserts = ['users', 'id', 'username', 'password', 'email', 'created', 'role', 'NULL', username, password, 'NULL', 'CURRENT_TIMESTAMP', '1'];
+    let query = 'INSERT INTO ?? (??, ??, ??, ??, ??) VALUES (?, ?, ?, ?, ?)';
+    let inserts = ['users', 'username', 'password', 'email', 'created', 'role', username, password, 'NULL', 'CURRENT_TIMESTAMP', '1'];
 
     let sql = mysql.format(query, inserts);
     console.log("This is the formatted SQL", sql);
-    connection.query(sql, (err, results, fields) => {
+    database.query(sql, (err, results, fields) => {
         if (err) return next(err);
         const output = {
             success : true,
@@ -112,8 +112,8 @@ app.post("/api/create-user",(req, res, next) => {
 app.post('/api/add-product', (req,res,next)=>{
     const {name, manufacturer, description, site} = req.body;
 
-    let query = 'INSERT INTO ?? (??, ??, ??, ??, ??) VALUES (?, ?, ?, ?, ?)';
-    let inserts = ['juices', 'id', 'name', 'manufacturer_name', 'manufacturer_site', 'manufacturer_description', 'NULL', name, manufacturer, description, site];
+    let query = 'INSERT INTO ?? (??, ??, ??, ??) VALUES ( ?, ?, ?, ?)';
+    let inserts = ['juices', 'name', 'manufacturer_name', 'manufacturer_site', 'manufacturer_description', name, manufacturer, description, site];
 
     let sql = mysql.format(query, inserts);
     console.log("This is the formatted SQL", sql);
@@ -131,12 +131,12 @@ app.post('/api/add-product', (req,res,next)=>{
 app.post('/api/add-review', (req,res,next)=>{
     const {rating, description, juice_id, user_id} = req.body;
 
-    let query = 'INSERT INTO ?? (??, ??, ??, ??, ??) VALUES (?, ?, ?, ?, ?)';
-    let inserts = ['reviews', 'id', 'rating', 'description', 'juice_id', 'user_id', 'NULL', rating, description, juice_id, user_id];
+    let query = 'INSERT INTO ?? (??, ??, ??, ??) VALUES (?, ?, ?, ?)';
+    let inserts = ['reviews', 'rating', 'description', 'juice_id', 'user_id', rating, description, juice_id, user_id];
 
     let sql = mysql.format(query, inserts);
     console.log("This is the formatted SQL", sql);
-    connection.query(sql, (err, results, fields) => {
+    database.query(sql, (err, results, fields) => {
         if (err) return next(err);
         const output = {
             success : true,
@@ -155,7 +155,7 @@ app.get('/api/log-in', (req,res,next)=>{
 
     let sql = mysql.format(query, inserts);
     console.log("This is the formatted SQL", sql);
-    connection.query(sql, (err, results, fields) => {
+    database.query(sql, (err, results, fields) => {
         if (err) return next(err);
         //authenticate user, start session
         const output = {
