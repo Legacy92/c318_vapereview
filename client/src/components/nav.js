@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import HamburgerMenu from './hamburger_menu';
+
 
 class Header extends Component {
     render() {
         return (
-            <div>
+            <div className = "header-container">
                 <HamburgerMenu/>
-                <h1>Header</h1>
-                <button className = "btn btn-success">Sign In</button>
+                <h1 className = "header-logo">Juice Query</h1>
+                <button id = "header-sign-in" className = "btn btn-success">Sign In</button>
             </div>
         )
     }
