@@ -12,7 +12,7 @@ const database = mysql.createConnection(credentials);
 database.connect((err)=>{
     if(err) throw err;
 
-    console.log('databse connection established');
+    console.log('database connection established');
 });
 
 app.use(cors());
