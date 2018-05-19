@@ -3,6 +3,16 @@ import axios from "axios";
 
 
 
+export function createAccount(values) {
+    console.log("Form Values:", values);
+    const response = axios.post("/api/create-user", values);
+
+
+return {
+    type: types.CREATE_ACCOUNT,
+    payload: response
+}
+}
 
 export function addProduct(values) {
     const response = axios.post("/api/add-product", values);
@@ -14,6 +24,7 @@ export function addProduct(values) {
 
 }
 
+
 export function addReview(values) {
     const response = axios.post("/api/add-review", values);
 
@@ -23,3 +34,4 @@ export function addReview(values) {
     }
 
 }
+

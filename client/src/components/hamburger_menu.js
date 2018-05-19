@@ -63,7 +63,7 @@ class HamburgerMenu extends Component {
                             <Link to="/add-product" onClick={this.closeNav}>Add Product</Link>
                         </li>
                         <li>
-                            <Link to="/create-account-modal" onClick={this.closeNav}>Create Account Modal</Link>
+                            <Link to="/create-account-modal" onClick={this.closeNav}>Create Account</Link>
                         </li>
                         <li>
                             <Link to="/advanced-search" onClick={this.closeNav}>Advanced Search</Link>

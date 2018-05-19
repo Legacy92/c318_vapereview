@@ -2,22 +2,20 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from "react-redux";
 import { reduxForm, Field } from "redux-form";
+import { createAccount } from '../actions';
+import axios from 'axios';
 
 
 class CreateAccount extends Component {
 
     handleCreateAccountSubmission(values) {
         console.log("Form Values:", values);
+        this.props.createAccount(values);
 
 
 
 
     }
-
-
-
-
-
 
     renderInput({label, input, meta: {touched, error}}) {
         console.log(label, input);
@@ -76,6 +74,10 @@ function validate({username, password, confirm_password}){
 
     }
 
+    if(confirm_password!==password) {
+        errors.confirm_password = "Entries do not match."
+    }
+
 
 
     return errors;
@@ -88,4 +90,4 @@ CreateAccount = reduxForm({
 
 
 
-export default CreateAccount; 
+export default connect(null, {createAccount})(CreateAccount); 
