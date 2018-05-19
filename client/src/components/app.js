@@ -21,7 +21,6 @@ import Test from "./test"
 const App = () => (
     <div>
         <div className="app">
-            <h1>Welcome to Juice Query!</h1>
             <Header/>
             <Route path = "/multiple-results" component = {MultipleResults}/>
             <Route path = "/single-results" component = {SingleResults}/>

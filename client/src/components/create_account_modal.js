@@ -75,7 +75,7 @@ function validate({username, password, confirm_password}){
     }
 
     if(confirm_password!==password) {
-        errors.confirm_password = "Entries do not match."
+        errors.confirm_password = "Entries do not match.";
     }
 
 
