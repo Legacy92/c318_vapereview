@@ -11,7 +11,7 @@ class AddReview extends Component {
     handleAddReview(values) {
         console.log("Add Review Values:", values);
          this.props.addReview(values);
-         this.props.history.push("/");
+         this.props.history.push("/single-results");
     }
 
     renderInput({label, input, meta: {touched, error}}) {
