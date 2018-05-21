@@ -50,7 +50,9 @@ class AddProduct extends Component {
                     <Field name="site" label="Manufacturer Site" component={this.renderInput} />
                     <button className="btn">Add Product</button>
                 </form>
-                <Link to="/add-review">Add Review</Link>
+                <Link to="/add-review">
+                    <button className="btn">Add Review</button>
+                </Link>
                 <Route path="/test" component={Test} />
             </div>
         )
