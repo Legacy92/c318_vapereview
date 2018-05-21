@@ -224,13 +224,33 @@ app.post('/api/add-review', (req, res, next) => {
     });
 
 
-    //Get Flavor ID's
-    app.get("/api/test", (req, res, next) => {
-        let { singleJuice } = req.body;
-        singleJuice = 3;
+    //Get Flavor Categorys
+    app.get("/api/category-modal", (req, res, next) => {
 
         let query = 'SELECT * FROM ??';
-        let inserts = ['flavors'];
+        let inserts = ['category'];
+
+        let sql = mysql.format(query, inserts);
+
+        console.log(sql);
+
+        database.query(sql, (err, results, field) => {
+            if (err) return next(err);
+
+            const output = {
+                success: true,
+                data: results
+            }
+            res.json(output);
+        });
+    });
+
+    //Get Flavors by category ID
+    app.get("/api/flavor-modal", (req, res, next) => {
+        let { category } = req.body;
+
+        let query = 'SELECT * FROM ?? WHERE ?? = ?';
+        let inserts = ['flavors', 'category_id', category];
 
         let sql = mysql.format(query, inserts);
 

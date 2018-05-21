@@ -12,6 +12,7 @@ import HambugerMenu from './hamburger_menu';
 import AddProduct from "./add_product"
 import MultipleResults from "./multiple_results";
 import SingleResults from "./single_results";
+import FlavorModal from "./flavor-modal";
 
 
 import Test from "./test"
@@ -34,6 +35,7 @@ const App = () => (
             <Route exact path= "/" component={LandingPage}/>
             <Route path= "/test" component={Test}/>
             <Route path= "/add-product" component={Test}/>
+            <Route path = "/flavor-modal" component = {FlavorModal}/>
         </div>
     </div>
 );
