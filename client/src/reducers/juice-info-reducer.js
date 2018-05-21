@@ -3,7 +3,7 @@ import types from "../actions/types";
 const DEFAULT_STATE = {
     all:[],
     juice: {},
-    createdJuice: [],
+    juiceId: [],
 };
 
 export default (state = DEFAULT_STATE, action) => {
@@ -15,9 +15,9 @@ export default (state = DEFAULT_STATE, action) => {
         case types.ADD_PRODUCT:
             console.log('Add Product Action:', action);
             return{...state, 
-                createdJuice : action.payload.data.data.insertId,
+                juiceId : action.payload.data.data.insertId,
                 all : action.payload.data.data
-            }
+            };
 
             case types.SEARCH_BY_NAME:
             console.log("JuiceDataAction:", action);
