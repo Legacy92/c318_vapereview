@@ -18,7 +18,7 @@ class AddReview extends Component {
         return (
             <div>
                 <label>{label}</label>
-                <input {...input} type="text"placeholder="1-5" autoComplete="off"/>
+                <input {...input} type="text"placeholder="input" autoComplete="off"/>
                 <p className="red-text text-darken-2">{touched && error}</p>
             </div>
         )
@@ -43,7 +43,10 @@ class AddReview extends Component {
             <h1>Add Review for currentJuiceName</h1>
 
             <form onSubmit={handleSubmit(this.handleAddReview.bind(this))}>
-                    <Field name="rating" label="How many stars would you give currentJuiceName?" component={this.renderInput}/>
+                    <Field name="juice_id" label="juice_id" component={this.renderInput}/>
+                    <Field name="user_id" label="user_id" component={this.renderInput}/>
+                    <Field name="flavor" label="flavor tasted" component={this.renderInput}/>
+                    <Field name="rating" label="How many stars would you give currentJuiceName? (1-5)" component={this.renderInput}/>
                     <Field name="description" label="What did you think of currentJuiceName?" component={this.renderTextarea}/>
                     <button className="btn">Add Review</button>
             </form>
