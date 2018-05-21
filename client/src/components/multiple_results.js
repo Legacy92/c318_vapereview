@@ -18,7 +18,7 @@ class MultipleResults extends Component {
         return (
             <div>
                 <h1>Multiple Results</h1>
-                <Link to = "/flavor-modal">Advanced Search</Link>
+                <Link className="btn" to = "/flavor-modal">Advanced Search</Link>
                 <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         )

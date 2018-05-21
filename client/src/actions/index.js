@@ -24,6 +24,14 @@ export function addProduct(values) {
 
 }
 
+export function searchByFlavorName(values){
+    const response = axios.get("/api/multiple-results", values);
+
+    return{
+        type: types.SEARCH_BY_NAME,
+        payload: response
+    }
+}
 
 export function addReview(values) {
     const response = axios.post("/api/add-review", values);

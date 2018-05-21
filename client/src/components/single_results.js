@@ -7,7 +7,7 @@ class SingleResults extends Component {
         return (
             <div>
                 <h1>Single Results</h1>
-                <Link to="/add-review">Add Review</Link>
+                <Link className="btn" to="/add-review">Add Review</Link>
             </div>
         )
     }
