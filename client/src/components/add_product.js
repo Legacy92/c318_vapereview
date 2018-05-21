@@ -49,7 +49,6 @@ class AddProduct extends Component {
                     <Field name="description" label="Manufacturer Description" component={this.renderInput} />
                     <Field name="site" label="Manufacturer Site" component={this.renderInput} />
                     <button className="btn">Add Product</button>
-                    {/* <Link to="/add-review" className="btn">Add Review</Link> */}
                 </form>
             </div>
         )
