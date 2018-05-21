@@ -7,7 +7,7 @@ class Header extends Component {
         return (
             <div className = "header-container">
                 <HamburgerMenu/>
-                <h1 className = "header-logo">Juice Query</h1>
+                <h3 className = "header-logo">Juice Query</h3>
                 <button id = "header-sign-in" className = "btn btn-success">Sign In</button>
             </div>
         )
