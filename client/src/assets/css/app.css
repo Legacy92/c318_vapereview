@@ -4,9 +4,23 @@ body {
     
 }
 
+a {
+    color: white
+}
+
+button, .btn, .btn-large {
+    background-color: #3f0080;
+    border: 1px solid white;
+}
+
+.btn:hover {
+    background-color: #3f0080;
+}
+
 .app {
-    background-color: #c5b098;
-    color: #3e1f13;
+    background-color: black;
+    text-shadow: 1px 4px 5px rgba(255, 255, 255, 0.767);
+    color: white;
     height: 100vh;
     width: 100vw;
     position: absolute;
@@ -26,7 +40,7 @@ body {
 
 .menu-button {
     display: inline-block;
-    position: absolute;
+    position: fixed;
     left: 2px;
     height: 65px;
     width: 65px;
@@ -34,6 +48,8 @@ body {
     padding: 10px;
     border-radius: 10%;
     cursor: pointer;
+    margin-top: 2%;
+    background-color: #393939;
 }
 
 .menu-button:hover {
@@ -49,22 +65,23 @@ body {
 .menu-button div:nth-child(1),
 .menu-button div:nth-child(2),
 .menu-button div:nth-child(3){
-    border: 3px solid white;
-    margin-top: 5px;
+    border: 2px solid white;
+    margin: 2px 2px;
 }
 
 .menu-button div:nth-child(2),
 .menu-button div:nth-child(3){
-    margin-top: 18px;
+    margin-top: 13px;
 }
 
 .header-container {
     position: relative;
+    border: 1px solid white;
     color: white;
     background-color: black;
     display: inline-block;
     width: 100%;
-    height: 15%;
+    height: 9.3%;
     position: relative;
     box-sizing: border-box;
     border-radius: 5px;
@@ -74,16 +91,28 @@ body {
 .header-logo {
     display: inline-block;
     position: relative;
-    width: 50%;
+    width: 59%;
     height: 100%;
     box-sizing: border-box;
     margin: 0;
+    font-size: 1.75em;
+    margin-top: 9%;
 }
 
 #header-sign-in {
     color: white;
+    width: 20%;
+    box-sizing: border-box;
+    border: 1px solid white;
+    background-color: #3f0080;
     display: inline-block;
     position: absolute;
-    margin-top: 18%;
-    font-size: 1em
+    margin-top: 9.4%;
+    font-size: 0.6em;
+    padding: 0;
+    right: 3px;
+}
+
+li {
+    color: white
 }
