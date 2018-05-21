@@ -37,7 +37,7 @@ class AddReview extends Component {
     }
 
     render() {
-        console.log(this.props);
+        console.log("Add Review Props:", this.props);
         const {handleSubmit} = this.props;
         return (
         <div className="add-review">
@@ -67,8 +67,16 @@ class AddReview extends Component {
 }
 
 // export default AddReview;
+
+function mapStateToProps(state) {
+    return {
+        all: state.juiceInfo.all,
+        juiceId: state.juiceInfo.juiceId
+    };
+
+}
 AddReview = reduxForm({
     form: "add_review"
 })(AddReview);
 
-export default connect(null, {addReview})(AddReview);
+export default connect(mapStateToProps, {addReview})(AddReview);
