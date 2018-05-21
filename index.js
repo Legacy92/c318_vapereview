@@ -87,7 +87,7 @@ app.get("/api/single-results",(req, res, next) => {
     });
 });
 
-//Get Flavors for Chart
+//Get Flavors for Chart by juice_id
 app.get("/api/single-results",(req, res, next) => {
     let { flavors } = req.body;
     flavors = 3;
