@@ -16,7 +16,7 @@ class AddProduct extends Component {
 
         // await this.props.addToDoItem(values);
 
-        // this.props.history.push("/");
+        this.props.history.push("/add-review");
 
         // console.log("Add Item Props:", this.props);
     }
@@ -49,11 +49,8 @@ class AddProduct extends Component {
                     <Field name="description" label="Manufacturer Description" component={this.renderInput} />
                     <Field name="site" label="Manufacturer Site" component={this.renderInput} />
                     <button className="btn">Add Product</button>
+                    {/* <Link to="/add-review" className="btn">Add Review</Link> */}
                 </form>
-                <Link to="/add-review">
-                    <button className="btn">Add Review</button>
-                </Link>
-                <Route path="/test" component={Test} />
             </div>
         )
     }
