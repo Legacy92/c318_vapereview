@@ -36,7 +36,7 @@ app.get("/api/multiple-results", (req, res, next) => {
 
         const output = {
             success: true,
-            data: results
+            data: resultsnp
         }
         res.json(output);
     });
