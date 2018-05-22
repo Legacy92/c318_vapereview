@@ -1,6 +1,5 @@
 import React from 'react';
 import {Route} from "react-router-dom";
-import 'materialize-css/dist/css/materialize.min.css';
 import '../assets/css/app.css';
 import AdvancedSearchModal from "./advanced-search-modal";
 import UserSignInModal from "./user-sign-in-modal"
