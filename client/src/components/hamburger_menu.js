@@ -34,11 +34,11 @@ class HamburgerMenu extends Component {
         const {show} = this.state;
 
         const button = (
-            <div className="menu-button" onClick={this.closeNav}>
+            <button className="menu-button" type= "button" onClick={this.closeNav}>
                 <div></div>
                 <div></div>
                 <div></div>
-            </div>
+            </button>
         );
 
 
@@ -46,33 +46,34 @@ class HamburgerMenu extends Component {
             return (
                 <div className="hamburger-container">
                     {button}
-                    <ul>
-                        <li>
-                            <Link to="/" onClick={this.closeNav}>Home</Link>
-                        </li>
-                        <li>
-                            <Link to="/add-review" onClick={this.closeNav}>Add Review</Link>
-                        </li>
-                        <li>
-                            <Link to="/multiple-results" onClick={this.closeNav}>Multiple Results</Link>
-                        </li>
-                        <li>
-                            <Link to="/single-results" onClick={this.closeNav}>Single Results</Link>
-                        </li>
-                        <li>
-                            <Link to="/add-product" onClick={this.closeNav}>Add Product</Link>
-                        </li>
-                        <li>
-                            <Link to="/create-account-modal" onClick={this.closeNav}>Create Account</Link>
-                        </li>
-                        <li>
-                            <Link to="/advanced-search" onClick={this.closeNav}>Advanced Search</Link>
-                        </li>
-                        <li>
-                            <Link to="/user-sign-in" onClick={this.closeNav}>User Sign In</Link>
-                        </li>
-                    </ul>
-
+                    <div className="nav-container ">
+                        <ul className = "nav-links">
+                            <li>
+                                <Link to="/" onClick={this.closeNav}>Home</Link>
+                            </li>
+                            <li>
+                                <Link to="/add-review" onClick={this.closeNav}>Add Review</Link>
+                            </li>
+                            <li>
+                                <Link to="/multiple-results" onClick={this.closeNav}>Multiple Results</Link>
+                            </li>
+                            <li>
+                                <Link to="/single-results" onClick={this.closeNav}>Single Results</Link>
+                            </li>
+                            <li>
+                                <Link to="/add-product" onClick={this.closeNav}>Add Product</Link>
+                            </li>
+                            <li>
+                                <Link to="/create-account-modal" onClick={this.closeNav}>Create Account</Link>
+                            </li>
+                            <li>
+                                <Link to="/advanced-search" onClick={this.closeNav}>Advanced Search</Link>
+                            </li>
+                            <li>
+                                <Link to="/user-sign-in" onClick={this.closeNav}>User Sign In</Link>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             );
         }
