@@ -15,7 +15,7 @@ class LandingPage extends Component {
     async handleLandingPageSearch(values) {
         console.log("Landing Page Values:", values);
         await this.props.landingPageSearch(values);
-        this.props.history.push("/multiple-results");
+        this.props.history.push("/single-results");
 
     }
 

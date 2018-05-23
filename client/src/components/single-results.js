@@ -5,6 +5,19 @@ import { connect } from "react-redux";
 import * as actions from "../actions";
 
 class SingleResults extends Component {
+    
+    
+    componentDidMount(){
+            this.getJuiceData();
+        }
+
+    async getJuiceData(){
+            const response = await axios.get("/api/single-results");
+            console.log("Juice Data:", response);
+        }
+            
+
+
     render() {
         if(!this.props.randomJuice){
             console.log('response not yet loaded');
@@ -19,14 +32,9 @@ class SingleResults extends Component {
     }
     }
 
-    componentDidMount(){
-        // // this.getJuiceData();
-    }
+    
 
-    async getJuiceData(){
-        const response = await axios.get("/api/single-results");
-        console.log("Juice Data:", response);
-    }
+    
 }
 
 function mapStateToProps(state) {
