@@ -35,7 +35,9 @@ export function searchByFlavorName(values){
 
 export function landingPageSearch(values){
     console.log("Search Values:", values);
-    const response = axios.get("/api/multiple-results", values);
+    const response = axios.get("/api/multiple-results", {
+        params: values
+    });
 
     return{
         type: types.SEARCH_BY_ANY,
