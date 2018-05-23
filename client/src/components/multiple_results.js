@@ -6,7 +6,7 @@ import axios from "axios";
 class MultipleResults extends Component {
 
     componentDidMount(){
-        this.getReviewData();
+        // this.getReviewData();
     }
 
     async getReviewData(){

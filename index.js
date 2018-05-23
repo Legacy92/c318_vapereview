@@ -88,9 +88,10 @@ app.get("/api/multiple-results-browse", (req, res, next) => {
 
 //search by all 
 app.get("/api/multiple-results", (req, res, next) => {
-    let { input } = req.body;
+    let { input } = req.query;
 
-    let query = 'SELECT `j`.*, `r`.`rating`,`r`.`id` as review_id, `c`.`category`, `f`.`flavor` from `juices` j LEFT JOIN `reviews` r ON `j`.`id` = `r`.`juice_id` LEFT JOIN `juices-flavors` ON `juices-flavors`.`review_id` = `r`.`id` LEFT JOIN `flavors` as f ON `f`.`id` = `juices-flavors`.`flavor_id` LEFT JOIN `category` as c ON `c`.`id` = `f`.`catagory_id` WHERE `j`.`name` = ? OR `j`.`manufacturer_name` = ? OR `f`.`flavor` = ? OR `c`.`category` LIKE %?%';
+
+    let query = 'SELECT `j`.*, `r`.`rating`,`r`.`id`, `c`.`category`, `f`.`flavor` from `juices` j LEFT JOIN `reviews` r ON `j`.`id` = `r`.`juice_id` LEFT JOIN `juices-flavors` ON `juices-flavors`.`review_id` = `r`.`id` LEFT JOIN `flavors` as f ON `f`.`id` = `juices-flavors`.`flavor_id` LEFT JOIN `category` as c ON `c`.`id` = `f`.`catagory_id` WHERE `j`.`name` = ? OR `j`.`manufacturer_name` = ? OR `f`.`flavor` = ? OR `c`.`category` = ?';
     let inserts = [input, input, input, input] ;
 
     let sql = mysql.format(query, inserts);

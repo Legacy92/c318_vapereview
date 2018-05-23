@@ -16,7 +16,7 @@ class LandingPage extends Component {
         console.log("Landing Page Values:", values);
         // await this.props.pullJuiceData();
         // await this.props.searchByFlavorName();
-        await this.props.landingPageSearch();
+        await this.props.landingPageSearch(values);
         this.props.history.push("/multiple_results");
 
     }
@@ -39,7 +39,7 @@ class LandingPage extends Component {
             <div>
                 <h1>This is the Landing page!</h1>
                 <form onSubmit={handleSubmit(this.handleLandingPageSearch.bind(this))}>
-                    <Field name = "landing_page" label = "Search For Juice Here: "placeholder = "search" component = {this.renderInput} />
+                    <Field name = "input" label = "Search For Juice Here: "placeholder = "search" component = {this.renderInput} />
 
                     <button  className="btn white-text">Go!</button>
                 </form>
@@ -53,16 +53,16 @@ class LandingPage extends Component {
     }
 }
 LandingPage = reduxForm({
-    form: "landing_page",
+    form: "input",
     validate: validate
 })(LandingPage);
 
 
-function validate({landing_page}){
+function validate({input}){
     const errors = {};
 
-    if(!landing_page) {
-        errors.landing_page = "Please enter juice query.";
+    if(!input) {
+        errors.input = "Please enter juice query.";
     }
 
     return errors;
