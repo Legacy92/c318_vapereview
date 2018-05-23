@@ -57,7 +57,7 @@ export function browseAllJuices(){
 
 export function getRandomJuice(){
     console.log('get random juice function called');
-    const repsonse = axios.get("/api/random-juice");
+    const response = axios.get("/api/random-juice");
 
     return{
         type: types.GET_RANDOM_JUICE,

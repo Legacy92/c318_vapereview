@@ -13,12 +13,7 @@ class AddProduct extends Component {
     handleAddProduct(values) {
         console.log("Form Values:", values);
         this.props.addProduct(values);
-
-        // await this.props.addToDoItem(values);
-
         this.props.history.push("/add-review");
-
-        // console.log("Add Item Props:", this.props);
     }
 
 

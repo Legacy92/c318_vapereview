@@ -92,7 +92,7 @@ app.get("/api/random-juice",(req, res, next) => {
     let query = 'SELECT * FROM `juices` LEFT JOIN `reviews` ON `juices`.`id` = `reviews`.`juice_id` WHERE `juices`.`id`=?';
     let inserts = [flavor_id];
 
-    let sql = mysql.format(query);
+    let sql = mysql.format(query, inserts);
 
     console.log(sql);
 
