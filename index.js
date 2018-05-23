@@ -19,15 +19,59 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(resolve(__dirname, "client", "dist")));
 
-//Get Data by Flavor ID
+// //Get Data by Flavor ID
+// app.get("/api/multiple-results", (req, res, next) => {
+//     let { flavor } = req.body;
+//     flavor = 1;
+
+//     let query = 'SELECT * FROM ?? JOIN ?? ON ?? = ?? JOIN ?? ON ?? = ?? WHERE ?? = ?';
+//     let inserts = ['juices-flavors', 'reviews', 'juices-flavors.review_id', 'reviews.id', 'juices', 'reviews.juice_id', 'juices.id', 'juices-flavors.flavor_id', flavor];
+
+//     let sql = mysql.format(query, inserts);
+
+//     console.log(sql);
+
+//     database.query(sql, (err, results, field) => {
+//         if (err) return next(err);
+
+//         const output = {
+//             success: true,
+//             data: resultsnp
+//         }
+//         res.json(output);
+//     });
+// });
+
+// Get Data by Flavor Name
+// app.get("/api/multiple-results", (req, res, next) => {
+//     let { flavor } = req.body;
+
+//     let query = 'SELECT * FROM ?? JOIN ?? ON ?? = ?? JOIN ?? ON ?? = ?? JOIN ?? ON ?? = ?? WHERE ?? = ?';
+//     let inserts = ['`flavors`', 'juices-flavors` b', '`b`.`flavor_id`', '`f`.`id`', '`reviews` r', '`r`.`id`', '`b`.`review_id`', '`juices` j', '`j`.`id`', '`r`.`juice_id`', ' `f`.`flavor`', flavor];
+
+//     let sql = mysql.format(query, inserts);
+
+//     console.log(sql);
+
+//     database.query(sql, (err, results, field) => {
+//         if (err) return next(err);
+
+//         const output = {
+//             success: true,
+//             data: results
+//         }
+//         res.json(output);
+//     });
+// });
+
+// Browse 
 app.get("/api/multiple-results", (req, res, next) => {
     let { flavor } = req.body;
-    flavor = 1;
 
-    let query = 'SELECT * FROM ?? JOIN ?? ON ?? = ?? JOIN ?? ON ?? = ?? WHERE ?? = ?';
-    let inserts = ['juices-flavors', 'reviews', 'juices-flavors.review_id', 'reviews.id', 'juices', 'reviews.juice_id', 'juices.id', 'juices-flavors.flavor_id', flavor];
+    let query = 'SELECT * FROM `juices` LEFT JOIN `reviews` ON `juices`.`id` = `reviews`.`juice_id`';
+    // let inserts = ['`juices`', 'juices-flavors` b', '`b`.`flavor_id`', '`f`.`id`', '`reviews` r', '`r`.`id`', '`b`.`review_id`', '`juices` j', '`j`.`id`', '`r`.`juice_id`', ' `f`.`flavor`', flavor];
 
-    let sql = mysql.format(query, inserts);
+    let sql = mysql.format(query);
 
     console.log(sql);
 
@@ -42,12 +86,12 @@ app.get("/api/multiple-results", (req, res, next) => {
     });
 });
 
-//Get Data by Flavor Name
+//search by all 
 app.get("/api/multiple-results", (req, res, next) => {
-    let { flavor } = req.body;
+    let { input } = req.body;
 
-    let query = 'SELECT * FROM ?? JOIN ?? ON ?? = ?? JOIN ?? ON ?? = ?? JOIN ?? ON ?? = ?? WHERE ?? = ?';
-    let inserts = ['`flavors`', 'juices-flavors` b', '`b`.`flavor_id`', '`f`.`id`', '`reviews` r', '`r`.`id`', '`b`.`review_id`', '`juices` j', '`j`.`id`', '`r`.`juice_id`', ' `f`.`flavor`', flavor];
+    let query = 'SELECT `j`.*, `r`.`rating`,`r`.`id` as review_id, `c`.`category`, `f`.`flavor` from `juices` j LEFT JOIN `reviews` r ON `j`.`id` = `r`.`juice_id` LEFT JOIN `juices-flavors` ON `juices-flavors`.`review_id` = `r`.`id` LEFT JOIN `flavors` as f ON `f`.`id` = `juices-flavors`.`flavor_id` LEFT JOIN `category` as c ON `c`.`id` = `f`.`catagory_id` WHERE `j`.`name` = ? OR `j`.`manufacturer_name` = ? OR `f`.`flavor` = ? OR `c`.`category` LIKE %?%';
+    let inserts = [input, input, input, input] ;
 
     let sql = mysql.format(query, inserts);
 
@@ -111,7 +155,7 @@ app.get("/api/single-results", (req, res, next) => {
 });
 
 
-// create user
+// create user -- use product or review instead of add-review because POST methods imply addition or creation 
 app.post("/api/create-user", (req, res, next) => {
     const { username, password } = req.body;
 
@@ -160,7 +204,7 @@ app.post('/api/add-review', (req, res, next) => {
     let sql = mysql.format(query, inserts);
     console.log("This is the formatted SQL", sql);
     database.query(sql, (err, results, fields) => {
-        if (err) return res.status(500).send('Error saving review');
+        if (err) return res.status(500).send('Error saving review'); ///make function, pass in message, res, sttus code to enable logging, put in endpoint that receives error messages
         let output = {
             success: true,
             data: results
