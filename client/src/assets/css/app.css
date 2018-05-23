@@ -1,4 +1,4 @@
-
+/* /////////////////////////////////////////////////// over all app styling, body, colors, font ///////////////// */
 body {
     margin: 0;
     
@@ -11,6 +11,7 @@ a {
 button, .btn, .btn-large {
     background-color: #3f0080;
     border: 1px solid white;
+    color: white
 }
 
 .btn:hover {
@@ -19,7 +20,7 @@ button, .btn, .btn-large {
 
 .app {
     background-color: black;
-    text-shadow: 1px 4px 5px rgba(255, 255, 255, 0.767);
+    text-shadow: 1px 2px 2px rgba(255, 255, 255, 0.767);
     color: white;
     height: 100vh;
     width: 100vw;
@@ -31,19 +32,14 @@ button, .btn, .btn-large {
     margin: 0
 }
 
-/*.app h1 {*/
-    /*text-shadow: 0 0 28px #61DAFB;*/
-    /*letter-spacing: 5px;*/
-/*}*/
 
-
-
+/* ////////////////////////////////////////// header and hamburger nav section ///////////////////// */
 .menu-button {
     display: inline-block;
     position: fixed;
     left: 2px;
-    height: 65px;
-    width: 65px;
+    height: 50px;
+    width: 50px;
     border: 1px solid white;
     padding: 10px;
     border-radius: 10%;
@@ -71,7 +67,7 @@ button, .btn, .btn-large {
 
 .menu-button div:nth-child(2),
 .menu-button div:nth-child(3){
-    margin-top: 13px;
+    margin-top: 7px;
 }
 
 .header-container {
@@ -112,7 +108,35 @@ button, .btn, .btn-large {
     padding: 0;
     right: 3px;
 }
+/*   ////////////////////////////////  hamburger nav ///////////////////////////////////////// */
+.nav-container {
+    position: absolute;
+    /* background-color: rgba(63, 63, 63); */
+    background: linear-gradient(to bottom right, rgb(29, 29, 29), rgb(124, 124, 124));
+    border: 3px solid white;
+    border-radius: 3%;
+    text-align: left;
+    z-index: 10;
+    box-sizing: border-box;
+    margin: 76px 0;
+    height: 700%;
+    width: 70%;
+}
+
+.nav-links {
+    box-sizing: border-box;
+    list-style-type: none;
+}
+
+
+/* ////////////////////////////////////// over all ul, li styling ////////////////////////////*/
+ul {
+    list-style-type: none;
+    padding: 10px
+}
 
 li {
-    color: white
+    margin: 28px;
+    color: white;
+    border-bottom: 1px solid black;
 }
