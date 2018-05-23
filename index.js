@@ -111,7 +111,7 @@ app.get("/api/multiple-results", (req, res, next) => {
 //Get Single Juice Results
 app.get("/api/single-results", (req, res, next) => {
     let { singleJuice } = req.body;
-    singleJuice = 3;
+    singleJuice = 3""
 
     let query = 'SELECT * FROM ?? JOIN ?? ON ?? = ?? WHERE ?? = ?';
     let inserts = ['juices', 'reviews', 'juices.id', 'reviews.juice_id', 'juices.id', singleJuice];
