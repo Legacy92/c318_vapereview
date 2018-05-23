@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from "axios";
+import { connect } from "react-redux";
+import * as actions from "../actions";
 
 
 class MultipleResults extends Component {
@@ -15,6 +17,10 @@ class MultipleResults extends Component {
     }
 
     render() {
+        if(!this.props.all){
+            console.log('waiting on response for browse');
+        }else{
+        console.log('state on multiple results page:', this.props.all);
         return (
             <div>
                 <h1>Multiple Results</h1>
@@ -23,6 +29,15 @@ class MultipleResults extends Component {
             </div>
         )
     }
+    }
 }
 
-export default MultipleResults;
+function mapStateToProps(state) {
+    return {
+        all: state.juiceInfo.all,
+        juice: state.juiceInfo.juice
+    };
+
+}
+
+export default connect(mapStateToProps, actions)(MultipleResults);

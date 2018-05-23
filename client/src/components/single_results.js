@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
 import {Link} from "react-router-dom";
 import axios from "axios";
+import { connect } from "react-redux";
+import * as actions from "../actions";
 
 class SingleResults extends Component {
     render() {
+        if(!this.props.randomJuice){
+            console.log('response not yet loaded');
+        }else{
+            console.log("State Props from single results:", this.props.all, this.props.randomJuice);
         return (
             <div>
                 <h1>Single Results</h1>
@@ -11,9 +17,10 @@ class SingleResults extends Component {
             </div>
         )
     }
+    }
 
     componentDidMount(){
-        this.getJuiceData();
+        // // this.getJuiceData();
     }
 
     async getJuiceData(){
@@ -22,6 +29,13 @@ class SingleResults extends Component {
     }
 }
 
+function mapStateToProps(state) {
+    return {
+        all: [],
+        juice: state.juiceInfo.juice,
+        randomJuice: state.juiceInfo.randomJuice
+    };
 
+}
 
-export default SingleResults;
+export default connect(mapStateToProps, actions)(SingleResults);

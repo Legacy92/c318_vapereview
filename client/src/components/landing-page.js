@@ -14,10 +14,8 @@ class LandingPage extends Component {
 
     async handleLandingPageSearch(values) {
         console.log("Landing Page Values:", values);
-        // await this.props.pullJuiceData();
-        // await this.props.searchByFlavorName();
         await this.props.landingPageSearch(values);
-        this.props.history.push("/multiple_results");
+        this.props.history.push("/multiple-results");
 
     }
 
@@ -25,6 +23,12 @@ class LandingPage extends Component {
         console.log('browse button clicked');
         this.props.browseAllJuices();
         this.props.history.push("/multiple-results");
+    }
+
+    async getRandomJuice(values){
+        console.log('random juice requested');
+        await this.props.getRandomJuice();
+        // this.props.history.push('/single_results');
     }
     renderInput({label, input, meta: {touched, error}}) {
         console.log(label, input);
@@ -39,7 +43,7 @@ class LandingPage extends Component {
 
     render(){
             console.log("State Props:", this.props.all, this.props.juice);
-        const {handleSubmit} = this.props;
+            const {handleSubmit} = this.props;
 
         return (
             <div>
@@ -50,9 +54,9 @@ class LandingPage extends Component {
                     <button  className="btn white-text">Go!</button>
                 </form>
                 <br/>
-               <Link className="btn white-text" to = "/multiple_results" onClick={this.getJuicesToBrowse.bind(this)}>Browse</Link>
+               <Link className="btn white-text" to = "/multiple-results" onClick={this.getJuicesToBrowse.bind(this)}>Browse</Link>
                <Link className="btn white-text" to = "/add-product">Add Juice</Link>
-               <Link className="btn white-text" to = "/single-results">Random</Link>
+               <Link className="btn white-text" to = "/single-results" onClick={this.getRandomJuice.bind(this)}>Random</Link>
 
             </div>
         )
