@@ -16,6 +16,8 @@ class LandingPage extends Component {
         console.log("Landing Page Values:", values);
         await this.props.pullJuiceData();
         await this.props.searchByFlavorName();
+        this.props.history.push("/multiple_results");
+
 
     }
     renderInput({label, input, meta: {touched, error}}) {
