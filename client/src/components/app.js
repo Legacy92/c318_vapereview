@@ -20,10 +20,10 @@ import Test from "./test"
 
 
 const App = () => (
-    <div>
-        <div className="app">
+    <div className="app">
+        <div >
             <Header/>
-            <Route path = "/multiple-results" component = {MultipleResults}/>
+            <Route path = "/multiple-results/:searchTerm" component = {MultipleResults}/>
             <Route path = "/single-results" component = {SingleResults}/>
             <Route path = "/add-product" component = {AddProduct}/>
             <Route path = "/hamburger-menu" compnent = {HambugerMenu}/>
