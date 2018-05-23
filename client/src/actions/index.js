@@ -45,6 +45,15 @@ export function landingPageSearch(values){
     }
 }
 
+export function browseAllJuices(){
+    console.log('browse all function called');
+    const response = axios.get("/api/multiple-results-browse");
+
+    return{
+        type: types.BROWSE_ALL_JUICES,
+        payload: response
+    }
+}
 export function addReview(values) {
     const response = axios.post("/api/add-review", values);
 

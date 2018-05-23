@@ -66,8 +66,6 @@ app.use(express.static(resolve(__dirname, "client", "dist")));
 
 // Browse 
 app.get("/api/multiple-results-browse", (req, res, next) => {
-    let { flavor } = req.body;
-
     let query = 'SELECT * FROM `juices` LEFT JOIN `reviews` ON `juices`.`id` = `reviews`.`juice_id`';
     // let inserts = ['`juices`', 'juices-flavors` b', '`b`.`flavor_id`', '`f`.`id`', '`reviews` r', '`r`.`id`', '`b`.`review_id`', '`juices` j', '`j`.`id`', '`r`.`juice_id`', ' `f`.`flavor`', flavor];
 
