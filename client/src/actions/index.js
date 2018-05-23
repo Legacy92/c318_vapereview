@@ -54,6 +54,16 @@ export function browseAllJuices(){
         payload: response
     }
 }
+
+export function getRandomJuice(){
+    console.log('get random juice function called');
+    const repsonse = axios.get("/api/random-juice");
+
+    return{
+        type: types.GET_RANDOM_JUICE,
+        payload: response
+    }
+}
 export function addReview(values) {
     const response = axios.post("/api/add-review", values);
 

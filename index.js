@@ -84,6 +84,29 @@ app.get("/api/multiple-results-browse", (req, res, next) => {
     });
 });
 
+//get random juice
+app.get("/api/random-juice",(req, res, next) => {
+
+    let flavor_id = Math.floor((Math.random()*100)+1);
+    console.log(flavor_id);
+    let query = 'SELECT * FROM `juices` LEFT JOIN `reviews` ON `juices`.`id` = `reviews`.`juice_id` WHERE `juices`.`id`=?';
+    let inserts = [flavor_id];
+
+    let sql = mysql.format(query);
+
+    console.log(sql);
+
+    database.query(sql, (err, results, field) => {
+        if (err) return next(err);
+
+        const output = {
+            success: true,
+            data: results
+        }
+        res.json(output);
+    });
+});
+
 //search by all 
 app.get("/api/multiple-results", (req, res, next) => {
     let { input } = req.query;

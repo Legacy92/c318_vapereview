@@ -7,5 +7,6 @@ export default {
     PULL_JUICE_DATA: "pull_juice_data",
     SEARCH_BY_NAME: "search_by_name",
     SEARCH_BY_ANY: "search_by_any",
-    BROWSE_ALL_JUICES: "browse_all_juice"
+    BROWSE_ALL_JUICES: "browse_all_juice",
+    GET_RANDOM_JUICE: "get_random_juice"
 };
