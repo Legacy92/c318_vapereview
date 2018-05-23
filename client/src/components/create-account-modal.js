@@ -84,7 +84,7 @@ function validate({username, password, confirm_password}){
 }
 
 CreateAccount = reduxForm({
-    form: "create_account_page",
+    form: "create-account-page",
     validate: validate
 })(CreateAccount);
 

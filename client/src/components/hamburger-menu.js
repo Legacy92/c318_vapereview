@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import LandingPage from "./landing-page";
 import AdvancedSearchModal from "./advanced-search-modal";
-import AddProduct from "./add_product";
-import AddReview from "./add_review";
+import AddProduct from "./add-product";
+import AddReview from "./add-review";
 import UserSignInModal from "./user-sign-in-modal";
-import MultipleResults from "./multiple_results";
-import SingleResults from "./single_results";
-import CreateAccount from "./create_account_modal";
+import MultipleResults from "./multiple-results";
+import SingleResults from "./single-results";
+import CreateAccount from "./create-account-modal";
 
 class HamburgerMenu extends Component {
 

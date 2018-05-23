@@ -5,12 +5,12 @@ import AdvancedSearchModal from "./advanced-search-modal";
 import UserSignInModal from "./user-sign-in-modal"
 import LandingPage from "./landing-page";
 import Header from './nav';
-import CreateAccount from './create_account_modal';
-import AddReview from './add_review';
-import HambugerMenu from './hamburger_menu';
-import AddProduct from "./add_product"
-import MultipleResults from "./multiple_results";
-import SingleResults from "./single_results";
+import CreateAccount from './create-account-modal';
+import AddReview from './add-review';
+import HambugerMenu from './hamburger-menu';
+import AddProduct from "./add-product"
+import MultipleResults from "./multiple-results";
+import SingleResults from "./single-results";
 import FlavorModal from "./flavor-modal";
 
 

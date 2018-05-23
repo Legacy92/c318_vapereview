@@ -76,7 +76,7 @@ function validate({ juice_name, manufacturer_name, manufacturer_site, manufactur
 
 
 AddProduct = reduxForm({
-    form: "add_product",
+    form: "add-product",
     validate: validate
 })(AddProduct);
 
