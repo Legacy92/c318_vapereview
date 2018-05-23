@@ -31,7 +31,7 @@ class LandingPage extends Component {
         // this.props.history.push('/single_results');
     }
     renderInput({label, input, meta: {touched, error}}) {
-        console.log(label, input);
+        // console.log(label, input);
         return (
             <div>
                 <label>{label}</label>
