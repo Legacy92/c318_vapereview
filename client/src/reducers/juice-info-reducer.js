@@ -28,6 +28,8 @@ export default (state = DEFAULT_STATE, action) => {
             return {...state, randomJuice : action.payload.data.data};
         case types.BROWSE_ALL_JUICES:
             return {...state, all : action.payload.data.data};
+        case types.SINGLE_ITEM:
+            return {...state, all: action.payload.data.data}
         default:
             return state;
     }
