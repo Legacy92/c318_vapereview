@@ -179,7 +179,7 @@ app.post('/api/add-product', (req, res, next) => {
     const { name, manufacturer, description, site } = req.body;
 
     let query = 'INSERT INTO ?? (??, ??, ??, ??) VALUES ( ?, ?, ?, ?)';
-    let inserts = ['juices', 'name', 'manufacturer_name', 'manufacturer_site', 'manufacturer_description', name, manufacturer, description, site];
+    let inserts = ['juices', 'name', 'manufacturer_name', 'manufacturer_site', 'manufacturer_description', name, manufacturer, site, description];
 
     let sql = mysql.format(query, inserts);
     console.log("This is the formatted SQL", sql);
