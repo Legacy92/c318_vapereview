@@ -17,7 +17,7 @@ class LandingPage extends Component {
         // await this.props.pullJuiceData();
         // await this.props.searchByFlavorName();
         await this.props.landingPageSearch(values);
-        this.props.history.push("/multiple_results");
+        this.props.history.push("/multiple-results");
 
     }
 
@@ -50,7 +50,7 @@ class LandingPage extends Component {
                     <button  className="btn white-text">Go!</button>
                 </form>
                 <br/>
-               <Link className="btn white-text" to = "/multiple_results" onClick={this.getJuicesToBrowse.bind(this)}>Browse</Link>
+               <Link className="btn white-text" to = "/multiple-results" onClick={this.getJuicesToBrowse.bind(this)}>Browse</Link>
                <Link className="btn white-text" to = "/add-product">Add Juice</Link>
                <Link className="btn white-text" to = "/single-results">Random</Link>
 

@@ -76,7 +76,7 @@ function mapStateToProps(state) {
 
 }
 AddReview = reduxForm({
-    form: "add_review"
+    form: "add-review"
 })(AddReview);
 
 export default connect(mapStateToProps, {addReview})(AddReview);
