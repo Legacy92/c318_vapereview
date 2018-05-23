@@ -6,7 +6,7 @@ class Test extends Component{
 
 
     componentDidMount(){
-         this.testConnect();
+        //  this.testConnect();
         // this.addProduct();
         // this.createUser();
         // this.getReviewData();
