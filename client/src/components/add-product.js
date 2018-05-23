@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { Route } from "react-router-dom";
 import { addProduct } from "../actions";
 import { Link } from "react-router-dom";
-import Test from './test';
 import axios from 'axios';
 
 class AddProduct extends Component {

@@ -86,13 +86,8 @@ app.get("/api/multiple-results-browse", (req, res, next) => {
 
 //get random juice
 app.get("/api/random-juice",(req, res, next) => {
-
-    let flavor_id = Math.floor((Math.random()*100)+1);
-    console.log(flavor_id);
-    let query = 'SELECT * FROM `juices` LEFT JOIN `reviews` ON `juices`.`id` = `reviews`.`juice_id` WHERE `juices`.`id`=?';
-    let inserts = [flavor_id];
-
-    let sql = mysql.format(query, inserts);
+    let query = 'SELECT * FROM `juices` ORDER BY RAND() LIMIT 1';
+    let sql = mysql.format(query);
 
     console.log(sql);
 

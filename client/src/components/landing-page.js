@@ -16,6 +16,9 @@ class LandingPage extends Component {
         console.log("Landing Page Values:", values);
         await this.props.landingPageSearch(values);
         this.props.history.push("/single-results");
+        // await this.props.landingPageSearch(values);
+        this.props.history.push(`/multiple-results/${values.input}`);
+
 
     }
 
@@ -77,12 +80,12 @@ function validate({input}){
 
     return errors;
  }
-function mapStateToProps(state) {
-    return {
-        all: state.juiceInfo.all,
-        juice: state.juiceInfo.juice
-    };
+// function mapStateToProps(state) {
+//     return {
+//         all: state.juiceInfo.all,
+//         juice: state.juiceInfo.juice
+//     };
+//
+// }
 
-}
-
-export default connect(mapStateToProps, actions)(LandingPage);
+export default connect(null, actions)(LandingPage);
