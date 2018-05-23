@@ -65,7 +65,7 @@ app.use(express.static(resolve(__dirname, "client", "dist")));
 // });
 
 // Browse 
-app.get("/api/multiple-results", (req, res, next) => {
+app.get("/api/multiple-results-browse", (req, res, next) => {
     let { flavor } = req.body;
 
     let query = 'SELECT * FROM `juices` LEFT JOIN `reviews` ON `juices`.`id` = `reviews`.`juice_id`';
@@ -179,7 +179,7 @@ app.post('/api/add-product', (req, res, next) => {
     const { name, manufacturer, description, site } = req.body;
 
     let query = 'INSERT INTO ?? (??, ??, ??, ??) VALUES ( ?, ?, ?, ?)';
-    let inserts = ['juices', 'name', 'manufacturer_name', 'manufacturer_site', 'manufacturer_description', name, manufacturer, description, site];
+    let inserts = ['juices', 'name', 'manufacturer_name', 'manufacturer_site', 'manufacturer_description', name, manufacturer, site, description];
 
     let sql = mysql.format(query, inserts);
     console.log("This is the formatted SQL", sql);
