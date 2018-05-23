@@ -6,5 +6,6 @@ export default {
     ADD_REVIEW: "add_review",
     PULL_JUICE_DATA: "pull_juice_data",
     SEARCH_BY_NAME: "search_by_name",
-    SEARCH_BY_ANY: "search_by_any"
+    SEARCH_BY_ANY: "search_by_any",
+    BROWSE_ALL_JUICES: "browse_all_juice"
 };
