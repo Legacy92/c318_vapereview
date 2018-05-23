@@ -11,6 +11,7 @@ a {
 button, .btn, .btn-large {
     background-color: #3f0080;
     border: 1px solid white;
+    color: white
 }
 
 .btn:hover {
@@ -37,8 +38,8 @@ button, .btn, .btn-large {
     display: inline-block;
     position: fixed;
     left: 2px;
-    height: 65px;
-    width: 65px;
+    height: 50px;
+    width: 50px;
     border: 1px solid white;
     padding: 10px;
     border-radius: 10%;
@@ -66,7 +67,7 @@ button, .btn, .btn-large {
 
 .menu-button div:nth-child(2),
 .menu-button div:nth-child(3){
-    margin-top: 13px;
+    margin-top: 7px;
 }
 
 .header-container {
@@ -110,10 +111,12 @@ button, .btn, .btn-large {
 /*   ////////////////////////////////  hamburger nav ///////////////////////////////////////// */
 .nav-container {
     position: absolute;
-    background-color: rgba(63, 63, 63);
+    /* background-color: rgba(63, 63, 63); */
+    background: linear-gradient(to bottom right, rgb(29, 29, 29), rgb(124, 124, 124));
     border: 3px solid white;
     border-radius: 3%;
     text-align: left;
+    z-index: 10;
     box-sizing: border-box;
     margin: 76px 0;
     height: 700%;
