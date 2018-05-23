@@ -20,6 +20,12 @@ class LandingPage extends Component {
         this.props.history.push("/multiple_results");
 
     }
+
+    getJuicesToBrowse(){
+        console.log('browse button clicked');
+        this.props.browseAllJuices();
+        this.props.history.push("/multiple-results");
+    }
     renderInput({label, input, meta: {touched, error}}) {
         console.log(label, input);
         return (
@@ -44,7 +50,7 @@ class LandingPage extends Component {
                     <button  className="btn white-text">Go!</button>
                 </form>
                 <br/>
-               <Link className="btn white-text" to = "/multiple_results">Browse</Link>
+               <Link className="btn white-text" to = "/multiple_results" onClick={this.getJuicesToBrowse.bind(this)}>Browse</Link>
                <Link className="btn white-text" to = "/add-product">Add Juice</Link>
                <Link className="btn white-text" to = "/single-results">Random</Link>
 
