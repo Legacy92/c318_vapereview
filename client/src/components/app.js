@@ -9,7 +9,7 @@ import CreateAccount from './create_account_modal';
 import AddReview from './add_review';
 import HambugerMenu from './hamburger_menu';
 import AddProduct from "./add_product"
-import MultipleResults from "./multiple_results";
+import MultipleResults from "./multiple-results";
 import SingleResults from "./single_results";
 import FlavorModal from "./flavor-modal";
 

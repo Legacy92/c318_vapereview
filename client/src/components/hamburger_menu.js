@@ -5,7 +5,7 @@ import AdvancedSearchModal from "./advanced-search-modal";
 import AddProduct from "./add_product";
 import AddReview from "./add_review";
 import UserSignInModal from "./user-sign-in-modal";
-import MultipleResults from "./multiple_results";
+import MultipleResults from "./multiple-results";
 import SingleResults from "./single_results";
 import CreateAccount from "./create_account_modal";
 

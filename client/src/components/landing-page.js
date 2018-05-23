@@ -17,7 +17,7 @@ class LandingPage extends Component {
         // await this.props.pullJuiceData();
         // await this.props.searchByFlavorName();
         await this.props.landingPageSearch(values);
-        this.props.history.push("/multiple_results");
+        this.props.history.push("/multiple-results");
 
     }
 
@@ -27,7 +27,7 @@ class LandingPage extends Component {
         this.props.history.push("/multiple-results");
     }
     renderInput({label, input, meta: {touched, error}}) {
-        console.log(label, input);
+        // console.log(label, input);
         return (
             <div>
                 <label>{label}</label>
