@@ -13,12 +13,7 @@ class AddProduct extends Component {
     handleAddProduct(values) {
         console.log("Form Values:", values);
         this.props.addProduct(values);
-
-        // await this.props.addToDoItem(values);
-
         this.props.history.push("/add-review");
-
-        // console.log("Add Item Props:", this.props);
     }
 
 
@@ -81,7 +76,7 @@ function validate({ juice_name, manufacturer_name, manufacturer_site, manufactur
 
 
 AddProduct = reduxForm({
-    form: "add_product",
+    form: "add-product",
     validate: validate
 })(AddProduct);
 

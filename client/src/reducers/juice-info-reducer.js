@@ -4,6 +4,7 @@ const DEFAULT_STATE = {
     all:[],
     juice: {},
     juiceId: [],
+    randomJuice:{}
 };
 
 export default (state = DEFAULT_STATE, action) => {
@@ -23,7 +24,10 @@ export default (state = DEFAULT_STATE, action) => {
         case types.SEARCH_BY_ANY:
             // console.log("Search by any on Home page action:", action);
             return {...state, all : action.payload.data.data, juiceId: action.payload.data.data[0].juice_id};
-
+        case types.GET_RANDOM_JUICE:
+            return {...state, randomJuice : action.payload.data.data};
+        case types.BROWSE_ALL_JUICES:
+            return {...state, all : action.payload.data.data};
         default:
             return state;
     }
