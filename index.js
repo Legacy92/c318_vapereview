@@ -78,6 +78,27 @@ app.get("/api/multiple-results", (req, res, next) => {
     });
 });
 
+//Get Single Juice Results	
+app.get("/api/single-juice", (req, res, next) => {	
+        const { juice_id } = req.body;
+        
+        const query = 'SELECT * FROM ?? JOIN ?? ON ?? = ?? WHERE ?? = ?';
+        const inserts = ['juices', 'reviews', 'juices.id', 'reviews.juice_id', 'juices.id', juice_id];
+          
+        let sql = mysql.format(query, inserts);
+    	
+        console.log(sql);	
+    	
+        database.query(sql, (err, results, field) => {	
+            if (err) return next(err);	
+    	
+            const output = {	
+                success: true,	
+               data: results	
+            }	
+            res.json(output);	
+        });	
+    });
 
 // Flavor chart on single results page - gets flavor breakdown of each juice
 app.get("/api/flavor-chart", (req, res, next) => {

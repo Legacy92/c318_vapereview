@@ -84,30 +84,10 @@ export function pullJuiceData() {
 }
 
 export function singleItem() {
-    const response = axios.get("/api/single-results");
+    const response = axios.get("/api/single-juice");
 
     return {
         type: types.SINGLE_ITEM,
         payload: response 
     }
 }
-
-// app.get("/api/test",(req, res, next) => {
-//
-//     let query = 'SELECT * FROM ??';
-//     let inserts =['juices'];
-//
-//     let sql = mysql.format(query, inserts);
-//
-//     console.log(sql);
-//
-//     database.query(sql, (err,results,field)=>{
-//         if(err) return next (err);
-//
-//         const output = {
-//             success: true,
-//             data: results
-//         }
-//         res.json(output);
-//     });
-// });
