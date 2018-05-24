@@ -8,10 +8,10 @@ class SingleResults extends Component {
     
     
     componentDidMount(){
-            this.getJuiceData();
-        }
+        console.log("single-product-props: ", this.props);
+    }
 
-    async getJuiceData(){
+    async getJuiceData(values){
             const response = await axios.get("/api/single-results");
             console.log("Juice Data:", response);
         }

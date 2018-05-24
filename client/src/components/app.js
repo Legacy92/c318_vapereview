@@ -24,7 +24,7 @@ const App = () => (
         <div >
             <Header/>
             <Route path = "/multiple-results/:searchTerm" component = {MultipleResults}/>
-            <Route path = "/single-results" component = {SingleResults}/>
+            <Route path = "/single-results/:juiceId" component = {SingleResults}/>
             <Route path = "/add-product" component = {AddProduct}/>
             <Route path = "/hamburger-menu" compnent = {HambugerMenu}/>
             <Route path = "/add-review" component = {AddReview}/>
