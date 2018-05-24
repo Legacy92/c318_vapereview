@@ -29,6 +29,7 @@ class SingleResults extends Component {
             )
         }
     }
+
 }
 
 function mapStateToProps(state) {

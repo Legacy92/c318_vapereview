@@ -81,9 +81,15 @@ export function pullJuiceData() {
         type: types.PULL_JUICE_DATA,
         payload: response
     }
+}
 
+export function singleItem() {
+    const response = axios.get("/api/single-results");
 
-
+    return {
+        type: types.SINGLE_ITEM,
+        payload: response 
+    }
 }
 
 // app.get("/api/test",(req, res, next) => {
