@@ -16,8 +16,9 @@ class MultipleResults extends Component {
         this.props.landingPageSearch({input: searchTerm});
     }
 
-    handleProductClick(id) {
-        this.props.history.push(`/single-results/${id}`)
+    handleProductClick(id){
+        this.props.history.push(`/single-results/${id}`);
+
     }
 
     async getReviewData() {
@@ -34,9 +35,9 @@ class MultipleResults extends Component {
 
             juiceElements = juiceInfo.map((item, index) => {
                 const { name, manufacturer_name, manufacturer_site, manufacturer_description, id } = item;
-                console.log(name, manufacturer_name, manufacturer_site, manufacturer_description, id);
+                console.log("item:", name, manufacturer_name, manufacturer_site, manufacturer_description,id);
                 return (
-                <div key={index} onClick = {() => this.handleProductClick(id)} className="col-xs-12 col-md-6">
+                <div onClick={() => this.handleProductClick(id)} key={index} className="col-xs-12 col-md-6">
                     <div className="prod-info-main prod-wrap clearfix">
                         <div className="row">
                             <div className="col-md-5 col-sm-12 col-xs-12">
@@ -107,7 +108,7 @@ class MultipleResults extends Component {
 function mapStateToProps(state) {
     return {
         all: state.juiceInfo.all,
-        juice: state.juiceInfo.juice
+        juiceId: state.juiceInfo.juiceId
     };
 
 }
