@@ -22,7 +22,7 @@ app.use(express.static(resolve(__dirname, "client", "dist")));
 
 // Browse button on landing page - returns all juices
 app.get("/api/multiple-results-browse", (req, res, next) => {
-    const query = 'SELECT * FROM `juices` LEFT JOIN `reviews` ON `juices`.`id` = `reviews`.`juice_id`';
+    const query = 'SELECT `j`.*, AVG(`r`.`rating`) as rating from `juices` j LEFT JOIN `reviews` r ON `j`.`id` = `r`.`juice_id` LEFT JOIN `juices-flavors` ON `juices-flavors`.`review_id` = `r`.`id` GROUP BY 1,2,3,4,5';
     const sql = mysql.format(query);
 
     console.log(sql);
