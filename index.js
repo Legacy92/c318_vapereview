@@ -182,8 +182,8 @@ app.post('/api/add-review', (req, res, next) => {
         res.json(output);
 
         if (output.success) {
-            let query = 'SELECT * FROM ?? WHERE ?? = ? OR ? OR ?'
-            let inserts = ['flavors', 'flavors.flavor', flavor1, flavor2, flavor3]
+            let query = 'SELECT * FROM ?? WHERE ?? IN (?, ?, ?)'
+            let inserts = ['flavors', 'flavor', flavor1, flavor2, flavor3]
 
             let sql = mysql.format(query, inserts);
             console.log("This is the formatted SQL", sql);
@@ -194,11 +194,13 @@ app.post('/api/add-review', (req, res, next) => {
                     data: results
                 }
                 const flavorId1 = output.data[0].id
-                console.log('output', flavorId1)
+                const flavorId2 = output.data[1].id
+                const flavorId3 = output.data[2].id
+
 
                 if (output.success) {
                     let query = 'INSERT INTO ?? (??, ??) VALUES (?, ?),(?, ?),(?, ?)'
-                    let inserts = ['juices-flavors', 'review_id', 'flavor_id', reviewId, flavorId1]
+                    let inserts = ['juices-flavors', 'review_id', 'flavor_id', reviewId, flavorId1, reviewId, flavorId2, reviewId, flavorId3 ]
         
                     let sql = mysql.format(query, inserts);
                     console.log("This is the formatted SQL", sql);
