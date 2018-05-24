@@ -60,7 +60,7 @@ app.get("/api/random-juice",(req, res, next) => {
 app.get("/api/multiple-results", (req, res, next) => {
     const { input } = req.query;
 
-    const query = 'SELECT `j`.*, `r`.`rating`,`r`.`id` AS review_id, `c`.`category`, `f`.`flavor` from `juices` j LEFT JOIN `reviews` r ON `j`.`id` = `r`.`juice_id` LEFT JOIN `juices-flavors` ON `juices-flavors`.`review_id` = `r`.`id` LEFT JOIN `flavors` as f ON `f`.`id` = `juices-flavors`.`flavor_id` LEFT JOIN `category` as c ON `c`.`id` = `f`.`catagory_id` WHERE `j`.`name` = ? OR `j`.`manufacturer_name` = ? OR `f`.`flavor` = ? OR `c`.`category` = ?';
+    const query = 'SELECT `j`.*, AVG(`r`.`rating`) as rating from `juices` j LEFT JOIN `reviews` r ON `j`.`id` = `r`.`juice_id` LEFT JOIN `juices-flavors` ON `juices-flavors`.`review_id` = `r`.`id` LEFT JOIN `flavors` as f ON `f`.`id` = `juices-flavors`.`flavor_id` LEFT JOIN `category` as c ON `c`.`id` = `f`.`catagory_id` WHERE `j`.`name` = ? OR `j`.`manufacturer_name` = ?OR `f`.`flavor` = ? OR `c`.`category` = ? GROUP BY 1,2,3,4,5';
     const inserts = [input, input, input, input] ;
 
     const sql = mysql.format(query, inserts);
@@ -189,12 +189,13 @@ app.post('/api/add-review', (req, res, next) => {
             console.log("This is the formatted SQL", sql);
             database.query(sql, (err, results, fields) => {
                 if (err) return next(err);
+                console.log(results);
                 let output = {
                     success: true,
                     data: results
                 }
                 const flavorId1 = output.data[0].id
-                console.log('output', flavorId1)
+                console.log('output', output.data);
 
                 if (output.success) {
                     let query = 'INSERT INTO ?? (??, ??) VALUES (?, ?),(?, ?),(?, ?)'
