@@ -15,7 +15,7 @@ class LandingPage extends Component {
     async handleLandingPageSearch(values) {
         console.log("Landing Page Values:", values);
         await this.props.landingPageSearch(values);
-        this.props.history.push("/single-results");
+        // this.props.history.push("/single-results");
         // await this.props.landingPageSearch(values);
         this.props.history.push(`/multiple-results/${values.input}`);
 
@@ -25,7 +25,7 @@ class LandingPage extends Component {
     getJuicesToBrowse(){
         console.log('browse button clicked');
         this.props.browseAllJuices();
-        this.props.history.push("/multiple-results");
+        // this.props.history.push("/multiple-results-browse");
     }
 
     async getRandomJuice(values){
@@ -57,7 +57,7 @@ class LandingPage extends Component {
                     <button  className="btn white-text">Go!</button>
                 </form>
                 <br/>
-               <Link className="btn white-text" to = "/multiple-results" onClick={this.getJuicesToBrowse.bind(this)}>Browse</Link>
+               <Link className="btn white-text" to = "/multiple-results-browse" onClick={this.getJuicesToBrowse.bind(this)}>Browse</Link>
                <Link className="btn white-text" to = "/add-product">Add Juice</Link>
                <Link className="btn white-text" to = "/single-results" onClick={this.getRandomJuice.bind(this)}>Random</Link>
 
