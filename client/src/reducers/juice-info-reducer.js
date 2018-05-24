@@ -20,10 +20,11 @@ export default (state = DEFAULT_STATE, action) => {
             };
         case types.SEARCH_BY_NAME:
             // console.log("JuiceDataAction:", action);
-            return {...state, all : action.payload.data.data, juiceId: action.payload.data.data[0].juice_id};
+            return {...state, all : action.payload.data.data, juiceId: action.payload.data.data.id};
         case types.SEARCH_BY_ANY:
+            console.log("JuiceDataAction:", action);
             // console.log("Search by any on Home page action:", action);
-            return {...state, all : action.payload.data.data, juiceId: action.payload.data.data[0].juice_id};
+            return {...state, all : action.payload.data.data, juiceId: action.payload.data.data.id};
         case types.GET_RANDOM_JUICE:
             return {...state, randomJuice : action.payload.data.data};
         case types.BROWSE_ALL_JUICES:
