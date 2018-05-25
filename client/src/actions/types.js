@@ -9,5 +9,7 @@ export default {
     SEARCH_BY_ANY: "search_by_any",
     BROWSE_ALL_JUICES: "browse_all_juice",
     GET_RANDOM_JUICE: "get_random_juice",
-    SINGLE_ITEM: "single_item"
+    SINGLE_ITEM: "single_item",
+    CATEGORIES: "categories",
+    FLAVORS: "flavors"
 };

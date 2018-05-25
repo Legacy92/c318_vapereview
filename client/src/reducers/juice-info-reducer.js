@@ -31,8 +31,12 @@ export default (state = DEFAULT_STATE, action) => {
         case types.BROWSE_ALL_JUICES:
             return {...state, all : action.payload.data.data};
         case types.SINGLE_ITEM:
-            console.log("Single_Item Active", action);
+        console.log("Single_Item Active", action);
             return {...state, singleItemInfo: action.payload.data.data};
+        case types.CATEGORIES:
+            return {...state, all: action.payload.data.data};
+        case types.FLAVORS: 
+            return {...state, all: action.payload.data.data};
         default:
             return state;
     }

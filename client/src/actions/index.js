@@ -95,3 +95,23 @@ export function singleItem(juiceId) {
         payload: response 
     }
 }
+
+export function categories() {
+    const response = axios.get("/api/category-modal");
+    console.log("categories: ", response);
+
+    return {
+        type: types.CATEGORIES,
+        payload: response
+    }
+}
+
+export function flavors() {
+    const response = axios.get("/api/flavor-modal");
+    console.log("flavors: ", response);
+
+    return {
+        type: types.FLAVORS,
+        payload: response
+    }
+}
