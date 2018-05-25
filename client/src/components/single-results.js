@@ -12,7 +12,7 @@ class SingleResults extends Component {
         console.log("Single-product-props:", this.props);
         const {juiceId}  = this.props.match.params;
         this.props.singleItem({juiceId});
-
+        console.log("merge comment");
 
     }
 
