@@ -4,7 +4,8 @@ const DEFAULT_STATE = {
     all:[],
     juice: {},
     juiceId: [],
-    randomJuice:{}
+    randomJuice:{},
+    singleItemInfo: {}
 };
 
 export default (state = DEFAULT_STATE, action) => {
@@ -30,7 +31,8 @@ export default (state = DEFAULT_STATE, action) => {
         case types.BROWSE_ALL_JUICES:
             return {...state, all : action.payload.data.data};
         case types.SINGLE_ITEM:
-            return {...state, all: action.payload.data.data}
+            console.log("Single_Item Active", action);
+            return {...state, singleItemInfo: action.payload.data.data};
         default:
             return state;
     }
