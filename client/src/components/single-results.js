@@ -7,14 +7,21 @@ import * as actions from "../actions";
 class SingleResults extends Component {
 
     componentDidMount(){
-        // // this.getJuiceData();
-        console.log("Single-product-props:", this.props)
+        const { searchTerm } = this.props.match.params;
+        console.log("Single-product-props:", this.props);
+        if(searchTerm){
+           //call get single juice action and pass in juice id?
+           const response = axios.get("/api/single-results");
+           console.log("Juice Data:", response);
+        }else{
+            this.props.getRandomJuice();
+        }
     }
 
-    async getJuiceData(){
-        const response = await axios.get("/api/single-results");
-        console.log("Juice Data:", response);
-    }
+    // async getJuiceData(){
+    //     const response = await axios.get("/api/single-results");
+    //     console.log("Juice Data:", response);
+    // }
     render() {
         if(!this.props.randomJuice){
             console.log('response not yet loaded');
