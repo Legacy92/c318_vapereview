@@ -115,6 +115,7 @@ button, .btn, .btn-large {
     border-radius: 3%;
     text-align: left;
     z-index: 10;
+    font-size: 16px;
     box-sizing: border-box;
     margin: 76px 0;
     height: 700%;

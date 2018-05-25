@@ -80,10 +80,10 @@ app.get("/api/multiple-results", (req, res, next) => {
 
 //Get Single Juice Results	
 app.get("/api/single-juice", (req, res, next) => {	
-        const { juice_id } = req.body;
+        const { juiceId } = req.query;
         
         const query = 'SELECT * FROM ?? JOIN ?? ON ?? = ?? WHERE ?? = ?';
-        const inserts = ['juices', 'reviews', 'juices.id', 'reviews.juice_id', 'juices.id', juice_id];
+        const inserts = ['juices', 'reviews', 'juices.id', 'reviews.juice_id', 'juices.id', juiceId];
           
         let sql = mysql.format(query, inserts);
     	

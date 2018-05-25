@@ -34,17 +34,17 @@ class MultipleResults extends Component {
             const juiceInfo = this.props.all;
 
             juiceElements = juiceInfo.map((item, index) => {
-                const { name, manufacturer_name, manufacturer_site, manufacturer_description, id } = item;
+                const { name, manufacturer_name, manufacturer_site, manufacturer_description, id, rating } = item;
                 console.log("item:", name, manufacturer_name, manufacturer_site, manufacturer_description,id);
                 return (
-                <div onClick={() => this.handleProductClick(id)} key={index} className="col-xs-12 col-md-6">
+                <div onClick={() => this.handleProductClick(id)} key={index} className="col-xs-12 col-md-6 card bg-dark">
                     <div className="prod-info-main prod-wrap clearfix">
                         <div className="row">
                             <div className="col-md-5 col-sm-12 col-xs-12">
                                 <div className="product-image">
                                     <img src={vapeImage} alt="194x228" className="img-responsive"/>
 						<span className="tag2 hot">
-							HOT
+
 						</span>
                                 </div>
                             </div>
@@ -70,7 +70,7 @@ class MultipleResults extends Component {
                                             <a href="javascript:void(0);" className="btn btn-info">More info</a>
                                         </div>
                                         <div className="col-md-12">
-                                            <div className="rating">Rating:
+                                            <div className="rating">Rating:{rating}
                                                 <label htmlFor="stars-rating-5"><i className="fa fa-star text-danger"></i></label>
                                                 <label htmlFor="stars-rating-4"><i className="fa fa-star text-danger"></i></label>
                                                 <label htmlFor="stars-rating-3"><i className="fa fa-star text-danger"></i></label>
