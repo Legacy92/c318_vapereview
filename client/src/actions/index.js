@@ -83,8 +83,12 @@ export function pullJuiceData() {
     }
 }
 
-export function singleItem() {
-    const response = axios.get("/api/single-juice");
+export function singleItem(juiceId) {
+    console.log(juiceId);
+    const response = axios.get("/api/single-juice", {
+        params: juiceId
+    });
+
 
     return {
         type: types.SINGLE_ITEM,
