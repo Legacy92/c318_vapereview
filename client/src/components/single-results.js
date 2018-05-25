@@ -7,14 +7,13 @@ import types from "../actions/types";
 
 class SingleResults extends Component {
 
-
     componentDidMount(){
         // // this.getJuiceData();
         console.log("Single-product-props:", this.props);
         const {juiceId}  = this.props.match.params;
         this.props.singleItem({juiceId});
+        this.props.singleItemReviews({juiceId});
         console.log("merge comment");
-
     }
 
     async getJuiceData(){
@@ -82,7 +81,6 @@ class SingleResults extends Component {
 
 
         }
-
         if(!this.props.randomJuice){
             console.log('response not yet loaded');
         }else{

@@ -13,7 +13,11 @@ class MultipleResults extends Component {
         const { searchTerm } = this.props.match.params;
         console.log('TERM:', searchTerm);
 
-        this.props.landingPageSearch({input: searchTerm});
+        if(searchTerm){
+            this.props.landingPageSearch({input: searchTerm});
+        }else{
+            this.props.browseAllJuices();
+        }
     }
 
     handleProductClick(id){
@@ -35,7 +39,6 @@ class MultipleResults extends Component {
 
             juiceElements = juiceInfo.map((item, index) => {
                 const { name, manufacturer_name, manufacturer_site, manufacturer_description, id, rating } = item;
-                console.log("item:", name, manufacturer_name, manufacturer_site, manufacturer_description,id);
                 return (
 
                     <div onClick={() => this.handleProductClick(id)} key={index} className="col-12 col-sm-6 bg-dark my-3">

@@ -58,9 +58,6 @@ class HamburgerMenu extends Component {
                                 <Link to="/multiple-results" onClick={this.closeNav}>Multiple Results</Link>
                             </li>
                             <li>
-                                <Link to="/single-results" onClick={this.closeNav}>Single Results</Link>
-                            </li>
-                            <li>
                                 <Link to="/add-product" onClick={this.closeNav}>Add Product</Link>
                             </li>
                             <li>
