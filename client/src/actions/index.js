@@ -95,9 +95,8 @@ export function singleItem(juiceId) {
     }
 }
 
-export function categories() {
-    const response = axios.get("/api/category-modal");
-    console.log("categories: ", response);
+export function getCategories() {
+    const response = axios.get("/api/flavor-modal");
 
     return {
         type: types.CATEGORIES,
