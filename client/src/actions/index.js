@@ -85,12 +85,24 @@ export function pullJuiceData() {
 
 export function singleItem(juiceId) {
     console.log(juiceId);
-    const response = axios.get("/api/single-juice", {
+    const response = axios.get("/api/single-juice-info", {
         params: juiceId
     });
 
     return {
         type: types.SINGLE_ITEM,
+        payload: response 
+    }
+}
+
+export function singleItemReviews(juiceId) {
+    console.log(juiceId);
+    const response = axios.get("/api/single-juice-reviews", {
+        params: juiceId
+    });
+
+    return {
+        type: types.GET_SINGLE_ITEM_REVIEWS,
         payload: response 
     }
 }

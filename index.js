@@ -80,10 +80,10 @@ app.get("/api/multiple-results", (req, res, next) => {
 
 //Get Single Juice Results	
 app.get("/api/single-juice-info", (req, res, next) => {	
-        const { juice_id } = req.query;
+        const { juiceId } = req.query;
         
-        const query = 'SELECT `j`.*, AVG(`r`.`rating`) as rating FROM ?? JOIN ?? ON ?? = ?? WHERE ?? = ?';
-        const inserts = ['juices', 'reviews', 'juices.id', 'reviews.juice_id', 'juices.id', juice_id];
+        const query = 'SELECT `juices`.*, AVG(`reviews`.`rating`) as rating FROM ?? JOIN ?? ON ?? = ?? WHERE ?? = ?';
+        const inserts = ['juices', 'reviews', 'juices.id', 'reviews.juice_id', 'juices.id', juiceId];
           
         let sql = mysql.format(query, inserts);
     	
@@ -282,6 +282,27 @@ app.post('/api/add-review', (req, res, next) => {
     });
 
 
+//Get All Reviews for Single Juice
+app.get("/api/single-juice-reviews", (req, res, next) => {	
+        const { juiceId } = req.query;
+        
+        const query = 'SELECT * FROM ?? WHERE ?? = ?';
+        const inserts = ['reviews', 'reviews.juice_id', juiceId];
+          
+        let sql = mysql.format(query, inserts);
+    	
+        console.log(sql);	
+    	
+        database.query(sql, (err, results, field) => {	
+            if (err) return next(err);	
+    	
+            const output = {	
+                success: true,	
+               data: results	
+            }	
+            res.json(output);	
+        });	
+    });
 
 
 
