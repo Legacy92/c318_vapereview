@@ -85,7 +85,7 @@ export function pullJuiceData() {
 
 export function singleItem(juiceId) {
     console.log(juiceId);
-    const response = axios.get("/api/single-juice", {
+    const response = axios.get("/api/single-juice-info", {
         params: juiceId
     });
 
@@ -95,9 +95,10 @@ export function singleItem(juiceId) {
     }
 }
 
-export function getCategories() {
-    const response = axios.get("/api/flavor-modal");
 
+export function categories() {
+    const response = axios.get("/api/category-modal");
+    console.log("categories: ", response);
     return {
         type: types.CATEGORIES,
         payload: response

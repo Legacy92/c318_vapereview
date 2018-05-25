@@ -12,8 +12,8 @@ class SingleResults extends Component {
         console.log("Single-product-props:", this.props);
         const {juiceId}  = this.props.match.params;
         this.props.singleItem({juiceId});
+        this.props.singleItemReviews({juiceId});
         console.log("merge comment");
-
     }
 
     async getJuiceData(){
@@ -21,12 +21,10 @@ class SingleResults extends Component {
         console.log("Juice Data:", response);
     }
     render(){
-
         console.log(this.props);
         if(!this.props.randomJuice){
             console.log('response not yet loaded');
         }else{
-            console.log("State Props from single results:", this.props.all, this.props.randomJuice);
             return (
                 <div>
                     <h1>Single Results</h1>
