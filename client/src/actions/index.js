@@ -84,7 +84,7 @@ export function pullJuiceData() {
 }
 
 export function singleItem() {
-    const response = axios.get("/api/single-juice");
+    const response = axios.get("/api/single-juice-info");
 
     return {
         type: types.SINGLE_ITEM,
