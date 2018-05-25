@@ -8,7 +8,6 @@ class SingleResults extends Component {
 
     componentDidMount(){
         const { searchTerm } = this.props.match.params;
-        console.log("Single-product-props:", this.props);
         if(searchTerm){
            //call get single juice action and pass in juice id?
            const response = axios.get("/api/single-results");
