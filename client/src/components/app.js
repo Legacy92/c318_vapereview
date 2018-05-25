@@ -21,7 +21,7 @@ import Test from "./test"
 
 const App = () => (
     <div className="app">
-        <div >
+        <div className="container">
             <Header/>
             <Route path = "/multiple-results/:searchTerm" component = {MultipleResults}/>
             <Route path = "/single-results/:juiceId" component = {SingleResults}/>
