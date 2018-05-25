@@ -7,7 +7,6 @@ import types from "../actions/types";
 
 class SingleResults extends Component {
 
-
     componentDidMount(){
         // // this.getJuiceData();
         console.log("Single-product-props:", this.props);
@@ -24,8 +23,6 @@ class SingleResults extends Component {
     render(){
 
         console.log(this.props);
-
-
         if(!this.props.randomJuice){
             console.log('response not yet loaded');
         }else{
