@@ -83,11 +83,34 @@ export function pullJuiceData() {
     }
 }
 
-export function singleItem() {
-    const response = axios.get("/api/single-juice-info");
+export function singleItem(juiceId) {
+    console.log(juiceId);
+    const response = axios.get("/api/single-juice", {
+        params: juiceId
+    });
 
     return {
         type: types.SINGLE_ITEM,
         payload: response 
+    }
+}
+
+export function categories() {
+    const response = axios.get("/api/category-modal");
+    console.log("categories: ", response);
+
+    return {
+        type: types.CATEGORIES,
+        payload: response
+    }
+}
+
+export function flavors() {
+    const response = axios.get("/api/flavor-modal");
+    console.log("flavors: ", response);
+
+    return {
+        type: types.FLAVORS,
+        payload: response
     }
 }
