@@ -36,6 +36,7 @@ export default (state = DEFAULT_STATE, action) => {
             return {...state, singleItemInfo: action.payload.data.data};
         case types.CATEGORIES:
             return {...state, all: action.payload.data.data};
+            console.log("Categories: ", action);
         case types.FLAVORS: 
             return {...state, all: action.payload.data.data};
         case types.GET_SINGLE_ITEM_REVIEWS:

@@ -9,13 +9,13 @@ a {
 }
 
 button, .btn, .btn-large {
-    background-color: #3f0080;
+    background-color: #5e2053;
     border: 1px solid white;
     color: white
 }
 
 .btn:hover {
-    background-color: #3f0080;
+    background-color: #5e2053;
 }
 
 .app {
@@ -100,7 +100,7 @@ button, .btn, .btn-large {
     width: 15%;
     box-sizing: border-box;
     border: 1px solid white;
-    background-color: #3f0080;
+    background-color: #5e2053;
     display: inline-block;
     position: absolute;
     margin-top: 16.3%;
@@ -149,4 +149,25 @@ li {
     height: 85%;
     width: 100%;
     top: 10%;
+}
+
+/* /////////////////////////////////////// flavor modal //////////////////////////////////////// */
+
+.flavor-body {
+    border: 1px solid white;
+    background-color: #11100e;
+    color: white;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    margin-top: 22%
+}
+
+.dropdown {
+    position: relative;
+    margin: 15%;
+}
+
+.flavor-header {
+    margin-top: 10px;
 }
