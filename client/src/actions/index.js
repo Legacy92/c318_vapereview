@@ -89,7 +89,6 @@ export function singleItem(juiceId) {
         params: juiceId
     });
 
-
     return {
         type: types.SINGLE_ITEM,
         payload: response 
