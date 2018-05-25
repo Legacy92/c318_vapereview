@@ -11,5 +11,6 @@ export default {
     GET_RANDOM_JUICE: "get_random_juice",
     SINGLE_ITEM: "single_item",
     CATEGORIES: "categories",
-    FLAVORS: "flavors"
+    FLAVORS: "flavors",
+    GET_SINGLE_ITEM_REVIEWS: "get_single_item_reviews"
 };
