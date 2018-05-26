@@ -20,41 +20,43 @@ class LandingPage extends Component {
 
     }
 
-    getJuicesToBrowse(){
+    getJuicesToBrowse() {
         console.log('browse button clicked');
         this.props.browseAllJuices();
     }
 
-    async getRandomJuice(values){
+    async getRandomJuice(values) {
         console.log('random juice requested');
         await this.props.getRandomJuice();
     }
-    renderInput({label, input, meta: {touched, error}}) {
+    renderInput({ label, input, meta: { touched, error } }) {
         return (
-            <div>
-                <label>{label}</label>
-                <input className="input-field" {...input} type="text" autoComplete="off"/>
+            <div className='search input-group'>
+                <input className="input-field" {...input} type="text" autoComplete="off" />
+                <div className='input-group-prepend'>
+                    <button type="button" className="btn btn-default btn-sm">
+                        <span className="glyphicon glyphicon-search"></span> 
+                    </button>
+                </div>
                 <p className="red-text text-darken-2">{touched && error}</p>
             </div>
+
         )
     }
 
-    render(){
-            console.log("State Props:", this.props.all, this.props.juice);
-            const {handleSubmit} = this.props;
+    render() {
+        console.log("State Props:", this.props.all, this.props.juice);
+        const { handleSubmit } = this.props;
 
         return (
             <div className="landing-page-body">
-                <h1>This is the Landing page!</h1>
                 <form onSubmit={handleSubmit(this.handleLandingPageSearch.bind(this))}>
-                    <Field name = "input" label = "Search For Juice Here: " placeholder = "search" component = {this.renderInput} />
-
-                    <button  className="btn white-text">Go!</button>
+                    <Field name="input" component={this.renderInput} />
                 </form>
-                <br/>
-               <Link className="btn white-text" to = "/multiple-results-browse">Browse</Link>
-               <Link className="btn white-text" to = "/add-product">Add Juice</Link>
-               <Link className="btn white-text" to = "/single-results/:juiceId">Random</Link>
+                <br />
+                <Link className="btn white-text" to="/multiple-results-browse">Browse</Link>
+                <Link className="btn white-text" to="/add-product">Add Juice</Link>
+                <Link className="btn white-text" to="/single-results/:juiceId">Random</Link>
 
             </div>
         )
@@ -66,15 +68,15 @@ LandingPage = reduxForm({
 })(LandingPage);
 
 
-function validate({input}){
+function validate({ input }) {
     const errors = {};
 
-    if(!input) {
+    if (!input) {
         errors.input = "Please enter juice query.";
     }
 
     return errors;
- }
+}
 // function mapStateToProps(state) {
 //     return {
 //         all: state.juiceInfo.all,
