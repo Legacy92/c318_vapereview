@@ -108,21 +108,22 @@ export function singleItemReviews(juiceId) {
 }
 
 
-export function categories() {
+export function getCategories() {
     const response = axios.get("/api/category-modal");
-    console.log("categories: ", response);
+    
     return {
-        type: types.CATEGORIES,
+        type: types.GET_CATEGORIES,
         payload: response
     }
 }
 
-export function flavors() {
-    const response = axios.get("/api/flavor-modal");
-    console.log("flavors: ", response);
+export function getFlavors(id) {
+    const response = axios.get("/api/flavor-modal", {
+        params: {category: id}
+    });
 
     return {
-        type: types.FLAVORS,
+        type: types.GET_FLAVORS,
         payload: response
     }
 }

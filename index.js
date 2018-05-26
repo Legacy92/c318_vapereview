@@ -261,17 +261,20 @@ app.post('/api/add-review', (req, res, next) => {
 
     //Get Flavors by category ID
     app.get("/api/flavor-modal", (req, res, next) => {
-        let { category } = req.body;
+        let { category } = req.query;
 
         let query = 'SELECT * FROM ?? WHERE ?? = ?';
-        let inserts = ['flavors', 'category_id', category];
+        let inserts = ['flavors', 'catagory_id', category];
 
         let sql = mysql.format(query, inserts);
 
         console.log(sql);
 
         database.query(sql, (err, results, field) => {
-            if (err) return res.status(500).send('Error Getting Flavors');
+            if (err) {
+                console.log('ERROR:', err.message);
+                return res.status(500).send('Error Getting Flavors');
+            }
 
             const output = {
                 success: true,

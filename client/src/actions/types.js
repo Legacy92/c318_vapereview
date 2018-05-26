@@ -10,7 +10,7 @@ export default {
     BROWSE_ALL_JUICES: "browse_all_juice",
     GET_RANDOM_JUICE: "get_random_juice",
     SINGLE_ITEM: "single_item",
-    CATEGORIES: "categories",
-    FLAVORS: "flavors",
+    GET_CATEGORIES: "get_categories",
+    GET_FLAVORS: "get_flavors",
     GET_SINGLE_ITEM_REVIEWS: "get_single_item_reviews"
 };
