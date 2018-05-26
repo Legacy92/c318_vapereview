@@ -44,7 +44,7 @@ class HamburgerMenu extends Component {
 
         if (show) {
             return (
-                <div className="hamburger-container">
+                <nav className="hamburger-container">
                     {button}
                     <div className="nav-container ">
                         <ul className = "nav-links">
@@ -56,9 +56,6 @@ class HamburgerMenu extends Component {
                             </li>
                             <li>
                                 <Link to="/multiple-results" onClick={this.closeNav}>Multiple Results</Link>
-                            </li>
-                            <li>
-                                <Link to="/single-results" onClick={this.closeNav}>Single Results</Link>
                             </li>
                             <li>
                                 <Link to="/add-product" onClick={this.closeNav}>Add Product</Link>
@@ -74,7 +71,7 @@ class HamburgerMenu extends Component {
                             </li>
                         </ul>
                     </div>
-                </div>
+                </nav>
             );
         }
 

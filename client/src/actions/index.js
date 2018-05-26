@@ -103,14 +103,14 @@ export function singleItemReviews(juiceId) {
 
     return {
         type: types.GET_SINGLE_ITEM_REVIEWS,
-        payload: response 
+        payload: response
     }
 }
+
 
 export function categories() {
     const response = axios.get("/api/category-modal");
     console.log("categories: ", response);
-
     return {
         type: types.CATEGORIES,
         payload: response

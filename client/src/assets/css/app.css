@@ -36,16 +36,17 @@ button, .btn, .btn-large {
 /* ////////////////////////////////////////// header and hamburger nav section ///////////////////// */
 .menu-button {
     display: inline-block;
-    position: fixed;
+    position: relative;
     left: 2px;
     height: 50px;
     width: 50px;
+
     border: 1px solid white;
-    padding: 10px;
     border-radius: 10%;
     cursor: pointer;
-    margin-top: 8%;
     background-color: #242323;
+    bottom: 8px;
+    right: 30px
 }
 
 .menu-button:hover {
@@ -62,12 +63,12 @@ button, .btn, .btn-large {
 .menu-button div:nth-child(2),
 .menu-button div:nth-child(3){
     border: 2px solid white;
-    margin: 2px 2px;
+    margin: 0px 1px;
 }
 
 .menu-button div:nth-child(2),
 .menu-button div:nth-child(3){
-    margin-top: 7px;
+    margin-top: 4px;
 }
 
 .header-container {
@@ -79,9 +80,10 @@ button, .btn, .btn-large {
     background: black;
     display: inline-block;
     width: 100%;
-    height: 10.5%;
+    height: 15%;
     box-sizing: border-box;
     margin: 0;
+    padding: 18px, 0px;
 }
 
 .header-logo {
@@ -92,7 +94,6 @@ button, .btn, .btn-large {
     box-sizing: border-box;
     margin: 0;
     font-size: 1.75em;
-    margin-top: 9%;
 }
 
 #header-sign-in {
@@ -102,8 +103,7 @@ button, .btn, .btn-large {
     border: 1px solid white;
     background-color: #3f0080;
     display: inline-block;
-    position: absolute;
-    margin-top: 16.3%;
+    position: relative;
     font-size: 0.6em;
     padding: 0;
     right: 3px;
@@ -149,4 +149,32 @@ li {
     height: 85%;
     width: 100%;
     top: 10%;
+}
+
+/* /////////////////////////////////////// flavor modal //////////////////////////////////////// */
+
+.flavor-body {
+    border: 1px solid white;
+    background-color: #11100e;
+    color: white;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    margin-top: 22%
+}
+
+.dropdown {
+    position: relative;
+    margin: 15%;
+}
+
+.flavor-header {
+    margin-top: 10px;
+}
+
+/* /////////////////////////////////////////landing page //////////////////////////////// */
+
+.landing-page-body {
+    position: relative;
+    top: 15vh;
 }
