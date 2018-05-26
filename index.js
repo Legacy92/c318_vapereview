@@ -284,7 +284,8 @@ app.post('/api/add-review', (req, res, next) => {
 
 //Get All Reviews for Single Juice
 app.get("/api/single-juice-reviews", (req, res, next) => {	
-        const { juiceId } = req.query;
+        const juiceId = req.query[Object.keys(req.query)[0]];
+        console.log(juiceId);
         
         const query = 'SELECT `id`,`rating`, `description` as review, `juice_id`, `user_id`, `created` FROM ?? WHERE ?? = ?';
         const inserts = ['reviews', 'reviews.juice_id', juiceId];
