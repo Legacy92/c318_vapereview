@@ -9,13 +9,13 @@ a {
 }
 
 button, .btn, .btn-large {
-    background-color: #5e2053;
+    background-color: #3f0080;
     border: 1px solid white;
     color: white
 }
 
 .btn:hover {
-    background-color: #5e2053;
+    background-color: #3f0080;
 }
 
 .app {
@@ -40,11 +40,13 @@ button, .btn, .btn-large {
     left: 2px;
     height: 50px;
     width: 50px;
+
     border: 1px solid white;
-    padding: 10px;
     border-radius: 10%;
     cursor: pointer;
     background-color: #242323;
+    bottom: 8px;
+    right: 30px
 }
 
 .menu-button:hover {
@@ -61,12 +63,12 @@ button, .btn, .btn-large {
 .menu-button div:nth-child(2),
 .menu-button div:nth-child(3){
     border: 2px solid white;
-    margin: 2px 2px;
+    margin: 0px 1px;
 }
 
 .menu-button div:nth-child(2),
 .menu-button div:nth-child(3){
-    margin-top: 7px;
+    margin-top: 4px;
 }
 
 .header-container {
@@ -81,6 +83,7 @@ button, .btn, .btn-large {
     height: 15%;
     box-sizing: border-box;
     margin: 0;
+    padding: 18px, 0px;
 }
 
 .header-logo {
@@ -98,7 +101,7 @@ button, .btn, .btn-large {
     width: 15%;
     box-sizing: border-box;
     border: 1px solid white;
-    background-color: #5e2053;
+    background-color: #3f0080;
     display: inline-block;
     position: relative;
     font-size: 0.6em;
