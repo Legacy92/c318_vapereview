@@ -12,17 +12,32 @@ class SingleResults extends Component {
         // // this.getJuiceData();
         console.log("Single-product-props:", this.props);
         const {juiceId}  = this.props.match.params;
-        this.props.singleItem({juiceId});
-        this.props.singleItemReviews({juiceId});
-        console.log("merge comment");
+       
+        if(juiceId !==':juiceId'){
+            this.props.singleItem({juiceId});
+            this.props.singleItemReviews({juiceId});
+        }else{
+            this.getRandomJuice();
+        }
+    }
+
+    async getRandomJuice(){
+        await this.props.getRandomJuice();
+        const juiceId = this.props.singleItemInfo[0].id;
+
+        console.log('Get Random Juice', juiceId);
+            
+        await this.props.singleItemReviews(juiceId);
     }
 
     async getJuiceData(){
         const response = await axios.get("/api/single-results");
         console.log("Juice Data:", response);
     }
-    render(){
 
+
+    render(){
+        console.log(this.props);
         let juiceData = [];
 
         if(this.props.singleItemInfo[0]) {
@@ -89,11 +104,11 @@ class SingleResults extends Component {
         }
         if(!this.props.randomJuice){
             console.log('response not yet loaded');
+            return <h1>Loading</h1>;
         }else{
             return (
                 <h1>Loading</h1>
             )
-
         }
     }
 
