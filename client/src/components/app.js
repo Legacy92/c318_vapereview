@@ -2,7 +2,7 @@ import React from 'react';
 import {Route} from "react-router-dom";
 import '../assets/css/app.css';
 import AdvancedSearchModal from "./advanced-search-modal";
-import UserSignInModal from "./user-sign-in-modal"
+import UserSignIn from "./user-sign-in-modal"
 import LandingPage from "./landing-page";
 import Header from './nav';
 import CreateAccount from './create-account-modal';
@@ -31,7 +31,7 @@ const App = () => (
             <Route path = "/add-review" component = {AddReview}/>
             <Route path = "/create-account-modal" component = {CreateAccount}/>
             <Route path = "/advanced-search" component={AdvancedSearchModal}/>
-            <Route path = "/user-sign-in" component={UserSignInModal}/>
+            <Route path = "/user-sign-in" component={UserSignIn}/>
             <Route exact path= "/" component={LandingPage}/>
             <Route path= "/test" component={Test}/>
             <Route path= "/add-product" component={Test}/>
