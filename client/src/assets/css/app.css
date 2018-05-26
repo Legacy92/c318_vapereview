@@ -9,13 +9,13 @@ a {
 }
 
 button, .btn, .btn-large {
-    background-color: #5e2053;
+    background-color: #3f0080;
     border: 1px solid white;
     color: white
 }
 
 .btn:hover {
-    background-color: #5e2053;
+    background-color: #3f0080;
 }
 
 .app {
@@ -36,16 +36,15 @@ button, .btn, .btn-large {
 /* ////////////////////////////////////////// header and hamburger nav section ///////////////////// */
 .menu-button {
     display: inline-block;
-    position: fixed;
-    left: 2px;
-    height: 50px;
-    width: 50px;
+    position: relative;
+    height: 40px;
+    width: 40px;
     border: 1px solid white;
-    padding: 10px;
     border-radius: 10%;
     cursor: pointer;
-    margin-top: 8%;
     background-color: #242323;
+    bottom: 8px;
+    right: 30px
 }
 
 .menu-button:hover {
@@ -62,12 +61,12 @@ button, .btn, .btn-large {
 .menu-button div:nth-child(2),
 .menu-button div:nth-child(3){
     border: 2px solid white;
-    margin: 2px 2px;
+    margin: 0px 1px;
 }
 
 .menu-button div:nth-child(2),
 .menu-button div:nth-child(3){
-    margin-top: 7px;
+    margin-top: 4px;
 }
 
 .header-container {
@@ -79,9 +78,9 @@ button, .btn, .btn-large {
     background: black;
     display: inline-block;
     width: 100%;
-    height: 10.5%;
     box-sizing: border-box;
     margin: 0;
+    padding: 18px, 0px;
 }
 
 .header-logo {
@@ -100,7 +99,7 @@ button, .btn, .btn-large {
     width: 15%;
     box-sizing: border-box;
     border: 1px solid white;
-    background-color: #5e2053;
+    background-color: #3f0080;
     display: inline-block;
     position: absolute;
     margin-top: 16.3%;
@@ -143,31 +142,10 @@ li {
 
 /*////////////////////////////////////// add review secdtion //////////////////////////////// */
 
-.add-review, form {
+.add-review {
     background: #a49aab;
     position: fixed;
     height: 85%;
     width: 100%;
     top: 10%;
-}
-
-/* /////////////////////////////////////// flavor modal //////////////////////////////////////// */
-
-.flavor-body {
-    border: 1px solid white;
-    background-color: #11100e;
-    color: white;
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    margin-top: 22%
-}
-
-.dropdown {
-    position: relative;
-    margin: 15%;
-}
-
-.flavor-header {
-    margin-top: 10px;
 }
