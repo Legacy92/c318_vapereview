@@ -34,7 +34,7 @@ class LandingPage extends Component {
             <div className='search input-group'>
                 <input className="input-field" {...input} type="text" autoComplete="off" />
                 <div className='input-group-prepend'>
-                    <button type="button" className="btn btn-default btn-sm">
+                    <button className="btn btn-default btn-lg">
                         <span className="glyphicon glyphicon-search"></span> 
                     </button>
                 </div>
