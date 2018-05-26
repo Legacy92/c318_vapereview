@@ -96,8 +96,8 @@ export function singleItem(juiceId) {
 }
 
 export function singleItemReviews(juiceId) {
-    console.log('juice id from singleItemRev action:', juiceId);
-    const response = axios.get(`/api/single-juice-reviews`, {
+    console.log(juiceId);
+    const response = axios.get("/api/single-juice-reviews", {
         params: juiceId
     });
 
