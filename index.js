@@ -286,7 +286,7 @@ app.post('/api/add-review', (req, res, next) => {
 app.get("/api/single-juice-reviews", (req, res, next) => {	
         const { juiceId } = req.query;
         
-        const query = 'SELECT * FROM ?? WHERE ?? = ?';
+        const query = 'SELECT `id`,`rating`, `description` as review, `juice_id`, `user_id`, `created` FROM ?? WHERE ?? = ?';
         const inserts = ['reviews', 'reviews.juice_id', juiceId];
           
         let sql = mysql.format(query, inserts);

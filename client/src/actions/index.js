@@ -95,6 +95,18 @@ export function singleItem(juiceId) {
     }
 }
 
+export function singleItemReviews(juiceId) {
+    console.log(juiceId);
+    const response = axios.get("/api/single-juice-reviews", {
+        params: juiceId
+    });
+
+    return {
+        type: types.GET_SINGLE_ITEM_REVIEWS,
+        payload: response
+    }
+}
+
 
 export function categories() {
     const response = axios.get("/api/category-modal");
