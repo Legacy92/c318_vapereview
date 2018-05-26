@@ -51,10 +51,10 @@ class LandingPage extends Component {
 
                     <button  className="btn white-text">Go!</button>
                 </form>
-                
-               <Link className="btn red white-text" to = "/multiple-results-browse">Browse</Link>
-               <Link className="btn red white-text" to = "/add-product">Add Juice</Link>
-               <Link className="btn red white-text" to = "/single-results/:juiceId">Random</Link>
+                <br/>
+               <Link className="btn white-text" to = "/multiple-results-browse">Browse</Link>
+               <Link className="btn white-text" to = "/add-product">Add Juice</Link>
+               <Link className="btn white-text" to = "/single-results/:juiceId">Random</Link>
 
             </div>
         )
