@@ -294,7 +294,7 @@ app.get("/api/single-juice-reviews", (req, res, next) => {
         console.log(sql);	
     	
         database.query(sql, (err, results, field) => {	
-            if (err) return next(err);	
+            if (err) return res.status(500).send('Error Getting Reviews for Single Juice Page');	
     	
             const output = {	
                 success: true,	

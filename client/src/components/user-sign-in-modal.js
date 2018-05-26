@@ -1,64 +1,62 @@
 import React, {Component} from "react";
-
 import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { signIn, clearAuthError } from '../actions'
+import { renderInput } from '../helpers';
 
 
 
-class UserSignInModal extends Component {
-    constructor(props){
-        super(props);
+class UserSignIn extends Component {
+
+    componentWillUnmount(){
+        this.props.clearAuthError();
     }
 
-    handleUserSignInModal(values) {
-        console.log("Sign In Values: ", values);
-    }
-
-    renderInput({label, input, meta: {touched, error}}) {
-        console.log(label, input);
-
-        return (
-            <div>
-                <label>{label}</label>
-                <input {...input} type= "text" autoComplete = "off"/>
-                <p className = "red-text text-darken-2">{touched && error}</p>
-            </div>
-        )
+    handleUserSignIn(values) {
+        this.props.signIn(values);
     }
 
     render (){
 
-        const {handleSubmit} = this.props;
-
+        const {handleSubmit, authError} = this.props;
 
         return (
             <div>
-                <form onSubmit={handleSubmit(this.handleUserSignInModal.bind(this))}>
-                    <Field name = "user_signin" label = "Log In: "placeholder = "username" component = {this.renderInput} />
-                    <button className="btn">Go!</button>
+                <form onSubmit={handleSubmit(this.handleUserSignIn.bind(this))}>
+                    <Field name = "user_signIn" label = "Log In: "placeholder = "username" component = {renderInput} />
+                    <Field name="password" label="Password" component={renderInput} type="password"/>
+                    <button className="btn">SignIn</button>
+                        <p>{authError}</p>
                 </form>
             </div>
         )
     }
-
-
 }
 
-function validate({user_signin}){
+function validate(values){
+    const {user_signIn, password} = values;
     const errors = {};
 
-    if(!user_signin) {
-        errors.landing_page = "Please enter juice query.";
-
+    if(!user_signIn) {
+        errors.user_signIn = 'Please enter your Username';
+    }
+    if(!password){
+        errors.password = 'Please enter your Password';
     }
 
     return errors;
 }
 
-UserSignInModal = reduxForm({
-    form: "user_signin",
+UserSignIn = reduxForm({
+    form: "user_signIn",
     validate: validate
-})(UserSignInModal);
+})(UserSignIn);
 
-export default UserSignInModal;
+function mapStateToProps(state){
+    return {
+        authError : state.user.error
+    }
+}
+
+export default connect(mapStateToProps, { UserSignIn, clearAuthError })(UserSignIn);

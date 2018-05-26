@@ -2,46 +2,33 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from "react-redux";
 import { reduxForm, Field } from "redux-form";
-import { createAccount } from '../actions';
+import { signUp, clearAuthError } from '../actions';
+import { renderInput } from '../helpers';
 import axios from 'axios';
-
 
 class CreateAccount extends Component {
 
-    handleCreateAccountSubmission(values) {
+    handleSignUp(values) {
         console.log("Form Values:", values);
-        this.props.createAccount(values);
-
-
-
-
+        this.props.signUp(values);
     }
 
-    renderInput({label, input, meta: {touched, error}}) {
-        console.log(label, input);
-        return (
-            <div>
-                <label>{label}</label>
-                <input {...input} type="text" autoComplete="off"/>
-                <p className="red-text text-darken-2">{touched && error}</p>
-            </div>
-        )
+    componentWillUnmount(){
+        this.props.clearAuthError();
     }
-
-
 
     render() {
-        const {handleSubmit} = this.props;
+        const {handleSubmit, authError} = this.props;
         return (
             <div className="create-account">
                 <div className ="modal-content">
-                    
                     <div className="modal-body">
-                        <form onSubmit={handleSubmit(this.handleCreateAccountSubmission.bind(this))}>
-                          <Field name="username" label="Enter Username" component={this.renderInput}/>
-                          <Field name="password" label="Enter Password" component={this.renderInput}/>
-                          <Field name="confirm_password" label="Confirm Password" component={this.renderInput}/>
+                        <form onSubmit={handleSubmit(this.handleSignUp.bind(this))}>
+                          <Field name="username" label="Enter Username" component={renderInput}/>
+                          <Field name="password" label="Enter Password" component={renderInput}/>
+                          <Field name="confirm_password" label="Confirm Password" component={renderInput}/>
                             <button>Create Account</button>
+                            <p>{authError}</p>
                       </form>
                     </div>
                     <div className="modal-footer">
@@ -51,14 +38,13 @@ class CreateAccount extends Component {
                         <p>Been here before? <Link to = "/user-sign-in-modal">Sign in.</Link></p>
                     </div>
                 </div>
-                
             </div>
         );
     }
 }
 
-
-function validate({username, password, confirm_password}){
+function validate(values){
+    const {username, password, confirm_password} = values;
     const errors = {};
 
     if(!username) {
@@ -78,8 +64,6 @@ function validate({username, password, confirm_password}){
         errors.confirm_password = "Entries do not match.";
     }
 
-
-
     return errors;
 }
 
@@ -88,6 +72,10 @@ CreateAccount = reduxForm({
     validate: validate
 })(CreateAccount);
 
+function mapStateToProps(state){
+    return {
+        authError: state.user.error
+    }
+}
 
-
-export default connect(null, {createAccount})(CreateAccount); 
+export default connect(mapStateToProps, {CreateAccount, clearAuthError})(CreateAccount); 
