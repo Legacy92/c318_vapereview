@@ -4,8 +4,9 @@ const DEFAULT_STATE = {
     all:[],
     juice: {},
     juiceId: [],
-    randomJuice:{},
     singleItemInfo: {},
+    singleItemReviews: [],
+    randomJuiceId: [],
     singleItemReviewsData: []
 };
 
@@ -27,12 +28,14 @@ export default (state = DEFAULT_STATE, action) => {
             console.log("JuiceDataAction:", action);
             // console.log("Search by any on Home page action:", action);
             return {...state, all : action.payload.data.data, juiceId: action.payload.data.data.id};
-        case types.GET_RANDOM_JUICE:
-            return {...state, randomJuice : action.payload.data.data};
+        
+        // console.log('get random juice:', action);
+        //     return {...state, randomJuiceId: action.payload.data.data.id, juice: action.payload.data.data};
         case types.BROWSE_ALL_JUICES:
             return {...state, all : action.payload.data.data};
+        case types.GET_RANDOM_JUICE:
         case types.SINGLE_ITEM:
-        console.log("Single_Item Active", action);
+            console.log("Single_Item Active", action);
             return {...state, singleItemInfo: action.payload.data.data};
         case types.CATEGORIES:
             return {...state, all: action.payload.data.data};
@@ -47,3 +50,13 @@ export default (state = DEFAULT_STATE, action) => {
     }
 
 }
+
+// if(!this.props.randomJuice){
+
+//     console.log('response not yet loaded');
+// }else{
+//     return (
+//         <h1>Loading</h1>
+//     )
+
+// }
