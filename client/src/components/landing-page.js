@@ -44,10 +44,10 @@ class LandingPage extends Component {
             const {handleSubmit} = this.props;
 
         return (
-            <div>
+            <div className="landing-page-body">
                 <h1>This is the Landing page!</h1>
                 <form onSubmit={handleSubmit(this.handleLandingPageSearch.bind(this))}>
-                    <Field name = "input" label = "Search For Juice Here: "placeholder = "search" component = {this.renderInput} />
+                    <Field name = "input" label = "Search For Juice Here: " placeholder = "search" component = {this.renderInput} />
 
                     <button  className="btn white-text">Go!</button>
                 </form>
