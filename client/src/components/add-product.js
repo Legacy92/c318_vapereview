@@ -20,8 +20,7 @@ class AddProduct extends Component {
         // console.log(label, input);
         return (
             <div className="container">
-                <label style={{fontSize:0.8+'em'}} className='col-xs-8'>{label}</label>
-                <input {...input} type="text" autoComplete="off" className="col-xs-10 col-xs-offset-1" />
+                <input style={{marginTop: 2+'em'}} placeholder={label} {...input} type="text" autoComplete="off" className="col-xs-10 col-xs-offset-1" />
                 <p className="red-text text-darken-2">{touched && error}</p>
             </div>
         )
@@ -30,9 +29,9 @@ class AddProduct extends Component {
     renderTextarea({label, input, meta: {touched, error}}) {
         return (
             <div className="container">
-                <label style={{fontSize:0.8+'em'}}>{label}</label>
-                <textarea {...input} type="text" autoComplete="off" className="col-xs-10 col-xs-offset-1"/>
-                <p className="red-text text-darken-2">{touched && error}</p>
+                <label style={{textAlign: 'left'}}>{label}</label>
+                <textarea style={{marginTop: 2+'em'}} {...input} type="text" autoComplete="off" className="col-xs-10 col-xs-offset-1"/>
+                <p className="red-text text-darken-2" style={{textAlign: 'left'}}>{touched && error}</p>
             </div>
         )
     }
