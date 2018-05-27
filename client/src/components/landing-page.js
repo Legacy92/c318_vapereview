@@ -31,8 +31,9 @@ class LandingPage extends Component {
     }
     renderInput({ label, input, meta: { touched, error } }) {
         return (
-            <div className='search input-group'>
-                <input className="input-field" {...input} type="text" autoComplete="off" />
+            <div className='search container 
+        input-group'>
+                <input className="input-field col-xs-4 col-xs-offset-4" {...input} type="text" autoComplete="off" />
                 <div className='input-group-prepend'>
                     <button className="btn btn-default btn-lg">
                         <span className="glyphicon glyphicon-search"></span> 
