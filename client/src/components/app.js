@@ -32,8 +32,6 @@ const App = () => (
             <Route path="/advanced-search" component={AdvancedSearchModal} />
             <Route path="/user-sign-in" component={UserSignIn} />
             <Route exact path="/" component={LandingPage} />
-            <Route path="/test" component={Test} />
-            <Route path="/add-product" component={Test} />
             <Route path="/flavor-modal" component={FlavorModal} />
         </div>
     </div>
