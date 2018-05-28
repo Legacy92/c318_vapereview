@@ -48,18 +48,6 @@ class UserSignIn extends Component {
 }
 
 
-
-
-
-{/* <div>
-                <form onSubmit={handleSubmit(this.handleUserSignIn.bind(this))}>
-                    <Field name = "user_signIn" label = "Log In: "placeholder = "username" component = {renderInput} />
-                    <Field name="password" label="Password" component={renderInput} type="password"/>
-                    <button className="btn">SignIn</button>
-                        <p>{authError}</p>
-                </form>
-            </div> */}
-
 function validate(values){
     const {user_signIn, password} = values;
     const errors = {};
