@@ -32,7 +32,7 @@ class LandingPage extends Component {
     renderInput({ label, input, meta: { touched, error } }) {
         return (
             <div className='search input-group'>
-                <input className="input-field col-xs-4 col-xs-offset-4" {...input} type="text" autoComplete="off" />
+                <input className="input-field col-xs-7 col-xs-offset-2" {...input} type="text" autoComplete="off" />
                 <div className='input-group-prepend'>
                     <button className="btn btn-default btn-lg">
                         <span className="glyphicon glyphicon-search"></span> 
@@ -44,6 +44,7 @@ class LandingPage extends Component {
         )
     }
 
+   
     render() {
         console.log("State Props:", this.props.all, this.props.juice);
         const { handleSubmit } = this.props;
@@ -55,9 +56,9 @@ class LandingPage extends Component {
                     <Field className="align-middle" name="input" component={this.renderInput} />
                 </form>
                 <br />
-                <Link className="btn white-text" to="/multiple-results-browse">Browse</Link>
-                <Link className="btn white-text" to="/add-product">Add Juice</Link>
-                <Link className="btn white-text" to="/single-results/:juiceId">Random</Link>
+                <Link style={{margin:0.5+'%'}} className="btn btn-lg white-text" to="/multiple-results-browse">Browse</Link>
+                <Link style={{margin:0.5+'%'}} className="btn btn-lg white-text" to="/add-product">Add Juice</Link>
+                <Link style={{margin:0.5+'%'}} className="btn btn-lg white-text" to="/single-results/:juiceId">Random</Link>
 
             </div>
         )

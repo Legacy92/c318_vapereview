@@ -48,15 +48,13 @@ class SingleResults extends Component {
             const {name, manufacturer_name, manufacturer_site, manufacturer_description, rating} = juiceData;
             console.log(name, manufacturer_description, manufacturer_site, manufacturer_name);
             return (
-                <div>
-                    <div className="col-xs-8 offset-1  card bg-dark">
+                <div className="single-results-display">
+                    <div className="single-results-item col-xs-10 offset-1  card bg-dark my-3">
                         <div className="prod-info-main prod-wrap clearfix">
                             <div className="row">
                                 <div className="col-md-5 col-sm-12 col-xs-12">
                                     <div className="product-image">
-                                    <span className="tag2 hot">
 
-                            </span>
                                     </div>
                                 </div>
                                 <div className="col-md-7 col-sm-12 col-xs-12">
@@ -66,13 +64,7 @@ class SingleResults extends Component {
                                                 {name}
                                             </a>
                                         </h5>
-                                        <p className="price-container">
-                                            <span>$24.99</span>
-                                        </p>
                                         <span className="tag1"></span>
-                                    </div>
-                                    <div className="description">
-                                        <p>{manufacturer_description}</p>
                                     </div>
                                     <div className="product-info smart-form">
                                         <div className="row">
@@ -90,6 +82,9 @@ class SingleResults extends Component {
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div className="description">
+                                        <p>{manufacturer_description}</p>
                                     </div>
                                 </div>
                             </div>
@@ -126,11 +121,3 @@ function mapStateToProps(state) {
 
 export default connect(mapStateToProps, actions)(SingleResults);
 
-// export function singleItem() {
-//     const response = axios.get("/api/single-juice");
-//
-//     return {
-//         type: types.SINGLE_ITEM,
-//         payload: response
-//     }
-// }

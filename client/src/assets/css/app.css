@@ -66,6 +66,16 @@ button, .btn, .btn-large {
     position: relative;
 }
 
+/* /////////////////////////////////////////Single Results Page //////////////////////////////// */
+
+.single-results-display {
+    position: relative;
+    top: 15vh;
+}
+
+.single-results-item {
+    min-height: 40vh;
+}
 /* //////////////////////////////////////// mulitple results card /////////////////// */
 
 
