@@ -1,19 +1,88 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import { Link } from 'react-router-dom';
+import { reduxForm, Field } from "redux-form";
+import { connect } from "react-redux";
+import * as actions from "../actions";
+
+
+
 class LandingPage extends Component {
     constructor(props) {
         super(props);
     }
-    render(){
+
+
+    async handleLandingPageSearch(values) {
+        console.log("Landing Page Values:", values);
+        await this.props.landingPageSearch(values);
+        this.props.history.push(`/multiple-results/${values.input}`);
+
+
+    }
+
+    getJuicesToBrowse() {
+        console.log('browse button clicked');
+        this.props.browseAllJuices();
+    }
+
+    async getRandomJuice(values) {
+        console.log('random juice requested');
+        await this.props.getRandomJuice();
+    }
+    renderInput({ label, input, meta: { touched, error } }) {
         return (
-            <div>
-                <h1>This is the Landing page!</h1>
-                <input type="text" placeholder = "search" />
-               <Link to = "/multiple_results">Browse</Link>
-               <Link to = "/add-product">Add Juice</Link>
-               <Link to = "/single-results">Random</Link>
+            <div className='search input-group'>
+                <input className="input-field col-xs-4 col-xs-offset-4" {...input} type="text" autoComplete="off" />
+                <div className='input-group-prepend'>
+                    <button className="btn btn-default btn-lg">
+                        <span className="glyphicon glyphicon-search"></span> 
+                    </button>
+                </div>
+                <p className="red-text text-darken-2">{touched && error}</p>
+            </div>
+
+        )
+    }
+
+    render() {
+        console.log("State Props:", this.props.all, this.props.juice);
+        const { handleSubmit } = this.props;
+
+        return (
+            <div className="landing-page-body">
+                <form onSubmit={handleSubmit(this.handleLandingPageSearch.bind(this))}>
+                    <Field name="input" component={this.renderInput} />
+                </form>
+                <br />
+                <Link className="btn white-text" to="/multiple-results-browse">Browse</Link>
+                <Link className="btn white-text" to="/add-product">Add Juice</Link>
+                <Link className="btn white-text" to="/single-results/:juiceId">Random</Link>
+
             </div>
         )
     }
 }
-export default LandingPage;
+LandingPage = reduxForm({
+    form: "input",
+    validate: validate
+})(LandingPage);
+
+
+function validate({ input }) {
+    const errors = {};
+
+    if (!input) {
+        errors.input = "Please enter juice query.";
+    }
+
+    return errors;
+}
+// function mapStateToProps(state) {
+//     return {
+//         all: state.juiceInfo.all,
+//         juice: state.juiceInfo.juice
+//     };
+//
+// }
+
+export default connect(null, actions)(LandingPage);

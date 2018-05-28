@@ -1,68 +1,77 @@
-@font-face {
-    font-family: blocky;
-    src: url(../fonts/blocky.ttf);
-}
-
+/* /////////////////////////////////////////////////// over all app styling, body, colors, font ///////////////// */
 body {
     margin: 0;
+
+}
+
+a {
+    color: white;
+}
+
+button, .btn, .btn-large {
+    background-color: #3f0080;
+    border: 1px solid white;
+    color: white
+}
+
+.btn:hover {
+    background-color: #3f0080;
 }
 
 .app {
-    background-color: #c5b098;
-    color: #3e1f13;
-    font-family: sans-serif;
-    font-size: 20px;
-    padding: 50px;
-    text-align: center;
+     background-color: gray;
+     /* text-shadow: 1px 2px 2px rgba(255, 255, 255, 0.767); */
+     color: black;
+     width: 100vw;
+     min-height: 100vh;
+     position: absolute;
+     font-family: sans-serif;
+     font-size: 20px;
+     padding: 0;
+     text-align: center;
+     margin: 0
+ }
+
+
+.add-review {
+    background: #a49aab;
+    position: fixed;
+    height: 85%;
+    width: 100%;
+    top: 10%;
 }
 
-.app .logo {
-    height: 200px;
+/* /////////////////////////////////////// flavor modal //////////////////////////////////////// */
+
+.flavor-body {
+    border: 1px solid white;
+    background-color: #11100e;
+    color: white;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    margin-top: 22%
 }
 
-/*.app h1 {*/
-    /*text-shadow: 0 0 28px #61DAFB;*/
-    /*letter-spacing: 5px;*/
-/*}*/
-
-.rotate {
-    animation: spin 10s linear infinite;
+.dropdown {
+    position: relative;
+    margin: 15%;
 }
 
-@keyframes spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-.menu-button {
-    height: 65px;
-    width: 65px;
-    border: 1px solid black;
-    padding: 10px;
-    border-radius: 10%;
-    cursor: pointer;
-}
-
-.menu-button:hover {
-    background-color: black;
-}
-
-.menu-button:hover div:nth-child(1),
-.menu-button:hover div:nth-child(2) {
-    border-color: white;
-}
-
-.menu-button div:nth-child(1),
-.menu-button div:nth-child(2){
-    border: 1px solid black;
+.flavor-header {
     margin-top: 10px;
 }
 
-.menu-button div:nth-child(2){
-    margin-top: 18px;
+/* /////////////////////////////////////////landing page //////////////////////////////// */
+
+.landing-page-body, .multiple-results-body {
+    position: relative;
+    top: 15vh;
 }
 
+/* //////////////////////////////////////// mulitple results card /////////////////// */
+
+
+.product-detail, .description, .product-info, .row {
+    border: 1px solid white
+}
