@@ -29,7 +29,7 @@ class UserSignIn extends Component {
                 <h1>Sign In</h1>
                     <form style={{textAlign: 'left'}} onSubmit={handleSubmit(this.handleUserSignIn.bind(this))}>
                     <label>Username*</label>
-                    <Field name="username" component={renderInput}/>
+                    <Field name="user_signIn" component={renderInput}/>
                     <label>Password*</label>
                     <Field name="password" component={renderInput}/>
                         <button>Sign In</button>
@@ -37,7 +37,7 @@ class UserSignIn extends Component {
                 </form>
                 </div>
                 <div className="modal-footer">
-                <p>New Around Here?<Link to="/create-account" style={{color: 'purple', display:'block'}}>Create an Account</Link></p>
+                <p>New Around Here?<Link to="/create-account" style={{color: '#3f0080', display:'block'}}>Create an Account</Link></p>
                 </div>
                 <div>
                 </div>
