@@ -20,22 +20,25 @@ class CreateAccount extends Component {
     render() {
         const {handleSubmit, authError} = this.props;
         return (
-            <div className="create-account">
+            <div style={{marginTop:20+'%'}}className="create-account">
                 <div className ="modal-content">
                     <div className="modal-body">
-                        <form onSubmit={handleSubmit(this.handleSignUp.bind(this))}>
-                          <Field name="username" label="Enter Username" component={renderInput}/>
-                          <Field name="password" label="Enter Password" component={renderInput}/>
-                          <Field name="confirm_password" label="Confirm Password" component={renderInput}/>
-                            <button>Create Account</button>
+                    <h1>Create an Account <span data-dismiss="modal" >X</span></h1>
+                        <form style={{textAlign: 'left'}} onSubmit={handleSubmit(this.handleSignUp.bind(this))}>
+                        <label>Username*</label>
+                          <Field name="username" component={renderInput}/>
+                          <label>Password*</label>
+                          <Field name="password" component={renderInput}/>
+                          <label>Confirm Your Password*</label>
+                          <Field name="confirm_password" component={renderInput}/>
+                            <button>Create an Account</button>
                             <p>{authError}</p>
                       </form>
                     </div>
                     <div className="modal-footer">
-                        <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
+                    <p style={{margin: 'auto'}}>Been here before? <Link to="/user-sign-in" style={{color: 'purple'}}>Sign in.</Link></p>
                     </div>
                     <div>
-                        <p>Been here before? <Link to = "/user-sign-in-modal">Sign in.</Link></p>
                     </div>
                 </div>
             </div>
