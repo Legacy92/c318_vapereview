@@ -45,6 +45,8 @@ export default (state = DEFAULT_STATE, action) => {
         case types.GET_SINGLE_ITEM_REVIEWS:
             console.log("Single_Item Reviews", action);
                 return {...state, singleItemReviewsData: action.payload.data.data};
+        case types.CLEAR_SINGLE_ITEM:
+                return {...state, singleItemReviewsData: [], juiceId: []};
         default:
             return state;
     }

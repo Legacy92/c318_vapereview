@@ -29,14 +29,14 @@ class CreateAccount extends Component {
                           <Field name="username" component={renderInput}/>
                           <label>Password*</label>
                           <Field name="password" component={renderInput}/>
-                          <label>Confirm Your Password*</label>
+                          <label>Confirm Password*</label>
                           <Field name="confirm_password" component={renderInput}/>
                             <button>Create an Account</button>
                             <p>{authError}</p>
                       </form>
                     </div>
                     <div className="modal-footer">
-                    <p style={{margin: 'auto'}}>Been here before? <Link to="/user-sign-in" style={{color: 'purple'}}>Sign in.</Link></p>
+                    <p style={{margin: 'auto'}}>Been here before? <Link to="/user-sign-in" style={{color: '#3f0080'}}>Sign in.</Link></p>
                     </div>
                     <div>
                     </div>

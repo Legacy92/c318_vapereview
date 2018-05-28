@@ -38,7 +38,7 @@ class LandingPage extends Component {
                         <span className="glyphicon glyphicon-search"></span> 
                     </button>
                 </div>
-                <p className="red-text text-darken-2">{touched && error}</p>
+                <p className="text-danger">{touched && error}</p>
             </div>
 
         )
