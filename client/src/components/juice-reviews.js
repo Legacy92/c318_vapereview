@@ -18,7 +18,7 @@ class JuiceReviews extends Component {
             reviewElements = ReviewInfo.map((item, index) => {
                 const {id, rating, review} = item;
                 return (
-                    <div key={index} className="card my-3">
+                    <div key={index} className="card my-3 col-10 offset-1">
                         <h1>{id}</h1>
                         <h2>{rating}</h2>
                         <h3>{review}</h3>

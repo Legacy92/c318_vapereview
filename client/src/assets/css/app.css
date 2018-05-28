@@ -179,3 +179,13 @@ li {
     top: 15vh;
 }
 
+/* /////////////////////////////////////////Single Results Page //////////////////////////////// */
+
+.single-results-display {
+    position: relative;
+    top: 15vh;
+}
+
+.single-results-item {
+    min-height: 40vh;
+}
