@@ -37,8 +37,8 @@ class LandingPage extends Component {
                     <button className="btn btn-default btn-lg">
                         <span className="glyphicon glyphicon-search"></span> 
                     </button>
-                </div>
                 <p className="text-danger">{touched && error}</p>
+                </div>
             </div>
 
         )
@@ -51,8 +51,9 @@ class LandingPage extends Component {
 
         return (
             <div className="landing-page-body">
+            <div className=" display-1 titanicFont goldenFont d-none d-md-block">Juice Query</div>
                 <form onSubmit={handleSubmit(this.handleLandingPageSearch.bind(this))}>
-                    <Field name="input" component={this.renderInput} />
+                    <Field className="align-middle" name="input" component={this.renderInput} />
                 </form>
                 <br />
                 <Link style={{margin:0.5+'%'}} className="btn btn-lg white-text" to="/multiple-results-browse">Browse</Link>
@@ -73,7 +74,7 @@ function validate({ input }) {
     const errors = {};
 
     if (!input) {
-        errors.input = "Please enter juice query.";
+        errors.input = "Please type a search value.";
     }
 
     return errors;
