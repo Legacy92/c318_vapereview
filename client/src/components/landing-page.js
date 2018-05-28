@@ -51,14 +51,14 @@ class LandingPage extends Component {
 
         return (
             <div className="landing-page-body">
-            <div className=" display-1 titanicFont goldenFont d-none d-md-block">Juice Query</div>
+            <div className=" display-1 mb-5 mt-5 titanicFont goldenFont d-none d-md-block">Juice Query</div>
                 <form onSubmit={handleSubmit(this.handleLandingPageSearch.bind(this))}>
-                    <Field className="align-middle" name="input" component={this.renderInput} />
+                    <Field className="align-middle mt-5" name="input" component={this.renderInput} />
                 </form>
                 <br />
-                <Link style={{margin:0.5+'%'}} className="btn btn-lg white-text" to="/multiple-results-browse">Browse</Link>
-                <Link style={{margin:0.5+'%'}} className="btn btn-lg white-text" to="/add-product">Add Juice</Link>
-                <Link style={{margin:0.5+'%'}} className="btn btn-lg white-text" to="/single-results/:juiceId">Random</Link>
+                <Link style={{margin:1.0+'%'}} className="btn btn-lg white-text" to="/multiple-results-browse">Browse</Link>
+                <Link style={{margin:1.0+'%'}} className="btn btn-lg white-text" to="/add-product">Add Juice</Link>
+                <Link style={{margin:1.0+'%'}} className="btn btn-lg white-text" to="/single-results/:juiceId">Random</Link>
 
             </div>
         )
