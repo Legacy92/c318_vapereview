@@ -44,8 +44,8 @@ class MultipleResults extends Component {
                     <div onClick={() => this.handleProductClick(id)} key={index} className="col-12 col-sm-5 bg-dark card my-3 mx-2">
                         <div className="prod-info-main prod-wrap clearfix">
 
-                                <div className="col-md-7 col-sm-12 col-xs-12">
-                                    <div className="product-detail">
+                                <div className="col-md-6 col-sm-12 col-xs-12">
+                                    <div className="product-detail offset-sm-4 col-xs-8">
                                         <h5 className="name">
                                             <a href="#">
                                                 {name}
@@ -82,7 +82,7 @@ class MultipleResults extends Component {
             });
         }
         return (
-            <div>
+            <div className = "multiple-results-body col-12">
                 <h1>Multiple Results</h1>
                 <div className="row">
                     {juiceElements}

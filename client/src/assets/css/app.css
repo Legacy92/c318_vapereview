@@ -64,7 +64,14 @@ button, .btn, .btn-large {
 
 /* /////////////////////////////////////////landing page //////////////////////////////// */
 
-.landing-page-body {
+.landing-page-body, .multiple-results-body {
     position: relative;
     top: 15vh;
+}
+
+/* //////////////////////////////////////// mulitple results card /////////////////// */
+
+
+.product-detail, .description, .product-info, .row {
+    border: 1px solid white
 }

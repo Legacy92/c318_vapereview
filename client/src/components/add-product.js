@@ -19,14 +19,22 @@ class AddProduct extends Component {
     renderInput({ label, input, meta: { touched, error } }) {
         // console.log(label, input);
         return (
-            <div>
-                <label>{label}</label>
-                <input {...input} type="text" autoComplete="off" />
+            <div className="container">
+                <input style={{marginTop: 2+'em'}} placeholder={label} {...input} type="text" autoComplete="off" className="col-xs-10 col-xs-offset-1" />
                 <p className="red-text text-darken-2">{touched && error}</p>
             </div>
         )
     }
 
+    renderTextarea({label, input, meta: {touched, error}}) {
+        return (
+            <div className="container">
+                <label style={{textAlign: 'left'}}>{label}</label>
+                <textarea style={{marginTop: 2+'em'}} {...input} type="text" autoComplete="off" className="col-xs-10 col-xs-offset-1"/>
+                <p className="red-text text-darken-2" style={{textAlign: 'left'}}>{touched && error}</p>
+            </div>
+        )
+    }
 
 
 
@@ -35,14 +43,14 @@ class AddProduct extends Component {
         console.log(this.props);
         const { handleSubmit } = this.props;
         return (
-            <div>
+            <div style={{marginTop: 5+'em'}}> 
                 <h1>Add Product</h1>
                 <form onSubmit={handleSubmit(this.handleAddProduct.bind(this))}>
                     <Field name="name" label="Juice Name" component={this.renderInput} />
                     <Field name="manufacturer" label="Manufacturer Name" component={this.renderInput} />
-                    <Field name="description" label="Manufacturer Description" component={this.renderInput} />
                     <Field name="site" label="Manufacturer Site" component={this.renderInput} />
-                    <button className="btn">Add Product</button>
+                    <Field name="description" label="Manufacturer Description" component={this.renderTextarea} />
+                    <button style={{fontSize:1+'em', marginTop: 1+'em'}} className="btn col-xs-6 col-xs-offset-3">Add Product</button>
                 </form>
             </div>
         )
