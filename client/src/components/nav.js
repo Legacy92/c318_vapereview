@@ -30,10 +30,9 @@ class Header extends Component {
         if(shown) {
             btnClass = "collapse navbar-collapse show";
         }
-        console.log(btnClass)
         return (
             <Fragment>
-                <nav className="navbar fixed-top navbar-expand-md navbar-dark charcoal" >
+                <nav className="navbar fixed-top navbar-expand-md navbar-dark blacker" >
                     <button onClick={this.toggleNav} className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent">
                         <span className="navbar-toggler-icon"></span>
                     </button>

@@ -17,7 +17,7 @@ import FlavorModal from "./flavor-modal";
 const App = () => (
     <div className="app"> 
         <Header />
-        <div className="page-header"></div>
+        <div className="page-header mb-5"></div>
         <div className="container">
             <Route path="/multiple-results/:searchTerm" component={MultipleResults} />
             <Route path="/multiple-results-browse" component={MultipleResults} />
