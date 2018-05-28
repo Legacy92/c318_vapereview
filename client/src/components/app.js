@@ -14,13 +14,10 @@ import SingleResults from "./single-results";
 import FlavorModal from "./flavor-modal";
 
 
-
-
-
-
 const App = () => (
     <div className="app"> 
         <Header />
+        <div className="page-header"></div>
         <div className="container">
             <Route path="/multiple-results/:searchTerm" component={MultipleResults} />
             <Route path="/multiple-results-browse" component={MultipleResults} />
