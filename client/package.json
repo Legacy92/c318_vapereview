@@ -24,7 +24,6 @@
     "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
     "bootstrap": "^4.1.1",
-    "materialize-css": "^0.100.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.7",
