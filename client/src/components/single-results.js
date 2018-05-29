@@ -1,24 +1,34 @@
 import React, { Component } from 'react';
 import {Link} from "react-router-dom";
 import axios from "axios";
+import ReactStars from "react-stars";
 import { connect } from "react-redux";
 import * as actions from "../actions";
 import types from "../actions/types";
 import JuiceReviews from "./juice-reviews";
+import juiceBottle from "../assets/images/vape-juice-bottle-transparent.png";
+import vapeImage from"../assets/images/vape-image.jpeg";
 
 class SingleResults extends Component {
 
     componentDidMount(){
         // // this.getJuiceData();
         console.log("Single-product-props:", this.props);
-        const {juiceId}  = this.props.match.params;
+        const {juice_id}  = this.props.match.params;
        
-        if(juiceId !==':juiceId'){
-            this.props.singleItem({juiceId});
-            this.props.singleItemReviews({juiceId});
+        if(juice_id !==':juice_id'){
+            this.props.singleItem({juice_id});
+            this.props.singleItemReviews({juice_id});
         }else{
             this.getRandomJuice();
         }
+    }
+
+    handleAddReviewClick() {
+        const {juice_id}  = this.props.match.params;
+        this.props.history.push(`/add-review/${juice_id}`);
+
+
     }
 
     async getRandomJuice(){
@@ -48,49 +58,33 @@ class SingleResults extends Component {
             const {name, manufacturer_name, manufacturer_site, manufacturer_description, rating} = juiceData;
             console.log(name, manufacturer_description, manufacturer_site, manufacturer_name);
             return (
-                <div>
-                    <div className="col-xs-8 offset-1  card bg-dark">
+                <div className="single-results-display">
+                    <div className="single-results-item col-xs-10 offset-1  card bg-dark my-3">
                         <div className="prod-info-main prod-wrap clearfix">
                             <div className="row">
-                                <div className="col-md-5 col-sm-12 col-xs-12">
-                                    <div className="product-image">
-                                    <span className="tag2 hot">
-
-                            </span>
+                                <div className="col-md-4 col-sm-4 col-xs-4">
+                                    <div className="product-image single-results-image-container">
+                                        <img  className="img-rounded single-results-image" src={juiceBottle}/>
                                     </div>
                                 </div>
-                                <div className="col-md-7 col-sm-12 col-xs-12">
-                                    <div className="product-detail">
-                                        <h5 className="name">
-                                            <a href="#">
-                                                {name}
-                                            </a>
-                                        </h5>
-                                        <p className="price-container">
-                                            <span>$24.99</span>
-                                        </p>
-                                        <span className="tag1"></span>
+                                <div className="col-md-7 col-sm-7 col-xs-7">
+                                    <div className="product-name">
+                                        <h1 className="name">{name}</h1>
                                     </div>
-                                    <div className="description">
-                                        <p>{manufacturer_description}</p>
+                                    <div>
+                                        <h2 className="manufacturer">{` By: ${manufacturer_name}`}</h2>
                                     </div>
-                                    <div className="product-info smart-form">
-                                        <div className="row">
-                                            <div className="col-md-12">
-                                                <a href="javascript:void(0);" className="btn btn-danger">Add to cart</a>
-                                                <a href="javascript:void(0);" className="btn btn-info">More info</a>
-                                            </div>
-                                            <div className="col-md-12">
-                                                <div className="rating">Rating:{rating}
-                                                    <label htmlFor="stars-rating-5"><i className="fa fa-star text-danger"></i></label>
-                                                    <label htmlFor="stars-rating-4"><i className="fa fa-star text-danger"></i></label>
-                                                    <label htmlFor="stars-rating-3"><i className="fa fa-star text-danger"></i></label>
-                                                    <label htmlFor="stars-rating-2"><i className="fa fa-star text-warning"></i></label>
-                                                    <label htmlFor="stars-rating-1"><i className="fa fa-star text-warning"></i></label>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <div className="single-results-stars-container">
+                                        <ReactStars className="single-results-stars" size={20} edit={false} count={5} value={rating} color1="grey" color2="gold"/>
                                     </div>
+                                    <div className="single-results-description">
+                                        <p>{manufacturer_description} Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ad adipisci animi dolor harum nemo quae quia velit veniam vero? Enim in ipsum perferendis? Delectus dicta facere illo molestiae recusandae rem, repellat sunt suscipit voluptatibus!</p>
+                                    </div>
+                                </div>
+
+                                <div className="col-md-12">
+                                    <button onClick={this.handleAddReviewClick.bind(this)}>Add Review</button>
+                                    <a href="javascript:void(0);" className="btn btn-info">More info</a>
                                 </div>
                             </div>
                         </div>
@@ -126,11 +120,10 @@ function mapStateToProps(state) {
 
 export default connect(mapStateToProps, actions)(SingleResults);
 
-// export function singleItem() {
-//     const response = axios.get("/api/single-juice");
-//
-//     return {
-//         type: types.SINGLE_ITEM,
-//         payload: response
-//     }
-// }
+{/*<div className="rating">Rating:{rating}*/}
+    {/*<label htmlFor="stars-rating-5"><i className="fa fa-star text-danger"></i></label>*/}
+    {/*<label htmlFor="stars-rating-4"><i className="fa fa-star text-danger"></i></label>*/}
+    {/*<label htmlFor="stars-rating-3"><i className="fa fa-star text-danger"></i></label>*/}
+    {/*<label htmlFor="stars-rating-2"><i className="fa fa-star text-warning"></i></label>*/}
+    {/*<label htmlFor="stars-rating-1"><i className="fa fa-star text-warning"></i></label>*/}
+{/*</div>*/}

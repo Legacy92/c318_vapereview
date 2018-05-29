@@ -30,26 +30,25 @@ class Header extends Component {
         if(shown) {
             btnClass = "collapse navbar-collapse show";
         }
-        console.log(btnClass)
         return (
             <Fragment>
-                <nav className="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
+                <nav className="navbar fixed-top navbar-expand-md navbar-dark blacker" >
                     <button onClick={this.toggleNav} className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent">
                         <span className="navbar-toggler-icon"></span>
                     </button>
-                    <a className="navbar-brand mx-auto" href="/">Juice Query</a>
+                    <a className=" d-md-none mx-auto titanicFont display-4 goldenFont" href="/">Juice Query</a>
                     <div className={btnClass} id="navbarContent">
-                        <ul className="navbar-nav ml-auto">
+                        <ul className="navbar-nav  nav-fill w-100 align-items-start">
                             <li className="nav-item">
                             <Link className="nav-link" to="/" onClick={this.toggleNav}>Home</Link>
                             </li>
-                            <li>
+                            <li className="nav-item">
                                 <Link className="nav-link" to="/add-product" onClick={this.toggleNav}>Add Product</Link>
                             </li>
-                            <li>
+                            <li className="nav-item">
                                 <Link className="nav-link" to="/create-account-modal" onClick={this.closeNav}>Create Account</Link>
                             </li>
-                            <li>
+                            <li className="nav-item">
                                 <Link className="nav-link" to="/user-sign-in" onClick={this.closeNav}>Sign In</Link>
                             </li>
                         </ul>

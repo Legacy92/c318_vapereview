@@ -81,10 +81,10 @@ app.get("/api/multiple-results", (req, res, next) => {
 
 //Get Single Juice Results	
 app.get("/api/single-juice-info", (req, res, next) => {	
-        const { juiceId } = req.query;
+        const { juice_id } = req.query;
         
         const query = 'SELECT `juices`.*, AVG(`reviews`.`rating`) as rating FROM ?? JOIN ?? ON ?? = ?? WHERE ?? = ?';
-        const inserts = ['juices', 'reviews', 'juices.id', 'reviews.juice_id', 'juices.id', juiceId];
+        const inserts = ['juices', 'reviews', 'juices.id', 'reviews.juice_id', 'juices.id', juice_id];
           
         let sql = mysql.format(query, inserts);
     	

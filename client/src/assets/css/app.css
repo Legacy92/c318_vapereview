@@ -8,24 +8,27 @@ a {
     color: white;
 }
 
-button, .btn, .btn-large {
-    background-color: #3f0080;
+button, .btn, .btn-lg {
+    background-color: #2a0d30;
     border: 1px solid white;
+    font-size: 15px;
     color: white
 }
 
 .btn:hover {
     background-color: #3f0080;
+    color: white
 }
 
 .app {
-     background-color: gray;
+     background-image: url(../images/Juice-Query-Temp-Background.png);
+     background-size: cover;
      /* text-shadow: 1px 2px 2px rgba(255, 255, 255, 0.767); */
      color: black;
      width: 100vw;
      min-height: 100vh;
      position: absolute;
-     font-family: sans-serif;
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
      font-size: 20px;
      padding: 0;
      text-align: center;
@@ -34,7 +37,6 @@ button, .btn, .btn-large {
 
 
 .add-review {
-    background: #a49aab;
     position: fixed;
     height: 85%;
     width: 100%;
@@ -45,7 +47,6 @@ button, .btn, .btn-large {
 
 .flavor-body {
     border: 1px solid white;
-    background-color: #11100e;
     color: white;
     position: absolute;
     height: 100%;
@@ -66,8 +67,45 @@ button, .btn, .btn-large {
 
 .landing-page-body, .multiple-results-body {
     position: relative;
+}
+
+/* /////////////////////////////////////////Single Results Page //////////////////////////////// */
+
+.single-results-display {
+    position: relative;
     top: 15vh;
 }
+
+.single-results-item {
+    min-height: 40vh;
+}
+
+.single-results-description {
+    font-size: 15px;
+    color: white;
+}
+.single-results-image-container {
+
+}
+.single-results-stars-container {
+
+    display: inline-block;
+
+
+}
+.single-results-image {
+    height: 250px;
+}
+
+ @media (max-width:576px ){
+     .single-results-image {
+         height: 135px;
+     }
+     .single-results-stars {
+
+     }
+}
+
 
 /* //////////////////////////////////////// mulitple results card /////////////////// */
 
@@ -81,12 +119,52 @@ button, .btn, .btn-large {
     overflow: hidden;
 }
 
+
 .rating, .juice-description{
     font-size: 2vmin;
     overflow: hidden    
 }
-/* 
-.rating, .rating-number {
-    margin: auto;
-} */
+
+/* //////////////////////////////// Colors //////////////////////////////// */
+
+.golden {
+    background-color: #a67c00;
+}
+
+.purpleWhite {
+    background-color: #f8f4ff;
+}
+
+.purpleSolid {
+    background-color: #5e2053;
+}
+.darkPurple {
+    background-color: #2a0d30;
+}
+.charcoal {
+    background-color: #12100e;
+}
+.blacker {
+    background-color: #000000;
+}
+
+/* //////////////////////////////// Fonts ////////////////////////////// */
+
+@font-face {
+    font-family: titanicfont;
+    src: url(../fonts/TitanickDisplayNF.ttf);
+}
+
+.titanicFont {
+    font-family: titanicfont;
+}
+
+.goldenFont {
+    background-image: linear-gradient(#a67c00, #ffcc00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Nav Bar */
+
 
