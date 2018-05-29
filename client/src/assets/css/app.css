@@ -168,3 +168,12 @@ button, .btn, .btn-lg {
 /* Nav Bar */
 
 
+/* Create Acount and Sign In */
+.link{
+    color:#5e2053;
+     display:block
+}
+.link:hover{
+    color: #12100e;
+    text-decoration: none
+}
