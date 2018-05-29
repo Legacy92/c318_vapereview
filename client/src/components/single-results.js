@@ -31,6 +31,12 @@ class SingleResults extends Component {
 
     }
 
+    handleBackButton() {
+        console.log("Back Button Clicked");
+        this.props.history.go(-1);
+
+    }
+
     async getRandomJuice(){
         await this.props.getRandomJuice();
         const juiceId = this.props.singleItemInfo[0].id;
@@ -83,8 +89,8 @@ class SingleResults extends Component {
                                 </div>
 
                                 <div className="col-md-12">
-                                    <button onClick={this.handleAddReviewClick.bind(this)}>Add Review</button>
-                                    <a href="javascript:void(0);" className="btn btn-info">More info</a>
+                                    <button className="mx-2" onClick={this.handleAddReviewClick.bind(this)}>Add Review</button>
+                                    <button onClick={this.handleBackButton.bind(this)}>Back To Results</button>
                                 </div>
                             </div>
                         </div>

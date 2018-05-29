@@ -85,7 +85,8 @@ button, .btn, .btn-lg {
     color: white;
 }
 .single-results-image-container {
-
+    position: relative;
+    top: 5.7%;
 }
 .single-results-stars-container {
 
@@ -98,6 +99,10 @@ button, .btn, .btn-lg {
 }
 
  @media (max-width:576px ){
+     .single-results-image-container {
+         top: 1.5%;
+
+     }
      .single-results-image {
          height: 135px;
      }
@@ -105,6 +110,14 @@ button, .btn, .btn-lg {
 
      }
 }
+/* /////////////////////////////////////////Juice ReviewsPage //////////////////////////////// */
+
+
+.juice-reviews-stars {
+    display: inline-block;
+}
+
+
 
 
 /* //////////////////////////////////////// mulitple results card /////////////////// */
