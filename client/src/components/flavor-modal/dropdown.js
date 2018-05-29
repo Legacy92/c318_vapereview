@@ -9,17 +9,24 @@ class Dropdown extends Component {
         };
     }
 
+    handleClick(id, name){
+        this.props.action(id, name);
+        this.setState({ show: false });
+    }
+
     render(){
 
         const { show } = this.state;
-        const { btnText, menuItems, action } = this.props;
+        const { btnText, menuItems, keyNames } = this.props;
 
-        const items = menuItems.map(({category, id}) => {
-            return <div onClick={() => action(id)} key={category} className="dropdown-item">{category}</div>
+        const items = menuItems.map( item => {
+            const id = item[keyNames.id];
+            const name = item[keyNames.name];
+            return <div onClick={() => this.handleClick(id, name)} key={id} className="dropdown-item">{name}</div>
         });
 
         return (
-            <div className="dropdown">
+            <div className="btn-group dropright">
                 <button onClick={() => this.setState({ show: !show })} className="btn btn-secondary dropdown-toggle" type="button">
                     {btnText}
                 </button>

@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from "axios";
 import { connect } from 'react-redux';
-import { getCategories, getFlavors } from '../../actions';
+import { getCategories, setCategory, setFlavor, addSelectedFlavor } from '../../actions';
 import './flavor-modal.css';
 import Dropdown from './dropdown';
+import FlavorList from './flavor_list';
 
 class FlavorModal extends Component {
 
@@ -13,39 +14,69 @@ class FlavorModal extends Component {
         this.props.getCategories();
     }
 
-    getFlavor(id){
-        console.log('Category ID:', id);
+    handleSetCategory(id, name){
+        this.props.setCategory(id, name);
+    }
 
-        this.props.getFlavors(id);
+    handleSetFlavor(id, name){
+        this.props.setFlavor(id, name);
+    }
+
+    handleAddFlavor(){
+        this.props.addSelectedFlavor();
+    }
+
+    nextStep(){
+        const flavorIds = this.props.flavorList.map(item => item.flavor.id);
+
+        console.log('Go to next step, with flavor ids:', flavorIds);
     }
 
     render() {
 
-        console.log('Flavor Modal Props:', this.props);
-
-        const { categories } = this.props;
-
-        const categoryItems = ['Action', 'Another Action', 'Something Else Here'];
+        const { categories, flavors, selectedCategory, selectedFlavor, flavorList } = this.props;
 
         return (
-            <div className = "flavor-body">
-                <h2 className = "flavor-header">Select Flavors Tasted</h2>
-                <div className="flavor-modal-dropdowns">
-                    {
-                        categories.length
-                            ? <Dropdown action={this.getFlavor.bind(this)} btnText="Category:" menuItems={categories} />
-                            : null
-                    }
-
+            <div className="flavor-selection">
+                <h1 className="flavor-header mb-5">Select Flavors Tasted</h1>
+                <div className="row">
+                    <div className="col-4">
+                        <div>
+                            {
+                                categories.length
+                                    ? <Dropdown action={this.handleSetCategory.bind(this)} btnText={`${selectedCategory.name ? selectedCategory.name : 'Category'}:`} menuItems={categories} keyNames={{id: 'id', name: 'category'}} />
+                                    : null
+                            }
+                        </div>
+                        <div className="my-3">
+                            {
+                                flavors.length
+                                    ? <Dropdown action={this.handleSetFlavor.bind(this)} btnText={`${selectedFlavor.name ? selectedFlavor.name : 'Select Flavor'}:`} menuItems={flavors} keyNames={{ id: 'id', name: 'flavor' }} />
+                                    : null
+                            }
+                        </div>
+                        <div>
+                            {
+                                selectedCategory.name && selectedFlavor.name
+                                    ? <button onClick={this.handleAddFlavor.bind(this)} className="btn btn-default">Add Flavor</button>
+                                    : null
+                            }
+                        </div>
+                        <div className="mt-5">
+                            <button className="btn btn-default mx-3">Cancel</button>
+                            {
+                                flavorList.length
+                                    ? <button onClick={this.nextStep.bind(this)} className="btn btn-default mx-3">Done</button>
+                                    : null
+                            }
+                        </div>
+                    </div>
                     
-
-                    {/* // <Dropdown btnText="Flavor 1:" menuItems={categoryItems} />
-
-                    // <Dropdown btnText="Flavor 2:" menuItems={categoryItems} />
-
-                    // <Dropdown btnText="Flavor 3:" menuItems={categoryItems} /> */}
+                    <div className="col-8">
+                            <FlavorList list={flavorList}/>
+                    </div>
                 </div>
-                <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
+                
 
             </div>
         )
@@ -54,8 +85,12 @@ class FlavorModal extends Component {
 
 function mapStateToProps(state){
     return {
-        categories: state.juiceInfo.categories
+        categories: state.juiceInfo.categories,
+        selectedCategory: state.juiceInfo.selectedCategory,
+        flavors: state.juiceInfo.flavors,
+        selectedFlavor: state.juiceInfo.selectedFlavor,
+        flavorList: state.juiceInfo.flavorList
     };
 }
 
-export default connect(mapStateToProps, { getCategories, getFlavors })(FlavorModal);
+export default connect(mapStateToProps, { getCategories, setCategory, setFlavor, addSelectedFlavor })(FlavorModal);

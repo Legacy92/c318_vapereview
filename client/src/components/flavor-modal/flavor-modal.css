@@ -1,24 +1,14 @@
-/* /////////////////////////////////////// flavor modal //////////////////////////////////////// */
-
-/* .flavor-body {
-    border: 1px solid white;
-    background-color: #11100e;
+.flavor-selection table {
     color: white;
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    margin-top: 22%
-}
-
-.dropdown {
-    position: relative;
-    margin: 15%;
 }
 
 .flavor-header {
-    margin-top: 10px;
-} */
+    color: white;
+    padding-top: 30px;
+}
 
-.flavor-body {
-    padding-top: 35vh;
+.flavor-selection .dropdown-menu {
+    cursor: pointer;
+    max-height: 305px;
+    overflow: scroll;
 }

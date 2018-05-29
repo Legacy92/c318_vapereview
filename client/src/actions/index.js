@@ -117,17 +117,33 @@ export function getCategories() {
     }
 }
 
-export function getFlavors(id) {
-    const response = axios.get("/api/flavor-modal", {
-        params: {category: id}
-    });
+export function setCategory(id, category) {
+    return async dispatch => {
 
-    return {
-        type: types.GET_FLAVORS,
-        payload: response
+        const response = await axios.get("/api/flavor-modal", {
+            params: {category: id}
+        });
+
+        dispatch({
+            type: types.SET_CATEGORY,
+            payload: response.data.data,
+            selectedCategory: {id, name: category}
+        });
     }
 }
 
+export function setFlavor(id, flavor) {
+    return {
+        type: types.SET_FLAVOR,
+        selectedFlavor: {id, name: flavor}
+    }
+}
+
+export function addSelectedFlavor(){
+    return {
+        type: types.ADD_SELECTED_FLAVOR
+    }
+}
 
 // User Auth Actions // //change Base URL 
 const BASE_URL = 'http://api.reactprototypes.com'
