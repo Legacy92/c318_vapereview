@@ -14,13 +14,10 @@ import SingleResults from "./single-results";
 import FlavorModal from "./flavor-modal";
 
 
-
-
-
-
 const App = () => (
     <div className="app"> 
         <Header />
+        <div className="page-header mb-5"></div>
         <div className="container">
             <Route path="/multiple-results/:searchTerm" component={MultipleResults} />
             <Route path="/multiple-results-browse" component={MultipleResults} />
@@ -28,7 +25,7 @@ const App = () => (
             <Route path="/add-product" component={AddProduct} />
             <Route path="/hamburger-menu" compnent={HambugerMenu} />
             <Route path="/add-review/:juice_id" component={AddReview} />
-            <Route path="/create-account-modal" component={CreateAccount} />
+            <Route path="/create-account" component={CreateAccount} />
             <Route path="/advanced-search" component={AdvancedSearchModal} />
             <Route path="/user-sign-in" component={UserSignIn} />
             <Route exact path="/" component={LandingPage} />

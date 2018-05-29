@@ -32,31 +32,33 @@ class LandingPage extends Component {
     renderInput({ label, input, meta: { touched, error } }) {
         return (
             <div className='search input-group'>
-                <input className="input-field col-xs-4 col-xs-offset-4" {...input} type="text" autoComplete="off" />
+                <input className="input-field col-xs-7 col-xs-offset-2" {...input} type="text" autoComplete="off" />
                 <div className='input-group-prepend'>
                     <button className="btn btn-default btn-lg">
                         <span className="glyphicon glyphicon-search"></span> 
                     </button>
+                <p className="text-danger">{touched && error}</p>
                 </div>
-                <p className="red-text text-darken-2">{touched && error}</p>
             </div>
 
         )
     }
 
+   
     render() {
         console.log("State Props:", this.props.all, this.props.juice);
         const { handleSubmit } = this.props;
 
         return (
             <div className="landing-page-body">
+            <div className=" display-1 mb-5 mt-5 titanicFont goldenFont d-none d-md-block">Juice Query</div>
                 <form onSubmit={handleSubmit(this.handleLandingPageSearch.bind(this))}>
-                    <Field name="input" component={this.renderInput} />
+                    <Field className="align-middle mt-5" name="input" component={this.renderInput} />
                 </form>
                 <br />
-                <Link className="btn white-text" to="/multiple-results-browse">Browse</Link>
-                <Link className="btn white-text" to="/add-product">Add Juice</Link>
-                <Link className="btn white-text" to="/single-results/:juiceId">Random</Link>
+                <Link style={{margin:1.0+'%'}} className="btn btn-lg white-text" to="/multiple-results-browse">Browse</Link>
+                <Link style={{margin:1.0+'%'}} className="btn btn-lg white-text" to="/add-product">Add Juice</Link>
+                <Link style={{margin:1.0+'%'}} className="btn btn-lg white-text" to="/single-results/:juiceId">Random</Link>
 
             </div>
         )
@@ -72,7 +74,7 @@ function validate({ input }) {
     const errors = {};
 
     if (!input) {
-        errors.input = "Please enter juice query.";
+        errors.input = "Please type a search value.";
     }
 
     return errors;
