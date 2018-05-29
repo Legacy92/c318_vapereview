@@ -65,15 +65,15 @@ class SingleResults extends Component {
             console.log(name, manufacturer_description, manufacturer_site, manufacturer_name);
             return (
                 <div className="single-results-display">
-                    <div className="single-results-item col-xs-10 offset-1  card bg-dark my-3">
+                    <div className="single-results-item col-10 offset-1  card rounded  my-3">
                         <div className="prod-info-main prod-wrap clearfix">
                             <div className="row">
-                                <div className="col-md-4 col-sm-4 col-xs-4">
+                                <div className="col-md-4 col-sm-4 col-4">
                                     <div className="product-image single-results-image-container">
                                         <img  className="img-rounded single-results-image" src={juiceBottle}/>
                                     </div>
                                 </div>
-                                <div className="col-md-7 col-sm-7 col-xs-7">
+                                <div className="col-md-7 col-sm-7 col-7">
                                     <div className="product-name">
                                         <h1 className="name">{name}</h1>
                                     </div>
@@ -83,13 +83,13 @@ class SingleResults extends Component {
                                     <div className="single-results-stars-container">
                                         <ReactStars className="single-results-stars" size={20} edit={false} count={5} value={rating} color1="grey" color2="gold"/>
                                     </div>
-                                    <div className="single-results-description">
-                                        <p>{manufacturer_description} Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ad adipisci animi dolor harum nemo quae quia velit veniam vero? Enim in ipsum perferendis? Delectus dicta facere illo molestiae recusandae rem, repellat sunt suscipit voluptatibus!</p>
+                                    <div className="single-results-description ">
+                                        <p className="single-results-item-text">{manufacturer_description} Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ad adipisci animi dolor harum nemo quae quia velit veniam vero? Enim in ipsum perferendis? Delectus dicta facere illo molestiae recusandae rem, repellat sunt suscipit voluptatibus!</p>
                                     </div>
                                 </div>
 
                                 <div className="col-md-12">
-                                    <button className="mx-2" onClick={this.handleAddReviewClick.bind(this)}>Add Review</button>
+                                    <button className="mx-2 rounded" onClick={this.handleAddReviewClick.bind(this)}>Add Review</button>
                                     <button onClick={this.handleBackButton.bind(this)}>Back To Results</button>
                                 </div>
                             </div>

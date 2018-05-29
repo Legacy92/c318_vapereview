@@ -58,15 +58,26 @@ button, .btn, .btn-lg {
 
 .single-results-item {
     min-height: 40vh;
+    box-shadow: gold 0px 0px 0px 0.7px;
+    background-color: #715b71;
 }
 
 .single-results-description {
     font-size: 15px;
     color: white;
+    text-align: justify;
+
 }
 .single-results-image-container {
     position: relative;
     top: 5.7%;
+}
+
+.single-results-item-text {
+    letter-spacing: 1px;
+    font-family: lato;
+
+
 }
 .single-results-stars-container {
 
@@ -95,6 +106,13 @@ button, .btn, .btn-lg {
 
 .juice-reviews-stars {
     display: inline-block;
+}
+
+.juice-review-container {
+    box-shadow: gold 0px 0px 0px 0.7px;
+    background-color: #715b71;
+
+
 }
 
 
@@ -171,6 +189,19 @@ button, .btn, .btn-lg {
 
 /* Nav Bar */
 
+
+.header-container {
+    box-shadow: gold 0px 0px 0px 0.7px;
+    color: gold;
+}
+
+.navbar-dark .navbar-nav .nav-link.nav-link-text {
+    color: gold;
+}
+
+/*.nav-link-text {*/
+    /*color: gold;*/
+/*}*/
 /* Create Acount and Sign In */
 .link{
     color:#5e2053;

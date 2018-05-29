@@ -32,7 +32,7 @@ class MultipleResults extends Component {
 
     render() {
 
-        console.log(this.props);
+        console.log("Multiple Results Props:",this.props);
         let juiceElements = [];
         if (this.props.all) {
             const juiceInfo = this.props.all;
