@@ -46,9 +46,9 @@ class MultipleResults extends Component {
 
                                 <div className="card-container row">
                                     <div className="rating-container col-xs-4 d-flex align-items-center flex-column">
-                                        <div className="my-auto">
-                                            <div className="rating">Rating:{rating}</div>
+                                        <div className="my-auto">                                    
                                             <div className="rating-number">star rating</div>
+                                            <div className="rating">Rating:{rating}</div>
                                         </div>
                                     </div>
                                     <div className="col-xs-8 d-flex align-items-center flex-column">
