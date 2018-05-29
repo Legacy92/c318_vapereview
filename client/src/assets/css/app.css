@@ -5,7 +5,7 @@ body {
 }
 
 a {
-    color: white;
+    color: black;
 }
 
 button, .btn, .btn-lg {
@@ -103,23 +103,30 @@ button, .btn, .btn-lg {
 /* //////////////////////////////////////// mulitple results card /////////////////// */
 
 #multiple-container, #product-info-main, .card-container {
-    height: 25vh
+    height: 25vh;
+    background: linear-gradient(to bottom right,#a696c2, white);
+    border-radius: 2px;
+}
+
+.card-container {
+    box-shadow: gold 0px 0px 0px 0.7px;
+
 }
 
 .product-detail, .description, .product-info, .row, .rating-container{
-    /* border: 1px solid white; */
     overflow: hidden;
 }
 
-.name {
-    margin-top: 5px
+.name, .multiple-results-header {
+    margin-top: 5px;
+    color: black;
 }
 
 
 .rating, .juice-description{
-    font-size: 3vmin;
+    font-size: 2vmin;
     overflow: hidden;
-    color: #ffcc00;
+    color: black;
 }
 
 /* //////////////////////////////// Colors //////////////////////////////// */
