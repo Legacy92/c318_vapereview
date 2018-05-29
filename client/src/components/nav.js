@@ -32,7 +32,7 @@ class Header extends Component {
         }
         return (
             <Fragment>
-                <nav className="navbar fixed-top navbar-expand-md navbar-dark blacker" >
+                <nav className="navbar header-container fixed-top navbar-expand-md navbar-dark blacker" >
                     <button onClick={this.toggleNav} className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent">
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -40,16 +40,16 @@ class Header extends Component {
                     <div className={btnClass} id="navbarContent">
                         <ul className="navbar-nav  nav-fill w-100 align-items-start">
                             <li className="nav-item">
-                            <Link className="nav-link" to="/" onClick={this.toggleNav}>Home</Link>
+                            <Link className="nav-link nav-link-text " to="/" onClick={this.toggleNav}>Home</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/add-product" onClick={this.toggleNav}>Add Product</Link>
+                                <Link className="nav-link nav-link-text" to="/add-product" onClick={this.toggleNav}>Add Product</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/create-account-modal" onClick={this.closeNav}>Create Account</Link>
+                                <Link className="nav-link nav-link-text" to="/create-account-modal" onClick={this.closeNav}>Create Account</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/user-sign-in" onClick={this.closeNav}>Sign In</Link>
+                                <Link className="nav-link nav-link-text" to="/user-sign-in" onClick={this.closeNav}>Sign In</Link>
                             </li>
                         </ul>
                     </div>
