@@ -79,6 +79,34 @@ button, .btn, .btn-large {
 .single-results-item {
     min-height: 40vh;
 }
+
+.single-results-description {
+    font-size: 15px;
+    color: white;
+}
+.single-results-image-container {
+
+}
+.single-results-stars-container {
+
+    display: inline-block;
+
+
+}
+.single-results-image {
+    height: 250px;
+}
+
+ @media (max-width:576px ){
+     .single-results-image {
+         height: 135px;
+     }
+     .single-results-stars {
+
+     }
+}
+
+
 /* //////////////////////////////////////// mulitple results card /////////////////// */
 
 
