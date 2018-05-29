@@ -21,10 +21,10 @@ const App = () => (
         <div className="container">
             <Route path="/multiple-results/:searchTerm" component={MultipleResults} />
             <Route path="/multiple-results-browse" component={MultipleResults} />
-            <Route path="/single-results/:juiceId" component={SingleResults} />
+            <Route path="/single-results/:juice_id" component={SingleResults} />
             <Route path="/add-product" component={AddProduct} />
             <Route path="/hamburger-menu" compnent={HambugerMenu} />
-            <Route path="/add-review" component={AddReview} />
+            <Route path="/add-review/:juice_id" component={AddReview} />
             <Route path="/create-account" component={CreateAccount} />
             <Route path="/advanced-search" component={AdvancedSearchModal} />
             <Route path="/user-sign-in" component={UserSignIn} />
