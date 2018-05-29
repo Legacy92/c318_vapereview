@@ -289,7 +289,7 @@ app.get("/api/single-juice-reviews", (req, res, next) => {
         console.log(juiceId);
         
         
-        const query = 'SELECT `id`,`rating`, `description` as review, `juice_id`, `user_id`, `created` FROM ?? WHERE ?? = ?';
+        const query = 'SELECT `id`,`rating`, `description` as review, `juice_id`, `user_id`, `created` FROM ?? WHERE ?? = ? ORDER BY `reviews`.`created` DESC';
         const inserts = ['reviews', 'reviews.juice_id', juiceId];
           
         let sql = mysql.format(query, inserts);
