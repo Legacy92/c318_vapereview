@@ -145,10 +145,10 @@ app.post("/api/create-user", (req, res, next) => {
 
 //add product
 app.post('/api/add-product', (req, res, next) => {
-    const { name, manufacturer, description, site } = req.body;
+    const { juice_name, manufacturer_name, manufacturer_description, manufacturer_site } = req.body;
 
     const query = 'INSERT INTO ?? (??, ??, ??, ??) VALUES ( ?, ?, ?, ?)';
-    const inserts = ['juices', 'name', 'manufacturer_name', 'manufacturer_site', 'manufacturer_description', name, manufacturer, site, description ];
+    const inserts = ['juices', 'name', 'manufacturer_name', 'manufacturer_site', 'manufacturer_description', juice_name, manufacturer_name, manufacturer_site, manufacturer_description ];
 
     const sql = mysql.format(query, inserts);
     console.log("This is the formatted SQL", sql);
