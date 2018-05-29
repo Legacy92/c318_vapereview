@@ -23,13 +23,13 @@ const App = () => (
             <Route path="/multiple-results-browse" component={MultipleResults} />
             <Route path="/single-results/:juice_id" component={SingleResults} />
             <Route path="/add-product" component={AddProduct} />
-            <Route path="/hamburger-menu" compnent={HambugerMenu} />
+            <Route path="/hamburger-menu" component={HambugerMenu} />
             <Route path="/add-review/:juice_id" component={AddReview} />
             <Route path="/create-account-modal" component={CreateAccount} />
             <Route path="/advanced-search" component={AdvancedSearchModal} />
             <Route path="/user-sign-in" component={UserSignIn} />
             <Route exact path="/" component={LandingPage} />
-            <Route path="/flavor-modal" component={FlavorModal} />
+            <Route path="/flavor-modal/:juice_id" component={FlavorModal} />
         </div>
     </div>
 );
