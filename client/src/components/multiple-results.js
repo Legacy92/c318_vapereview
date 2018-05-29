@@ -41,37 +41,27 @@ class MultipleResults extends Component {
                 const { name, manufacturer_name, manufacturer_site, manufacturer_description, id, rating } = item;
                 return (
 
-                    <div onClick={() => this.handleProductClick(id)} key={index} className="col-12 col-sm-5 bg-dark card my-3 mx-2">
-                        <div className="prod-info-main prod-wrap clearfix">
+                    <div onClick={() => this.handleProductClick(id)} key={index} id= "multiple-container" className="contianer col-12 col-sm-5 bg-dark card my-3 mx-2">
+                        <div id = "prod-info-main"className="prod-info-main prod-wrap">
 
-                                <div className="col-md-6 col-sm-12 col-xs-12">
-                                    <div className="product-detail offset-sm-4 col-xs-8">
-                                        <h5 className="name">
-                                            <a href="#">
-                                                {name}
-                                            </a>
-                                        </h5>
-                                        <p className="price-container">
-                                        </p>
-                                        <span className="tag1"></span>
+                                <div className="card-container row">
+                                    <div className="rating-container col-xs-4 d-flex align-items-center flex-column">
+                                        <div className="my-auto">                                    
+                                            <div className="rating-number">star rating</div>
+                                            <div className="rating">Rating:{rating}</div>
+                                        </div>
                                     </div>
-                                    <div className="description">
-                                        <p>{manufacturer_description}</p>
-                                    </div>
-                                    <div className="product-info smart-form">
-                                        <div className="row">
-                                            <div className="col-md-12">
-                                                <a href="javascript:void(0);" className="btn btn-danger">Add to cart</a>
-                                                <a href="javascript:void(0);" className="btn btn-info">More info</a>
+                                    <div className="col-xs-8 d-flex align-items-center flex-column">
+                                        <div className="my-auto">
+                                            <div className="product-detail">
+                                                <h5 className="name">
+                                                    <a href="#">
+                                                        {name}
+                                                    </a>
+                                                </h5>
                                             </div>
-                                            <div className="col-md-12">
-                                                <div className="rating">Rating:{rating}
-                                                    <label htmlFor="stars-rating-5"><i className="fa fa-star text-danger"></i></label>
-                                                    <label htmlFor="stars-rating-4"><i className="fa fa-star text-danger"></i></label>
-                                                    <label htmlFor="stars-rating-3"><i className="fa fa-star text-danger"></i></label>
-                                                    <label htmlFor="stars-rating-2"><i className="fa fa-star text-warning"></i></label>
-                                                    <label htmlFor="stars-rating-1"><i className="fa fa-star text-warning"></i></label>
-                                                </div>
+                                            <div className="description">
+                                                <p className = "juice-description">{manufacturer_description}</p>
                                             </div>
                                         </div>
                                     </div>

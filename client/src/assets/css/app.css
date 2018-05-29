@@ -65,7 +65,8 @@ button, .btn, .btn-lg {
     color: white;
 }
 .single-results-image-container {
-
+    position: relative;
+    top: 5.7%;
 }
 .single-results-stars-container {
 
@@ -78,6 +79,10 @@ button, .btn, .btn-lg {
 }
 
  @media (max-width:576px ){
+     .single-results-image-container {
+         top: 1.5%;
+
+     }
      .single-results-image {
          height: 135px;
      }
@@ -85,13 +90,36 @@ button, .btn, .btn-lg {
 
      }
 }
+/* /////////////////////////////////////////Juice ReviewsPage //////////////////////////////// */
+
+
+.juice-reviews-stars {
+    display: inline-block;
+}
+
+
 
 
 /* //////////////////////////////////////// mulitple results card /////////////////// */
 
+#multiple-container, #product-info-main, .card-container {
+    height: 25vh
+}
 
-.product-detail, .description, .product-info {
-    border: 1px solid white
+.product-detail, .description, .product-info, .row, .rating-container{
+    /* border: 1px solid white; */
+    overflow: hidden;
+}
+
+.name {
+    margin-top: 5px
+}
+
+
+.rating, .juice-description{
+    font-size: 3vmin;
+    overflow: hidden;
+    color: #ffcc00;
 }
 
 /* //////////////////////////////// Colors //////////////////////////////// */
@@ -135,3 +163,13 @@ button, .btn, .btn-lg {
 }
 
 /* Nav Bar */
+
+/* Create Acount and Sign In */
+.link{
+    color:#5e2053;
+     display:block
+}
+.link:hover{
+    color: #12100e;
+    text-decoration: none
+}

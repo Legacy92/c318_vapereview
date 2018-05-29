@@ -20,7 +20,7 @@ class CreateAccount extends Component {
     render() {
         const {handleSubmit, authError} = this.props;
         return (
-            <div style={{marginTop:20+'%'}}className="create-account">
+            <div className="create-account">
                 <div className ="modal-content">
                     <div className="modal-body">
                     <h1>Create an Account <span data-dismiss="modal" >X</span></h1>
