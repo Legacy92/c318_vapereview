@@ -14,19 +14,19 @@ class SingleResults extends Component {
     componentDidMount(){
         // // this.getJuiceData();
         console.log("Single-product-props:", this.props);
-        const {juiceId}  = this.props.match.params;
+        const {juice_id}  = this.props.match.params;
        
-        if(juiceId !==':juiceId'){
-            this.props.singleItem({juiceId});
-            this.props.singleItemReviews({juiceId});
+        if(juice_id !==':juice_id'){
+            this.props.singleItem({juice_id});
+            this.props.singleItemReviews({juice_id});
         }else{
             this.getRandomJuice();
         }
     }
 
     handleAddReviewClick() {
-        const juiceId = this.props.match.params;
-        this.props.history.push(`/add-review/${juiceId}`);
+        const juice_id = this.props.match.params;
+        this.props.history.push(`/add-review/${juice_id}`);
 
     }
 
@@ -38,12 +38,12 @@ class SingleResults extends Component {
 
     async getRandomJuice(){
         await this.props.getRandomJuice();
-        const juiceId = this.props.singleItemInfo[0].id;
-        this.props.match.params = juiceId;
-        this.props.match.url= `/single-results/:${juiceId}`;
-        console.log('Get Random Juice', juiceId);
+        const juice_id = this.props.singleItemInfo[0].id;
+        this.props.match.params = juice_id;
+        this.props.match.url= `/single-results/:${juice_id}`;
+        console.log('Get Random Juice', juice_id);
             
-        await this.props.singleItemReviews(juiceId);
+        await this.props.singleItemReviews(juice_id);
     }
 
     async getJuiceData(){

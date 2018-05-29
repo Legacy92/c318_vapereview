@@ -9,11 +9,11 @@ import Nav from './nav';
 class AddReview extends Component {
 
     handleAddReview(values) {
-        const {juiceId} = this.props.match.params;
-        const newValues = {...values, juiceId};
+        const {juice_id} = this.props.match.params;
+        const newValues = {...values, juice_id};
         console.log("Add Review Values:", values);
          this.props.addReview(newValues);
-        this.props.history.push(`/single-results/${juiceId}`);
+        this.props.history.push(`/single-results/${juice_id}`);
 
     }
 
@@ -40,7 +40,8 @@ class AddReview extends Component {
     }
 
     moveToAddFlavors(){
-        this.props.history.push(`/favor-modal`);
+        const {juice_id} = this.props.match.params;
+        this.props.history.push(`/favor-modal/${juice_id}`);
     }
 
     render() {
@@ -52,7 +53,7 @@ class AddReview extends Component {
 
             <form onSubmit={handleSubmit(this.handleAddReview.bind(this))}>
                     <Field name="user_id" label="user_id" component={this.renderInput}/>
-                    <button onClick={this.moveToAddFlavors.bind(this)} className="btn btn-default">Add Flavors</button>
+                    <button type="button" onClick={this.moveToAddFlavors.bind(this)} className="btn btn-default">Add Flavors</button>
                     <Field name="rating" label="How many stars would you give currentJuiceName? (1-5)" component={this.renderInput}/>
                     <Field name="description" label="What did you think of currentJuiceName?" component={this.renderTextarea}/>
                     <button className="btn">Add Review</button>
@@ -77,7 +78,7 @@ class AddReview extends Component {
 function mapStateToProps(state) {
     return {
         all: state.juiceInfo.all,
-        juiceId: state.juiceInfo.juiceId
+        juiceId: state.juiceInfo.juiceId,
     };
 
 }
