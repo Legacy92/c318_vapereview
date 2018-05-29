@@ -20,7 +20,7 @@ class AddProduct extends Component {
         // console.log(label, input);
         return (
             <div>
-                <input style={{marginTop: 1+'em', border: 'none', borderBottom: '0.2em solid #3f0080', backgroundColor: 'transparent'}} placeholder={label} {...input} type="text" autoComplete="off" className="col-xs-10 col-xs-offset-1" />
+                <input style={{marginTop: 1+'em'}} placeholder={label} {...input} type="text" autoComplete="off" className="col-xs-10 col-xs-offset-1" />
                 <p className="text-danger">{touched && error}</p>
             </div>
         )
@@ -29,7 +29,7 @@ class AddProduct extends Component {
     renderTextarea({label, input, meta: {touched, error}}) {
         return (
             <div>
-                <textarea style={{marginTop: 1+'em', border: 'none', borderBottom: '0.2em solid #3f0080', backgroundColor: 'transparent'}}  {...input} type="text" autoComplete="off"  placeholder={label} className="col-xs-10 col-xs-offset-1"/>
+                <textarea style={{marginTop: 1+'em'}}  {...input} type="text" autoComplete="off"  placeholder={label} className="col-xs-10 col-xs-offset-1"/>
                 <p className="text-danger">{touched && error}</p>
             </div>
         )
