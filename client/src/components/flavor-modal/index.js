@@ -12,6 +12,7 @@ class FlavorModal extends Component {
 
     componentDidMount(){
         this.props.getCategories();
+        console.log(this.props);
     }
 
     handleSetCategory(id, name){
@@ -30,6 +31,7 @@ class FlavorModal extends Component {
         const flavorIds = this.props.flavorList.map(item => item.flavor.id);
 
         console.log('Go to next step, with flavor ids:', flavorIds);
+        this.props.history.go(-1);
     }
 
     render() {
@@ -89,7 +91,8 @@ function mapStateToProps(state){
         selectedCategory: state.juiceInfo.selectedCategory,
         flavors: state.juiceInfo.flavors,
         selectedFlavor: state.juiceInfo.selectedFlavor,
-        flavorList: state.juiceInfo.flavorList
+        flavorList: state.juiceInfo.flavorList,
+        singleItemInfo: state.juiceInfo.singleItemInfo
     };
 }
 

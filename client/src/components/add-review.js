@@ -23,7 +23,7 @@ class AddReview extends Component {
             <div>
                 <label>{label}</label>
                 <input {...input} type="text"placeholder="input" autoComplete="off"/>
-                <p className="red-text text-darken-2">{touched && error}</p>
+                <p className="text-danger">{touched && error}</p>
             </div>
         )
     }
@@ -34,7 +34,7 @@ class AddReview extends Component {
             <div>
                 <label>{label}</label>
                 <textarea {...input} type="text" placeholder="Speak your mind" autoComplete="off"/>
-                <p className="red-text text-darken-2">{touched && error}</p>
+                <p className="text-danger">{touched && error}</p>
             </div>
         )
     }
