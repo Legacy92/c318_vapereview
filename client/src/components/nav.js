@@ -38,7 +38,7 @@ class Header extends Component {
                     </button>
                     <a className=" d-md-none mx-auto titanicFont display-4 goldenFont" href="/">Juice Query</a>
                     <div className={btnClass} id="navbarContent">
-                        <ul className="navbar-nav nav-fill w-100 align-items-start">
+                        <ul className="navbar-nav  nav-fill w-100 align-items-start">
                             <li className="nav-item">
                             <Link className="nav-link" to="/" onClick={this.toggleNav}>Home</Link>
                             </li>
