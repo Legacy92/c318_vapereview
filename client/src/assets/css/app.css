@@ -78,7 +78,7 @@ button, .btn, .btn-lg {
 
 .single-results-item {
     min-height: 40vh;
-    box-shadow: gold 0px 0px 0px 0.7px;
+    box-shadow: #a67c00 0px 0px 0px 0.7px;
     background-color: #715b71;
 }
 
@@ -129,7 +129,7 @@ button, .btn, .btn-lg {
 }
 
 .juice-review-container {
-    box-shadow: gold 0px 0px 0px 0.7px;
+    box-shadow: #a67c00 0px 0px 0px 0.7px;
     background-color: #715b71;
 
 
@@ -204,12 +204,12 @@ button, .btn, .btn-lg {
 /* Nav Bar */
 
 .header-container {
-    box-shadow: gold 0px 0px 0px 0.7px;
-    color: gold;
+    box-shadow: #a67c00 0px 0px 0px 0.7px;
+    color: #a67c00;
 }
 
 .navbar-dark .navbar-nav .nav-link.nav-link-text {
-    color: gold;
+    color: #a67c00;
 }
 
 /*.nav-link-text {*/

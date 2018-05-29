@@ -23,7 +23,7 @@ class JuiceReviews extends Component {
                 return (
                     <div key={index} className=" juice-review-container card my-4 col-10 offset-1 ">
                         <div className="juice-reviews-stars-container">
-                            <ReactStars className="juice-reviews-stars" size={20} edit={false} count={5} value={rating} color1="grey" color2="gold"/>
+                            <ReactStars className="juice-reviews-stars" size={20} edit={false} count={5} value={rating} color1="grey" color2="#a67c00"/>
                         </div>
                         <h1>{id}</h1>
                         <h3>{review}</h3>

@@ -81,7 +81,7 @@ class SingleResults extends Component {
                                         <h2 className="manufacturer">{` By: ${manufacturer_name}`}</h2>
                                     </div>
                                     <div className="single-results-stars-container">
-                                        <ReactStars className="single-results-stars" size={20} edit={false} count={5} value={rating} color1="grey" color2="gold"/>
+                                        <ReactStars className="single-results-stars" size={20} edit={false} count={5} value={rating} color1="grey" color2="#a67c00"/>
                                     </div>
                                     <div className="single-results-description ">
                                         <p className="single-results-item-text">{manufacturer_description} Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ad adipisci animi dolor harum nemo quae quia velit veniam vero? Enim in ipsum perferendis? Delectus dicta facere illo molestiae recusandae rem, repellat sunt suscipit voluptatibus!</p>
