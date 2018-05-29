@@ -71,7 +71,22 @@ button, .btn, .btn-large {
 
 /* //////////////////////////////////////// mulitple results card /////////////////// */
 
-
-.product-detail, .description, .product-info, .row {
-    border: 1px solid white
+#multiple-container, #product-info-main, .card-container {
+    height: 25vh
 }
+
+
+.product-detail, .description, .product-info, .row, .rating-container{
+    /* border: 1px solid white; */
+    overflow: hidden;
+}
+
+.rating, .juice-description{
+    font-size: 2vmin;
+    overflow: hidden    
+}
+/* 
+.rating, .rating-number {
+    margin: auto;
+} */
+
