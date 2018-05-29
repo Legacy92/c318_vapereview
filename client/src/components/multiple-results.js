@@ -41,19 +41,11 @@ class MultipleResults extends Component {
                 const { name, manufacturer_name, manufacturer_site, manufacturer_description, id, rating } = item;
                 return (
 
-                    <div onClick={() => this.handleProductClick(id)} key={index} className="col-12 col-sm-6 bg-dark card my-3">
+                    <div onClick={() => this.handleProductClick(id)} key={index} className="col-12 col-sm-5 bg-dark card my-3 mx-2">
                         <div className="prod-info-main prod-wrap clearfix">
-                            <div className="row">
-                                <div className="col-md-5 col-sm-12 col-xs-12">
-                                    <div className="product-image">
-                                        <img src={vapeImage} alt="194x228" className="img-responsive"/>
-                            <span className="tag2 hot">
 
-                            </span>
-                                    </div>
-                                </div>
-                                <div className="col-md-7 col-sm-12 col-xs-12">
-                                    <div className="product-detail">
+                                <div className="col-md-6 col-sm-12 col-xs-12">
+                                    <div className="product-detail offset-sm-4 col-xs-8">
                                         <h5 className="name">
                                             <a href="#">
                                                 {name}
@@ -84,14 +76,13 @@ class MultipleResults extends Component {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
                         </div>
                     </div>
                 );
             });
         }
         return (
-            <div>
+            <div className = "multiple-results-body col-12">
                 <h1>Multiple Results</h1>
                 <div className="row">
                     {juiceElements}

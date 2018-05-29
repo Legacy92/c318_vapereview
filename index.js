@@ -52,6 +52,7 @@ app.get("/api/random-juice",(req, res, next) => {
             success: true,
             data: results
         }
+        console.log(output.data);
         res.json(output);
     });
 });
@@ -80,10 +81,10 @@ app.get("/api/multiple-results", (req, res, next) => {
 
 //Get Single Juice Results	
 app.get("/api/single-juice-info", (req, res, next) => {	
-        const { juiceId } = req.query;
+        const { juice_id } = req.query;
         
         const query = 'SELECT `juices`.*, AVG(`reviews`.`rating`) as rating FROM ?? JOIN ?? ON ?? = ?? WHERE ?? = ?';
-        const inserts = ['juices', 'reviews', 'juices.id', 'reviews.juice_id', 'juices.id', juiceId];
+        const inserts = ['juices', 'reviews', 'juices.id', 'reviews.juice_id', 'juices.id', juice_id];
           
         let sql = mysql.format(query, inserts);
     	
@@ -287,7 +288,9 @@ app.post('/api/add-review', (req, res, next) => {
 
 //Get All Reviews for Single Juice
 app.get("/api/single-juice-reviews", (req, res, next) => {	
-        const { juiceId } = req.query;
+        const juiceId  = req.query[Object.keys(req.query)[0]];
+        console.log(juiceId);
+        
         
         const query = 'SELECT `id`,`rating`, `description` as review, `juice_id`, `user_id`, `created` FROM ?? WHERE ?? = ?';
         const inserts = ['reviews', 'reviews.juice_id', juiceId];
@@ -297,7 +300,7 @@ app.get("/api/single-juice-reviews", (req, res, next) => {
         console.log(sql);	
     	
         database.query(sql, (err, results, field) => {	
-            if (err) return next(err);	
+            if (err) return res.status(500).send('Error Getting Reviews for Single Juice Page');	
     	
             const output = {	
                 success: true,	

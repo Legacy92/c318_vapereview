@@ -8,24 +8,27 @@ a {
     color: white;
 }
 
-button, .btn, .btn-large {
-    background-color: #5e2053;
+button, .btn, .btn-lg {
+    background-color: #2a0d30;
     border: 1px solid white;
+    font-size: 15px;
     color: white
 }
 
 .btn:hover {
-    background-color: #5e2053;
+    background-color: #3f0080;
+    color: white
 }
 
 .app {
-     background-color: gray;
+     background-image: url(../images/Juice-Query-Temp-Background.png);
+     background-size: cover;
      /* text-shadow: 1px 2px 2px rgba(255, 255, 255, 0.767); */
      color: black;
      width: 100vw;
      min-height: 100vh;
      position: absolute;
-     font-family: sans-serif;
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
      font-size: 20px;
      padding: 0;
      text-align: center;
@@ -33,120 +36,122 @@ button, .btn, .btn-large {
  }
 
 
-/* ////////////////////////////////////////// header and hamburger nav section ///////////////////// */
-.menu-button {
-    display: inline-block;
-    position: fixed;
-    left: 2px;
-    height: 50px;
-    width: 50px;
-    border: 1px solid white;
-    padding: 10px;
-    border-radius: 10%;
-    cursor: pointer;
-    margin-top: 8%;
-    background-color: #242323;
-}
-
-.menu-button:hover {
-    background-color: black;
-}
-
-.menu-button:hover div:nth-child(1),
-.menu-button:hover div:nth-child(2),
-.menu-button:hover div:nth-child(3) {
-    border-color: white;
-}
-
-.menu-button div:nth-child(1),
-.menu-button div:nth-child(2),
-.menu-button div:nth-child(3){
-    border: 2px solid white;
-    margin: 2px 2px;
-}
-
-.menu-button div:nth-child(2),
-.menu-button div:nth-child(3){
-    margin-top: 7px;
-}
-
-.header-container {
-    position: fixed;
-    right: 0;
-    z-index: 9001;
-    border: 1px solid white;
-    color: white;
-    background: black;
-    display: inline-block;
-    width: 100%;
-    height: 10.5%;
-    box-sizing: border-box;
-    margin: 0;
-}
-
-.header-logo {
-    display: inline-block;
-    position: relative;
-    width: 59%;
-    height: 100%;
-    box-sizing: border-box;
-    margin: 0;
-    font-size: 1.75em;
-    margin-top: 9%;
-}
-
-#header-sign-in {
-    color: white;
-    width: 15%;
-    box-sizing: border-box;
-    border: 1px solid white;
-    background-color: #5e2053;
-    display: inline-block;
-    position: absolute;
-    margin-top: 16.3%;
-    font-size: 0.6em;
-    padding: 0;
-    right: 3px;
-}
-/*   ////////////////////////////////  hamburger nav ///////////////////////////////////////// */
-.nav-container {
-    position: absolute;
-    /* background-color: rgba(63, 63, 63); */
-    background: linear-gradient(to bottom right, #11100e, #b99bc9);
-    border: 3px solid white;
-    text-align: left;
-    z-index: 10;
-    font-size: 16px;
-    box-sizing: border-box;
-    margin: 85px 0;
-    height: 700%;
-    width: 70%;
-}
-
-.nav-links {
-    box-sizing: border-box;
-    list-style-type: none;
-}
-
-
-/* ////////////////////////////////////// over all ul, li styling ////////////////////////////*/
-ul {
-    list-style-type: none;
-    padding: 10px
-}
-
-li {
-    margin: 28px;
-    color: white;
-    border-bottom: 1px solid black;
-}
-
-/*////////////////////////////////////// add review secdtion //////////////////////////////// */
-
-.add-review, form {
-    background: #a49aab;
+.add-review {
     position: fixed;
     height: 85%;
     width: 100%;
     top: 10%;
 }
+
+/* /////////////////////////////////////// flavor modal //////////////////////////////////////// */
+
+.flavor-body {
+    border: 1px solid white;
+    color: white;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    margin-top: 22%
+}
+
+.dropdown {
+    position: relative;
+    margin: 15%;
+}
+
+.flavor-header {
+    margin-top: 10px;
+}
+
+/* /////////////////////////////////////////landing page //////////////////////////////// */
+
+.landing-page-body, .multiple-results-body {
+    position: relative;
+}
+
+/* /////////////////////////////////////////Single Results Page //////////////////////////////// */
+
+.single-results-display {
+    position: relative;
+    top: 15vh;
+}
+
+.single-results-item {
+    min-height: 40vh;
+}
+
+.single-results-description {
+    font-size: 15px;
+    color: white;
+}
+.single-results-image-container {
+
+}
+.single-results-stars-container {
+
+    display: inline-block;
+
+
+}
+.single-results-image {
+    height: 250px;
+}
+
+ @media (max-width:576px ){
+     .single-results-image {
+         height: 135px;
+     }
+     .single-results-stars {
+
+     }
+}
+
+
+/* //////////////////////////////////////// mulitple results card /////////////////// */
+
+
+.product-detail, .description, .product-info, .row {
+    border: 1px solid white
+}
+
+/* //////////////////////////////// Colors //////////////////////////////// */
+
+.golden {
+    background-color: #a67c00;
+}
+
+.purpleWhite {
+    background-color: #f8f4ff;
+}
+
+.purpleSolid {
+    background-color: #5e2053;
+}
+.darkPurple {
+    background-color: #2a0d30;
+}
+.charcoal {
+    background-color: #12100e;
+}
+.blacker {
+    background-color: #000000;
+}
+
+/* //////////////////////////////// Fonts ////////////////////////////// */
+
+@font-face {
+    font-family: titanicfont;
+    src: url(../fonts/TitanickDisplayNF.ttf);
+}
+
+.titanicFont {
+    font-family: titanicfont;
+}
+
+.goldenFont {
+    background-image: linear-gradient(#a67c00, #ffcc00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Nav Bar */

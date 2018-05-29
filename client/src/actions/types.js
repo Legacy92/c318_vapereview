@@ -12,5 +12,11 @@ export default {
     SINGLE_ITEM: "single_item",
     GET_CATEGORIES: "get_categories",
     GET_FLAVORS: "get_flavors",
-    GET_SINGLE_ITEM_REVIEWS: "get_single_item_reviews"
+    GET_SINGLE_ITEM_REVIEWS: "get_single_item_reviews",
+    GET_SINGLE_ITEM_REVIEWS: "get_single_item_reviews",
+    SIGN_UP: 'sign_up',
+    SIGN_IN: 'sign_in',
+    SIGN_OUT: 'sign_out',
+    AUTH_ERROR: 'auth_error',
+    CLEAR_AUTH_ERROR: 'clear-auth-error'
 };

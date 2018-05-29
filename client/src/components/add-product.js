@@ -20,13 +20,20 @@ class AddProduct extends Component {
         // console.log(label, input);
         return (
             <div>
-                <label>{label}</label>
-                <input {...input} type="text" autoComplete="off" />
-                <p className="red-text text-darken-2">{touched && error}</p>
+                <input style={{marginTop: 1+'em', border: 'none', borderBottom: '0.2em solid #3f0080', backgroundColor: 'transparent'}} placeholder={label} {...input} type="text" autoComplete="off" className="col-xs-10 col-xs-offset-1" />
+                <p className="text-danger">{touched && error}</p>
             </div>
         )
     }
 
+    renderTextarea({label, input, meta: {touched, error}}) {
+        return (
+            <div>
+                <textarea style={{marginTop: 1+'em', border: 'none', borderBottom: '0.2em solid #3f0080', backgroundColor: 'transparent'}}  {...input} type="text" autoComplete="off"  placeholder={label} className="col-xs-10 col-xs-offset-1"/>
+                <p className="text-danger">{touched && error}</p>
+            </div>
+        )
+    }
 
 
 
@@ -35,14 +42,14 @@ class AddProduct extends Component {
         console.log(this.props);
         const { handleSubmit } = this.props;
         return (
-            <div>
-                <h1>Add Product</h1>
+            <div style={{marginTop: 1+'em'}}> 
+                <div className="display-3 titanicFont goldenFont">Add Product</div>
                 <form onSubmit={handleSubmit(this.handleAddProduct.bind(this))}>
-                    <Field name="name" label="Juice Name" component={this.renderInput} />
-                    <Field name="manufacturer" label="Manufacturer Name" component={this.renderInput} />
-                    <Field name="description" label="Manufacturer Description" component={this.renderInput} />
-                    <Field name="site" label="Manufacturer Site" component={this.renderInput} />
-                    <button className="btn">Add Product</button>
+                    <Field name="juice_name" label="Juice Name" component={this.renderInput} />
+                    <Field name="manufacturer_name" label="Manufacturer Name" component={this.renderInput} />
+                    <Field name="manufacturer_site" label="Manufacturer Site" component={this.renderInput} />
+                    <Field name="manufacturer_desc" label="Manufacturer Description" component={this.renderTextarea} />
+                    <button style={{fontSize:1+'em', marginTop: 1+'em'}} className="btn col-xs-6 col-xs-offset-3">Add Product</button>
                 </form>
             </div>
         )
@@ -54,15 +61,14 @@ function validate({ juice_name, manufacturer_name, manufacturer_site, manufactur
     const errors = {};
 
     if (!juice_name) {
-        errors.juice_name = "Please enter a juice name.";
-
+        errors.juice_name = "Please enter a juice name";
     }
 
     if (!manufacturer_name) {
-        errors.manufacturer_name = "Please enter a manufacturer name.";
+        errors.manufacturer_name = "Please enter a manufacturer name";
     }
     if (!manufacturer_site) {
-        errors.manufacturer_site = "Please enter a manufacturer website.";
+        errors.manufacturer_site = "Please enter a manufacturer website";
     }
     if (!manufacturer_desc) {
         errors.manufacturer_desc = "Please enter a manufacturer description";
