@@ -9,11 +9,11 @@ import Nav from './nav';
 class AddReview extends Component {
 
     handleAddReview(values) {
-        const {juice_id} = this.props.match.params;
-        const newValues = {...values, juice_id};
+        const {juiceId} = this.props.match.params;
+        const newValues = {...values, juiceId};
         console.log("Add Review Values:", values);
          this.props.addReview(newValues);
-        this.props.history.push(`/single-results/${juice_id}`);
+        this.props.history.push(`/single-results/${juiceId}`);
 
     }
 
@@ -39,6 +39,10 @@ class AddReview extends Component {
         )
     }
 
+    moveToAddFlavors(){
+        this.props.history.push(`/favor-modal`);
+    }
+
     render() {
         console.log("Add Review Props:", this.props);
         const {handleSubmit} = this.props;
@@ -48,9 +52,7 @@ class AddReview extends Component {
 
             <form onSubmit={handleSubmit(this.handleAddReview.bind(this))}>
                     <Field name="user_id" label="user_id" component={this.renderInput}/>
-                    <Field name="flavor1" label="flavor 1" component={this.renderInput}/>
-                    <Field name="flavor2" label="flavor 2" component={this.renderInput}/>
-                    <Field name="flavor3" label="flavor 3" component={this.renderInput}/>
+                    <button onClick={this.moveToAddFlavors.bind(this)} className="btn btn-default">Add Flavors</button>
                     <Field name="rating" label="How many stars would you give currentJuiceName? (1-5)" component={this.renderInput}/>
                     <Field name="description" label="What did you think of currentJuiceName?" component={this.renderTextarea}/>
                     <button className="btn">Add Review</button>

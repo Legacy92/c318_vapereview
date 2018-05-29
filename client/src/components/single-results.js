@@ -25,7 +25,7 @@ class SingleResults extends Component {
     }
 
     handleAddReviewClick() {
-        const {juiceId}  = this.props.match.params;
+        const juiceId = this.props.match.params;
         this.props.history.push(`/add-review/${juiceId}`);
 
     }
