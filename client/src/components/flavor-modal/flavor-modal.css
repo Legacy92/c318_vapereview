@@ -1,0 +1,14 @@
+.flavor-selection table {
+    color: white;
+}
+
+.flavor-header {
+    color: white;
+    padding-top: 30px;
+}
+
+.flavor-selection .dropdown-menu {
+    cursor: pointer;
+    max-height: 305px;
+    overflow: scroll;
+}

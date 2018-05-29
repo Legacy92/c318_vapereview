@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import axios from "axios";
 import { connect } from "react-redux";
 import * as actions from "../actions";
-import vapeImage from "../assets/images/vape-image.jpeg"
-
+import vapeImage from "../assets/images/vape-image.jpeg";
+import ReactStars from 'react-stars';
 
 class MultipleResults extends Component {
 
@@ -45,13 +45,13 @@ class MultipleResults extends Component {
                         <div id = "prod-info-main"className="prod-info-main prod-wrap">
 
                                 <div className="card-container row">
-                                    <div className="rating-container col-xs-4 d-flex align-items-center flex-column">
+                                    <div className="rating-container col-xs-5 d-flex align-items-center flex-column">
                                         <div className="my-auto">                                    
-                                            <div className="rating-number">star rating</div>
-                                            <div className="rating">Rating:{rating}</div>
+                                            <div className="rating-number">Juice Rating: </div>
+                                            <ReactStars className="single-results-stars" size={15} edit={false} count={5} value={rating} color1="grey" color2="gold"/>
                                         </div>
                                     </div>
-                                    <div className="col-xs-8 d-flex align-items-center flex-column">
+                                    <div className="col-xs-7 d-flex align-items-center flex-column">
                                         <div className="my-auto">
                                             <div className="product-detail">
                                                 <h5 className="name">
@@ -73,7 +73,7 @@ class MultipleResults extends Component {
         }
         return (
             <div className = "multiple-results-body col-12">
-                <h1>Multiple Results</h1>
+                <h1 className = "multiple-results-header">Multiple Results</h1>
                 <div className="row">
                     {juiceElements}
                 </div>

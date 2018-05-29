@@ -32,7 +32,7 @@ class LandingPage extends Component {
     renderInput({ label, input, meta: { touched, error } }) {
         return (
             <div>
-                <div className='search input-group align-items-center justify-content-center pt-5'>
+                <div className='search input-group  justify-content-center pt-5'>
                     <input className=" align-middle input-field col-xs-8" {...input} type="text" autoComplete="off" placeholder="Find your vape juice..."/>
                     <div className='input-group-prepend'>
                         <button className="btn btn-default btn-lg">

@@ -16,7 +16,7 @@ class SingleResults extends Component {
         console.log("Single-product-props:", this.props);
         const {juice_id}  = this.props.match.params;
        
-        if(juice_id !==':juice_id'){
+        if(juice_id !==':juiceId'){
             this.props.singleItem({juice_id});
             this.props.singleItemReviews({juice_id});
         }else{
