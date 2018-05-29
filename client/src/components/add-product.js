@@ -42,8 +42,8 @@ class AddProduct extends Component {
         console.log(this.props);
         const { handleSubmit } = this.props;
         return (
-            <div style={{marginTop: 5+'em'}}> 
-                <h1>Add Product</h1>
+            <div style={{marginTop: 1+'em'}}> 
+                <div className="display-3 titanicFont goldenFont">Add Product</div>
                 <form onSubmit={handleSubmit(this.handleAddProduct.bind(this))}>
                     <Field name="juice_name" label="Juice Name" component={this.renderInput} />
                     <Field name="manufacturer_name" label="Manufacturer Name" component={this.renderInput} />
@@ -62,7 +62,6 @@ function validate({ juice_name, manufacturer_name, manufacturer_site, manufactur
 
     if (!juice_name) {
         errors.juice_name = "Please enter a juice name";
-
     }
 
     if (!manufacturer_name) {
