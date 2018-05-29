@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { signIn, clearAuthError } from '../actions'
 import { renderInput } from '../helpers';
+import '../assets/css/app.css';
 
 
 
@@ -22,7 +23,7 @@ class UserSignIn extends Component {
         const {handleSubmit, authError} = this.props;
 
         return (
-        <div style={{marginTop:20+'%'}}>
+        <div>
             <div className ="modal-content">
             <button type="button" className="close mr-0 float-right" aria-label="Close"data-dismiss="modal"><span aria-hidden="true">X</span></button>
                 <div className="modal-body">
@@ -37,7 +38,7 @@ class UserSignIn extends Component {
                 </form>
                 </div>
                 <div className="modal-footer">
-                <p>New Around Here?<Link to="/create-account" style={{color: '#3f0080', display:'block'}}>Create an Account</Link></p>
+                <p>New Around Here?<Link to="/create-account" className="link" >Create an Account</Link></p>
                 </div>
                 <div>
                 </div>
