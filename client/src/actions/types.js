@@ -10,13 +10,15 @@ export default {
     BROWSE_ALL_JUICES: "browse_all_juice",
     GET_RANDOM_JUICE: "get_random_juice",
     SINGLE_ITEM: "single_item",
-    CATEGORIES: "categories",
-    FLAVORS: "flavors",
+    GET_CATEGORIES: "get_categories",
+    SET_CATEGORY: "set_category",
+    SET_FLAVOR: "set_flavor",
+    ADD_SELECTED_FLAVOR: "add_selected_flavor",
+    GET_SINGLE_ITEM_REVIEWS: "get_single_item_reviews",
     GET_SINGLE_ITEM_REVIEWS: "get_single_item_reviews",
     SIGN_UP: 'sign_up',
     SIGN_IN: 'sign_in',
     SIGN_OUT: 'sign_out',
     AUTH_ERROR: 'auth_error',
     CLEAR_AUTH_ERROR: 'clear-auth-error'
-
 };
