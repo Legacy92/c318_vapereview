@@ -39,7 +39,6 @@ class AddProduct extends Component {
 
 
     render() {
-        console.log(this.props);
         const { handleSubmit } = this.props;
         return (
             <div style={{marginTop: 1+'em'}}> 
@@ -48,7 +47,7 @@ class AddProduct extends Component {
                     <Field name="juice_name" label="Juice Name" component={this.renderInput} />
                     <Field name="manufacturer_name" label="Manufacturer Name" component={this.renderInput} />
                     <Field name="manufacturer_site" label="Manufacturer Site" component={this.renderInput} />
-                    <Field name="manufacturer_desc" label="Manufacturer Description" component={this.renderTextarea} />
+                    <Field name="manufacturer_description" label="Manufacturer Description" component={this.renderTextarea} />
                     <button style={{fontSize:1+'em', marginTop: 1+'em'}} className="btn col-xs-6 col-xs-offset-3">Add Product</button>
                 </form>
             </div>
