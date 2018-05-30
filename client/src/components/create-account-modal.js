@@ -20,16 +20,20 @@ class CreateAccount extends Component {
     render() {
         const {handleSubmit, authError} = this.props;
         return (
+            <div>
+            <h1 className = "create-header">invisiheader</h1>
             <div className="create-account-body">
-                <div className="modal-body">
-                    <h1>Create an Account <span data-dismiss="modal" >X</span></h1>
-                        <form style={{textAlign: 'left'}} onSubmit={handleSubmit(this.handleSignUp.bind(this))}>
+                <div className="create-account-modal-body">
+                    <h1>Create an Account</h1>
+                        <form style={{textAlign: 'center'}} onSubmit={handleSubmit(this.handleSignUp.bind(this))}>
+                            <label>Email*</label>
+                            <Field name = "email" component= {renderInput}/>
                             <label>Username*</label>
                             <Field name="username" component={renderInput}/>
                             <label>Password*</label>
-                            <Field name="password" component={renderInput}/>
+                            <Field name="password" type = "password" component={renderInput}/>
                             <label>Confirm Password*</label>
-                            <Field name="confirm_password" component={renderInput}/>
+                            <Field name="confirm_password" type = "password" component={renderInput}/>
                             <button>Create an Account</button>
                             <p>{authError}</p>
                       </form>
@@ -37,6 +41,7 @@ class CreateAccount extends Component {
                 <div className="modal-footer">
                     <p style={{margin: 'auto'}}>Been here before? <Link to="/user-sign-in" style={{color: '#3f0080'}}>Sign in.</Link></p>
                 </div>
+            </div>
             </div>
         );
     }
