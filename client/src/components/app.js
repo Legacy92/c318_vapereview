@@ -14,7 +14,6 @@ import SingleResults from "./single-results";
 import FlavorModal from "./flavor-modal";
 import Test from "./test";
 
-
 const App = () => (
     <div className="app"> 
         <Header />

@@ -143,13 +143,11 @@ export function addSelectedFlavor(){
     }
 }
 
-// User Auth Actions // //change Base URL 
-const BASE_URL = 'http://api.reactprototypes.com'
-
 export function signUp(credentials){
     return async (dispatch) => {
         try {
-            const response = await axios.post(`${BASE_URL}/signup`, credentials);
+            const response = await axios.post('/auth/sign-up', credentials);
+
 
             localStorage.setItem('token', response.data.token);
     
@@ -157,17 +155,7 @@ export function signUp(credentials){
                 type: types.SIGN_UP
             });
         } catch(err){
-            if(err.response && err.response.data){
-                return dispatch({
-                    type: types.AUTH_ERROR,
-                    error: err.response.data.error
-                });
-            }
-
-            dispatch({
-                type: types.AUTH_ERROR,
-                error: 'Error creating new account'
-            });
+            console.log('Sign Up Error:', err.response.data);
         }
 
     }
@@ -176,7 +164,7 @@ export function signUp(credentials){
 export function signIn(credentials){
     return async (dispatch) => {
         try {
-            const response = await axios.post(`${BASE_URL}/signin`, credentials);
+            const response = await axios.post(`/auth/sign-in`, credentials);
 
             localStorage.setItem('token', response.data.token);
     
@@ -188,6 +176,18 @@ export function signIn(credentials){
                 type: types.AUTH_ERROR,
                 error: 'Invalid email and/or password'
             })
+        }
+    }
+}
+
+export function authTest(){
+    return async dispatch => {
+        try {
+            const resp = await axios.post('/auth/test', {test: 'stuff'}, setAuthHeaders());
+
+            console.log('Auth Test Resp:', resp);
+        } catch(err){
+            console.log('Auth Test ERROR:', err.message);
         }
     }
 }
@@ -204,4 +204,12 @@ export function clearAuthError(){
     return {
         type: types.CLEAR_AUTH_ERROR
     };
+}
+
+function setAuthHeaders(){
+    return {
+        headers: {
+            authorization: localStorage.getItem('token')
+        }
+    }
 }
