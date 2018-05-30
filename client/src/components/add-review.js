@@ -59,8 +59,8 @@ class AddReview extends Component {
                 <form onSubmit={handleSubmit(this.handleAddReview.bind(this))}>
                         <Field name="user_id" label="user_id" component={this.renderInput}/>
                         <FlavorModal/>
-                        <Field name="rating" label="How many stars would you give currentJuiceName? (1-5)" component={this.renderInput}/>
-                        <Field name="description" label="What did you think of {name}" component={this.renderTextarea}/>
+                        <Field name="rating" label={`How many stars would you give ${name}? (1-5)`} component={this.renderInput}/>
+                        <Field name="description" label={`What did you think of ${name}`} component={this.renderTextarea}/>
                         <button className="btn">Add Review</button>
                 </form>
             </div>
