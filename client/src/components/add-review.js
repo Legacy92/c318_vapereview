@@ -21,7 +21,6 @@ class AddReview extends Component {
     }
 
     renderInput({label, input, meta: {touched, error}}) {
-        // console.log(label, input);
         return (
             <div>
                 <label>{label}</label>
@@ -32,7 +31,6 @@ class AddReview extends Component {
     }
 
     renderTextarea({label, input, meta: {touched, error}}) {
-        // console.log(label, input);
         return (
         
         <div>
@@ -45,18 +43,15 @@ class AddReview extends Component {
             )
     }
 
-    moveToAddFlavors(){
-        const {juice_id} = this.props.match.params;
-        this.props.history.push(`/flavor-modal/${juice_id}`);
-    }
 
     render() {
-        console.log(this.props.reviewFlavors, this.props.singleItemInfo);
+        console.log(this.props.reviewFlavors, this.props.match);
         console.log("Add Review Props:", this.props);
         const {handleSubmit} = this.props;
+        const {name} = this.props.match.params;
         return (
         <div className="add-review">
-            <h1>Add Review for currentJuiceName</h1>
+            <h1>Add Review for {name}</h1>
 
             <form onSubmit={handleSubmit(this.handleAddReview.bind(this))}>
                     <Field name="user_id" label="user_id" component={this.renderInput}/>
@@ -65,22 +60,11 @@ class AddReview extends Component {
                     <Field name="description" label="What did you think of currentJuiceName?" component={this.renderTextarea}/>
                     <button className="btn">Add Review</button>
             </form>
-
-
-            {/* <div className="star-rating">
-                <h2>Rating:</h2>
-            </div>
-            <div className = "add-review">
-                <h2></h2>
-                <textarea rows="4" cols="50"/>
-            </div>
-            <button type = "button" className = "btn btn-success">Submit</button> */}
         </div>
         )
     }
 }
 
-// export default AddReview;
 
 function mapStateToProps(state) {
     return {
