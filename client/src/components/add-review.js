@@ -9,9 +9,9 @@ import FlavorModal from './flavor-modal';
 
 class AddReview extends Component {
 
-    async componentDidMount(){
+    componentDidMount(){
         const {juice_id} = this.props.match.params;
-        await this.props.singleItem(juice_id);
+        this.props.singleItem(juice_id);
     }
     handleAddReview(values) {
         const {juice_id} = this.props.match.params;
@@ -50,20 +50,24 @@ class AddReview extends Component {
 
     render() {
         const {handleSubmit} = this.props;
-        const {name} = this.props.singleItemInfo[0];
-        return (
-        <div className="add-review">
-            <h1>Add Review for {name}</h1>
+        if(this.props.singleItemInfo[0]){
+            const {name} = this.props.singleItemInfo[0];
+            return (
+            <div className="add-review">
+                <h1>Add Review for {name}</h1>
 
-            <form onSubmit={handleSubmit(this.handleAddReview.bind(this))}>
-                    <Field name="user_id" label="user_id" component={this.renderInput}/>
-                    <FlavorModal/>
-                    <Field name="rating" label="How many stars would you give currentJuiceName? (1-5)" component={this.renderInput}/>
-                    <Field name="description" label="What did you think of currentJuiceName?" component={this.renderTextarea}/>
-                    <button className="btn">Add Review</button>
-            </form>
-        </div>
-        )
+                <form onSubmit={handleSubmit(this.handleAddReview.bind(this))}>
+                        <Field name="user_id" label="user_id" component={this.renderInput}/>
+                        <FlavorModal/>
+                        <Field name="rating" label="How many stars would you give currentJuiceName? (1-5)" component={this.renderInput}/>
+                        <Field name="description" label="What did you think of currentJuiceName?" component={this.renderTextarea}/>
+                        <button className="btn">Add Review</button>
+                </form>
+            </div>
+            )
+        }else{
+            return <h1>Loading</h1>
+        }
     }
 }
 
