@@ -24,6 +24,8 @@ button, .btn, .btn-lg {
 .app {
      background-image: url(../images/Juice-Query-Temp-Background.png);
      background-size: cover;
+     background-repeat: no-repeat;
+     background-attachment: fixed;
      color: black;
      width: 100vw;
      min-height: 100vh;
@@ -247,3 +249,4 @@ button, .btn, .btn-lg {
 .h1{
     font-size: 2.75rem
 
+}
