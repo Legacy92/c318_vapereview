@@ -58,14 +58,15 @@ button, .btn, .btn-lg {
     height: 85%;
     width: 100%;
     margin-top: 10%;
+    color: #ffc900;
 }
 
 /* /////////////////////////////////////////landing page //////////////////////////////// */
 
-/*.landing-page-body, .multiple-results-body, .single-results-body {*/
-    /*position: relative;*/
-    /*margin-top: 60px;*/
-/*}*/
+.landing-page-body, .multiple-results-body, .single-results-body {
+    position: relative;
+    margin-top: 60px;
+}
 
 /* /////////////////////////////////////////Single Results Page //////////////////////////////// */
 
@@ -321,7 +322,7 @@ button, .btn, .btn-lg {
 
 
 .addProduct {
-    font-size: 2.5rem;
+    font-size: 2.1rem;
     
 }
 
@@ -362,3 +363,9 @@ label {
     box-shadow: #ffc900 0px 0px 0px 2px;
 }
 
+/* ////////////////////////////////////////// add review   ///////////////////////////// */
+
+.juiceName {
+    color: #f8f4ff;
+    font-family: luminari, fantasy;
+}
