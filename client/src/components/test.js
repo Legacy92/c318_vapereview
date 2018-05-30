@@ -10,6 +10,7 @@ class Test extends Component{
         // this.addProduct();
         // this.createUser();
         // this.getReviewData();
+        this.getChartData();
     }
 
 
@@ -20,9 +21,9 @@ class Test extends Component{
     }
 
     // pull all review data
-    async getReviewData(){
-        const response = await axios.get("/api/multiple-results");
-        console.log("Review Data:", response);
+    async getChartData(){
+        const response = await axios.get("/api/flavor-chart");
+        console.log("Chart Data:", response);
     }
 
      // create user
