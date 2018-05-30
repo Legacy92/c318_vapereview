@@ -134,18 +134,21 @@ button, .btn, .btn-lg {
 
 }
 
-
-
 #multiple-container, #product-info-main, .card-container {
     height: 25vh;
     background: linear-gradient(to bottom right,#a696c2, white);
     border-radius: 2px;
+    box-sizing: border-box;
     display: flex;
     justify-content: center;
 }
 
+.product-detail {
+    border-bottom: 1px solid black;
+}
+
 .card-container {
-    box-shadow: #ffc900 0px 0px 0px 0.7px;
+    box-shadow: #ffc900 0px 0px 0px 2px;
 
 }
 
@@ -159,8 +162,13 @@ button, .btn, .btn-lg {
 }
 
 .rating, .juice-description{
+    margin-top: 5px;
     font-size: 1rem;
    
+}
+
+.mult-advanced-button {
+    margin-top: 10%
 }
 
 
