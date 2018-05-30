@@ -20,26 +20,22 @@ class CreateAccount extends Component {
     render() {
         const {handleSubmit, authError} = this.props;
         return (
-            <div className="create-account">
-                <div className ="modal-content">
-                    <div className="modal-body">
+            <div className="create-account-body">
+                <div className="modal-body">
                     <h1>Create an Account <span data-dismiss="modal" >X</span></h1>
                         <form style={{textAlign: 'left'}} onSubmit={handleSubmit(this.handleSignUp.bind(this))}>
-                        <label>Username*</label>
-                          <Field name="username" component={renderInput}/>
-                          <label>Password*</label>
-                          <Field name="password" component={renderInput}/>
-                          <label>Confirm Password*</label>
-                          <Field name="confirm_password" component={renderInput}/>
+                            <label>Username*</label>
+                            <Field name="username" component={renderInput}/>
+                            <label>Password*</label>
+                            <Field name="password" component={renderInput}/>
+                            <label>Confirm Password*</label>
+                            <Field name="confirm_password" component={renderInput}/>
                             <button>Create an Account</button>
                             <p>{authError}</p>
                       </form>
-                    </div>
-                    <div className="modal-footer">
+                </div>
+                <div className="modal-footer">
                     <p style={{margin: 'auto'}}>Been here before? <Link to="/user-sign-in" style={{color: '#3f0080'}}>Sign in.</Link></p>
-                    </div>
-                    <div>
-                    </div>
                 </div>
             </div>
         );
