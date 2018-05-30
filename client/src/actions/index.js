@@ -143,31 +143,20 @@ export function addSelectedFlavor(){
     }
 }
 
-// User Auth Actions // //change Base URL 
-const BASE_URL = 'http://api.reactprototypes.com'
-
 export function signUp(credentials){
     return async (dispatch) => {
         try {
-            const response = await axios.post(`${BASE_URL}/signup`, credentials);
+            const response = await axios.post('/auth/sign-up', credentials);
 
-            localStorage.setItem('token', response.data.token);
+            console.log('Sign Up Response:', response);
+
+            // localStorage.setItem('token', response.data.token);
     
-            dispatch({
-                type: types.SIGN_UP
-            });
+            // dispatch({
+            //     type: types.SIGN_UP
+            // });
         } catch(err){
-            if(err.response && err.response.data){
-                return dispatch({
-                    type: types.AUTH_ERROR,
-                    error: err.response.data.error
-                });
-            }
-
-            dispatch({
-                type: types.AUTH_ERROR,
-                error: 'Error creating new account'
-            });
+            console.log('Sign Up Error:', err.response.data);
         }
 
     }

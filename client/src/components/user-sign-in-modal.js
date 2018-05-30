@@ -23,26 +23,24 @@ class UserSignIn extends Component {
         const {handleSubmit, authError} = this.props;
 
         return (
-        <div>
-            <div className ="modal-content">
-            <button type="button" className="close mr-0 float-right" aria-label="Close"data-dismiss="modal"><span aria-hidden="true">X</span></button>
-                <div className="modal-body">
-                <h1>Sign In</h1>
-                    <form style={{textAlign: 'left'}} onSubmit={handleSubmit(this.handleUserSignIn.bind(this))}>
-                    <label>Username*</label>
-                    <Field name="user_signIn" component={renderInput}/>
-                    <label>Password*</label>
-                    <Field name="password" component={renderInput}/>
-                        <button>Sign In</button>
-                        <p>{authError}</p>
-                </form>
+            <div>
+                <div className ="modal-content">
+                    <button type="button" className="close mr-0 float-right" aria-label="Close"data-dismiss="modal"><span aria-hidden="true">X</span></button>
+                    <div className="modal-body">
+                        <h1>Sign In</h1>
+                        <form style={{textAlign: 'left'}} onSubmit={handleSubmit(this.handleUserSignIn.bind(this))}>
+                            <label>Username*</label>
+                            <Field name="username" component={renderInput}/>
+                            <label>Password*</label>
+                            <Field name="password" component={renderInput}/>
+                            <button>Sign In</button>
+                            <p>{authError}</p>
+                        </form>
+                    </div>
+                    <div className="modal-footer">
+                        <p>New Around Here?<Link to="/create-account" className="link" >Create an Account</Link></p>
+                    </div>
                 </div>
-                <div className="modal-footer">
-                <p>New Around Here?<Link to="/create-account" className="link" >Create an Account</Link></p>
-                </div>
-                <div>
-                </div>
-            </div>
             </div>
         )
     }
