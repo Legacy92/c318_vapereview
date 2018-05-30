@@ -165,7 +165,7 @@ app.post('/api/add-product', (req, res, next) => {
 //add review
 
 app.post('/api/add-review', (req, res, next) => {
-    const { rating, description, juice_id, user_id, flavor1, flavor2, flavor3 } = req.body;
+    const { rating, description, juice_id, user_id, reviewFlavors } = req.body;
 
     let query = 'INSERT INTO ?? (??, ??, ??, ??) VALUES (?, ?, ?, ?)';
     let inserts = ['reviews', 'rating', 'description', 'juice_id', 'user_id', rating, description, juice_id, user_id];
@@ -182,39 +182,39 @@ app.post('/api/add-review', (req, res, next) => {
 
         res.json(output);
 // get flavor ID's for added flavors
-        if (output.success) {
-            let query = 'SELECT * FROM ?? WHERE ?? IN (?, ?, ?)'
-            let inserts = ['flavors', 'flavor', flavor1, flavor2, flavor3]
+//         if (output.success) {
+//             let query = 'SELECT * FROM ?? WHERE ?? IN (?, ?, ?)'
+//             let inserts = ['flavors', 'flavor', flavor1, flavor2, flavor3]
 
-            let sql = mysql.format(query, inserts);
-            console.log("This is the formatted SQL", sql);
-            database.query(sql, (err, results, fields) => {
-                if (err) return res.status(500).send('Error Getting Flavor IDs');
-                console.log(results);
-                let output = {
-                    success: true,
-                    data: results
-                }
-                const flavorId1 = output.data[0].id
-                const flavorId2 = output.data[1].id
-                const flavorId3 = output.data[2].id
-// insert reviews with flavors into juices-flavors table
-                if (output.success) {
-                    let query = 'INSERT INTO ?? (??, ??) VALUES (?, ?),(?, ?),(?, ?)'
-                    let inserts = ['juices-flavors', 'review_id', 'flavor_id', reviewId, flavorId1, reviewId, flavorId2, reviewId, flavorId3 ]
+//             let sql = mysql.format(query, inserts);
+//             console.log("This is the formatted SQL", sql);
+//             database.query(sql, (err, results, fields) => {
+//                 if (err) return res.status(500).send('Error Getting Flavor IDs');
+//                 console.log(results);
+//                 let output = {
+//                     success: true,
+//                     data: results
+//                 }
+//                 const flavorId1 = output.data[0].id
+//                 const flavorId2 = output.data[1].id
+//                 const flavorId3 = output.data[2].id
+// // insert reviews with flavors into juices-flavors table
+//                 // if (output.success) {
+//                 //     let query = 'INSERT INTO ?? (??, ??) VALUES (?, ?),(?, ?),(?, ?)'
+//                 //     let inserts = ['juices-flavors', 'review_id', 'flavor_id', reviewId, flavorId1, reviewId, flavorId2, reviewId, flavorId3 ]
         
-                    let sql = mysql.format(query, inserts);
-                    console.log("This is the formatted SQL", sql);
-                    database.query(sql, (err, results, fields) => {
-                        if (err) return res.status(500).send('Error Adding Review/Flavor IDs');
-                        let output = {
-                            success: true,
-                            data: results
-                        }
-                    })
-                }
-            })
-        }
+//                 //     let sql = mysql.format(query, inserts);
+//                 //     console.log("This is the formatted SQL", sql);
+//                 //     database.query(sql, (err, results, fields) => {
+//                 //         if (err) return res.status(500).send('Error Adding Review/Flavor IDs');
+//                 //         let output = {
+//                 //             success: true,
+//                 //             data: results
+//                 //         }
+//                 //     })
+//                 // }
+//             })
+//         }
     });
 });
 

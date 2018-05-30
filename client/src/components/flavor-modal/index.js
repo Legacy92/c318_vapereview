@@ -71,7 +71,7 @@ class FlavorModal extends Component {
                             <button onClick={this.stepBack.bind(this)} className="btn btn-default mx-3">Cancel</button>
                             {
                                 flavorList.length
-                                    ? <button onClick={this.nextStep.bind(this)} className="btn btn-default mx-3">Done</button>
+                                    ? <button type="button" onClick={this.nextStep.bind(this)} className="btn btn-default mx-3">Done</button>
                                     : null
                             }
                         </div>
