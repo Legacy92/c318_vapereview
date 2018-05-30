@@ -46,11 +46,8 @@ class AddProduct extends Component {
         const { handleSubmit } = this.props;
         return (
             <div style={{marginTop: 1+'em'}}> 
-                <div className="pt-5 titanicFont display-4 addProduct goldenFont d-md-block">
-                Add Product
-                   
-                </div>
-                <form className="mb-5" onSubmit={handleSubmit(this.handleAddProduct.bind(this))}>
+                <div className="pt-5 titanicFont display-4 addProduct goldenFont d-md-block">Add Product</div>
+                <form className="mx-5" onSubmit={handleSubmit(this.handleAddProduct.bind(this))}>
                     <Field className="align-middle" name="juice_name" label="Juice Name" component={this.renderInput} />
                     <Field className="align-middle" name="manufacturer_name" label="Manufacturer Name" component={this.renderInput} />
                     <Field className="align-middle" name="manufacturer_site" label="Manufacturer Site" component={this.renderInput} />

@@ -27,7 +27,7 @@ class SingleResults extends Component {
     }
 
     handleAddReviewClick() {
-        const juice_id = this.props.match.params;
+        const {juice_id} = this.props.match.params;
         this.props.history.push(`/add-review/${juice_id}`);
 
     }
@@ -71,43 +71,42 @@ class SingleResults extends Component {
             const {name, manufacturer_name, manufacturer_site, manufacturer_description, rating} = juiceData;
             console.log(name, manufacturer_description, manufacturer_site, manufacturer_name);
             return (
-                <div className="single-results-display">
+                <div className="single-results-body">
+                    <h1 className="single-results-header-footer">Single Result</h1>
                     <div className="single-results-item col-10 offset-1  card rounded  my-3">
-                            <div className="row">
-                                <div className="col-md-4 col-sm-12 col-12">
-                                    <div className="product-image single-results-image-container">
-                                        <div className="juice-bottle-wrapper rounded" >
-                                            <img  className="img-rounded single-results-image" src={juiceBottle}/>
-                                        </div>
+                        <div className="row">
+                            <div className="col-md-4 col-sm-12 col-12">
+                                <div className="product-image single-results-image-container">
+                                    <div className="juice-bottle-wrapper rounded" >
+                                        <img  className="img-rounded single-results-image" src={juiceBottle}/>
                                     </div>
-                                </div>
-                                <div className="col-md-7 col-sm-12 col-12 single-results-written-content">
-                                    <div>
-                                        <h2 className="name">{name}</h2>
-                                    </div>
-                                    <div>
-                                        <h3 onClick={this.handleManufacturerNameClick.bind(this)} className="manufacturer">{` By: ${manufacturer_name}`}</h3>
-                                    </div>
-                                    <div className="single-results-stars-container">
-                                        <ReactStars className="single-results-stars stars" size={20} edit={false} count={5} value={rating} color1="grey" color2="#ffc900"/>
-                                    </div>
-                                    <div className="single-results-description ">
-                                        <p className="single-results-item-text">{manufacturer_description} Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ad adipisci animi dolor harum nemo quae quia velit veniam vero? Enim in ipsum perferendis? Delectus dicta facere illo molestiae recusandae rem, repellat sunt suscipit voluptatibus!</p>
-                                    </div>
-                                </div>
-
-                                <div className="col-md-12">
-                                    <button className="mx-2 rounded" onClick={this.handleAddReviewClick.bind(this)}>Add Review</button>
-                                    <button onClick={this.handleBackButton.bind(this)}>Back To Results</button>
                                 </div>
                             </div>
+                            <div className="col-md-7 col-sm-12 col-12 single-results-written-content">
+                                <div>
+                                    <h2 className="single-results-name">{name}</h2>
+                                </div>
+                                <div>
+                                    <h3 onClick={this.handleManufacturerNameClick.bind(this)} className="manufacturer">{` By: ${manufacturer_name}`}</h3>
+                                </div>
+                                <div className="single-results-stars-container">
+                                    <ReactStars className="single-results-stars stars" size={20} edit={false} count={5} value={rating} color1="grey" color2="#ffc900"/>
+                                </div>
+                                <div className="single-results-description ">
+                                    <p className="single-results-item-text">{manufacturer_description} Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ad adipisci animi dolor harum nemo quae quia velit veniam vero? Enim in ipsum perferendis? Delectus dicta facere illo molestiae recusandae rem, repellat sunt suscipit voluptatibus!</p>
+                                </div>
+                            </div>
+
+                            <div className="col-md-12">
+                                <button className="mx-2 rounded" onClick={this.handleAddReviewClick.bind(this)}>Add Review</button>
+                                <button onClick={this.handleBackButton.bind(this)}>Back To Results</button>
+                            </div>
+                        </div>
                     </div>
                     <JuiceReviews/>
+                    <h1 className="single-results-header-footer">Single Results</h1>
                 </div>
-
             )
-
-
         }
         if(!this.props.randomJuice){
             console.log('response not yet loaded');

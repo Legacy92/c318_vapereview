@@ -103,10 +103,11 @@ app.get("/api/single-juice-info", (req, res, next) => {
 
 // Flavor chart on single results page - gets flavor breakdown of each juice
 app.get("/api/flavor-chart", (req, res, next) => {
-    const { juice_id } = req.body;
+    let { juice_id } = req.body;
+    juice_id = 1;
     
-    const query = 'SELECT * FROM ?? JOIN ?? ON ?? = ?? WHERE ?? = ?';
-    const inserts = ['juices', 'reviews', 'juices.id', 'reviews.juice_id', 'juices.id', juice_id];
+    const query = 'SELECT ??, ?? FROM ?? JOIN ?? ON ?? = ?? JOIN ?? ON ?? = ?? JOIN ?? on ?? = ?? WHERE ?? = 1';
+    const inserts = ['category.category', 'flavors.flavor', 'reviews', 'juices-flavors', 'reviews.id', 'juices-flavors.review_id', 'flavors', 'flavors.id', 'juices-flavors.flavor_id', 'category', 'flavors.catagory_id', 'category.id', 'reviews.juice_id', juice_id ];
 
     const sql = mysql.format(query, inserts);
 
@@ -115,10 +116,26 @@ app.get("/api/flavor-chart", (req, res, next) => {
     database.query(sql, (err, results, field) => {
         if (err) return res.status(500).send('Error Getting Data for Flavor Graph');
 
+        const categoryLength = results.length;
+
+        const categoryCounter = results.map(oldValue => {
+            return oldValue.category;
+        }).reduce((counters, category) => {
+            console.log('previous value: ', counters, '\ncurrent value: ', category);
+            if (counters.hasOwnProperty(category)){
+                counters[category]++;
+            } else {
+                counters[category] = 1;
+            }
+            return counters;
+        }, {});
+
         const output = {
             success: true,
-            data: results
+            data: categoryCounter
         }
+        
+
         res.json(output);
     });
 });
@@ -165,8 +182,8 @@ app.post('/api/add-product', (req, res, next) => {
 //add review
 
 app.post('/api/add-review', (req, res, next) => {
-    const { rating, description, juice_id, user_id, flavor1, flavor2, flavor3 } = req.body;
-
+    const { rating, description, juice_id, user_id, reviewFlavors } = req.body;
+    console.log(reviewFlavors);
     let query = 'INSERT INTO ?? (??, ??, ??, ??) VALUES (?, ?, ?, ?)';
     let inserts = ['reviews', 'rating', 'description', 'juice_id', 'user_id', rating, description, juice_id, user_id];
 
@@ -181,40 +198,24 @@ app.post('/api/add-review', (req, res, next) => {
         const reviewId = results.insertId
 
         res.json(output);
-// get flavor ID's for added flavors
-        if (output.success) {
-            let query = 'SELECT * FROM ?? WHERE ?? IN (?, ?, ?)'
-            let inserts = ['flavors', 'flavor', flavor1, flavor2, flavor3]
-
-            let sql = mysql.format(query, inserts);
-            console.log("This is the formatted SQL", sql);
-            database.query(sql, (err, results, fields) => {
-                if (err) return res.status(500).send('Error Getting Flavor IDs');
-                console.log(results);
-                let output = {
-                    success: true,
-                    data: results
-                }
-                const flavorId1 = output.data[0].id
-                const flavorId2 = output.data[1].id
-                const flavorId3 = output.data[2].id
-// insert reviews with flavors into juices-flavors table
                 if (output.success) {
-                    let query = 'INSERT INTO ?? (??, ??) VALUES (?, ?),(?, ?),(?, ?)'
-                    let inserts = ['juices-flavors', 'review_id', 'flavor_id', reviewId, flavorId1, reviewId, flavorId2, reviewId, flavorId3 ]
-        
-                    let sql = mysql.format(query, inserts);
-                    console.log("This is the formatted SQL", sql);
-                    database.query(sql, (err, results, fields) => {
-                        if (err) return res.status(500).send('Error Adding Review/Flavor IDs');
-                        let output = {
-                            success: true,
-                            data: results
-                        }
-                    })
+                    for(let i=0; i<reviewFlavors.length; i++){
+                        let flavorId = reviewFlavors[i];
+                        let query = 'INSERT INTO ?? (??, ??) VALUES (?, ?)'
+                        let inserts = ['juices-flavors', 'review_id', 'flavor_id', reviewId, flavorId]
+            
+                        let sql = mysql.format(query, inserts);
+                        console.log("This is the formatted SQL", sql);
+                        database.query(sql, (err, results, fields) => {
+                            if (err) return res.status(500).send('Error Adding Review/Flavor IDs');
+                            let output = {
+                                success: true,
+                                data: results
+                            }
+                        });
+                    }
+                   
                 }
-            })
-        }
     });
 });
 

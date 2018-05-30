@@ -29,7 +29,7 @@ button, .btn, .btn-lg {
      color: black;
      width: 100vw;
      min-height: 100vh;
-     position: absolute;
+     position: relative;
      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
      font-size: 20px;
      padding: 0;
@@ -42,13 +42,14 @@ button, .btn, .btn-lg {
     position: fixed;
     height: 85%;
     width: 100%;
-    top: 10%;
+    margin-top: 10%;
 }
 
 /* /////////////////////////////////////////landing page //////////////////////////////// */
 
-.landing-page-body, .multiple-results-body {
+.landing-page-body, .multiple-results-body, .single-results-body {
     position: relative;
+    margin-top: 60px;
 }
 
 /* /////////////////////////////////////////Single Results Page //////////////////////////////// */
@@ -60,6 +61,9 @@ button, .btn, .btn-lg {
     box-shadow: #420842 0px 0px 20px 8px;
 
 }
+.single-results-header-footer {
+    color: rgba(0, 0, 0, 0);
+}
 
 .single-results-written-content {
 
@@ -67,9 +71,14 @@ button, .btn, .btn-lg {
 
 }
 
+.single-results-name {
+    text-shadow: #420842 2px 2px 20px;
+    color: white;
+
+
+}
 .single-results-display {
     position: relative;
-    top: 15vh;
 }
 
 .single-results-item {
@@ -86,7 +95,7 @@ button, .btn, .btn-lg {
 }
 .single-results-image-container {
     position: relative;
-    top: 5.7%;
+    margin-top: 5.7%;
 }
 
 .single-results-item-text {
@@ -107,7 +116,7 @@ button, .btn, .btn-lg {
 
  @media (max-width:576px ){
      .single-results-image-container {
-         top: 4.5%;
+         margin-top: 4.5%;
 
      }
      .single-results-image {
@@ -137,13 +146,23 @@ button, .btn, .btn-lg {
 
 }
 
+/* /////////////////////////////////////////Create Account Page //////////////////////////////// */
 
+.create-account-body {
+    margin-top: 60px;
+
+}
+
+/* /////////////////////////////////////////Sign In Page //////////////////////////////// */
+
+.sign-in-body {
+    margin-top: 60px;
+}
 
 
 /* //////////////////////////////////////// mulitple results card /////////////////// */
 
 .multiple-results-body {
-    top: 5vh;
 
 }
 
@@ -266,8 +285,9 @@ button, .btn, .btn-lg {
 }
 
 .headerTitle{
-    font-size: 2.75rem
+    font-size: 2.5rem
 }
+
 
 .addProduct {
     font-size: 2.5rem;
