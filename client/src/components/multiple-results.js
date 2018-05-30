@@ -48,7 +48,7 @@ class MultipleResults extends Component {
                                     <div className="rating-container col-xs-5 d-flex align-items-center flex-column">
                                         <div className="my-auto">                                    
                                             <div className="rating-number">Juice Rating: </div>
-                                            <ReactStars className="single-results-stars" size={15} edit={false} count={5} value={rating} color1="grey" color2="gold"/>
+                                            <ReactStars className="single-results-stars stars" size={15} edit={false} count={5} value={rating} color1="grey" color2="#ffc900"/>
                                         </div>
                                     </div>
                                     <div className="col-xs-7 d-flex align-items-center flex-column">

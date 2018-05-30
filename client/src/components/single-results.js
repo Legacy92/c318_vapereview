@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import * as actions from "../actions";
 import types from "../actions/types";
 import JuiceReviews from "./juice-reviews";
-import juiceBottle from "../assets/images/vape-juice-bottle-transparent.png";
+import juiceBottle from "../assets/images/vape-juice-bottle-transparent-smoke.png";
 import vapeImage from"../assets/images/vape-image.jpeg";
 
 class SingleResults extends Component {
@@ -70,7 +70,9 @@ class SingleResults extends Component {
                             <div className="row">
                                 <div className="col-md-4 col-sm-4 col-4">
                                     <div className="product-image single-results-image-container">
-                                        <img  className="img-rounded single-results-image" src={juiceBottle}/>
+                                        <div className="juice-bottle-wrapper rounded" >
+                                            <img  className="img-rounded single-results-image" src={juiceBottle}/>
+                                        </div>
                                     </div>
                                 </div>
                                 <div className="col-md-7 col-sm-7 col-7">
@@ -81,7 +83,7 @@ class SingleResults extends Component {
                                         <h2 className="manufacturer">{` By: ${manufacturer_name}`}</h2>
                                     </div>
                                     <div className="single-results-stars-container">
-                                        <ReactStars className="single-results-stars" size={20} edit={false} count={5} value={rating} color1="grey" color2="#a67c00"/>
+                                        <ReactStars className="single-results-stars stars" size={20} edit={false} count={5} value={rating} color1="grey" color2="#ffc900"/>
                                     </div>
                                     <div className="single-results-description ">
                                         <p className="single-results-item-text">{manufacturer_description} Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ad adipisci animi dolor harum nemo quae quia velit veniam vero? Enim in ipsum perferendis? Delectus dicta facere illo molestiae recusandae rem, repellat sunt suscipit voluptatibus!</p>
