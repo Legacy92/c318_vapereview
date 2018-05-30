@@ -23,7 +23,7 @@ class AddReview extends Component {
             <div>
                 <label>{label}</label>
                 <input {...input} type="text"placeholder="input" autoComplete="off"/>
-                <p className="red-text text-darken-2">{touched && error}</p>
+                <p className="text-danger">{touched && error}</p>
             </div>
         )
     }
@@ -34,9 +34,14 @@ class AddReview extends Component {
             <div>
                 <label>{label}</label>
                 <textarea {...input} type="text" placeholder="Speak your mind" autoComplete="off"/>
-                <p className="red-text text-darken-2">{touched && error}</p>
+                <p className="text-danger">{touched && error}</p>
             </div>
         )
+    }
+
+    moveToAddFlavors(){
+        const {juice_id} = this.props.match.params;
+        this.props.history.push(`/favor-modal/${juice_id}`);
     }
 
     render() {
@@ -48,9 +53,7 @@ class AddReview extends Component {
 
             <form onSubmit={handleSubmit(this.handleAddReview.bind(this))}>
                     <Field name="user_id" label="user_id" component={this.renderInput}/>
-                    <Field name="flavor1" label="flavor 1" component={this.renderInput}/>
-                    <Field name="flavor2" label="flavor 2" component={this.renderInput}/>
-                    <Field name="flavor3" label="flavor 3" component={this.renderInput}/>
+                    <button type="button" onClick={this.moveToAddFlavors.bind(this)} className="btn btn-default">Add Flavors</button>
                     <Field name="rating" label="How many stars would you give currentJuiceName? (1-5)" component={this.renderInput}/>
                     <Field name="description" label="What did you think of currentJuiceName?" component={this.renderTextarea}/>
                     <button className="btn">Add Review</button>
@@ -75,7 +78,7 @@ class AddReview extends Component {
 function mapStateToProps(state) {
     return {
         all: state.juiceInfo.all,
-        juiceId: state.juiceInfo.juiceId
+        juiceId: state.juiceInfo.juiceId,
     };
 
 }

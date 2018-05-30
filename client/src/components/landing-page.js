@@ -32,11 +32,11 @@ class LandingPage extends Component {
     renderInput({ label, input, meta: { touched, error } }) {
         return (
             <div>
-                <div className='search input-group  justify-content-center pt-5'>
-                    <input className=" align-middle input-field col-xs-8" {...input} type="text" autoComplete="off" placeholder="Find your vape juice..."/>
-                    <div className='input-group-prepend'>
+                <div className="input-group justify-content-center pt-5">
+                    <input className=" align-middle input-field col-8" {...input} type="text" autoComplete="off" placeholder="Find your vape juice..."/>
+                    <div className="input-group-prepend">
                         <button className="btn btn-default btn-lg">
-                            <span className="glyphicon glyphicon-search"></span> 
+                        <i className="large material-icons">search</i>
                         </button>
                     </div>
                 </div>
@@ -45,6 +45,7 @@ class LandingPage extends Component {
         )
     }
 
+
    
     render() {
         console.log("State Props:", this.props.all, this.props.juice);
@@ -52,11 +53,10 @@ class LandingPage extends Component {
 
         return (
             <div className="landing-page-body">
-            <div className=" display-1 titanicFont goldenFont d-none d-md-block">Juice Query</div>
-                <form onSubmit={handleSubmit(this.handleLandingPageSearch.bind(this))}>
+            <div className="pt-5 display-2 titanicFont goldenFont d-none d-md-block">Juice Query</div>
+                <form className="mb-5" onSubmit={handleSubmit(this.handleLandingPageSearch.bind(this))}>
                     <Field className="align-middle" name="input" component={this.renderInput} />
                 </form>
-                <br />
                 <Link style={{margin:1.0+'%'}} className="btn btn-lg white-text" to="/multiple-results-browse">Browse</Link>
                 <Link style={{margin:1.0+'%'}} className="btn btn-lg white-text" to="/add-product">Add Juice</Link>
                 <Link style={{margin:1.0+'%'}} className="btn btn-lg white-text" to="/single-results/:juiceId">Random</Link>
