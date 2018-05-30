@@ -30,10 +30,13 @@ class FlavorModal extends Component {
     nextStep(){
         const flavorIds = this.props.flavorList.map(item => item.flavor.id);
 
-        console.log('Go to next step, with flavor ids:', flavorIds);
+        console.log('Go to next step, with flavor ids:', this.props.reviewFlavors);
         this.props.history.go(-1);
     }
 
+    stepBack(){
+        this.props.history.go(-1);
+    }
     render() {
 
         const { categories, flavors, selectedCategory, selectedFlavor, flavorList } = this.props;
@@ -65,7 +68,7 @@ class FlavorModal extends Component {
                             }
                         </div>
                         <div className="mt-5">
-                            <button className="btn btn-default mx-3">Cancel</button>
+                            <button onClick={this.stepBack.bind(this)} className="btn btn-default mx-3">Cancel</button>
                             {
                                 flavorList.length
                                     ? <button onClick={this.nextStep.bind(this)} className="btn btn-default mx-3">Done</button>
@@ -92,7 +95,8 @@ function mapStateToProps(state){
         flavors: state.juiceInfo.flavors,
         selectedFlavor: state.juiceInfo.selectedFlavor,
         flavorList: state.juiceInfo.flavorList,
-        singleItemInfo: state.juiceInfo.singleItemInfo
+        singleItemInfo: state.juiceInfo.singleItemInfo,
+        reviewFlavors: state.juiceInfo.reviewFlavors
     };
 }
 
