@@ -181,24 +181,6 @@ app.post('/api/add-review', (req, res, next) => {
         const reviewId = results.insertId
 
         res.json(output);
-// get flavor ID's for added flavors
-//         if (output.success) {
-//             let query = 'SELECT * FROM ?? WHERE ?? IN (?, ?, ?)'
-//             let inserts = ['flavors', 'flavor', flavor1, flavor2, flavor3]
-
-//             let sql = mysql.format(query, inserts);
-//             console.log("This is the formatted SQL", sql);
-//             database.query(sql, (err, results, fields) => {
-//                 if (err) return res.status(500).send('Error Getting Flavor IDs');
-//                 console.log(results);
-//                 let output = {
-//                     success: true,
-//                     data: results
-//                 }
-//                 const flavorId1 = output.data[0].id
-//                 const flavorId2 = output.data[1].id
-//                 const flavorId3 = output.data[2].id
-// // insert reviews with flavors into juices-flavors table
                 if (output.success) {
                     for(let i=0; i<reviewFlavors.length; i++){
                         let flavorId = reviewFlavors[i];
@@ -217,8 +199,6 @@ app.post('/api/add-review', (req, res, next) => {
                     }
                    
                 }
-        //     })
-        // }
     });
 });
 
