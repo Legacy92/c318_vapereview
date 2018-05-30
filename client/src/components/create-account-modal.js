@@ -79,13 +79,7 @@ function validate(values){
 
 CreateAccount = reduxForm({
     form: "create-account-page",
-    validate: validate,
-    initialValues: {
-        username: 'FirstRealUser',
-        email: 'realuser@mail.com',
-        password: 'asdf',
-        confirm_password: 'asdf'
-    }
+    validate: validate
 })(CreateAccount);
 
 function mapStateToProps(state){

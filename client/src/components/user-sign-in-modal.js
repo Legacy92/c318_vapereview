@@ -63,11 +63,7 @@ function validate(values){
 
 UserSignIn = reduxForm({
     form: "user_signIn",
-    validate: validate,
-    initialValues: {
-        email: 'realuser@mail.com',
-        password: 'asdf'
-    }
+    validate: validate
 })(UserSignIn);
 
 function mapStateToProps(state){
