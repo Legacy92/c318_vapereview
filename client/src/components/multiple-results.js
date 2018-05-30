@@ -30,6 +30,20 @@ class MultipleResults extends Component {
         console.log("Review Data:", response);
     }
 
+    textTruncate(str, length, ending) {
+        if (length == null) {
+          length = 50;
+        }
+        if (ending == null) {
+          ending = '...';
+        }
+        if (str.length > length) {
+          return str.substring(0, length - ending.length) + ending;
+        } else {
+          return str;
+        }
+      };
+
     render() {
 
         console.log("Multiple Results Props:",this.props);
@@ -41,17 +55,17 @@ class MultipleResults extends Component {
                 const { name, manufacturer_name, manufacturer_site, manufacturer_description, id, rating } = item;
                 return (
 
-                    <div onClick={() => this.handleProductClick(id)} key={index} id= "multiple-container" className="contianer col-12 col-sm-5 bg-dark card my-3 mx-2">
+                    <div onClick={() => this.handleProductClick(id)} key={index} id= "multiple-container" className="container col-12 col-sm-5 bg-dark card my-1 mx-1">
                         <div id = "prod-info-main"className="prod-info-main prod-wrap">
 
                                 <div className="card-container row">
-                                    <div className="rating-container col-xs-5 d-flex align-items-center flex-column">
+                                    <div className="rating-container col-5 d-flex align-items-center flex-column">
                                         <div className="my-auto">                                    
                                             <div className="rating-number">Juice Rating: </div>
                                             <ReactStars className="single-results-stars" size={15} edit={false} count={5} value={rating} color1="grey" color2="gold"/>
                                         </div>
                                     </div>
-                                    <div className="col-xs-7 d-flex align-items-center flex-column">
+                                    <div className="col-7 d-flex align-items-center flex-column">
                                         <div className="my-auto">
                                             <div className="product-detail">
                                                 <h5 className="name">
@@ -61,7 +75,7 @@ class MultipleResults extends Component {
                                                 </h5>
                                             </div>
                                             <div className="description">
-                                                <p className = "juice-description">{manufacturer_description}</p>
+                                                <p className = "juice-description">{this.textTruncate(manufacturer_description)}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -74,13 +88,12 @@ class MultipleResults extends Component {
         return (
             <div className = "multiple-results-body col-12">
                 <h1 className = "multiple-results-header">Multiple Results</h1>
-                <div className="row">
+                <div className="row justify-content-between">
                     {juiceElements}
                 </div>
 
 
                 <Link className="btn" to="/flavor-modal">Advanced Search</Link>
-                <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         )
     }
