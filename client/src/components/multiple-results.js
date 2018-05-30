@@ -93,7 +93,7 @@ class MultipleResults extends Component {
                 </div>
 
 
-                <Link className="mult-advanced-button btn" to="/flavor-modal">Advanced Search</Link>
+                <Link className="mult-advanced-button btn" to="/">Home</Link>
             </div>
         )
     }

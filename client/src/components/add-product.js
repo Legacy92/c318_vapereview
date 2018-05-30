@@ -55,7 +55,7 @@ class AddProduct extends Component {
                     <Field className="align-middle" name="manufacturer_name" label="Manufacturer Name" component={this.renderInput} />
                     <Field className="align-middle" name="manufacturer_site" label="Manufacturer Site" component={this.renderInput} />
                     <Field className="align-middle" name="manufacturer_description" label="Manufacturer Description" component={this.renderTextarea} />
-                    <button style={{fontSize:1+'em', marginTop: 1+'em'}} className="btn col-xs-6 col-xs-offset-3">Add Product</button>
+                    <Link to = "/add-review/:juice_id" className = "add-product-to-review btn">Next...</Link>
                 </form>
             </div>
         )
