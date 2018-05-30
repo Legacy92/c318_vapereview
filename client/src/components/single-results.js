@@ -34,8 +34,12 @@ class SingleResults extends Component {
     }
 
     handleBackButton() {
+        const searchTerm = this.props.searchTerm;
+
         console.log("Back Button Clicked");
-        this.props.history.go(-1);
+        // this.props.history.go(-1);
+        this.props.history.push(`/multiple-results/${searchTerm}`)
+
 
     }
 
@@ -126,7 +130,8 @@ function mapStateToProps(state) {
         all: [],
         juice: state.juiceInfo.juice,
         randomJuice: state.juiceInfo.randomJuice,
-        singleItemInfo:state.juiceInfo.singleItemInfo
+        singleItemInfo:state.juiceInfo.singleItemInfo,
+        searchTerm:state.juiceInfo.searchTerm
     };
 
 }
