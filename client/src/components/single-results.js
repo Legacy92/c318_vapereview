@@ -7,7 +7,6 @@ import * as actions from "../actions";
 import types from "../actions/types";
 import JuiceReviews from "./juice-reviews";
 import juiceBottle from "../assets/images/vape-juice-bottle-transparent-smoke.png";
-import vapeImage from"../assets/images/vape-image.jpeg";
 
 class SingleResults extends Component {
 
@@ -19,9 +18,12 @@ class SingleResults extends Component {
         if(juice_id !==':juice_id'){
             this.props.singleItem({juice_id});
             this.props.singleItemReviews({juice_id});
+
         }else{
             this.getRandomJuice();
         }
+
+
     }
 
     handleAddReviewClick() {
@@ -35,6 +37,11 @@ class SingleResults extends Component {
         this.props.history.go(-1);
 
     }
+
+    handleManufacturerNameClick () {
+        console.log("Manufacturer Clicked");
+
+}
 
     async getRandomJuice(){
         await this.props.getRandomJuice();
@@ -66,21 +73,20 @@ class SingleResults extends Component {
             return (
                 <div className="single-results-display">
                     <div className="single-results-item col-10 offset-1  card rounded  my-3">
-                        <div className="prod-info-main prod-wrap clearfix">
                             <div className="row">
-                                <div className="col-md-4 col-sm-4 col-4">
+                                <div className="col-md-4 col-sm-12 col-12">
                                     <div className="product-image single-results-image-container">
                                         <div className="juice-bottle-wrapper rounded" >
                                             <img  className="img-rounded single-results-image" src={juiceBottle}/>
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col-md-7 col-sm-7 col-7">
-                                    <div className="product-name">
-                                        <h1 className="name">{name}</h1>
+                                <div className="col-md-7 col-sm-12 col-12 single-results-written-content">
+                                    <div>
+                                        <h2 className="name">{name}</h2>
                                     </div>
                                     <div>
-                                        <h2 className="manufacturer">{` By: ${manufacturer_name}`}</h2>
+                                        <h3 onClick={this.handleManufacturerNameClick.bind(this)} className="manufacturer">{` By: ${manufacturer_name}`}</h3>
                                     </div>
                                     <div className="single-results-stars-container">
                                         <ReactStars className="single-results-stars stars" size={20} edit={false} count={5} value={rating} color1="grey" color2="#ffc900"/>
@@ -95,7 +101,6 @@ class SingleResults extends Component {
                                     <button onClick={this.handleBackButton.bind(this)}>Back To Results</button>
                                 </div>
                             </div>
-                        </div>
                     </div>
                     <JuiceReviews/>
                 </div>
