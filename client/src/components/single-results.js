@@ -83,7 +83,7 @@ class SingleResults extends Component {
                                 </div>
                                 <div className="col-md-7 col-sm-12 col-12 single-results-written-content">
                                     <div>
-                                        <h2 className="name">{name}</h2>
+                                        <h2 className="single-results-name">{name}</h2>
                                     </div>
                                     <div>
                                         <h3 onClick={this.handleManufacturerNameClick.bind(this)} className="manufacturer">{` By: ${manufacturer_name}`}</h3>
