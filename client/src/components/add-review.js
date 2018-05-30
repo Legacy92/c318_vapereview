@@ -43,7 +43,7 @@ class AddReview extends Component {
 
     moveToAddFlavors(){
         const {juice_id} = this.props.match.params;
-        this.props.history.push(`/favor-modal/${juice_id}`);
+        this.props.history.push(`/flavor-modal/${juice_id}`);
     }
 
     render() {
@@ -81,6 +81,7 @@ function mapStateToProps(state) {
     return {
         all: state.juiceInfo.all,
         juiceId: state.juiceInfo.juiceId,
+        flavorList: state.juiceInfo.flavorList
     };
 
 }

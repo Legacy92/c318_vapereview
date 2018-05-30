@@ -19,3 +19,11 @@ export function renderTextarea({label, input, meta: {touched, error}}) {
         </div>
     )
 }
+
+export function timeFormat (created) {
+
+    const time = new Date(created);
+
+    return time.toLocaleString();
+
+}

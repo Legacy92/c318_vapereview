@@ -63,7 +63,7 @@ class AddProduct extends Component {
 }
 
 
-function validate({ juice_name, manufacturer_name, manufacturer_site, manufacturer_desc }) {
+function validate({ juice_name, manufacturer_name, manufacturer_site, manufacturer_description }) {
     const errors = {};
 
     if (!juice_name) {
@@ -76,8 +76,8 @@ function validate({ juice_name, manufacturer_name, manufacturer_site, manufactur
     if (!manufacturer_site) {
         errors.manufacturer_site = "Please enter a manufacturer website";
     }
-    if (!manufacturer_desc) {
-        errors.manufacturer_desc = "Please enter a manufacturer description";
+    if (!manufacturer_description) {
+        errors.manufacturer_description = "Please enter a manufacturer description";
     }
 
 
