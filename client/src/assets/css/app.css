@@ -325,6 +325,13 @@ button, .btn, .btn-lg {
     opacity: 0;
 }
 
+.create-account-title {
+    font-size: 1.5rem
+}
+
+label {
+    font-size: 1rem
+}
 
 .create-account-body {
     background: linear-gradient(to bottom right,#a696c2, white);
@@ -336,6 +343,9 @@ button, .btn, .btn-lg {
 
 
 /* ////////////////////////////////////////// user sign in   ///////////////////////////// */
+.sign-in-title {
+    font-size: 1.5rem
+}
 
 .sign-in-body {
     background: linear-gradient(to bottom right,#a696c2, white);

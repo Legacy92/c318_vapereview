@@ -23,12 +23,11 @@ class UserSignIn extends Component {
         const {handleSubmit, authError} = this.props;
 
         return (
-            <div>
+            <div className = "col-8 offset-2">
             <h1 className = "create-header">invisiheader</h1>
             <div className ="sign-in-body">
                 <div className="modal-body">
-                    <h1>Sign In</h1>
-
+                    <h1 className = "sign-in-title">Sign In</h1>
                     <form style={{textAlign: 'center'}} onSubmit={handleSubmit(this.handleUserSignIn.bind(this))}>
                         <label>Email*</label>
                         <Field name="email" type = "email" component={renderInput}/>
