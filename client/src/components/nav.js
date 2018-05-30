@@ -36,7 +36,7 @@ class Header extends Component {
                     <button onClick={this.toggleNav} className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent">
                         <span className="navbar-toggler-icon"></span>
                     </button>
-                    <a className=" d-md-none mx-auto titanicFont h1 goldenFont" href="/">Juice Query</a>
+                    <a className=" d-md-none mx-auto titanicFont h1 headerTitle goldenFont" href="/">Juice Query</a>
                     <div className={btnClass} id="navbarContent">
                         <ul className="navbar-nav  nav-fill w-100 align-items-start">
                             <li className="nav-item">
