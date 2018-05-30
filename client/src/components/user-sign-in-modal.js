@@ -29,8 +29,8 @@ class UserSignIn extends Component {
                     <div className="modal-body">
                         <h1>Sign In</h1>
                         <form style={{textAlign: 'left'}} onSubmit={handleSubmit(this.handleUserSignIn.bind(this))}>
-                            <label>Username*</label>
-                            <Field name="username" component={renderInput}/>
+                            <label>Email*</label>
+                            <Field name="email" component={renderInput}/>
                             <label>Password*</label>
                             <Field name="password" component={renderInput}/>
                             <button>Sign In</button>
@@ -48,11 +48,11 @@ class UserSignIn extends Component {
 
 
 function validate(values){
-    const {user_signIn, password} = values;
+    const {email, password} = values;
     const errors = {};
 
-    if(!user_signIn) {
-        errors.user_signIn = 'Please enter your Username';
+    if(!email) {
+        errors.email = 'Please enter your Email';
     }
     if(!password){
         errors.password = 'Please enter your Password';
@@ -63,7 +63,11 @@ function validate(values){
 
 UserSignIn = reduxForm({
     form: "user_signIn",
-    validate: validate
+    validate: validate,
+    initialValues: {
+        email: 'realuser@mail.com',
+        password: 'asdf'
+    }
 })(UserSignIn);
 
 function mapStateToProps(state){
@@ -72,4 +76,4 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps, { UserSignIn, clearAuthError })(UserSignIn);
+export default connect(mapStateToProps, { signIn, clearAuthError })(UserSignIn);

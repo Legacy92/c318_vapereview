@@ -1,5 +1,7 @@
 import React, {Component} from "react";
 import axios from "axios";
+import { connect } from 'react-redux';
+import { authTest } from '../actions';
 
 class Test extends Component{
 
@@ -10,6 +12,8 @@ class Test extends Component{
         // this.addProduct();
         // this.createUser();
         // this.getReviewData();
+
+        this.props.authTest();
     }
 
 
@@ -58,4 +62,4 @@ class Test extends Component{
 
 }
 
-export default Test;
+export default connect(null, { authTest })(Test);

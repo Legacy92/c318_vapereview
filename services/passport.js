@@ -4,7 +4,7 @@ const passport = require('passport');
 const JwtStrategy = require('passport-jwt').Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
 const LocalStrategy = require('passport-local');
-const bcrypt = require('bcrypt-nodejs');
+const bcrypt = require('./bcrypt');
 const { jwtSecret } = require('../config');
 
 const testUser = {
@@ -13,22 +13,30 @@ const testUser = {
     id: 1
 }
 
-const localLogin = new LocalStrategy({}, (username, password, done) => {
-    const query = 'SELECT * FROM ?? where ?? = ?';
-    const inserts = ['users', 'username', username];
+const localOptions = {
+    usernameField: 'email'
+}
+const localLogin = new LocalStrategy(localOptions, async (email, password, done) => {
+    try {
+        const query = 'SELECT * FROM ?? where ?? = ?';
+        const inserts = ['users', 'email', email];
+        const sql = mysql.format(query, inserts);
 
-    const sql = mysql.format(query, inserts);
+        const users = await db.query(sql)
 
-    console.log('Find User Query:', sql);
+        if(!users.length) return done(null, false);
 
-    database.query(sql, (err, results) => {
-        console.log('User Find Result:', results);
+        const user = users[0];
 
-        // Check password
+        const passwordMatch = await bcrypt.compare(password, user.password);
 
-    
-        done(null, testUser);
-    });
+        if(!passwordMatch) return done(null, false);
+
+        done(null, user);
+    } catch(err){
+        console.log('ERROR Local Sign In:', err.message);
+        done(err);
+    }
 });
 
 const jwtOptions = {
@@ -36,19 +44,21 @@ const jwtOptions = {
     secretOrKey: jwtSecret
 }
 
-const jwtLogin = new JwtStrategy(jwtOptions, (payload, done) => {
-    const query = 'SELECT * FROM ?? where ?? = ?';
-    const inserts = ['users', 'id', payload.uid];
+const jwtLogin = new JwtStrategy(jwtOptions, async (payload, done) => {
+    try {
+        const query = 'SELECT * FROM ?? where ?? = ?';
+        const inserts = ['users', 'id', payload.uid];
+        const sql = mysql.format(query, inserts);
 
-    const sql = mysql.format(query, inserts);
+        const users = await db.query(sql);
 
-    console.log('JWT Find User By ID:', sql);
+        if(!users.length) return done(null, false);
 
-    database.query(sql, (err, results) => {
-        console.log('JWT Find User Result:', results);
-
-        done(null, testUser);
-    });
+        done(null, users[0]);
+    } catch(err){
+        console.log('ERROR With JWT Sign In:', error.message);
+        done(err);
+    }
 });
 
 passport.use(localLogin);

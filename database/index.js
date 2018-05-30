@@ -1,4 +1,5 @@
 const mysql = require('mysql');
+const util = require('util');
 const { database } = require('../config');
 
 const db = mysql.createConnection(database);
@@ -8,5 +9,7 @@ db.connect((err) => {
 
     console.log('Database connection established');
 });
+
+db.query = util.promisify(db.query);
 
 module.exports = db;

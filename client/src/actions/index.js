@@ -150,11 +150,11 @@ export function signUp(credentials){
 
             console.log('Sign Up Response:', response);
 
-            // localStorage.setItem('token', response.data.token);
+            localStorage.setItem('token', response.data.token);
     
-            // dispatch({
-            //     type: types.SIGN_UP
-            // });
+            dispatch({
+                type: types.SIGN_UP
+            });
         } catch(err){
             console.log('Sign Up Error:', err.response.data);
         }
@@ -165,7 +165,7 @@ export function signUp(credentials){
 export function signIn(credentials){
     return async (dispatch) => {
         try {
-            const response = await axios.post(`${BASE_URL}/signin`, credentials);
+            const response = await axios.post(`/auth/sign-in`, credentials);
 
             localStorage.setItem('token', response.data.token);
     
@@ -177,6 +177,18 @@ export function signIn(credentials){
                 type: types.AUTH_ERROR,
                 error: 'Invalid email and/or password'
             })
+        }
+    }
+}
+
+export function authTest(){
+    return async dispatch => {
+        try {
+            const resp = await axios.post('/auth/test', {test: 'stuff'}, setAuthHeaders());
+
+            console.log('Auth Test Resp:', resp);
+        } catch(err){
+            console.log('Auth Test ERROR:', err.message);
         }
     }
 }
@@ -193,4 +205,12 @@ export function clearAuthError(){
     return {
         type: types.CLEAR_AUTH_ERROR
     };
+}
+
+function setAuthHeaders(){
+    return {
+        headers: {
+            authorization: localStorage.getItem('token')
+        }
+    }
 }

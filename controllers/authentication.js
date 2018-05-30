@@ -1,7 +1,8 @@
-const db = require('../database');
 const mysql = require('mysql');
 const jwt = require('jwt-simple');
-const bcrypt = require('bcrypt-nodejs');
+const uuid = require('uuid/v1');
+const db = require('../database');
+const { genSalt, hash } = require('../services/bcrypt');
 const { jwtSecret } = require('../config');
 
 function tokenForUser(user){
@@ -13,13 +14,7 @@ function tokenForUser(user){
     }, jwtSecret);
 }
 
-const testUser = {
-    username: 'someTestGuy',
-    password: 'somethingEncrypted',
-    id: 1
-}
-
-exports.signUp = (req, res) => {
+exports.signUp = async (req, res) => {
 
     let { username, email, password } = req.body;
     const errors = [];
@@ -36,20 +31,21 @@ exports.signUp = (req, res) => {
 
     if(errors.length) return res.status(422).send(errors);
 
-    username = username.toLowerCase();
-    email = email.toLowerCase();
+    try{
+        username = username.toLowerCase();
+        email = email.toLowerCase();
 
-    const query = 'SELECT ??, ?? FROM ?? WHERE ?? = ? OR ?? = ?';
-    const inserts = ['username', 'email', 'users', 'username', username, 'email', email];
-    const sql = mysql.format(query, inserts);
+        const query = 'SELECT ??, ?? FROM ?? WHERE ?? = ? OR ?? = ?';
+        const inserts = ['username', 'email', 'users', 'username', username, 'email', email];
+        const sql = mysql.format(query, inserts);
 
-    db.query(sql, async (err, results) => {
+        const results = await db.query(sql);
 
-        if(results.length) {
-            const errors = results.map( user => {
-                if(user.username ===  username){
+        if (results.length) {
+            const errors = results.map(user => {
+                if (user.username === username) {
                     return 'Username in use';
-                } else if(user.email = email) {
+                } else if (user.email = email) {
                     return 'Email in use';
                 }
             });
@@ -57,44 +53,47 @@ exports.signUp = (req, res) => {
             return res.status(422).send(errors);
         }
 
-        const hash = await encryptPassword(password);
+        try {
+            const passwordHash = await encryptPassword(password);
 
-        const addQuery = 'INSERT INTO ?? (??, ??, ??, ??) VALUES (?, ?, ?, ?)';
-        const addInserts = ['users', 'username', 'password', 'email', 'role', username, hash, email, '1'];
-        const addSql = mysql.format(addQuery, addInserts);
+            const addQuery = 'INSERT INTO ?? (??, ??, ??, ??, ??) VALUES (?, ?, ?, ?, ?)';
+            const addInserts = ['users', 'id', 'username', 'password', 'email', 'role', uuid(), username, passwordHash, email, '1'];
+            const addSql = mysql.format(addQuery, addInserts);
 
-        db.query(addSql, (err, result) => {
-            if(err){
-                console.log('Add User Error:', err.message);
-            }
-            
-            console.log('Add User Result:', result.affectedRows);
+            const saveResult = await db.query(addSql);
 
-            res.send({success: true});
-            
-            // res.send({
-            //     token: tokenForUser(testUser)
-            // });
-        });
-    });
+            if(!saveResult.affectedRows) throw new Error('Error saving new user to database');
+
+            res.send({
+                success: true,
+                token: tokenForUser({id: saveResult.insertId})
+            });
+        } catch(err){
+            console.log('ERROR Creating new account:', err.message);
+            res.status(500).send(['Error creating account']);
+        }
+    } catch(err){
+        console.log('ERROR Checking email and username in use:', err);
+        res.status(500).send(['Error creating account']);
+    }
 }
 
 exports.signIn = (req, res) => {
     res.send({
+        success: true,
         token: tokenForUser(req.user)
     });
 }
 
-function encryptPassword(password){
-    return new Promise((resolve, reject) => {
-        bcrypt.genSalt(10, (err, salt) => {
-            if(err) return reject(err.message);
+async function encryptPassword(password){
+    try {
+        const salt = await genSalt(10);
+        const passwordHash = await hash(password, salt, null);
 
-            bcrypt.hash(password, salt, null, (err, hash) => {
-                if(err) return reject(err.message);
+        return passwordHash;
+    } catch(err){
+        console.log('ERROR Encrypting password:', err.message);
 
-                resolve(hash);
-            });
-        });
-    });
+        throw new error(`ERROR Encrypting password: ${err.message}`);
+    }
 }
