@@ -10,9 +10,7 @@ import FlavorModal from './flavor-modal';
 class AddReview extends Component {
 
     async componentDidMount(){
-        console.log(this.props.match);
         const {juice_id} = this.props.match.params;
-        console.log(juice_id);
         await this.props.singleItem(juice_id);
     }
     handleAddReview(values) {
@@ -51,9 +49,6 @@ class AddReview extends Component {
 
 
     render() {
-        console.log(this.props.reviewFlavors, this.props.singleItemInfo);
-        console.log('match props:',this.props.match);
-        console.log("Add Review Props:", this.props);
         const {handleSubmit} = this.props;
         const {name} = this.props.singleItemInfo[0];
         return (
