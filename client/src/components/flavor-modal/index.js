@@ -30,8 +30,8 @@ class FlavorModal extends Component {
     nextStep(){
         const flavorIds = this.props.flavorList.map(item => item.flavor.id);
 
-        console.log('Go to next step, with flavor ids:', this.props.reviewFlavors);
-        this.props.history.go(-1);
+        console.log('Go to next step, withreviewFlavors:', this.props.reviewFlavors);
+        // this.props.history.go(-1);
     }
 
     stepBack(){

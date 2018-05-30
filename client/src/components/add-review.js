@@ -5,6 +5,7 @@ import {Field, reduxForm} from 'redux-form';
 import axios from 'axios';
 import { addReview } from "../actions";
 import Nav from './nav';
+import FlavorModal from './flavor-modal';
 
 class AddReview extends Component {
 
@@ -55,7 +56,7 @@ class AddReview extends Component {
 
             <form onSubmit={handleSubmit(this.handleAddReview.bind(this))}>
                     <Field name="user_id" label="user_id" component={this.renderInput}/>
-                    <button type="button" onClick={this.moveToAddFlavors.bind(this)} className="btn btn-default">Add Flavors</button>
+                    <FlavorModal/>
                     <Field name="rating" label="How many stars would you give currentJuiceName? (1-5)" component={this.renderInput}/>
                     <Field name="description" label="What did you think of currentJuiceName?" component={this.renderTextarea}/>
                     <button className="btn">Add Review</button>
@@ -81,7 +82,8 @@ function mapStateToProps(state) {
     return {
         all: state.juiceInfo.all,
         juiceId: state.juiceInfo.juiceId,
-        flavorList: state.juiceInfo.flavorList
+        flavorList: state.juiceInfo.flavorList,
+        reviewFlavors: state.juiceInfo.reviewFlavors
     };
 
 }
