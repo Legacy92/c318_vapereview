@@ -28,9 +28,10 @@ class UserSignIn extends Component {
             <div className ="sign-in-body">
                 <div className="modal-body">
                     <h1>Sign In</h1>
+
                     <form style={{textAlign: 'center'}} onSubmit={handleSubmit(this.handleUserSignIn.bind(this))}>
                         <label>Email*</label>
-                        <Field name="user_signIn" type = "email" component={renderInput}/>
+                        <Field name="email" type = "email" component={renderInput}/>
                         <label>Password*</label>
                         <Field name="password" type = "password" component={renderInput}/>
                         <button>Sign In</button>
@@ -48,11 +49,12 @@ class UserSignIn extends Component {
 
 
 function validate(values){
-    const {user_signIn, password} = values;
+    const {email, password} = values;
     const errors = {};
 
-    if(!user_signIn) {
-        errors.user_signIn = 'Please enter your Email';
+    if(!email) {
+        errors.email = 'Please enter your Email';
+
     }
     if(!password){
         errors.password = 'Please enter your Password';
@@ -72,4 +74,4 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps, { UserSignIn, clearAuthError })(UserSignIn);
+export default connect(mapStateToProps, { signIn, clearAuthError })(UserSignIn);

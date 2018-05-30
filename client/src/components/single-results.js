@@ -28,6 +28,7 @@ class SingleResults extends Component {
 
     handleAddReviewClick() {
         const {juice_id} = this.props.match.params;
+        console.log(this.props.singleItemInfo);
         this.props.history.push(`/add-review/${juice_id}`);
 
     }
@@ -46,7 +47,7 @@ class SingleResults extends Component {
     async getRandomJuice(){
         await this.props.getRandomJuice();
         const juice_id = this.props.singleItemInfo[0].id;
-        this.props.match.params = juice_id;
+        this.props.match.params = {'juice_id':juice_id};
         this.props.match.url= `/single-results/:${juice_id}`;
         console.log('Get Random Juice', juice_id);
             
@@ -78,7 +79,9 @@ class SingleResults extends Component {
                             <div className="col-md-4 col-sm-12 col-12">
                                 <div className="product-image single-results-image-container">
                                     <div className="juice-bottle-wrapper rounded" >
-                                        <img  className="img-rounded single-results-image" src={juiceBottle}/>
+                                        <div className="juice-bottle-colors">
+                                            <img  className="img-rounded single-results-image" src={juiceBottle}/>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -131,11 +134,3 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps, actions)(SingleResults);
-
-{/*<div className="rating">Rating:{rating}*/}
-    {/*<label htmlFor="stars-rating-5"><i className="fa fa-star text-danger"></i></label>*/}
-    {/*<label htmlFor="stars-rating-4"><i className="fa fa-star text-danger"></i></label>*/}
-    {/*<label htmlFor="stars-rating-3"><i className="fa fa-star text-danger"></i></label>*/}
-    {/*<label htmlFor="stars-rating-2"><i className="fa fa-star text-warning"></i></label>*/}
-    {/*<label htmlFor="stars-rating-1"><i className="fa fa-star text-warning"></i></label>*/}
-{/*</div>*/}

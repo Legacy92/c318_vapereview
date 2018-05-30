@@ -9,7 +9,6 @@ import axios from 'axios';
 class CreateAccount extends Component {
 
     handleSignUp(values) {
-        console.log("Form Values:", values);
         this.props.signUp(values);
     }
 
@@ -30,6 +29,8 @@ class CreateAccount extends Component {
                             <Field name = "email" component= {renderInput}/>
                             <label>Username*</label>
                             <Field name="username" component={renderInput}/>
+                            <label>Email</label>
+                            <Field name="email" component={renderInput}/>
                             <label>Password*</label>
                             <Field name="password" type = "password" component={renderInput}/>
                             <label>Confirm Password*</label>
@@ -48,11 +49,15 @@ class CreateAccount extends Component {
 }
 
 function validate(values){
-    const {username, password, confirm_password} = values;
+    const {username, password, confirm_password, email} = values;
     const errors = {};
 
     if(!username) {
         errors.username = "Please enter your username.";
+
+    }
+    if(!email) {
+        errors.email = "Please enter your email.";
 
     }
     if(!password) {
@@ -82,4 +87,4 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps, {CreateAccount, clearAuthError})(CreateAccount); 
+export default connect(mapStateToProps, {signUp, clearAuthError})(CreateAccount); 
