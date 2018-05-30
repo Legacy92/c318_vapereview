@@ -5,6 +5,10 @@ body {
 
 }
 
+.main-app-body {
+
+}
+
 a {
     color: black;
 }
@@ -53,10 +57,10 @@ button, .btn, .btn-lg {
 
 /* /////////////////////////////////////////landing page //////////////////////////////// */
 
-.landing-page-body, .multiple-results-body, .single-results-body {
-    position: relative;
-    margin-top: 60px;
-}
+/*.landing-page-body, .multiple-results-body, .single-results-body {*/
+    /*position: relative;*/
+    /*margin-top: 60px;*/
+/*}*/
 
 /* /////////////////////////////////////////Single Results Page //////////////////////////////// */
 
