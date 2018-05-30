@@ -19,13 +19,13 @@ class JuiceReviews extends Component {
             const ReviewInfo = this.props.singleItemReviewsData;
 
             reviewElements = ReviewInfo.map((item, index) => {
-                const {id, rating, review} = item;
+                const {id, rating, review, created} = item;
                 return (
                     <div key={index} className=" juice-review-container card my-4 col-10 offset-1 ">
                         <div className="juice-reviews-stars-container">
-                            <ReactStars className="juice-reviews-stars" size={20} edit={false} count={5} value={rating} color1="grey" color2="gold"/>
+                            <ReactStars className="juice-reviews-stars stars " size={20} edit={false} count={5} value={rating} color1="grey" color2="#ffc900"/>
                         </div>
-                        <h1>{id}</h1>
+                        <h1>{created}</h1>
                         <h3>{review}</h3>
                     </div>
                 )
