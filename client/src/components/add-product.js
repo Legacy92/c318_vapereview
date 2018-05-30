@@ -21,7 +21,7 @@ class AddProduct extends Component {
         return (
             <div>
                 <div className="input-group justify-content-center pt-5">
-                <input className="align-middle input-field col-8" style={{marginTop: 1+'em'}} placeholder={label} {...input} type="text" autoComplete="off"/>
+                <input className="align-middle input-field col-8" style={{marginTop: 1+'em', fontSize: 15+'px'}} placeholder={label} {...input} type="text" autoComplete="off"/>
                 </div>
                 <p className="text-danger">{touched && error}</p>
             </div>
@@ -32,7 +32,7 @@ class AddProduct extends Component {
         return (
             <div>
                 <div className="input-group justify-content-center pt-5">
-                <textarea className="align-middle input-field col-8" style={{marginTop: 1+'em'}}  {...input} type="text" autoComplete="off"  placeholder={label}/>
+                <textarea className="align-middle input-field col-8" style={{marginTop: 1+'em', fontSize: 15+'px'}}  {...input} type="text" autoComplete="off"  placeholder={label}/>
                 </div>
                 <p className="text-danger">{touched && error}</p>
             </div>
@@ -47,7 +47,7 @@ class AddProduct extends Component {
         return (
             <div style={{marginTop: 1+'em'}}> 
                 <div className="pt-5 titanicFont display-4 addProduct goldenFont d-md-block">Add Product</div>
-                <form className="mx-5" onSubmit={handleSubmit(this.handleAddProduct.bind(this))}>
+                <form onSubmit={handleSubmit(this.handleAddProduct.bind(this))}>
                     <Field className="align-middle" name="juice_name" label="Juice Name" component={this.renderInput} />
                     <Field className="align-middle" name="manufacturer_name" label="Manufacturer Name" component={this.renderInput} />
                     <Field className="align-middle" name="manufacturer_site" label="Manufacturer Site" component={this.renderInput} />
