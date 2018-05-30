@@ -103,10 +103,11 @@ app.get("/api/single-juice-info", (req, res, next) => {
 
 // Flavor chart on single results page - gets flavor breakdown of each juice
 app.get("/api/flavor-chart", (req, res, next) => {
-    const { juice_id } = req.body;
+    let { juice_id } = req.body;
+    juice_id = 1;
     
-    const query = 'SELECT * FROM ?? JOIN ?? ON ?? = ?? WHERE ?? = ?';
-    const inserts = ['juices', 'reviews', 'juices.id', 'reviews.juice_id', 'juices.id', juice_id];
+    const query = 'SELECT ??, ?? FROM ?? JOIN ?? ON ?? = ?? JOIN ?? ON ?? = ?? JOIN ?? on ?? = ?? WHERE ?? = 1';
+    const inserts = ['category.category', 'flavors.flavor', 'reviews', 'juices-flavors', 'reviews.id', 'juices-flavors.review_id', 'flavors', 'flavors.id', 'juices-flavors.flavor_id', 'category', 'flavors.catagory_id', 'category.id', 'reviews.juice_id', juice_id ];
 
     const sql = mysql.format(query, inserts);
 
@@ -115,10 +116,26 @@ app.get("/api/flavor-chart", (req, res, next) => {
     database.query(sql, (err, results, field) => {
         if (err) return res.status(500).send('Error Getting Data for Flavor Graph');
 
+        const categoryLength = results.length;
+
+        const categoryCounter = results.map(oldValue => {
+            return oldValue.category;
+        }).reduce((counters, category) => {
+            console.log('previous value: ', counters, '\ncurrent value: ', category);
+            if (counters.hasOwnProperty(category)){
+                counters[category]++;
+            } else {
+                counters[category] = 1;
+            }
+            return counters;
+        }, {});
+
         const output = {
             success: true,
-            data: results
+            data: categoryCounter
         }
+        
+
         res.json(output);
     });
 });
