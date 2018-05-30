@@ -13,7 +13,8 @@ const DEFAULT_STATE = {
     flavorList: [],
     randomJuiceId: [],
     singleItemReviewsData: [],
-    reviewFlavors:[]
+    reviewFlavors:[],
+    searchTerm:""
 };
 
 export default (state = DEFAULT_STATE, action) => {
@@ -61,6 +62,9 @@ export default (state = DEFAULT_STATE, action) => {
             return {...state, singleItemReviewsData: action.payload.data.data};            
         case types.CLEAR_SINGLE_ITEM:
             return {...state, singleItemReviewsData: [], juiceId: []};
+        case types.SET_SEARCH_TERM:
+            console.log("Search Term Action:", action);
+            return {...state, searchTerm: action.payload};
         default:
             return state;
     }

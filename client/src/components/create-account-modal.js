@@ -20,21 +20,18 @@ class CreateAccount extends Component {
         const {handleSubmit, authError} = this.props;
         return (
             <div>
-            <h1 className = "create-header">invisiheader</h1>
-            <div className="create-account-body">
+            <div className="col-10 offset-1  create-account-body">
                 <div className="create-account-modal-body">
                     <h1>Create an Account</h1>
                         <form style={{textAlign: 'center'}} onSubmit={handleSubmit(this.handleSignUp.bind(this))}>
                             <label>Email*</label>
-                            <Field name = "email" component= {renderInput}/>
+                            <Field name = "email" className="no-margin" component= {renderInput}/>
                             <label>Username*</label>
-                            <Field name="username" component={renderInput}/>
-                            <label>Email</label>
-                            <Field name="email" component={renderInput}/>
+                            <Field name="username" className="no-margin" component={renderInput}/>
                             <label>Password*</label>
-                            <Field name="password" type = "password" component={renderInput}/>
+                            <Field name="password" className="no-margin" type = "password" component={renderInput}/>
                             <label>Confirm Password*</label>
-                            <Field name="confirm_password" type = "password" component={renderInput}/>
+                            <Field name="confirm_password" className="no-margin" type = "password" component={renderInput}/>
                             <button>Create an Account</button>
                             <p>{authError}</p>
                       </form>
