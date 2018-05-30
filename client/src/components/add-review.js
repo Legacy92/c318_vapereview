@@ -31,12 +31,14 @@ class AddReview extends Component {
     renderTextarea({label, input, meta: {touched, error}}) {
         // console.log(label, input);
         return (
-            <div>
+        
+        <div>
+                <div className="input-group justify-content-center pt-5">
                 <label>{label}</label>
-                <textarea {...input} type="text" placeholder="Speak your mind" autoComplete="off"/>
+                </div>
                 <p className="text-danger">{touched && error}</p>
             </div>
-        )
+            )
     }
 
     moveToAddFlavors(){
