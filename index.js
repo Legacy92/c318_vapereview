@@ -119,9 +119,9 @@ app.get("/api/flavor-chart", (req, res, next) => {
         }).reduce((counters, category) => {
             console.log('previous value: ', counters, '\ncurrent value: ', category);
             if (counters.hasOwnProperty(category)){
-                counters[category]++;
+                counters[category]+=1/categoryLength*100;
             } else {
-                counters[category] = 1;
+                counters[category] = 1/categoryLength*100;
             }
             return counters;
         }, {});

@@ -11,7 +11,7 @@ class MultipleResults extends Component {
     componentDidMount() {
         // this.getReviewData();
         const { searchTerm } = this.props.match.params;
-        console.log('TERM:', searchTerm);
+        this.props.setSearchTerm(searchTerm);
 
         if(searchTerm){
             this.props.landingPageSearch({input: searchTerm});

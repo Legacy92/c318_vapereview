@@ -3,6 +3,20 @@ import axios from "axios";
 
 
 
+
+export function setSearchTerm(searchTerm) {
+    console.log("search term function");
+
+    return {
+        type: types.SET_SEARCH_TERM,
+        payload: searchTerm
+    }
+
+
+}
+
+
+
 export function createAccount(values) {
     console.log("Form Values:", values);
     const response = axios.post("/api/create-user", values);

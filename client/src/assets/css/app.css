@@ -5,6 +5,15 @@ body {
 
 }
 
+.no-margin {
+    margin-top: 0;
+}
+
+.main-app-body {
+    padding-top: 65px;
+    padding-bottom: 65px;
+}
+
 a {
     color: black;
 }
@@ -53,10 +62,10 @@ button, .btn, .btn-lg {
 
 /* /////////////////////////////////////////landing page //////////////////////////////// */
 
-.landing-page-body, .multiple-results-body, .single-results-body {
-    position: relative;
-    margin-top: 60px;
-}
+/*.landing-page-body, .multiple-results-body, .single-results-body {*/
+    /*position: relative;*/
+    /*margin-top: 60px;*/
+/*}*/
 
 /* /////////////////////////////////////////Single Results Page //////////////////////////////// */
 
@@ -78,9 +87,7 @@ button, .btn, .btn-lg {
     left: 26%;
     position: relative;
 }
-.single-results-header-footer {
-    color: rgba(0, 0, 0, 0);
-}
+
 
 .single-results-written-content {
 
