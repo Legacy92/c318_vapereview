@@ -81,10 +81,10 @@ export function pullJuiceData() {
     }
 }
 
-export function singleItem(juiceId) {
-    console.log(juiceId);
+export function singleItem(juice_id) {
+    console.log(juice_id);
     const response = axios.get("/api/single-juice-info", {
-        params: juiceId
+        params: juice_id
     });
 
     return {

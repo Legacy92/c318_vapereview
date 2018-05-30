@@ -3,12 +3,18 @@ import { Link } from 'react';
 import { connect } from "react-redux";
 import {Field, reduxForm} from 'redux-form';
 import axios from 'axios';
-import { addReview } from "../actions";
+import { addReview, singleItem } from "../actions";
 import Nav from './nav';
 import FlavorModal from './flavor-modal';
 
 class AddReview extends Component {
 
+    async componentDidMount(){
+        console.log(this.props.match);
+        const {juice_id} = this.props.match.params;
+        console.log(juice_id);
+        await this.props.singleItem(juice_id);
+    }
     handleAddReview(values) {
         const {juice_id} = this.props.match.params;
         const {reviewFlavors} = this.props;
@@ -45,10 +51,11 @@ class AddReview extends Component {
 
 
     render() {
-        console.log(this.props.reviewFlavors, this.props.match);
+        console.log(this.props.reviewFlavors, this.props.singleItemInfo);
+        console.log('match props:',this.props.match);
         console.log("Add Review Props:", this.props);
         const {handleSubmit} = this.props;
-        const {name} = this.props.match.params;
+        const {name} = this.props.singleItemInfo[0];
         return (
         <div className="add-review">
             <h1>Add Review for {name}</h1>
@@ -80,4 +87,4 @@ AddReview = reduxForm({
     form: "add-review"
 })(AddReview);
 
-export default connect(mapStateToProps, {addReview})(AddReview);
+export default connect(mapStateToProps, {addReview, singleItem})(AddReview);
