@@ -9,6 +9,12 @@ a {
     color: black;
 }
 
+.add-product-to-review {
+    color: white;
+    font-size: 3rem;
+    border-bottom: #f8f4ff
+}
+
 button, .btn, .btn-lg {
     background-color: #2a0d30;
     border: 1px solid white;

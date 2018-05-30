@@ -36,7 +36,7 @@ class UserSignIn extends Component {
                     </form>
                 </div>
                 <div className="modal-footer">
-                    <p>New Around Here?<Link to="/create-account" className="link" >Create an Account</Link></p>
+                <p>New Around Here?<Link to="/create-account-modal" className="link" >Create an Account</Link></p>
                 </div>
             </div>
         )
