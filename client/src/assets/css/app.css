@@ -59,6 +59,11 @@ button, .btn, .btn-lg {
 
 }
 
+.single-results-written-content {
+
+    padding-top: 7px;
+
+}
 
 .single-results-display {
     position: relative;
@@ -67,7 +72,7 @@ button, .btn, .btn-lg {
 
 .single-results-item {
     min-height: 40vh;
-    box-shadow: #ffc900 0px 0px 0px 0.7px;
+    box-shadow: #ffc900 0px 0px 0px 2px;
     background: linear-gradient(to bottom right,#a696c2, white);
 }
 
@@ -100,15 +105,21 @@ button, .btn, .btn-lg {
 
  @media (max-width:576px ){
      .single-results-image-container {
-         top: 1.5%;
+         top: 4.5%;
 
      }
      .single-results-image {
          height: 135px;
      }
-     .single-results-stars {
 
-     }
+}
+
+@media (max-width: 768px) {
+    .single-results-image {
+        height: 135px;
+    }
+
+
 }
 /* /////////////////////////////////////////Juice ReviewsPage //////////////////////////////// */
 
@@ -118,7 +129,7 @@ button, .btn, .btn-lg {
 }
 
 .juice-review-container {
-    box-shadow: #ffc900 0px 0px 0px 0.7px;
+    box-shadow: #ffc900 0px 0px 0px 2px;
     background: linear-gradient(to bottom right,#a696c2, white);
 
 
@@ -145,7 +156,7 @@ button, .btn, .btn-lg {
 }
 
 .card-container {
-    box-shadow: #ffc900 0px 0px 0px 0.7px;
+    box-shadow: #ffc900 0px 0px 0px 2px;
 
 }
 
@@ -216,7 +227,7 @@ button, .btn, .btn-lg {
 
 
 .header-container {
-    box-shadow: #ffc900 0px 0px 0px 0.7px;
+    box-shadow: #ffc900 0px 0px 0px 2px;
     color: #ffc900;
 }
 
@@ -244,6 +255,7 @@ button, .btn, .btn-lg {
     text-shadow:  #12100e 1px 1px
 }
 
-.h1{
+.h1 {
     font-size: 2.75rem
 
+}

@@ -4,11 +4,21 @@ import axios from "axios";
 import { connect } from "react-redux";
 import * as actions from "../actions";
 import ReactStars from "react-stars";
+import { timeFormat } from "../helpers";
+
 
 import types from "../actions/types";
 
 
 class JuiceReviews extends Component {
+
+    componentDidMount() {
+
+
+    }
+
+
+
 
 
     render() {
@@ -25,8 +35,8 @@ class JuiceReviews extends Component {
                         <div className="juice-reviews-stars-container">
                             <ReactStars className="juice-reviews-stars stars " size={20} edit={false} count={5} value={rating} color1="grey" color2="#ffc900"/>
                         </div>
-                        <h1>{created}</h1>
-                        <h3>{review}</h3>
+                        <h5>{timeFormat(created)}</h5>
+                        <h5>{review}</h5>
                     </div>
                 )
 
