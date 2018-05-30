@@ -51,7 +51,7 @@ class AddReview extends Component {
     }
 
     render() {
-        console.log(this.props.reviewFlavors);
+        console.log(this.props.reviewFlavors, this.props.singleItemInfo);
         console.log("Add Review Props:", this.props);
         const {handleSubmit} = this.props;
         return (
@@ -87,7 +87,8 @@ function mapStateToProps(state) {
         all: state.juiceInfo.all,
         juiceId: state.juiceInfo.juiceId,
         flavorList: state.juiceInfo.flavorList,
-        reviewFlavors: state.juiceInfo.reviewFlavors
+        reviewFlavors: state.juiceInfo.reviewFlavors,
+        singleItemInfo:state.juiceInfo.singleItemInfo
     };
 
 }
