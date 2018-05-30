@@ -30,7 +30,6 @@ const App = () => (
             <Route path="/advanced-search" component={AdvancedSearchModal} />
             <Route path="/user-sign-in" component={UserSignIn} />
             <Route exact path="/" component={LandingPage} />
-            <Route path="/flavor-modal/:juice_id" component={FlavorModal} />
             <Route  path="/test" component={Test} />
         </div>
     </div>
