@@ -1,23 +1,18 @@
 const express = require("express");
-const mysql = require('mysql');
 const cors = require("cors");
 const { resolve } = require("path");
-const credentials = require('./config/credentials');
+const mysql = require('mysql');
+const database = require('./database');
 const PORT = process.env.PORT || 9000;
 
 const app = express();
 
-const database = mysql.createConnection(credentials);
-
-database.connect((err) => {
-    if (err) return console.log('CONNECTION ERROR:', err.message);
-
-    console.log('database connection established');
-});
-
 app.use(cors());
 app.use(express.json());
 app.use(express.static(resolve(__dirname, "client", "dist")));
+
+require('./routes/api')(app);
+require('./routes/auth')(app);
 
 
 // Browse button on landing page - returns all juices
@@ -81,8 +76,9 @@ app.get("/api/multiple-results", (req, res, next) => {
 
 //Get Single Juice Results	
 app.get("/api/single-juice-info", (req, res, next) => {	
-        const { juice_id } = req.query;
-        
+        // const { juice_id } = req.query;
+        const juice_id  = req.query[Object.keys(req.query)[0]];
+        console.log(juice_id);
         const query = 'SELECT `juices`.*, AVG(`reviews`.`rating`) as rating FROM ?? JOIN ?? ON ?? = ?? WHERE ?? = ?';
         const inserts = ['juices', 'reviews', 'juices.id', 'reviews.juice_id', 'juices.id', juice_id];
           
@@ -103,10 +99,11 @@ app.get("/api/single-juice-info", (req, res, next) => {
 
 // Flavor chart on single results page - gets flavor breakdown of each juice
 app.get("/api/flavor-chart", (req, res, next) => {
-    const { juice_id } = req.body;
+    let { juice_id } = req.body;
+    juice_id = 1;
     
-    const query = 'SELECT * FROM ?? JOIN ?? ON ?? = ?? WHERE ?? = ?';
-    const inserts = ['juices', 'reviews', 'juices.id', 'reviews.juice_id', 'juices.id', juice_id];
+    const query = 'SELECT ??, ?? FROM ?? JOIN ?? ON ?? = ?? JOIN ?? ON ?? = ?? JOIN ?? on ?? = ?? WHERE ?? = 1';
+    const inserts = ['category.category', 'flavors.flavor', 'reviews', 'juices-flavors', 'reviews.id', 'juices-flavors.review_id', 'flavors', 'flavors.id', 'juices-flavors.flavor_id', 'category', 'flavors.catagory_id', 'category.id', 'reviews.juice_id', juice_id ];
 
     const sql = mysql.format(query, inserts);
 
@@ -115,33 +112,49 @@ app.get("/api/flavor-chart", (req, res, next) => {
     database.query(sql, (err, results, field) => {
         if (err) return res.status(500).send('Error Getting Data for Flavor Graph');
 
+        const categoryLength = results.length;
+
+        const categoryCounter = results.map(oldValue => {
+            return oldValue.category;
+        }).reduce((counters, category) => {
+            console.log('previous value: ', counters, '\ncurrent value: ', category);
+            if (counters.hasOwnProperty(category)){
+                counters[category]++;
+            } else {
+                counters[category] = 1;
+            }
+            return counters;
+        }, {});
+
         const output = {
             success: true,
-            data: results
+            data: categoryCounter
         }
+        
+
         res.json(output);
     });
 });
 
 
 // create user -- use product or review instead of add-review because POST methods imply addition or creation 
-app.post("/api/create-user", (req, res, next) => {
-    const { username, password } = req.body;
+// app.post("/api/create-user", (req, res, next) => {
+//     const { username, password } = req.body;
 
-    const query = 'INSERT INTO ?? (??, ??, ??, ??, ??) VALUES (?, ?, ?, ?, ?)';
-    const inserts = ['users', 'username', 'password', 'email', 'created', 'role', username, password, 'NULL', 'CURRENT_TIMESTAMP', '1'];
+//     const query = 'INSERT INTO ?? (??, ??, ??, ??, ??) VALUES (?, ?, ?, ?, ?)';
+//     const inserts = ['users', 'username', 'password', 'email', 'created', 'role', username, password, 'NULL', 'CURRENT_TIMESTAMP', '1'];
 
-    const sql = mysql.format(query, inserts);
-    console.log("This is the formatted SQL", sql);
-    database.query(sql, (err, results, fields) => {
-        if (err) return res.status(500).send('Error Creating User Account');
-        const output = {
-            success: true,
-            data: results
-        }
-        res.json(output);
-    })
-});
+//     const sql = mysql.format(query, inserts);
+//     console.log("This is the formatted SQL", sql);
+//     database.query(sql, (err, results, fields) => {
+//         if (err) return res.status(500).send('Error Creating User Account');
+//         const output = {
+//             success: true,
+//             data: results
+//         }
+//         res.json(output);
+//     })
+// });
 
 //add product
 app.post('/api/add-product', (req, res, next) => {
@@ -165,8 +178,8 @@ app.post('/api/add-product', (req, res, next) => {
 //add review
 
 app.post('/api/add-review', (req, res, next) => {
-    const { rating, description, juice_id, user_id, flavor1, flavor2, flavor3 } = req.body;
-
+    const { rating, description, juice_id, user_id, reviewFlavors } = req.body;
+    console.log(reviewFlavors);
     let query = 'INSERT INTO ?? (??, ??, ??, ??) VALUES (?, ?, ?, ?)';
     let inserts = ['reviews', 'rating', 'description', 'juice_id', 'user_id', rating, description, juice_id, user_id];
 
@@ -181,145 +194,129 @@ app.post('/api/add-review', (req, res, next) => {
         const reviewId = results.insertId
 
         res.json(output);
-// get flavor ID's for added flavors
-        if (output.success) {
-            let query = 'SELECT * FROM ?? WHERE ?? IN (?, ?, ?)'
-            let inserts = ['flavors', 'flavor', flavor1, flavor2, flavor3]
-
-            let sql = mysql.format(query, inserts);
-            console.log("This is the formatted SQL", sql);
-            database.query(sql, (err, results, fields) => {
-                if (err) return res.status(500).send('Error Getting Flavor IDs');
-                console.log(results);
-                let output = {
-                    success: true,
-                    data: results
-                }
-                const flavorId1 = output.data[0].id
-                const flavorId2 = output.data[1].id
-                const flavorId3 = output.data[2].id
-// insert reviews with flavors into juices-flavors table
                 if (output.success) {
-                    let query = 'INSERT INTO ?? (??, ??) VALUES (?, ?),(?, ?),(?, ?)'
-                    let inserts = ['juices-flavors', 'review_id', 'flavor_id', reviewId, flavorId1, reviewId, flavorId2, reviewId, flavorId3 ]
-        
-                    let sql = mysql.format(query, inserts);
-                    console.log("This is the formatted SQL", sql);
-                    database.query(sql, (err, results, fields) => {
-                        if (err) return res.status(500).send('Error Adding Review/Flavor IDs');
-                        let output = {
-                            success: true,
-                            data: results
-                        }
-                    })
+                    for(let i=0; i<reviewFlavors.length; i++){
+                        let flavorId = reviewFlavors[i];
+                        let query = 'INSERT INTO ?? (??, ??) VALUES (?, ?)'
+                        let inserts = ['juices-flavors', 'review_id', 'flavor_id', reviewId, flavorId]
+            
+                        let sql = mysql.format(query, inserts);
+                        console.log("This is the formatted SQL", sql);
+                        database.query(sql, (err, results, fields) => {
+                            if (err) return res.status(500).send('Error Adding Review/Flavor IDs');
+                            let output = {
+                                success: true,
+                                data: results
+                            }
+                        });
+                    }
+                   
                 }
-            })
-        }
     });
 });
 
-    //authenticate user
-    app.get('/api/log-in', (req, res, next) => {
-        const { username, password } = req.body;
+//authenticate user
+// app.get('/api/log-in', (req, res, next) => {
+//     const { username, password } = req.body;
 
-        let query = 'SELECT `username`, `password` FROM `users` WHERE `username` = ??';
-        let inserts = [username];
+//     let query = 'SELECT `username`, `password` FROM `users` WHERE `username` = ??';
+//     let inserts = [username];
 
-        let sql = mysql.format(query, inserts);
-        console.log("This is the formatted SQL", sql);
-        database.query(sql, (err, results, fields) => {
-            if (err) return res.status(500).send('Error Authenticating User');
-            //authenticate user, start session
-            const output = {
-                success: true,
-                data: results
-            }
-            res.json(output);
-        })
+//     let sql = mysql.format(query, inserts);
+//     console.log("This is the formatted SQL", sql);
+//     database.query(sql, (err, results, fields) => {
+//         if (err) return res.status(500).send('Error Authenticating User');
+//         //authenticate user, start session
+//         const output = {
+//             success: true,
+//             data: results
+//         }
+//         res.json(output);
+//     })
+// });
+
+
+//Get Flavor Categories
+app.get("/api/category-modal", (req, res, next) => {
+
+    let query = 'SELECT * FROM ??';
+    let inserts = ['category'];
+
+    let sql = mysql.format(query, inserts);
+
+    console.log(sql);
+
+    database.query(sql, (err, results, field) => {
+        if (err) return res.status(500).send('Error Getting Flavor Categories');
+
+        const output = {
+            success: true,
+            data: results
+        }
+        res.json(output);
     });
+});
 
+//Get Flavors by category ID
+app.get("/api/flavor-modal", (req, res, next) => {
+    let { category } = req.query;
 
-    //Get Flavor Categories
-    app.get("/api/category-modal", (req, res, next) => {
+    let query = 'SELECT * FROM ?? WHERE ?? = ?';
+    let inserts = ['flavors', 'catagory_id', category];
 
-        let query = 'SELECT * FROM ??';
-        let inserts = ['category'];
+    let sql = mysql.format(query, inserts);
 
-        let sql = mysql.format(query, inserts);
+    console.log(sql);
 
-        console.log(sql);
+    database.query(sql, (err, results, field) => {
+        if (err) {
+            console.log('ERROR:', err.message);
+            return res.status(500).send('Error Getting Flavors');
+        }
 
-        database.query(sql, (err, results, field) => {
-            if (err) return res.status(500).send('Error Getting Flavor Categories');
-
-            const output = {
-                success: true,
-                data: results
-            }
-            res.json(output);
-        });
+        const output = {
+            success: true,
+            data: results
+        }
+        res.json(output);
     });
-
-    //Get Flavors by category ID
-    app.get("/api/flavor-modal", (req, res, next) => {
-        let { category } = req.query;
-
-        let query = 'SELECT * FROM ?? WHERE ?? = ?';
-        let inserts = ['flavors', 'catagory_id', category];
-
-        let sql = mysql.format(query, inserts);
-
-        console.log(sql);
-
-        database.query(sql, (err, results, field) => {
-            if (err) {
-                console.log('ERROR:', err.message);
-                return res.status(500).send('Error Getting Flavors');
-            }
-
-            const output = {
-                success: true,
-                data: results
-            }
-            res.json(output);
-        });
-    });
+});
 
 
 //Get All Reviews for Single Juice
 app.get("/api/single-juice-reviews", (req, res, next) => {	
-        const juiceId  = req.query[Object.keys(req.query)[0]];
-        console.log(juiceId);
+    const juiceId  = req.query[Object.keys(req.query)[0]];
+    console.log(juiceId);
+    
+    
+    const query = 'SELECT `id`,`rating`, `description` as review, `juice_id`, `user_id`, `created` FROM ?? WHERE ?? = ? ORDER BY `reviews`.`created` DESC';
+    const inserts = ['reviews', 'reviews.juice_id', juiceId];
         
-        
-        const query = 'SELECT `id`,`rating`, `description` as review, `juice_id`, `user_id`, `created` FROM ?? WHERE ?? = ? ORDER BY `reviews`.`created` DESC';
-        const inserts = ['reviews', 'reviews.juice_id', juiceId];
-          
-        let sql = mysql.format(query, inserts);
-    	
-        console.log(sql);	
-    	
-        database.query(sql, (err, results, field) => {	
-            if (err) return res.status(500).send('Error Getting Reviews for Single Juice Page');	
-    	
-            const output = {	
-                success: true,	
-               data: results	
-            }	
-            res.json(output);	
-        });	
-    });
+    let sql = mysql.format(query, inserts);
+    
+    console.log(sql);	
+    
+    database.query(sql, (err, results, field) => {	
+        if (err) return res.status(500).send('Error Getting Reviews for Single Juice Page');	
+    
+        const output = {	
+            success: true,	
+            data: results	
+        }	
+        res.json(output);	
+    });	
+});
 
 
 
 
-    app.get("*", (req, res) => {
-        res.sendFile(resolve(__dirname, "client", "dist", "index.html"));
-    });
+app.get("*", (req, res) => {
+    res.sendFile(resolve(__dirname, "client", "dist", "index.html"));
+});
 
-    app.listen(PORT, () => {
-        console.log("Server running at localhost:" + PORT);
-    }).on("error", (err) => {
-        console.log("Server Error:", err.message);
-        console.log("Do you already have a server running on PORT:" + PORT + "?");
-    });
+app.listen(PORT, () => {
+    console.log("Server running at localhost:" + PORT);
+}).on("error", (err) => {
+    console.log("Server Error:", err.message);
+    console.log("Do you already have a server running on PORT:" + PORT + "?");
+});

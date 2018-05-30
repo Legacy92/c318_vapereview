@@ -23,24 +23,23 @@ class UserSignIn extends Component {
         const {handleSubmit, authError} = this.props;
 
         return (
-        <div>
-            <div className ="modal-content">
-            <button type="button" className="close mr-0 float-right" aria-label="Close"data-dismiss="modal"><span aria-hidden="true">X</span></button>
+            <div>
+            <h1 className = "create-header">invisiheader</h1>
+            <div className ="sign-in-body">
                 <div className="modal-body">
-                <h1>Sign In</h1>
-                    <form style={{textAlign: 'left'}} onSubmit={handleSubmit(this.handleUserSignIn.bind(this))}>
-                    <label>Username*</label>
-                    <Field name="user_signIn" component={renderInput}/>
-                    <label>Password*</label>
-                    <Field name="password" component={renderInput}/>
+                    <h1>Sign In</h1>
+
+                    <form style={{textAlign: 'center'}} onSubmit={handleSubmit(this.handleUserSignIn.bind(this))}>
+                        <label>Email*</label>
+                        <Field name="email" type = "email" component={renderInput}/>
+                        <label>Password*</label>
+                        <Field name="password" type = "password" component={renderInput}/>
                         <button>Sign In</button>
                         <p>{authError}</p>
-                </form>
+                    </form>
                 </div>
                 <div className="modal-footer">
-                <p>New Around Here?<Link to="/create-account" className="link" >Create an Account</Link></p>
-                </div>
-                <div>
+                    <p style={{margin: 'auto'}}>New Around Here? <Link to="/create-account-modal" style={{color: '#3f0080'}}>Create account here.</Link></p>
                 </div>
             </div>
             </div>
@@ -50,11 +49,12 @@ class UserSignIn extends Component {
 
 
 function validate(values){
-    const {user_signIn, password} = values;
+    const {email, password} = values;
     const errors = {};
 
-    if(!user_signIn) {
-        errors.user_signIn = 'Please enter your Username';
+    if(!email) {
+        errors.email = 'Please enter your Email';
+
     }
     if(!password){
         errors.password = 'Please enter your Password';
@@ -74,4 +74,4 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps, { UserSignIn, clearAuthError })(UserSignIn);
+export default connect(mapStateToProps, { signIn, clearAuthError })(UserSignIn);

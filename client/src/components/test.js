@@ -1,5 +1,7 @@
 import React, {Component} from "react";
 import axios from "axios";
+import { connect } from 'react-redux';
+import { authTest } from '../actions';
 
 class Test extends Component{
 
@@ -10,6 +12,9 @@ class Test extends Component{
         // this.addProduct();
         // this.createUser();
         // this.getReviewData();
+        this.getChartData();
+        this.props.authTest();
+
     }
 
 
@@ -20,9 +25,9 @@ class Test extends Component{
     }
 
     // pull all review data
-    async getReviewData(){
-        const response = await axios.get("/api/multiple-results");
-        console.log("Review Data:", response);
+    async getChartData(){
+        const response = await axios.get("/api/flavor-chart");
+        console.log("Chart Data:", response);
     }
 
      // create user
@@ -58,4 +63,4 @@ class Test extends Component{
 
 }
 
-export default Test;
+export default connect(null, { authTest })(Test);

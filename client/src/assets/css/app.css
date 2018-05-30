@@ -2,10 +2,21 @@
 body {
     margin: 0;
 
+
+}
+
+.main-app-body {
+
 }
 
 a {
     color: black;
+}
+
+.add-product-to-review {
+    color: white;
+    font-size: 3rem;
+    border-bottom: #f8f4ff
 }
 
 button, .btn, .btn-lg {
@@ -23,11 +34,12 @@ button, .btn, .btn-lg {
 .app {
      background-image: url(../images/Juice-Query-Temp-Background.png);
      background-size: cover;
-     /* text-shadow: 1px 2px 2px rgba(255, 255, 255, 0.767); */
+     background-repeat: no-repeat;
+     background-attachment: fixed;
      color: black;
      width: 100vw;
      min-height: 100vh;
-     position: absolute;
+     position: relative;
      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
      font-size: 20px;
      padding: 0;
@@ -40,37 +52,71 @@ button, .btn, .btn-lg {
     position: fixed;
     height: 85%;
     width: 100%;
-    top: 10%;
+    margin-top: 10%;
 }
 
 /* /////////////////////////////////////////landing page //////////////////////////////// */
 
-.landing-page-body, .multiple-results-body {
-    position: relative;
-}
+/*.landing-page-body, .multiple-results-body, .single-results-body {*/
+    /*position: relative;*/
+    /*margin-top: 60px;*/
+/*}*/
 
 /* /////////////////////////////////////////Single Results Page //////////////////////////////// */
 
+.juice-bottle-wrapper {
+    display: inline-block;
+    height: 260px;
+    position: relative;
+    /*border: black 1px solid;*/
+    background-color: #12100e;
+    box-shadow: #420842 0px 0px 20px 8px;
+
+}
+
+.juice-bottle-colors {
+    height: 52%;
+    width: 50%;
+    background-color: blue;
+    top: 40%;
+    left: 26%;
+    position: relative;
+}
+.single-results-header-footer {
+    color: rgba(0, 0, 0, 0);
+}
+
+.single-results-written-content {
+
+    padding-top: 7px;
+
+}
+
+.single-results-name {
+    text-shadow: #420842 2px 2px 20px;
+    color: white;
+
+
+}
 .single-results-display {
     position: relative;
-    top: 15vh;
 }
 
 .single-results-item {
     min-height: 40vh;
-    box-shadow: gold 0px 0px 0px 0.7px;
-    background-color: #715b71;
+    box-shadow: #ffc900 0px 0px 0px 2px;
+    background: linear-gradient(to bottom right,#a696c2, white);
 }
 
 .single-results-description {
-    font-size: 15px;
-    color: white;
+    font-size: 16px;
+    color: black;
     text-align: justify;
 
 }
 .single-results-image-container {
     position: relative;
-    top: 5.7%;
+    margin-top: 5.7%;
 }
 
 .single-results-item-text {
@@ -87,19 +133,35 @@ button, .btn, .btn-lg {
 }
 .single-results-image {
     height: 250px;
+    bottom: 74%;
+    position: relative;
+    right: 51%;
+
 }
 
  @media (max-width:576px ){
      .single-results-image-container {
-         top: 1.5%;
+         margin-top: 4.5%;
 
      }
      .single-results-image {
          height: 135px;
      }
-     .single-results-stars {
-
+     .juice-bottle-wrapper {
+         height: 140px;
      }
+}
+
+@media (max-width: 768px) {
+    .single-results-image {
+        height: 135px;
+    }
+    .juice-bottle-wrapper {
+        height: 140px;
+
+    }
+
+
 }
 /* /////////////////////////////////////////Juice ReviewsPage //////////////////////////////// */
 
@@ -109,25 +171,44 @@ button, .btn, .btn-lg {
 }
 
 .juice-review-container {
-    box-shadow: gold 0px 0px 0px 0.7px;
-    background-color: #715b71;
+    box-shadow: #ffc900 0px 0px 0px 2px;
+    background: linear-gradient(to bottom right,#a696c2, white);
 
 
 }
 
+/* /////////////////////////////////////////Create Account Page //////////////////////////////// */
 
+.create-account-body {
+    margin-top: 60px;
+
+}
+
+/* /////////////////////////////////////////Sign In Page //////////////////////////////// */
+
+.sign-in-body {
+    margin-top: 60px;
+}
 
 
 /* //////////////////////////////////////// mulitple results card /////////////////// */
+
 
 #multiple-container, #product-info-main, .card-container {
     height: 25vh;
     background: linear-gradient(to bottom right,#a696c2, white);
     border-radius: 2px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+}
+
+.product-detail {
+    border-bottom: 1px solid black;
 }
 
 .card-container {
-    box-shadow: gold 0px 0px 0px 0.7px;
+    box-shadow: #ffc900 0px 0px 0px 2px;
 
 }
 
@@ -137,17 +218,29 @@ button, .btn, .btn-lg {
 
 .name, .multiple-results-header {
     margin-top: 5px;
-    color: black;
+    color: white;
 }
-
 
 .rating, .juice-description{
-    font-size: 2vmin;
-    overflow: hidden;
-    color: black;
+    margin-top: 5px;
+    font-size: 1rem;
+   
 }
 
+.mult-advanced-button {
+    margin-top: 10%
+}
+
+
+
+
 /* //////////////////////////////// Colors //////////////////////////////// */
+
+
+.brightGold {
+   background-color:  #ffc900;
+}
+
 
 .golden {
     background-color: #a67c00;
@@ -191,12 +284,12 @@ button, .btn, .btn-lg {
 
 
 .header-container {
-    box-shadow: gold 0px 0px 0px 0.7px;
-    color: gold;
+    box-shadow: #ffc900 0px 0px 0px 2px;
+    color: #ffc900;
 }
 
 .navbar-dark .navbar-nav .nav-link.nav-link-text {
-    color: gold;
+    color: #ffc900;
 }
 
 /*.nav-link-text {*/
@@ -211,3 +304,48 @@ button, .btn, .btn-lg {
     color: #12100e;
     text-decoration: none
 }
+
+/* //////////////////////////////// stars styling ////////////////////////////// */
+
+
+.stars{
+    text-shadow:  #12100e 1px 1px
+}
+
+.headerTitle{
+    font-size: 2.5rem
+}
+
+
+.addProduct {
+    font-size: 2.5rem;
+    
+}
+
+
+/* ////////////////////////////////////////// create account ///////////////////////////// */
+.create-header {
+    color: black;
+    opacity: 0;
+}
+
+
+.create-account-body {
+    background: linear-gradient(to bottom right,#a696c2, white);
+    border-radius: 2px;
+    padding: 15px;
+    box-sizing: border-box;
+    box-shadow: #ffc900 0px 0px 0px 2px;
+}
+
+
+/* ////////////////////////////////////////// user sign in   ///////////////////////////// */
+
+.sign-in-body {
+    background: linear-gradient(to bottom right,#a696c2, white);
+    border-radius: 2px;
+    padding: 15px;
+    box-sizing: border-box;
+    box-shadow: #ffc900 0px 0px 0px 2px;
+}
+
