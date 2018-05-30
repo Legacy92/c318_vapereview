@@ -48,7 +48,7 @@ class MultipleResults extends Component {
 
         console.log("Multiple Results Props:",this.props);
         let juiceElements = [];
-        if (this.props.all) {
+        if (this.props.all.length) {
             const juiceInfo = this.props.all;
 
             juiceElements = juiceInfo.map((item, index) => {

@@ -11,66 +11,47 @@ import juiceBottle from "../assets/images/vape-juice-bottle-transparent-smoke.pn
 class SingleResults extends Component {
 
     componentDidMount(){
-        // // this.getJuiceData();
-        console.log("Single-product-props:", this.props);
         const {juice_id}  = this.props.match.params;
        
-        if(juice_id !==':juice_id'){
+        if(juice_id !=='random'){
             this.props.singleItem({juice_id});
             this.props.singleItemReviews({juice_id});
 
         }else{
             this.getRandomJuice();
         }
-
-
     }
 
     handleAddReviewClick() {
         const {juice_id} = this.props.match.params;
-        console.log(this.props.singleItemInfo);
         this.props.history.push(`/add-review/${juice_id}`);
-
     }
 
     handleBackButton() {
-        console.log("Back Button Clicked");
         this.props.history.go(-1);
-
     }
 
     handleManufacturerNameClick () {
         console.log("Manufacturer Clicked");
-
-}
+    }
 
     async getRandomJuice(){
         await this.props.getRandomJuice();
-        const juice_id = this.props.singleItemInfo[0].id;
-        this.props.match.params = {'juice_id':juice_id};
-        this.props.match.url= `/single-results/:${juice_id}`;
-        console.log('Get Random Juice', juice_id);
-            
-        await this.props.singleItemReviews(juice_id);
+
+        const { id } = this.props.singleItemInfo;
+
+        this.props.history.push(`/single-results/${id}`);
+
+        this.props.singleItemReviews(id);
     }
-
-    async getJuiceData(){
-        const response = await axios.get("/api/single-results");
-        console.log("Juice Data:", response);
-    }
-
-
+    
     render(){
-        console.log(this.props);
         let juiceData = [];
 
-        if(this.props.singleItemInfo[0]) {
+        if(this.props.singleItemInfo) {
 
-            const juiceData = this.props.singleItemInfo[0];
-
-            console.log('Juice Data:', juiceData);
-            const {name, manufacturer_name, manufacturer_site, manufacturer_description, rating} = juiceData;
-            console.log(name, manufacturer_description, manufacturer_site, manufacturer_name);
+            const {singleItemInfo: {name, manufacturer_name, manufacturer_site, manufacturer_description, rating}} = this.props
+            
             return (
                 <div className="single-results-body">
                     <div className="single-results-item col-10 offset-1  card rounded  my-3">
@@ -109,14 +90,6 @@ class SingleResults extends Component {
                 </div>
             )
         }
-        if(!this.props.randomJuice){
-            console.log('response not yet loaded');
-            return <h1>Loading</h1>;
-        }else{
-            return (
-                <h1>Loading</h1>
-            )
-        }
     }
 
 }
@@ -125,7 +98,6 @@ function mapStateToProps(state) {
     return {
         all: [],
         juice: state.juiceInfo.juice,
-        randomJuice: state.juiceInfo.randomJuice,
         singleItemInfo:state.juiceInfo.singleItemInfo
     };
 
