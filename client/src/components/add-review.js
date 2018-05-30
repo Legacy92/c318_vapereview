@@ -52,7 +52,6 @@ class AddReview extends Component {
         return (
         <div className="add-review">
             <h1>Add Review for currentJuiceName</h1>
-
             <form onSubmit={handleSubmit(this.handleAddReview.bind(this))}>
                     <Field name="user_id" label="user_id" component={this.renderInput}/>
                     <button type="button" onClick={this.moveToAddFlavors.bind(this)} className="btn btn-default">Add Flavors</button>
@@ -60,16 +59,6 @@ class AddReview extends Component {
                     <Field name="description" label="What did you think of currentJuiceName?" component={this.renderTextarea}/>
                     <button className="btn">Add Review</button>
             </form>
-
-
-            {/* <div className="star-rating">
-                <h2>Rating:</h2>
-            </div>
-            <div className = "add-review">
-                <h2></h2>
-                <textarea rows="4" cols="50"/>
-            </div>
-            <button type = "button" className = "btn btn-success">Submit</button> */}
         </div>
         )
     }
