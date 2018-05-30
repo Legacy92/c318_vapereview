@@ -67,6 +67,12 @@ button, .btn, .btn-lg {
 
 }
 
+.single-results-name {
+    text-shadow: #420842 2px 2px 20px;
+    color: white;
+
+
+}
 .single-results-display {
     position: relative;
     top: 15vh;
@@ -266,5 +272,6 @@ button, .btn, .btn-lg {
 }
 
 .headerTitle{
-    font-size: 2.75rem
+    font-size: 2.5rem
 }
+
