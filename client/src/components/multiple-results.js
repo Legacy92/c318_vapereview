@@ -55,13 +55,13 @@ class MultipleResults extends Component {
                 const { name, manufacturer_name, manufacturer_site, manufacturer_description, id, rating } = item;
                 return (
 
-                    <div onClick={() => this.handleProductClick(id)} key={index} id= "multiple-container" className="container col-12 col-sm-5 bg-dark card my-1 mx-1">
+                    <div onClick={() => this.handleProductClick(id)} key={index} id= "multiple-container" className="container col-10 col-sm-10 col-md-5 bg-dark card my-2 mx-2">
                         <div id = "prod-info-main"className="prod-info-main prod-wrap">
 
                                 <div className="card-container row">
                                     <div className="rating-container col-5 d-flex align-items-center flex-column">
                                         <div className="my-auto">                                    
-                                            <div className="rating-number">Juice Rating: </div>
+                                            <div className="rating-text">Juice Rating: </div>
                                             <ReactStars className="single-results-stars stars" size={15} edit={false} count={5} value={rating} color1="grey" color2="#ffc900"/>
                                         </div>
                                     </div>
@@ -88,12 +88,12 @@ class MultipleResults extends Component {
         return (
             <div className = "multiple-results-body col-12">
                 <h1 className = "multiple-results-header">Multiple Results</h1>
-                <div className="row justify-content-between">
+                <div className="row justify-content-center">
                     {juiceElements}
                 </div>
 
 
-                <Link className="btn" to="/flavor-modal">Advanced Search</Link>
+                <Link className="mult-advanced-button btn" to="/flavor-modal">Advanced Search</Link>
             </div>
         )
     }
