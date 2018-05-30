@@ -166,7 +166,7 @@ app.post('/api/add-product', (req, res, next) => {
 
 app.post('/api/add-review', (req, res, next) => {
     const { rating, description, juice_id, user_id, reviewFlavors } = req.body;
-
+    console.log(reviewFlavors);
     let query = 'INSERT INTO ?? (??, ??, ??, ??) VALUES (?, ?, ?, ?)';
     let inserts = ['reviews', 'rating', 'description', 'juice_id', 'user_id', rating, description, juice_id, user_id];
 
@@ -199,22 +199,26 @@ app.post('/api/add-review', (req, res, next) => {
 //                 const flavorId2 = output.data[1].id
 //                 const flavorId3 = output.data[2].id
 // // insert reviews with flavors into juices-flavors table
-//                 // if (output.success) {
-//                 //     let query = 'INSERT INTO ?? (??, ??) VALUES (?, ?),(?, ?),(?, ?)'
-//                 //     let inserts = ['juices-flavors', 'review_id', 'flavor_id', reviewId, flavorId1, reviewId, flavorId2, reviewId, flavorId3 ]
-        
-//                 //     let sql = mysql.format(query, inserts);
-//                 //     console.log("This is the formatted SQL", sql);
-//                 //     database.query(sql, (err, results, fields) => {
-//                 //         if (err) return res.status(500).send('Error Adding Review/Flavor IDs');
-//                 //         let output = {
-//                 //             success: true,
-//                 //             data: results
-//                 //         }
-//                 //     })
-//                 // }
-//             })
-//         }
+                if (output.success) {
+                    for(let i=0; i<reviewFlavors.length; i++){
+                        let flavorId = reviewFlavors[i];
+                        let query = 'INSERT INTO ?? (??, ??) VALUES (?, ?)'
+                        let inserts = ['juices-flavors', 'review_id', 'flavor_id', reviewId, flavorId]
+            
+                        let sql = mysql.format(query, inserts);
+                        console.log("This is the formatted SQL", sql);
+                        database.query(sql, (err, results, fields) => {
+                            if (err) return res.status(500).send('Error Adding Review/Flavor IDs');
+                            let output = {
+                                success: true,
+                                data: results
+                            }
+                        });
+                    }
+                   
+                }
+        //     })
+        // }
     });
 });
 
