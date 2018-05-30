@@ -3,12 +3,16 @@ import { Link } from 'react';
 import { connect } from "react-redux";
 import {Field, reduxForm} from 'redux-form';
 import axios from 'axios';
-import { addReview } from "../actions";
+import { addReview, singleItem } from "../actions";
 import Nav from './nav';
 import FlavorModal from './flavor-modal';
 
 class AddReview extends Component {
 
+    componentDidMount(){
+        const {juice_id} = this.props.match.params;
+        this.props.singleItem(juice_id);
+    }
     handleAddReview(values) {
         const {juice_id} = this.props.match.params;
         const {reviewFlavors} = this.props;
@@ -21,7 +25,6 @@ class AddReview extends Component {
     }
 
     renderInput({label, input, meta: {touched, error}}) {
-        // console.log(label, input);
         return (
             <div>
                 <label>{label}</label>
@@ -32,7 +35,6 @@ class AddReview extends Component {
     }
 
     renderTextarea({label, input, meta: {touched, error}}) {
-        // console.log(label, input);
         return (
         
         <div>
@@ -45,38 +47,38 @@ class AddReview extends Component {
             )
     }
 
-    moveToAddFlavors(){
-        const {juice_id} = this.props.match.params;
-        this.props.history.push(`/flavor-modal/${juice_id}`);
-    }
 
     render() {
-        console.log(this.props.reviewFlavors);
-        console.log("Add Review Props:", this.props);
         const {handleSubmit} = this.props;
-        return (
-        <div className="add-review">
-            <h1>Add Review for currentJuiceName</h1>
-            <form onSubmit={handleSubmit(this.handleAddReview.bind(this))}>
-                    <Field name="user_id" label="user_id" component={this.renderInput}/>
-                    <FlavorModal/>
-                    <Field name="rating" label="How many stars would you give currentJuiceName? (1-5)" component={this.renderInput}/>
-                    <Field name="description" label="What did you think of currentJuiceName?" component={this.renderTextarea}/>
-                    <button className="btn">Add Review</button>
-            </form>
-        </div>
-        )
+        if(this.props.singleItemInfo[0]){
+            const {name} = this.props.singleItemInfo[0];
+            return (
+            <div className="add-review">
+                <h1>Add Review for {name}</h1>
+
+                <form onSubmit={handleSubmit(this.handleAddReview.bind(this))}>
+                        <Field name="user_id" label="user_id" component={this.renderInput}/>
+                        <FlavorModal/>
+                        <Field name="rating" label="How many stars would you give currentJuiceName? (1-5)" component={this.renderInput}/>
+                        <Field name="description" label="What did you think of currentJuiceName?" component={this.renderTextarea}/>
+                        <button className="btn">Add Review</button>
+                </form>
+            </div>
+            )
+        }else{
+            return <h1>Loading</h1>
+        }
     }
 }
 
-// export default AddReview;
 
 function mapStateToProps(state) {
     return {
         all: state.juiceInfo.all,
         juiceId: state.juiceInfo.juiceId,
         flavorList: state.juiceInfo.flavorList,
-        reviewFlavors: state.juiceInfo.reviewFlavors
+        reviewFlavors: state.juiceInfo.reviewFlavors,
+        singleItemInfo:state.juiceInfo.singleItemInfo
     };
 
 }
@@ -84,4 +86,4 @@ AddReview = reduxForm({
     form: "add-review"
 })(AddReview);
 
-export default connect(mapStateToProps, {addReview})(AddReview);
+export default connect(mapStateToProps, {addReview, singleItem})(AddReview);

@@ -28,6 +28,7 @@ class SingleResults extends Component {
 
     handleAddReviewClick() {
         const {juice_id} = this.props.match.params;
+        console.log(this.props.singleItemInfo);
         this.props.history.push(`/add-review/${juice_id}`);
 
     }
@@ -46,7 +47,7 @@ class SingleResults extends Component {
     async getRandomJuice(){
         await this.props.getRandomJuice();
         const juice_id = this.props.singleItemInfo[0].id;
-        this.props.match.params = juice_id;
+        this.props.match.params = {'juice_id':juice_id};
         this.props.match.url= `/single-results/:${juice_id}`;
         console.log('Get Random Juice', juice_id);
             
