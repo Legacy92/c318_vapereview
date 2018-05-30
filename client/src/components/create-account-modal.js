@@ -9,7 +9,6 @@ import axios from 'axios';
 class CreateAccount extends Component {
 
     handleSignUp(values) {
-        console.log("Form Values:", values);
         this.props.signUp(values);
     }
 

@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import HamburgerMenu from './hamburger-menu';
 import { Link } from 'react-router-dom';
-
-
+import { connect } from 'react-redux';
+import { signOut } from '../actions';
 
 class Header extends Component {
 
@@ -22,6 +22,29 @@ class Header extends Component {
         this.setState({
             shown: !shown
         });
+    }
+
+    renderAuthLinks(){
+        const { auth, signOut } = this.props;
+
+        if(auth){
+            return (
+                <li className="nav-item">
+                    <Link className="nav-link nav-link-text" to="/" onClick={signOut}>Sign Out</Link>
+                </li>
+            );
+        }
+
+        return (
+            <Fragment>
+                <li className="nav-item">
+                    <Link className="nav-link nav-link-text" to="/create-account-modal" onClick={this.closeNav}>Create Account</Link>
+                </li>
+                <li className="nav-item">
+                    <Link className="nav-link nav-link-text" to="/user-sign-in" onClick={this.closeNav}>Sign In</Link>
+                </li>
+            </Fragment>
+        );
     }
 
     render() {
@@ -45,12 +68,7 @@ class Header extends Component {
                             <li className="nav-item">
                                 <Link className="nav-link nav-link-text" to="/add-product" onClick={this.toggleNav}>Add Product</Link>
                             </li>
-                            <li className="nav-item">
-                                <Link className="nav-link nav-link-text" to="/create-account-modal" onClick={this.closeNav}>Create Account</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link nav-link-text" to="/user-sign-in" onClick={this.closeNav}>Sign In</Link>
-                            </li>
+                            {this.renderAuthLinks()}
                         </ul>
                     </div>
                 </nav>
@@ -59,4 +77,10 @@ class Header extends Component {
     }
 }
 
-export default Header;
+function mapStateToProps(state){
+    return {
+        auth: state.user.auth
+    }
+}
+
+export default connect(mapStateToProps, { signOut })(Header);

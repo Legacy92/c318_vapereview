@@ -12,8 +12,6 @@ import AddProduct from "./add-product"
 import MultipleResults from "./multiple-results";
 import SingleResults from "./single-results";
 import FlavorModal from "./flavor-modal";
-import Test from './test';
-
 
 const App = () => (
     <div className="app"> 
@@ -31,7 +29,6 @@ const App = () => (
             <Route path="/user-sign-in" component={UserSignIn} />
             <Route exact path="/" component={LandingPage} />
             <Route path="/flavor-modal" component={FlavorModal} />
-            <Route path="/test" component={Test}/>
         </div>
     </div>
 );

@@ -148,7 +148,6 @@ export function signUp(credentials){
         try {
             const response = await axios.post('/auth/sign-up', credentials);
 
-            console.log('Sign Up Response:', response);
 
             localStorage.setItem('token', response.data.token);
     
