@@ -46,7 +46,7 @@ class AddProduct extends Component {
         const { handleSubmit } = this.props;
         return (
             <div style={{marginTop: 1+'em'}}> 
-                <div className="pt-5 display-2 d-none goldenFont shadow goldd d-md-block">
+                <div className="pt-5 titanicFont display-4 addProduct goldenFont d-md-block">
                 Add Product
                    
                 </div>
@@ -67,17 +67,17 @@ function validate({ juice_name, manufacturer_name, manufacturer_site, manufactur
     const errors = {};
 
     if (!juice_name) {
-        errors.juice_name = "Please enter a juice name";
+        errors.juice_name = "Please enter a Juice Name";
     }
 
     if (!manufacturer_name) {
-        errors.manufacturer_name = "Please enter a manufacturer name";
+        errors.manufacturer_name = "Please enter a Manufacturer Name";
     }
     if (!manufacturer_site) {
-        errors.manufacturer_site = "Please enter a manufacturer website";
+        errors.manufacturer_site = "Please enter a Manufacturer website";
     }
     if (!manufacturer_description) {
-        errors.manufacturer_description = "Please enter a manufacturer description";
+        errors.manufacturer_description = "Please enter a Manufacturer Description";
     }
 
 
