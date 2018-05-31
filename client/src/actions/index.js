@@ -77,6 +77,12 @@ export function addReview(values) {
     }
 }
 
+export function clearReviewFlavors(){
+    return {
+        type: types.CLEAR_REVIEW_FLAVORS
+    }
+}
+
 export function pullJuiceData() {
     const response = axios.get("/api/test");
 
