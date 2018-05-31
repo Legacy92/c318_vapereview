@@ -26,7 +26,6 @@ class Header extends Component {
 
     renderAuthLinks(){
         const { auth, signOut } = this.props;
-
         if(auth){
             return (
                 <li className="nav-item">

@@ -16,6 +16,7 @@ class UserSignIn extends Component {
 
     handleUserSignIn(values) {
         this.props.signIn(values);
+        this.props.history.go(-1);
     }
 
     render (){
