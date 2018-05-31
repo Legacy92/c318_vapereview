@@ -6,7 +6,7 @@ export default props => {
     const flavors = list.map((item, index) => {
         const { category, flavor } = item;
         return (
-            <tr key={category.id + '' + flavor.id}>
+            <tr className="add-review-chosen-flavor" key={category.id + '' + flavor.id}>
                 {/*<td>{category.name}</td>*/}
                 <td>{flavor.name}</td>
             </tr>
