@@ -425,6 +425,10 @@ h5.single-review-text {
     font-family: titanicfont;
     src: url(../fonts/TitanickDisplayNF.ttf);
 }
+@font-face{
+    font-family: luminari, fantasy;
+    src: url(../fonts/Luminari.ttf);
+}
 
 .titanicFont {
     font-family: titanicfont;
