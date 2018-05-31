@@ -5,4 +5,3 @@ export default store => next => action => {
 
     return action(store.dispatch);
 }
-

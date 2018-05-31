@@ -4,31 +4,25 @@ import { reduxForm, Field } from "redux-form";
 import { connect } from "react-redux";
 import * as actions from "../actions";
 
-
-
 class LandingPage extends Component {
     constructor(props) {
         super(props);
     }
 
-
     async handleLandingPageSearch(values) {
-        console.log("Landing Page Values:", values);
         await this.props.landingPageSearch(values);
+
         this.props.history.push(`/multiple-results/${values.input}`);
-
-
     }
 
     getJuicesToBrowse() {
-        console.log('browse button clicked');
         this.props.browseAllJuices();
     }
 
     async getRandomJuice(values) {
-        console.log('random juice requested');
         await this.props.getRandomJuice();
     }
+
     renderInput({ label, input, meta: { touched, error } }) {
         return (
             <div>
@@ -42,13 +36,10 @@ class LandingPage extends Component {
                 </div>
                 <p className="text-danger">{touched && error}</p>
             </div>
-        )
+        );
     }
 
-
-   
     render() {
-        console.log("State Props:", this.props.all, this.props.juice);
         const { handleSubmit } = this.props;
 
         return (
@@ -62,14 +53,14 @@ class LandingPage extends Component {
                 <Link style={{margin:1.0+'%'}} className="btn btn-lg white-text" to="/single-results/random">Random</Link>
 
             </div>
-        )
+        );
     }
 }
+
 LandingPage = reduxForm({
     form: "input",
     validate: validate
 })(LandingPage);
-
 
 function validate({ input }) {
     const errors = {};
@@ -80,12 +71,5 @@ function validate({ input }) {
 
     return errors;
 }
-// function mapStateToProps(state) {
-//     return {
-//         all: state.juiceInfo.all,
-//         juice: state.juiceInfo.juice
-//     };
-//
-// }
 
 export default connect(null, actions)(LandingPage);

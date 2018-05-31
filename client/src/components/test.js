@@ -5,8 +5,6 @@ import { authTest } from '../actions';
 
 class Test extends Component{
 
-
-
     componentDidMount(){
         //  this.testConnect();
         // this.addProduct();
@@ -14,9 +12,7 @@ class Test extends Component{
         // this.getReviewData();
         this.getChartData();
         this.props.authTest();
-
     }
-
 
     // example response
     async testConnect(){
@@ -42,8 +38,8 @@ class Test extends Component{
         console.log("user login information received");
     }
 
-      // add product
-      async addProduct(){
+    // add product
+    async addProduct(){
         const response = await axios.post("/api/add-product");
         console.log("addProduct Response:", response);
     }
@@ -54,13 +50,9 @@ class Test extends Component{
         console.log("addReview response:", response);
     }
 
-
-
     render() {
         return <h1>This is a test</h1>
     }
-
-
 }
 
 export default connect(null, { authTest })(Test);

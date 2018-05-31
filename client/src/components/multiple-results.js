@@ -7,10 +7,8 @@ import vapeImage from "../assets/images/vape-image.jpeg";
 import ReactStars from 'react-stars';
 import juiceBottleDefault from "../assets/images/vape-juice-bottle-questionmark.png";
 
-
 class MultipleResults extends Component {
     
-
     componentDidMount() {
         const { searchTerm } = this.props.match.params;
 
@@ -30,17 +28,17 @@ class MultipleResults extends Component {
 
     textTruncate(str, length, ending) {
         if (length == null) {
-          length = 50;
+            length = 50;
         }
         if (ending == null) {
-          ending = '...';
+            ending = '...';
         }
         if (str.length > length) {
-          return str.substring(0, length - ending.length) + ending;
+            return str.substring(0, length - ending.length) + ending;
         } else {
-          return str;
+            return str;
         }
-      }
+    }
 
     render() {
         let juiceElements = [];
@@ -83,8 +81,6 @@ class MultipleResults extends Component {
             });
         }
         return (
-
-            
             <div className = "multiple-results-body col-12">
                 <h1 className = "multiple-results-header">Search Results</h1>
                 <div className="row justify-content-center">
@@ -94,9 +90,8 @@ class MultipleResults extends Component {
 
                 <Link className="mult-advanced-button btn" to="/">Home</Link>
             </div>
-        )
+        );
     }
-    
 }
 
 function mapStateToProps(state) {
