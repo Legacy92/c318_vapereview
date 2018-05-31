@@ -9,7 +9,6 @@ export default (state = DEFAULT_STATE, action) => {
     switch (action.type) {
         case types.SIGN_UP:
         case types.SIGN_IN:
-            console.log('SIGN IN:', action);
             return {...state, auth: true, error: '', user: localStorage.getItem('username')};
         case types.SIGN_OUT:
             return { auth: false};

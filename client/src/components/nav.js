@@ -26,11 +26,11 @@ class Header extends Component {
 
     renderAuthLinks(){
         console.log('nav bar props:', this.props);
-        const { auth, signOut } = this.props;
+        const { auth, signOut, user } = this.props;
         if(auth){
             return (
                 <li className="nav-item">
-                    <Link className="nav-link nav-link-text" to="/" onClick={signOut}>Sign Out</Link>
+                    <Link className="nav-link nav-link-text" to="/" onClick={signOut}> Welcome, {user}! Sign Out</Link>
                 </li>
             );
         }
@@ -48,7 +48,6 @@ class Header extends Component {
     }
 
     render() {
-        console.log('this is from the nav:', this.props);
         const {shown} = this.state;
         let btnClass = "collapse navbar-collapse";
         if(shown) {

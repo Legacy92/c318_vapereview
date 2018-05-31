@@ -11,9 +11,6 @@ export default function(WrappedComponent){
             if(!this.props.auth){
                 this.props.history.push('/');
             }
-            const username= localStorage.getItem('username');
-            console.log(username);
-            this.props.username(username);
         }
 
         componentWillReceiveProps(nextProps){
