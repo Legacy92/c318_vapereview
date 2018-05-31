@@ -26,7 +26,7 @@ class UserSignIn extends Component {
         return (
 
             <div>
-                <h1 className = "titanicFont display-4 addProduct goldenFont">Sign In</h1>
+                <h1 className = "titanicFont display-4  goldenFont">Sign In</h1>
                 <div className = "col-10 offset-1">
                     <div className ="sign-in-body">
                         <div className="modal-body">
