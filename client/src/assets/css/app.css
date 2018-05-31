@@ -342,9 +342,7 @@ h2, h5 {
 
 }
 
-.product-detail, .description, .product-info, .row, .rating-container{
-    overflow: hidden;
-}
+
 
 .name, .multiple-results-header {
     margin-top: 5px;
@@ -515,6 +513,13 @@ label {
     color: #f8f4ff;
     font-family: luminari, fantasy;
     padding-top: 30px;
+    text-shadow: #420842 2px 2px 20px;
+
+}
+
+.add-review-arrow {
+    height: 75px;
+    width: auto;
 }
 
 .add-review-body {
@@ -527,4 +532,31 @@ label {
     margin-top: 15px;
     margin-bottom: 20px;
     display: inline-block;
+}
+
+.add-review-stars {
+    display: inline-block;
+}
+
+.add-review-dropdown-table {
+    table-layout: fixed;
+    width: 100%;
+
+}
+
+.add-review-flavor-card {
+    background: linear-gradient(to bottom right,#a696c2, white);
+    box-shadow: #7e03a7 0px 0px 0px 2px;
+    margin-bottom: 25px;
+    margin-top: 25px;
+
+}
+
+.table-holder {
+    padding-top: 3%;
+    padding-bottom: 3%;
+}
+
+#add-review-overflow {
+    /*overflow: auto;*/
 }

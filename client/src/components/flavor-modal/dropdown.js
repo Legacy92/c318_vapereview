@@ -26,8 +26,8 @@ class Dropdown extends Component {
         });
 
         return (
-            <div className="btn-group dropright">
-                <button onClick={() => this.setState({ show: !show })} className="btn btn-secondary dropdown-toggle" type="button">
+            <div className="btn-group dropdown">
+                <button onClick={() => this.setState({ show: !show })} className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton">
                     {btnText}
                 </button>
                 <div className={`dropdown-menu ${show ? 'show' : ''}`}>
