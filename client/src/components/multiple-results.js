@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import * as actions from "../actions";
 import vapeImage from "../assets/images/vape-image.jpeg";
 import ReactStars from 'react-stars';
-import juiceBottle from "../assets/images/vape-juice-bottle-transparent-smoke.png";
+import juiceBottleDefault from "../assets/images/vape-juice-bottle-questionmark.png";
 
 
 class MultipleResults extends Component {
@@ -56,7 +56,7 @@ class MultipleResults extends Component {
                                 <div className="rating-container col-5 d-flex align-items-center flex-column">
                                     <div className="my-auto">
                                         <div className="multiple-results-img">
-                                            <img  className="img-rounded multiple-results-image" src={juiceBottle}/>
+                                            <img  className="img-rounded multiple-results-image" src={juiceBottleDefault}/>
                                         </div>
                                         <div className = "multiple-results-star-container align-items-center">
                                             <ReactStars className="single-results-stars stars" size={15} edit={false} count={5} value={rating} color1="grey" color2="#ffc900"/>
@@ -67,7 +67,7 @@ class MultipleResults extends Component {
                                     <div className="my-auto">
                                         <div className="product-detail">
                                             <h5 className="name">{name}</h5>                                              
-                                            <h6>from: {manufacturer_name}</h6>
+                                            <h6>by: {manufacturer_name}</h6>
                                         </div>
                                         <div className="description">
                                             <p className = "juice-description">{this.textTruncate(manufacturer_description)}</p>
