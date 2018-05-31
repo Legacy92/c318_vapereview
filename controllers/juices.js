@@ -84,8 +84,8 @@ exports.getSingleJuiceReviews = async (req, res, next) => {
     try {
         const { juice_id } = req.query;
 
-        const query = 'SELECT `id`,`rating`, `description` as review, `juice_id`, `user_id`, `created` FROM ?? WHERE ?? = ? ORDER BY `reviews`.`created` DESC';
-        const inserts = ['reviews', 'reviews.juice_id', juice_id];
+        const query = 'SELECT r.`id`, r.`rating`, r.`description` as review, r.`juice_id`, u.`id`, r.`created` FROM ?? r JOIN ?? u ON u.`id` = r.`user_id` WHERE ?? = ? ORDER BY r.`created` DESC';
+        const inserts = ['reviews', 'users', 'reviews.juice_id', juice_id];
         const sql = mysql.format(query, inserts);
 
         const reviews = await db.query(sql);
