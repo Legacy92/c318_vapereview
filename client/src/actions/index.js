@@ -2,8 +2,6 @@ import types from "./types";
 import axios from "axios";
 
 export function setSearchTerm(searchTerm) {
-    console.log("search term function");
-
     return {
         type: types.SET_SEARCH_TERM,
         payload: searchTerm
@@ -13,7 +11,6 @@ export function setSearchTerm(searchTerm) {
 }
 
 export function getChartData(juice_id){
-    console.log("juiceID:", juice_id)
     const response = axios.get("/api/flavor-chart", {params: {juice_id}});
     return {
         type: types.GET_CHART_DATA,
@@ -74,6 +71,12 @@ export function addReview(values) {
         } catch(err){
             console.log('Add Review Error:', err.message);
         }
+    }
+}
+
+export function clearReviewFlavors(){
+    return {
+        type: types.CLEAR_REVIEW_FLAVORS
     }
 }
 
@@ -170,7 +173,7 @@ export function signIn(credentials){
             const response = await axios.post(`/auth/sign-in`, credentials);
 
             localStorage.setItem('token', response.data.token);
-            console.log(response.data);
+
             dispatch({
                 type: types.SIGN_IN,
                 payload: response
@@ -180,18 +183,6 @@ export function signIn(credentials){
                 type: types.AUTH_ERROR,
                 error: 'Invalid email and/or password'
             })
-        }
-    }
-}
-
-export function authTest(){
-    return async dispatch => {
-        try {
-            const resp = await axios.post('/auth/test', {test: 'stuff'}, setAuthHeaders());
-
-            console.log('Auth Test Resp:', resp);
-        } catch(err){
-            console.log('Auth Test ERROR:', err.message);
         }
     }
 }

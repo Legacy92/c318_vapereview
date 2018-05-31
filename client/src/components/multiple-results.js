@@ -7,7 +7,6 @@ import vapeImage from "../assets/images/vape-image.jpeg";
 import ReactStars from 'react-stars';
 import juiceBottleDefault from "../assets/images/vape-juice-bottle-questionmark.png";
 
-
 class MultipleResults extends Component {
 
     componentDidMount() {
@@ -29,17 +28,17 @@ class MultipleResults extends Component {
 
     textTruncate(str, length, ending) {
         if (length == null) {
-          length = 50;
+            length = 50;
         }
         if (ending == null) {
-          ending = '...';
+            ending = '...';
         }
         if (str.length > length) {
-          return str.substring(0, length - ending.length) + ending;
+            return str.substring(0, length - ending.length) + ending;
         } else {
-          return str;
+            return str;
         }
-      }
+    }
 
 
     render() {
@@ -96,7 +95,7 @@ class MultipleResults extends Component {
                 </div>
                 <Link className="mult-advanced-button btn" to="/">Home</Link>
             </div>
-        )
+        );
     }
 }
 
