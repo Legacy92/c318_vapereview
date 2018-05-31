@@ -25,6 +25,7 @@ class Header extends Component {
     }
 
     renderAuthLinks(){
+        console.log('nav bar props:', this.props);
         const { auth, signOut } = this.props;
         if(auth){
             return (
@@ -47,6 +48,7 @@ class Header extends Component {
     }
 
     render() {
+        console.log('this is from the nav:', this.props);
         const {shown} = this.state;
         let btnClass = "collapse navbar-collapse";
         if(shown) {
@@ -78,7 +80,8 @@ class Header extends Component {
 
 function mapStateToProps(state){
     return {
-        auth: state.user.auth
+        auth: state.user.auth,
+        user: state.user.user
     }
 }
 

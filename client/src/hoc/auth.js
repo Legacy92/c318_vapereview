@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {username} from '../actions';
 
 
 export default function(WrappedComponent){
     class Auth extends Component {
 
         componentDidMount(){
+            console.log("this is from auth");
             if(!this.props.auth){
                 this.props.history.push('/');
             }
+            const username= localStorage.getItem('username');
+            console.log(username);
+            this.props.username(username);
         }
 
         componentWillReceiveProps(nextProps){
@@ -24,7 +29,8 @@ export default function(WrappedComponent){
 
     function mapStateToProps(state){
         return {
-            auth: state.user.auth
+            auth: state.user.auth,
+            user: state.user.user
         }
     }
 

@@ -176,6 +176,7 @@ export function signIn(credentials){
             const response = await axios.post(`/auth/sign-in`, credentials);
 
             localStorage.setItem('token', response.data.token);
+            localStorage.setItem('username', response.data.data[0].username);
             console.log(response.data);
             dispatch({
                 type: types.SIGN_IN,
@@ -221,5 +222,12 @@ function setAuthHeaders(){
         headers: {
             authorization: localStorage.getItem('token')
         }
+    }
+}
+
+function username(username){
+    console.log('username function:',username);
+    return{
+        payload: username
     }
 }

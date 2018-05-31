@@ -2,16 +2,15 @@ import types from '../actions/types';
 
 const DEFAULT_STATE = {
     auth: false,
-    error: '',
-    user:''
+    error: ''
 };
 
 export default (state = DEFAULT_STATE, action) => {
     switch (action.type) {
         case types.SIGN_UP:
         case types.SIGN_IN:
-        console.log(action);
-            return {...state, auth: true, error: ''};
+            console.log('SIGN IN:', action);
+            return {...state, auth: true, error: '', user: localStorage.getItem('username')};
         case types.SIGN_OUT:
             return { auth: false};
         case types.AUTH_ERROR:
