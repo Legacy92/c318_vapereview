@@ -5,6 +5,15 @@ body {
 
 }
 
+.no-margin {
+    margin-top: 0;
+}
+
+.main-app-body {
+    padding-top: 65px;
+    padding-bottom: 65px;
+}
+
 a {
     color: black;
 }
@@ -58,6 +67,7 @@ input, label {
     height: 85%;
     width: 100%;
     margin-top: 10%;
+    color: #ffc900;
 }
 
 /* /////////////////////////////////////////landing page //////////////////////////////// */
@@ -87,9 +97,7 @@ input, label {
     left: 26%;
     position: relative;
 }
-.single-results-header-footer {
-    color: rgba(0, 0, 0, 0);
-}
+
 
 .single-results-written-content {
 
@@ -323,7 +331,7 @@ input, label {
 
 
 .addProduct {
-    font-size: 2.5rem;
+    font-size: 2.1rem;
     
 }
 
@@ -364,7 +372,25 @@ label {
     box-shadow: #ffc900 0px 0px 0px 2px;
 }
 
+
 label {
     font-size: 1rem
+}
+
+
+/* ////////////////////////////////////////// add product ///////////////////////////// */
+
+.add-product-body {
+    margin-top: 50px;
+    background: linear-gradient(to bottom right,#a696c2, white);
+    box-shadow: #ffc900 0px 0px 0px 2px;
+
+
+}
+/* ////////////////////////////////////////// add review   ///////////////////////////// */
+
+.juiceName {
+    color: #f8f4ff;
+    font-family: luminari, fantasy;
 }
 

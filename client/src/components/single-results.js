@@ -26,6 +26,14 @@ class SingleResults extends Component {
 
     }
 
+    handleHomeButton(){
+        this.props.history.push(`/`);
+
+
+    }
+
+
+
     handleAddReviewClick() {
         const {juice_id} = this.props.match.params;
         console.log(this.props.singleItemInfo);
@@ -34,8 +42,12 @@ class SingleResults extends Component {
     }
 
     handleBackButton() {
+        const searchTerm = this.props.searchTerm;
+
         console.log("Back Button Clicked");
-        this.props.history.go(-1);
+        // this.props.history.go(-1);
+        this.props.history.push(`/multiple-results/${searchTerm}`)
+
 
     }
 
@@ -73,7 +85,6 @@ class SingleResults extends Component {
             console.log(name, manufacturer_description, manufacturer_site, manufacturer_name);
             return (
                 <div className="single-results-body">
-                    <h1 className="single-results-header-footer">Single Result</h1>
                     <div className="single-results-item col-10 offset-1  card rounded  my-3">
                         <div className="row">
                             <div className="col-md-4 col-sm-12 col-12">
@@ -102,12 +113,15 @@ class SingleResults extends Component {
 
                             <div className="col-md-12">
                                 <button className="mx-2 rounded" onClick={this.handleAddReviewClick.bind(this)}>Add Review</button>
-                                <button onClick={this.handleBackButton.bind(this)}>Back To Results</button>
+                                {
+                                    this.props.searchTerm
+                                        ? <button onClick={this.handleBackButton.bind(this)}>Back</button>
+                                        : <button onClick={this.handleHomeButton.bind(this)}>Back</button>
+                                }
                             </div>
                         </div>
                     </div>
                     <JuiceReviews/>
-                    <h1 className="single-results-header-footer">Single Results</h1>
                 </div>
             )
         }
@@ -128,7 +142,8 @@ function mapStateToProps(state) {
         all: [],
         juice: state.juiceInfo.juice,
         randomJuice: state.juiceInfo.randomJuice,
-        singleItemInfo:state.juiceInfo.singleItemInfo
+        singleItemInfo:state.juiceInfo.singleItemInfo,
+        searchTerm:state.juiceInfo.searchTerm
     };
 
 }
