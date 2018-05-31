@@ -13,15 +13,16 @@ const JuiceReviews = props => {
     if (props.singleItemReviewsData) {
 
         const ReviewInfo = props.singleItemReviewsData;
-
+        console.log(props.singleItemReviewsData);
         reviewElements = ReviewInfo.map((item, index) => {
-            const {id, rating, review, created} = item;
+            const {id, rating, review, created, username} = item;
             return (
                 <div key={index} className=" juice-review-container card my-4 col-10 offset-1 ">
                     <div className="juice-reviews-stars-container">
                         <ReactStars className="juice-reviews-stars stars " size={20} edit={false} count={5} value={rating} color1="grey" color2="#ffc900"/>
                     </div>
                     <h5>{timeFormat(created)}</h5>
+                    <h6>By: {username}</h6>
                     <h5>{review}</h5>
                 </div>
             );
