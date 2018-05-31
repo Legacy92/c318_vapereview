@@ -3,8 +3,9 @@
 }
 
 .flavor-selection table {
-    color: white;
+    color: #5e2053;
     margin: auto;
+    font-size: 1.5rem;
 }
 
 .flavor-header {

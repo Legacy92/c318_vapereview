@@ -27,7 +27,7 @@ button:focus {
     outline: none;
 }
 
-.btn-group-lg>.btn, .btn-lg{
+.btn-group-lg>.btn, .btn-lg {
     padding: .5rem 2rem;
     font-size: 1.25rem;
     line-height: 1.5;
@@ -526,6 +526,18 @@ label {
     width: auto;
 }
 
+.add-review-buttons {
+    padding: .5rem 1rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .1rem;
+    cursor: pointer;
+    font-size: 1rem;
+    background-color: #5e2053;
+    color: white;
+    border: .05rem solid white;
+}
+
 .add-review-body {
     background: linear-gradient(to bottom right,#a696c2, white);
     box-shadow: #ffc900 0px 0px 0px 2px;
@@ -563,4 +575,10 @@ label {
 
 #add-review-overflow {
     /*overflow: auto;*/
+}
+
+.add-review-chosen-flavor {
+    color: black;
+    font-size: 1.3rem;
+
 }

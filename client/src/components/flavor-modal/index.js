@@ -59,7 +59,7 @@ class FlavorModal extends Component {
                             <div className="col-12 col-md-6 dropdown-container">
                                 {
                                     categories.length
-                                        ? <Dropdown action={this.handleSetCategory.bind(this)} btnText={`${selectedCategory.name ? selectedCategory.name : 'Select Category'}:`} menuItems={categories} keyNames={{ id: 'id', name: 'category' }} />
+                                        ? <Dropdown action={this.handleSetCategory.bind(this)} btnText={`${selectedCategory.name ? selectedCategory.name : 'Pick Category'}:`} menuItems={categories} keyNames={{ id: 'id', name: 'category' }} />
                                         : null
                                 }
                             </div>
@@ -70,7 +70,7 @@ class FlavorModal extends Component {
                                         : null
                                 }
                             </div>
-                            <div className="col-12">
+                            <div className="col-12 add-flavor">
                                 {
                                     selectedCategory.name && selectedFlavor.name
                                         ? <button onClick={this.handleAddFlavor.bind(this)} className="btn btn-default">Add Flavor</button>
