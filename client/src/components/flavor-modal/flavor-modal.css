@@ -9,6 +9,6 @@
 
 .flavor-selection .dropdown-menu {
     cursor: pointer;
-    max-height: 305px;
+    max-height: 10vh;
     overflow: scroll;
 }
