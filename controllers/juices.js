@@ -216,7 +216,7 @@ exports.getFlavorsByCategoryId = async (req, res) => {
     try {
         const { category } = req.query;
 
-        const query = 'SELECT * FROM ?? WHERE ?? = ?';
+        const query = 'SELECT * FROM ?? WHERE ?? = ? ORDER BY `flavor` ASC';
         const inserts = ['flavors', 'catagory_id', category];
         const sql = mysql.format(query, inserts);
 

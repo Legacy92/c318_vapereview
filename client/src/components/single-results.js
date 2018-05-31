@@ -97,7 +97,7 @@ class SingleResults extends Component {
                                     <ReactStars className="single-results-stars stars" size={20} edit={false} count={5} value={rating} color1="grey" color2="#ffc900"/>
                                 </div>
                                 <div className="single-results-description ">
-                                    <p className="single-results-item-text">{manufacturer_description} Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ad adipisci animi dolor harum nemo quae quia velit veniam vero? Enim in ipsum perferendis? Delectus dicta facere illo molestiae recusandae rem, repellat sunt suscipit voluptatibus!</p>
+                                    <p className="single-results-item-text">{manufacturer_description}</p>
                                 </div>
                             </div>
 

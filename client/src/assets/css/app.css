@@ -160,14 +160,14 @@ h2, h5 {
     margin-top: 5.7%;
 }
 
-.single-results-item-text {
+.single-results-item-text, .single-review-text {
     letter-spacing: 1px;
     font-family: lato;
-
+    color: black;
+    text-shadow: none
 
 }
 .single-results-stars-container {
-
     display: inline-block;
 
 
@@ -177,6 +177,7 @@ h2, h5 {
     position: relative;
     bottom: 132px;
 }
+
 
  @media (max-width:576px ){
      .single-results-image-container {
