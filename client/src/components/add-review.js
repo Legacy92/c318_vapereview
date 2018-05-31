@@ -50,7 +50,6 @@ class AddReview extends Component {
 
     render() {
         const {handleSubmit} = this.props;
-        console.log(this.props);
         if(this.props.singleItemInfo){
             const {name} = this.props.singleItemInfo;
             return (

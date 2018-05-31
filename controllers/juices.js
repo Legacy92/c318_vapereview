@@ -102,10 +102,9 @@ exports.getSingleJuiceReviews = async (req, res, next) => {
 
 exports.getFlavorChartData = async (req, res, next) => {
     try {
-        let { juice_id } = req.body;
-        juice_id = 1;
+        let { juice_id } = req.query;
 
-        const query = 'SELECT ??, ?? FROM ?? JOIN ?? ON ?? = ?? JOIN ?? ON ?? = ?? JOIN ?? on ?? = ?? WHERE ?? = 1';
+        const query = 'SELECT ??, ?? FROM ?? JOIN ?? ON ?? = ?? JOIN ?? ON ?? = ?? JOIN ?? on ?? = ?? WHERE ?? = ?';
         const inserts = ['category.category', 'flavors.flavor', 'reviews', 'juices-flavors', 'reviews.id', 'juices-flavors.review_id', 'flavors', 'flavors.id', 'juices-flavors.flavor_id', 'category', 'flavors.catagory_id', 'category.id', 'reviews.juice_id', juice_id];
 
         const sql = mysql.format(query, inserts);

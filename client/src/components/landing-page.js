@@ -35,7 +35,7 @@ class LandingPage extends Component {
                 <div className="input-group justify-content-center pt-5">
                     <input className=" align-middle input-field col-8" {...input} type="text" autoComplete="off" placeholder="Find your vape juice..."/>
                     <div className="input-group-prepend">
-                        <button className="btn btn-default btn-lg">
+                        <button className="btn btn-default btn-sm">
                         <i className="large material-icons">search</i>
                         </button>
                     </div>
