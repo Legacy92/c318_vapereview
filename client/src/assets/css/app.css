@@ -1,8 +1,14 @@
 /* /////////////////////////////////////////////////// over all app styling, body, colors, font ///////////////// */
 body {
     margin: 0;
+    letter-spacing: 1px;
 
 
+}
+
+td, .dropdown-item, .add-review-buttons{
+    text-transform: capitalize;
+    letter-spacing: 1px;
 }
 
 .no-margin {
@@ -37,7 +43,8 @@ button:focus {
     background-color: #5e2053;
     color: white;
     border: .05rem solid white;
-    box-sizing: border-box
+    box-sizing: border-box;
+    letter-spacing: 1px;
 }
 
 .btn-sm, .mx-2 {
@@ -126,7 +133,6 @@ h2, h5 {
 
 .landing-page-body, .multiple-results-body, .single-results-body {
     position: relative;
-    margin-top: 60px;
 }
 
 /* /////////////////////////////////////////Single Results Page //////////////////////////////// */
@@ -148,6 +154,9 @@ h2, h5 {
     position: relative;
 }
 
+.single-results-header {
+
+}
 
 .single-results-written-content {
 

@@ -49,7 +49,7 @@ class AddProduct extends Component {
         const { handleSubmit } = this.props;
         return (
             <div>
-                <h1 className="titanicFont display-4 addProduct goldenFont">Add Product</h1>
+                <h1 className="titanicFont display-4 goldenFont">Add Product</h1>
                 <div className="col-10 offset-1 card add-product-body">
                     <form onSubmit={handleSubmit(this.handleAddProduct.bind(this))}>
                         <label style={{paddingTop:"20px"}}>Juice Name:</label>

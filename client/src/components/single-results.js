@@ -74,6 +74,7 @@ class SingleResults extends Component {
             
             return (
                 <div className="single-results-body">
+                    <h1 className = "single-results-header titanicFont display-4  goldenFont">Your Juice</h1>
                     <div className="single-results-item col-10 offset-1  card rounded  my-3">
                         <div className="row">
                             <div className="col-md-4 col-sm-12 col-12">
