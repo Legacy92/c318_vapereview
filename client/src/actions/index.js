@@ -15,6 +15,14 @@ export function setSearchTerm(searchTerm) {
 
 }
 
+export function getChartData(values){
+    const response = axios.get("/api/flavor-chart", values);
+    console.log("Chart Data:", response);
+    return {
+        type: types.GET_CHART_DATA,
+        payload: response
+    }
+}
 
 
 export function createAccount(values) {

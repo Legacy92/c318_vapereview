@@ -14,7 +14,8 @@ const DEFAULT_STATE = {
     randomJuiceId: [],
     singleItemReviewsData: [],
     reviewFlavors:[],
-    searchTerm:""
+    searchTerm:"",
+    chartData:{}
 };
 
 export default (state = DEFAULT_STATE, action) => {
@@ -65,6 +66,9 @@ export default (state = DEFAULT_STATE, action) => {
         case types.SET_SEARCH_TERM:
             console.log("Search Term Action:", action);
             return {...state, searchTerm: action.payload};
+        case types.GET_CHART_DATA:
+            console.log("Chart Data Action: ", action);
+            return {...state, chartData: action.payload.data.data};
         default:
             return state;
     }
