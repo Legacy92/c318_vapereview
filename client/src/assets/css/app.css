@@ -21,11 +21,16 @@ td, .dropdown-item, .add-review-buttons{
 }
 
 a {
-    color: black;
+    color: #5e2053;
+    cursor: pointer;
 }
 
 .btn.focus, .btn:focus {
     box-shadow: none;
+}
+
+a.mult-advanced-button.btn {
+    color: white
 }
 
 button:focus {
@@ -47,7 +52,7 @@ button:focus {
     letter-spacing: 1px;
 }
 
-.btn-sm, .mx-2 {
+.btn-sm, .mx-2, .mult-advanced-button {
     background-color: #5e2053;
     border-radius: .1rem;
     border: .05rem solid white;
@@ -202,6 +207,11 @@ h2, h5 {
     text-shadow: none
 
 }
+
+.single-results-item-text {
+    border-top: 1px solid black
+}
+
 .single-results-stars-container {
     display: inline-block;
 
@@ -211,6 +221,11 @@ h2, h5 {
     height: 251px;
     position: relative;
     bottom: 132px;
+}
+
+h5.single-review-text {
+    font-size: 1rem;
+    text-align: justify;
 }
 
 
@@ -321,7 +336,6 @@ h2, h5 {
 
 
 #multiple-container, #product-info-main, .card-container {
-    height: 25vh;
     background: linear-gradient(to bottom right,#a696c2, white);
     border-radius: 2px;
     box-sizing: border-box;
@@ -355,7 +369,9 @@ h2, h5 {
 
 }
 
-
+.no-results {
+    color: white
+}
 
 .name, .multiple-results-header {
     margin-top: 5px;
@@ -522,7 +538,7 @@ label {
 
 /* ////////////////////////////////////////// add review   ///////////////////////////// */
 
-.juiceName {
+.juiceName, .single-results-name, .name {
     color: #f8f4ff;
     font-family: luminari, fantasy;
     padding-top: 30px;
@@ -533,6 +549,10 @@ label {
 .add-review-arrow {
     height: 75px;
     width: auto;
+}
+
+.add-flavor, .add-review-button {
+    margin-bottom: 25px
 }
 
 .add-review-buttons {

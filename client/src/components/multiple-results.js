@@ -8,7 +8,7 @@ import ReactStars from 'react-stars';
 import juiceBottleDefault from "../assets/images/vape-juice-bottle-questionmark.png";
 
 class MultipleResults extends Component {
-    
+
     componentDidMount() {
         const { searchTerm } = this.props.match.params;
 
@@ -40,12 +40,14 @@ class MultipleResults extends Component {
         }
     }
 
+
     render() {
         let juiceElements = [];
+
         
         if (this.props.all.length) {
             const juiceInfo = this.props.all;
-            
+
             juiceElements = juiceInfo.map((item, index) => {
                 const { name, manufacturer_name, manufacturer_site, manufacturer_description, id, rating } = item;
                 return (
@@ -53,12 +55,12 @@ class MultipleResults extends Component {
                         <div id = "prod-info-main" className="prod-info-main prod-wrap">
                             <div className="card-container row">
                                 <div className="rating-container col-5 d-flex align-items-center flex-column">
-                                    <div className="rating-container my-auto">
+                                    <div className="my-auto">
                                         <div className="multiple-results-img">
                                             <img  className="img-rounded multiple-results-image" src={juiceBottleDefault}/>
                                         </div>
                                         <div className = "multiple-results-star-container align-items-center">
-                                            <ReactStars className="single-results-stars stars" size={12} edit={false} count={5} value={rating} color1="grey" color2="#ffc900"/>
+                                            <ReactStars className="single-results-stars stars" size={15} edit={false} count={5} value={rating} color1="grey" color2="#ffc900"/>
                                         </div>
                                     </div>
                                 </div>
@@ -67,7 +69,7 @@ class MultipleResults extends Component {
                                         <div className="product-detail">
                                             <h5 className="name">{name}</h5>                                              
                                             <h6>from: {manufacturer_name}</h6>
-                                            <h6>{manufacturer_site}</h6>
+                                            <h6>{this.textTruncate(manufacturer_site)}</h6>
                                         </div>
                                         <div className="description">
                                             <p className = "juice-description">{this.textTruncate(manufacturer_description)}</p>
@@ -82,12 +84,15 @@ class MultipleResults extends Component {
         }
         return (
             <div className = "multiple-results-body col-12">
-                <h1 className = "multiple-results-header">Search Results</h1>
+
+                <h1 className = "multiple-results-header titanicFont display-4 goldenFont">Search Results</h1>
                 <div className="row justify-content-center">
-                    {juiceElements}
+                    { 
+                        juiceElements.length
+                            ? juiceElements
+                            : <h4 className = "no-results">No Results Found.</h4>
+                    }
                 </div>
-
-
                 <Link className="mult-advanced-button btn" to="/">Home</Link>
             </div>
         );
