@@ -188,9 +188,11 @@ h2, h5 {
     box-shadow: #ffc900 0px 0px 0px 2px;
     background: linear-gradient(to bottom right,#a696c2, white);
 }
-
+.single-results-links {
+    font-size: .75rem;
+}
 .single-results-description {
-    font-size: 1rem;
+    font-size: .9rem;
     color: black;
     text-align: justify;
 
@@ -206,6 +208,9 @@ h2, h5 {
     color: black;
     text-shadow: none
 
+}
+.single-results-manufacturer-name {
+    font-size: 1.0rem;
 }
 
 .single-results-item-text {
