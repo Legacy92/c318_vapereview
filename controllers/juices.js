@@ -18,7 +18,7 @@ exports.getAllJuices = async (req, res) => {
     }
 }
 
-exports.searchJuices = async (req, res, next) => {
+exports.searchJuices = async (req, res) => {
     try {
         const { term } = req.query;
 
@@ -80,15 +80,13 @@ exports.getSingleJuice = async (req, res) => {
     }
 }
 
-exports.getSingleJuiceReviews = async (req, res, next) => {
+exports.getSingleJuiceReviews = async (req, res) => {
     try {
         const { juice_id } = req.query;
 
         const query = 'SELECT r.`id`, r.`rating`, r.`description` as review, r.`juice_id`, u.`username`, r.`created` FROM ?? r LEFT JOIN ?? u ON u.`id` = r.`user_id` WHERE ?? = ? ORDER BY r.`created` DESC';
         const inserts = ['reviews', 'users', 'r.juice_id', juice_id];
         const sql = mysql.format(query, inserts);
-
-        console.log('this is the formatted sql:', sql);
 
         const reviews = await db.query(sql);
 
@@ -102,7 +100,7 @@ exports.getSingleJuiceReviews = async (req, res, next) => {
     }
 }
 
-exports.getFlavorChartData = async (req, res, next) => {
+exports.getFlavorChartData = async (req, res) => {
     try {
         let { juice_id } = req.query;
 
@@ -158,45 +156,45 @@ exports.addJuice = async (req, res) => {
     }
 }
 
-exports.addReview = async (req, res, next) => {
-    const { rating, description, juice_id, user_id, reviewFlavors } = req.body;
-    console.log(reviewFlavors);
-    let query = 'INSERT INTO ?? (??, ??, ??, ??) VALUES (?, ?, ?, ?)';
-    let inserts = ['reviews', 'rating', 'description', 'juice_id', 'user_id', rating, description, juice_id, user_id];
-    let sql = mysql.format(query, inserts);
+exports.addReview = async (req, res) => {
+    try {
+        const user_id = req.user.id;
+        const { rating, description, juice_id, flavors } = req.body;
+        const query = 'INSERT INTO ?? (??, ??, ??, ??) VALUES (?, ?, ?, ?)';
+        const inserts = ['reviews', 'rating', 'description', 'juice_id', 'user_id', rating, description, juice_id, user_id];
+        const sql = mysql.format(query, inserts);
 
-    console.log("This is the formatted SQL", sql);
+        const review = await db.query(sql);
 
-    database.query(sql, (err, results, fields) => {
-        if (err) return res.status(500).send('Error Adding Review');
+        if(!review.affectedRows) throw new Error('Error saving new review');
+
+        const reviewId = review.insertId;
+
+        let flavorsQuery = 'INSERT INTO ?? (??, ??) VALUES';
+        let flavorsInserts = ['juices-flavors', 'review_id', 'flavor_id']
+        
+        flavors.map((id, i) => {
+            flavorsQuery += `${i === 0 ? '':','} (?, ?)`;
+            flavorsInserts = [...flavorsInserts, reviewId, id];
+        });
+
+        const flavorsSql = mysql.format(flavorsQuery, flavorsInserts);
+
+        const flavorsResult = await db.query(flavorsSql);
+
+        if(!flavorsResult.affectedRows) throw new Error('Error adding flavors related to review');
+
         let output = {
-            success: true,
-            data: results
+            success: true
         }
-        const reviewId = results.insertId
 
-        res.json(output);
-        if (output.success) {
-            for (let i = 0; i < reviewFlavors.length; i++) {
-                let flavorId = reviewFlavors[i];
-                let query = 'INSERT INTO ?? (??, ??) VALUES (?, ?)'
-                let inserts = ['juices-flavors', 'review_id', 'flavor_id', reviewId, flavorId]
-
-                let sql = mysql.format(query, inserts);
-                console.log("This is the formatted SQL", sql);
-                database.query(sql, (err, results, fields) => {
-                    if (err) return res.status(500).send('Error Adding Review/Flavor IDs');
-                    let output = {
-                        success: true,
-                        data: results
-                    }
-                });
-            }
-        }
-    });
+        return res.json(output);
+    } catch(err){
+        res.status(500).send('Error saving review');
+    }
 }
 
-exports.getFlavorCategories = async (req, res, next) => {
+exports.getFlavorCategories = async (req, res) => {
     try {
         const query = 'SELECT * FROM ??';
         const inserts = ['category'];
@@ -214,7 +212,7 @@ exports.getFlavorCategories = async (req, res, next) => {
     }
 }
 
-exports.getFlavorsByCategoryId = async (req, res, next) => {
+exports.getFlavorsByCategoryId = async (req, res) => {
     try {
         const { category } = req.query;
 
