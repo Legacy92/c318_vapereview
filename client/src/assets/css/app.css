@@ -259,6 +259,23 @@ h2, h5 {
     background-color: #66023C;
 }
 
+.chartText {
+    font-size: 0.6em;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+@media (max-width: 768px) {
+
+    .chartText {
+        font-size: 0;
+    }
+
+}
+
 /* /////////////////////////////////////////Juice ReviewsPage //////////////////////////////// */
 
 

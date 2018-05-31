@@ -64,7 +64,7 @@ class SingleResults extends Component {
 
         const flavorElements = Object.keys(chartData).map(key => {
             return (
-                <div key={key} className={key} style={{height:`${chartData[key]}%`}}></div>
+                <div key={key} className={`${key} chartText align-middle`} style={{height:`${chartData[key]}%`}}>{key}</div>
             )
         })
 
