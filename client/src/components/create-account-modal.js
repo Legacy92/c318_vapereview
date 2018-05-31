@@ -20,28 +20,26 @@ class CreateAccount extends Component {
         const {handleSubmit, authError} = this.props;
         return (
             <div>
-
-            <h1 className = "create-header">invisiheader</h1>
-            <div className="col-8 offset-2 create-account-body">
-                <div className="create-account-modal-body">
-                    <h1 className = "create-account-title">Create an Account</h1>
-                        <form style={{textAlign: 'center'}} onSubmit={handleSubmit(this.handleSignUp.bind(this))}>
-                            <label>Email*</label>
-                            <Field name = "email" className="no-margin" component= {renderInput}/>
-                            <label>Username*</label>
-                            <Field name="username" component={renderInput}/>
-                            <label>Password*</label>
-                            <Field name="password" type = "password" component={renderInput}/>
-                            <label>Confirm Password*</label>
-                            <Field name="confirm_password" type = "password" component={renderInput}/>
-                            <button>Create an Account</button>
-                            <p>{authError}</p>
-                      </form>
+                <h1 className = "titanicFont display-4 addProduct goldenFont">Create an Account</h1>
+                <div className="col-10 offset-1 create-account-body">
+                    <div className="create-account-modal-body">
+                            <form style={{textAlign: 'center'}} onSubmit={handleSubmit(this.handleSignUp.bind(this))}>
+                                <label>Email:</label>
+                                <Field name = "email"  component= {renderInput}/>
+                                <label>Username:</label>
+                                <Field name="username" component={renderInput}/>
+                                <label>Password:</label>
+                                <Field name="password" type = "password" component={renderInput}/>
+                                <label>Confirm Password:</label>
+                                <Field name="confirm_password" type = "password" component={renderInput}/>
+                                <button>Create an Account</button>
+                                <p>{authError}</p>
+                          </form>
+                    </div>
+                    <div className="modal-footer">
+                        <p style={{margin: 'auto'}}>Been here before? <Link to="/user-sign-in" style={{color: '#3f0080'}}>Sign in.</Link></p>
+                    </div>
                 </div>
-                <div className="modal-footer">
-                    <p style={{margin: 'auto'}}>Been here before? <Link to="/user-sign-in" style={{color: '#3f0080'}}>Sign in.</Link></p>
-                </div>
-            </div>
             </div>
         );
     }
@@ -52,7 +50,7 @@ function validate(values){
     const errors = {};
 
     if(!username) {
-        errors.username = "Please enter your username.";
+        errors.username = "Please enter a username.";
 
     }
     if(!email) {

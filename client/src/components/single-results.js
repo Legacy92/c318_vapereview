@@ -18,13 +18,23 @@ class SingleResults extends Component {
         if(juice_id !==':juice_id'){
             this.props.singleItem({juice_id});
             this.props.singleItemReviews({juice_id});
+            this.props.getChartData({juice_id});
 
         }else{
             this.getRandomJuice();
+            this.props.getChartData({juice_id})
         }
 
 
     }
+
+    handleHomeButton(){
+        this.props.history.push(`/`);
+
+
+    }
+
+
 
     handleAddReviewClick() {
         const {juice_id} = this.props.match.params;
@@ -65,7 +75,7 @@ class SingleResults extends Component {
 
 
     render(){
-        console.log(this.props);
+        console.log('single-page-render:', this.props);
         let juiceData = [];
 
         if(this.props.singleItemInfo[0]) {
@@ -105,7 +115,11 @@ class SingleResults extends Component {
 
                             <div className="col-md-12">
                                 <button className="mx-2 rounded" onClick={this.handleAddReviewClick.bind(this)}>Add Review</button>
-                                <button onClick={this.handleBackButton.bind(this)}>Back To Results</button>
+                                {
+                                    this.props.searchTerm
+                                        ? <button onClick={this.handleBackButton.bind(this)}>Back</button>
+                                        : <button onClick={this.handleHomeButton.bind(this)}>Back</button>
+                                }
                             </div>
                         </div>
                     </div>
@@ -131,7 +145,8 @@ function mapStateToProps(state) {
         juice: state.juiceInfo.juice,
         randomJuice: state.juiceInfo.randomJuice,
         singleItemInfo:state.juiceInfo.singleItemInfo,
-        searchTerm:state.juiceInfo.searchTerm
+        searchTerm:state.juiceInfo.searchTerm,
+        chartData:state.juiceInfo.chartData
     };
 
 }

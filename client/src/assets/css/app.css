@@ -28,12 +28,21 @@ button, .btn, .btn-lg {
     background-color: #2a0d30;
     border: 1px solid white;
     font-size: 15px;
-    color: white
+    color: white;
+    cursor: pointer;
 }
 
 .btn:hover {
     background-color: #3f0080;
     color: white
+}
+
+.text-danger {
+    font-size: .75rem
+}
+
+input, label {
+    font-size: 1rem;
 }
 
 .app {
@@ -363,9 +372,25 @@ label {
     box-shadow: #ffc900 0px 0px 0px 2px;
 }
 
+
+label {
+    font-size: 1rem
+}
+
+
+/* ////////////////////////////////////////// add product ///////////////////////////// */
+
+.add-product-body {
+    margin-top: 50px;
+    background: linear-gradient(to bottom right,#a696c2, white);
+    box-shadow: #ffc900 0px 0px 0px 2px;
+
+
+}
 /* ////////////////////////////////////////// add review   ///////////////////////////// */
 
 .juiceName {
     color: #f8f4ff;
     font-family: luminari, fantasy;
 }
+

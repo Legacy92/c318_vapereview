@@ -21,5 +21,6 @@ export default {
     SIGN_OUT: 'sign_out',
     AUTH_ERROR: 'auth_error',
     CLEAR_AUTH_ERROR: 'clear-auth-error',
-    SET_SEARCH_TERM: "set-search-term"
+    SET_SEARCH_TERM: "set-search-term",
+    GET_CHART_DATA: "get_chart_data"
 };

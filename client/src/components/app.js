@@ -19,7 +19,7 @@ const App = () => (
     <div className="app"> 
         <Header />
         <div className="page-header mb-5"></div>
-        <div className="containers main-app-body">
+        <div className="container main-app-body">
             <Route path="/multiple-results/:searchTerm" component={MultipleResults} />
             <Route path="/multiple-results-browse" component={MultipleResults} />
             <Route path="/single-results/:juice_id" component={SingleResults} />
