@@ -16,6 +16,7 @@ class FlavorModal extends Component {
     }
 
     handleSetCategory(id, name){
+        console.log('Set Cat:', id, name);
         this.props.setCategory(id, name);
     }
 
@@ -38,6 +39,8 @@ class FlavorModal extends Component {
         this.props.history.go(-1);
     }
     render() {
+
+        console.log('FLAVOR PROPS:', this.props);
 
         const { categories, flavors, selectedCategory, selectedFlavor, flavorList } = this.props;
 
@@ -64,14 +67,6 @@ class FlavorModal extends Component {
                             {
                                 selectedCategory.name && selectedFlavor.name
                                     ? <button onClick={this.handleAddFlavor.bind(this)} className="btn btn-default">Add Flavor</button>
-                                    : null
-                            }
-                        </div>
-                        <div className="mt-5">
-                            <button onClick={this.stepBack.bind(this)} className="btn btn-default mx-3">Cancel</button>
-                            {
-                                flavorList.length
-                                    ? <button type="button" onClick={this.nextStep.bind(this)} className="btn btn-default mx-3">Done</button>
                                     : null
                             }
                         </div>

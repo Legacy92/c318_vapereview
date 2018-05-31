@@ -6,6 +6,8 @@ import axios from 'axios';
 import { addReview, singleItem } from "../actions";
 import Nav from './nav';
 import FlavorModal from './flavor-modal';
+import { renderInput, renderTextarea} from "../helpers";
+import ReactStars from "react-stars";
 
 class AddReview extends Component {
 
@@ -50,20 +52,29 @@ class AddReview extends Component {
 
     render() {
         const {handleSubmit} = this.props;
-        if(this.props.singleItemInfo[0]){
-            const {name} = this.props.singleItemInfo[0];
+        if(this.props.singleItemInfo){
+            const {name} = this.props.singleItemInfo;
             return (
-            <div className="add-review">
-                <h1 className="addReview">Add Review for <span className="juiceName">{name}</span> </h1>
-
-                <form onSubmit={handleSubmit(this.handleAddReview.bind(this))}>
-                        <Field name="user_id" label="user_id" component={this.renderInput}/>
-                        <FlavorModal/>
-                        <Field name="rating" label={`How many stars would you give ${name}? (1-5)`} component={this.renderInput}/>
-                        <Field name="description" label={`What did you think of ${name}`} component={this.renderTextarea}/>
-                        <button className="btn">Add Review</button>
-                </form>
-            </div>
+                <div>
+                    <h1 className="addReview titanicFont display-4 addProduct goldenFont">Add Review</h1>
+                    <div className="add-review-body card col-10 offset-1">
+                        <h1 className="juiceName">{name}</h1>
+                        <form onSubmit={handleSubmit(this.handleAddReview.bind(this))}>
+                            <label>User ID:</label>
+                            <Field name="user_id" component={renderInput}/>
+                            <FlavorModal/>
+                            <label>{`How many stars would you give ${name}? (1-5)`}</label>
+                            <br/>
+                                <div className="add-review-stars-container">
+                                    <ReactStars className="single-results-stars stars" size={15}  count={5}  color1="grey" color2="#ffc900"/>
+                                </div>
+                            <br/>
+                            <label>{`What did you think of ${name}`}</label>
+                            <Field name="description" component={renderTextarea}/>
+                            <button className="btn">Add Review</button>
+                        </form>
+                    </div>
+                </div>
             )
         }else{
             return <h1>Loading</h1>

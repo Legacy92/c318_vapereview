@@ -392,5 +392,17 @@ label {
 .juiceName {
     color: #f8f4ff;
     font-family: luminari, fantasy;
+    padding-top: 30px;
 }
 
+.add-review-body {
+    background: linear-gradient(to bottom right,#a696c2, white);
+    box-shadow: #ffc900 0px 0px 0px 2px;
+
+}
+
+.add-review-stars-container {
+    margin-top: 15px;
+    margin-bottom: 20px;
+    display: inline-block;
+}

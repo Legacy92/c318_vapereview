@@ -127,7 +127,7 @@ export function setCategory(id, category) {
 
         dispatch({
             type: types.SET_CATEGORY,
-            payload: response.data.data,
+            payload: response.data.flavors,
             selectedCategory: {id, name: category}
         });
     }
