@@ -47,33 +47,35 @@ class FlavorModal extends Component {
         return (
             <div className="flavor-selection">
                 <h1 className="flavor-header mb-5">Select Flavors Tasted</h1>
+                <div>
+                    {
+                        selectedCategory.name && selectedFlavor.name
+                            ? <button onClick={this.handleAddFlavor.bind(this)} className="btn btn-default">Add Flavor</button>
+                            : null
+                    }
+                </div>
                 <div className="row">
-                    <div className="col-4">
-                        <div>
-                            {
-                                categories.length
-                                    ? <Dropdown action={this.handleSetCategory.bind(this)} btnText={`${selectedCategory.name ? selectedCategory.name : 'Category'}:`} menuItems={categories} keyNames={{id: 'id', name: 'category'}} />
-                                    : null
-                            }
-                        </div>
-                        <div className="my-3">
-                            {
-                                flavors.length
-                                    ? <Dropdown action={this.handleSetFlavor.bind(this)} btnText={`${selectedFlavor.name ? selectedFlavor.name : 'Select Flavor'}:`} menuItems={flavors} keyNames={{ id: 'id', name: 'flavor' }} />
-                                    : null
-                            }
-                        </div>
-                        <div>
-                            {
-                                selectedCategory.name && selectedFlavor.name
-                                    ? <button onClick={this.handleAddFlavor.bind(this)} className="btn btn-default">Add Flavor</button>
-                                    : null
-                            }
-                        </div>
+                    <div className="col-12">
+                        <FlavorList list={flavorList} />
                     </div>
-                    
-                    <div className="col-8">
-                            <FlavorList list={flavorList}/>
+                    <div className="col-12">
+                        <div className="row">
+                            <div className="col-4 offset-2 dropdown-container">
+                                {
+                                    categories.length
+                                        ? <Dropdown action={this.handleSetCategory.bind(this)} btnText={`${selectedCategory.name ? selectedCategory.name : 'Category'}:`} menuItems={categories} keyNames={{ id: 'id', name: 'category' }} />
+                                        : null
+                                }
+                            </div>
+                            <div className="col-4 dropdown-container">
+                                {
+                                    true
+                                        ? <Dropdown action={this.handleSetFlavor.bind(this)} btnText={`${selectedFlavor.name ? selectedFlavor.name : 'Select Flavor'}:`} menuItems={flavors} keyNames={{ id: 'id', name: 'flavor' }} />
+                                        : null
+                                }
+                            </div>
+                        </div>
+                        
                     </div>
                 </div>
                 

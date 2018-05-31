@@ -37,7 +37,7 @@ export default (state = DEFAULT_STATE, action) => {
         case types.GET_CATEGORIES:
             return {...state, categories: action.payload.data.categories};
         case types.SET_CATEGORY:
-            return {...state, flavors: action.payload, selectedCategory: action.selectedCategory};
+            return {...state, flavors: action.payload, selectedFlavor: '', selectedCategory: action.selectedCategory};
         case types.SET_FLAVOR:
             return {...state, selectedFlavor: action.selectedFlavor};
         case types.ADD_SELECTED_FLAVOR:
