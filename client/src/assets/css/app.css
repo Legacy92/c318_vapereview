@@ -426,7 +426,7 @@ h5.single-review-text {
     src: url(../fonts/TitanickDisplayNF.ttf);
 }
 @font-face{
-    font-family: luminari, fantasy;
+    font-family: luminari;
     src: url(../fonts/Luminari.ttf);
 }
 
@@ -544,7 +544,7 @@ label {
 
 .juiceName, .single-results-name, .name {
     color: #f8f4ff;
-    font-family: luminari, fantasy;
+    font-family: luminari;
     padding-top: 30px;
     text-shadow: #420842 2px 2px 20px;
 
