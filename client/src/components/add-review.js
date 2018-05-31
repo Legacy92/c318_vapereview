@@ -80,7 +80,7 @@ class AddReview extends Component {
                             </div>
                             <label>{`What did you think of ${name}`}</label>
                             <Field name="description" component={renderTextarea}/>
-                            <button className="btn">Add Review</button>
+                            <button className="add-review-button btn">Add Review</button>
                         </form>
                     </div>
                 </div>

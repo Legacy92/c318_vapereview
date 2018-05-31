@@ -87,7 +87,7 @@ class SingleResults extends Component {
                                 </div>
                             </div>
                             <div className="col-md-7 col-sm-12 col-12 single-results-written-content">
-                
+                                    
                                 <div>
                                     <h2 className="single-results-name">{name}</h2>
                                 </div>
