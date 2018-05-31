@@ -300,14 +300,20 @@ h2, h5 {
     cursor: pointer;
 }
 
+.rating-container {
+    height: 100%;
+    width: 100%;
+}
+
 .multiple-results-image {
-    height: 70%;
-    width: 70%;
+    height: 8.5em;
+    width: 6em;
+    margin-top: 1em
 }
 
 .multiple-results-star-container {
     display: inline-block;
-    margin-top: 5px
+    margin-top: .75em
 }
 
 .product-detail {
