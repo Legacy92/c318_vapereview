@@ -18,16 +18,45 @@ a {
     color: black;
 }
 
-button, .btn, .btn-lg {
-    background-color: #2a0d30;
-    border: 1px solid white;
-    font-size: 1rem;
-    color: white;
+.btn-group-lg>.btn, .btn-lg, .btn-sm {
+    padding: .5rem 2rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    border-radius: .1rem;
     cursor: pointer;
+    font-size: 1rem;
+    background-color: #662374;
+    color: white;
+    box-shadow: 2px 2px 3px #ffffff3b
+}
+
+btn:not(:disabled):not(.disabled) {
+    background-color: #662374;
+    cursor: pointer;
+    outline: none;
+}
+
+button {
+    padding: .5rem 2rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    border-radius: .1rem;
+    cursor: pointer;
+    font-size: 1rem;
+    background-color: #662374;
+    color: white;
+    box-shadow: 2px 2px 3px #ffffff3b;
+    outline: none
+}
+
+input:focus, textarea:focus {
+    outline-offset: -2px;
+    outline-color: #ffc900;
+
 }
 
 .btn:hover {
-    background-color: #3f0080;
+    background-color: #87289b;
     color: white
 }
 
@@ -423,7 +452,14 @@ label {
 }
 
 .add-product-to-review {
-    margin-bottom: 1%
+    margin-bottom: 1%;
+    padding: .5rem 2rem;
+    background-color: #662374;
+    box-shadow: 2px 2px 3px #ffffff3b;
+    cursor: pointer;
+    outline: none;
+    color: white;
+    border-radius: .1rem
 }
 /* ////////////////////////////////////////// add review   ///////////////////////////// */
 
