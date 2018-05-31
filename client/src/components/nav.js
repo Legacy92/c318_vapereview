@@ -72,7 +72,7 @@ class Header extends Component {
                     </div>
                 </nav>
             </Fragment>
-        )
+        );
     }
 }
 

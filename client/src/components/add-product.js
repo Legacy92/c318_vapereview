@@ -11,25 +11,12 @@ class AddProduct extends Component {
 
 
     async handleAddProduct(values) {
-        console.log("Form Values:", values);
         await this.props.addProduct(values);
-        let juice_id=this.props.juiceId;
-        console.log(juice_id);
-        this.props.history.push(`/add-review/${juice_id}`);
+        
+        let { juiceId } =this.props;
+
+        this.props.history.push(`/add-review/${juiceId}`);
     }
-
-
-    // renderInput({ label, input, meta: { touched, error } }) {
-    //     // console.log(label, input);
-    //     return (
-    //         <div>
-    //             <div className="input-group justify-content-center pt-5">
-    //             <input className="align-middle input-field col-8" style={{marginTop: 1+'em', fontSize: 15+'px'}} placeholder={label} {...input} type="text" autoComplete="off"/>
-    //             </div>
-    //             <p className="text-danger">{touched && error}</p>
-    //         </div>
-    //     )
-    // }
 
     renderTextarea({label, input, meta: {touched, error}}) {
         return (
@@ -41,9 +28,6 @@ class AddProduct extends Component {
             </div>
         )
     }
-
-
-
 
     render() {
         const { handleSubmit } = this.props;
@@ -86,17 +70,13 @@ function validate({ juice_name, manufacturer_name, manufacturer_site, manufactur
         errors.manufacturer_description = "Please enter a Manufacturer Description";
     }
 
-
     return errors;
 }
 
 function mapStateToProps(state) {
     return {
-       
         juiceId: state.juiceInfo.juiceId,
-       
     };
-
 }
 
 AddProduct = reduxForm({

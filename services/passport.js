@@ -34,7 +34,6 @@ const localLogin = new LocalStrategy(localOptions, async (email, password, done)
 
         done(null, user);
     } catch(err){
-        console.log('ERROR Local Sign In:', err.message);
         done(err);
     }
 });
@@ -56,7 +55,6 @@ const jwtLogin = new JwtStrategy(jwtOptions, async (payload, done) => {
 
         done(null, users[0]);
     } catch(err){
-        console.log('ERROR With JWT Sign In:', error.message);
         done(err);
     }
 });

@@ -10,4 +10,3 @@ module.exports = app => {
         res.send({success: true});
     });
 }
-

@@ -43,7 +43,7 @@ export default (state = DEFAULT_STATE, action) => {
             const newFlavor = {
                 category: state.selectedCategory,
                 flavor: state.selectedFlavor
-            }
+            };
             const reviewFlavor= state.selectedFlavor.id;
             return {...state, selectedCategory: {}, selectedFlavor: {}, flavors: [], flavorList: [...state.flavorList, newFlavor], reviewFlavors:[...state.reviewFlavors, reviewFlavor]};
         case types.GET_SINGLE_ITEM_REVIEWS:
@@ -51,25 +51,12 @@ export default (state = DEFAULT_STATE, action) => {
         case types.CLEAR_SINGLE_ITEM:
             return {...state, singleItemReviewsData: [], juiceId: []};
         case types.SET_SEARCH_TERM:
-            console.log("Search Term Action:", action);
             return {...state, searchTerm: action.payload};
         case types.GET_CHART_DATA:
-            console.log("Chart Data Action: ", action);
             return {...state, chartData: action.payload.data.data};
         case types.CLEAR_REVIEW_FLAVORS:
             return {...state, categories: [], flavors: [], selectedCategory: {}, selectedFlavor: '', flavorList: [], reviewFlavors: []};
         default:
             return state;
     }
-
 }
-
-// if(!this.props.randomJuice){
-
-//     console.log('response not yet loaded');
-// }else{
-//     return (
-//         <h1>Loading</h1>
-//     )
-
-// }

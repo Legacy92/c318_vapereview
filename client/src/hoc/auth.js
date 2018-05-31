@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-
 export default function(WrappedComponent){
     class Auth extends Component {
 

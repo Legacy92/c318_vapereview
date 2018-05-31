@@ -25,11 +25,7 @@ class SingleResults extends Component {
 
     handleHomeButton(){
         this.props.history.push(`/`);
-
-
     }
-
-
 
     handleAddReviewClick() {
         const {juice_id} = this.props.match.params;
@@ -42,7 +38,7 @@ class SingleResults extends Component {
     }
 
     handleManufacturerNameClick () {
-        console.log("Manufacturer Clicked");
+        // console.log("Manufacturer Clicked");
     }
 
     async getRandomJuice(){
@@ -58,15 +54,13 @@ class SingleResults extends Component {
     render(){
         let juiceData = [];
 
-        console.log(this.props.chartData)
-
         const { chartData }= this.props
 
         const flavorElements = Object.keys(chartData).map(key => {
             return (
                 <div key={key} className={`${key} chartText align-middle`} style={{height:`${chartData[key]}%`}}>{key}</div>
             )
-        })
+        });
 
         if(this.props.singleItemInfo) {
 
@@ -117,15 +111,13 @@ class SingleResults extends Component {
                     </div>
                     <JuiceReviews/>
                 </div>
-            )
+            );
         }
     }
-
 }
 
 function mapStateToProps(state) {
     return {
-        all: [],
         juice: state.juiceInfo.juice,
         randomJuice: state.juiceInfo.randomJuice,
         singleItemInfo:state.juiceInfo.singleItemInfo,

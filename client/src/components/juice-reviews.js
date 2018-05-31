@@ -11,9 +11,8 @@ const JuiceReviews = props => {
     let reviewElements = [];
 
     if (props.singleItemReviewsData) {
-
         const ReviewInfo = props.singleItemReviewsData;
-        console.log(props.singleItemReviewsData);
+        
         reviewElements = ReviewInfo.map((item, index) => {
             const {id, rating, review, created, username} = item;
             return (

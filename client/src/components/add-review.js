@@ -105,6 +105,7 @@ function mapStateToProps(state) {
     };
 
 }
+
 AddReview = reduxForm({
     form: "add-review"
 })(AddReview);
