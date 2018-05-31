@@ -23,8 +23,9 @@ export function renderTextarea({label, input, meta: {touched, error}}) {
 export function timeFormat (created) {
 
     const time = new Date(created);
+    console.log(time.toLocaleTimeString('en-US'));
+    return time.toLocaleString('en-US');
 
-    return time.toLocaleString();
 
 }
 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto deserunt ea incidunt iure iusto magni minima quas vitae! Commodi, eaque earum enim eum facere id itaque magnam, minus natus necessitatibus numquam odio quibusdam quo repudiandae sequi, soluta tenetur. Ad aut dignissimos ea magnam non optio sequi? Adipisci commodi eaque eligendi est non perspiciatis totam! Beatae?</p>

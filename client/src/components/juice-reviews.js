@@ -21,8 +21,8 @@ const JuiceReviews = props => {
                     <div className="juice-reviews-stars-container">
                         <ReactStars className="juice-reviews-stars stars " size={20} edit={false} count={5} value={rating} color1="grey" color2="#ffc900"/>
                     </div>
+                    <h5>By: {username}</h5>
                     <h5>{timeFormat(created)}</h5>
-                    <h6>By: {username}</h6>
                     <h5>{review}</h5>
                 </div>
             );
