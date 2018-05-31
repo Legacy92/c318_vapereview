@@ -23,24 +23,25 @@ class UserSignIn extends Component {
         const {handleSubmit, authError} = this.props;
 
         return (
-            <div className = "col-8 offset-2">
-            <h1 className = "create-header">invisiheader</h1>
-            <div className ="sign-in-body">
-                <div className="modal-body">
-                    <h1 className = "sign-in-title">Sign In</h1>
-                    <form style={{textAlign: 'center'}} onSubmit={handleSubmit(this.handleUserSignIn.bind(this))}>
-                        <label>Email*</label>
-                        <Field name="email" type = "email" component={renderInput}/>
-                        <label>Password*</label>
-                        <Field name="password" type = "password" component={renderInput}/>
-                        <button>Sign In</button>
-                        <p>{authError}</p>
-                    </form>
+            <div>
+                <h1 className = "titanicFont display-4 addProduct goldenFont">Sign In</h1>
+                <div className = "col-10 offset-1">
+                    <div className ="sign-in-body">
+                        <div className="modal-body">
+                            <form style={{textAlign: 'center'}} onSubmit={handleSubmit(this.handleUserSignIn.bind(this))}>
+                                <label>Email:</label>
+                                <Field name="email" type = "email" component={renderInput}/>
+                                <label>Password:</label>
+                                <Field name="password" type = "password" component={renderInput}/>
+                                <button>Sign In</button>
+                                <p>{authError}</p>
+                            </form>
+                        </div>
+                        <div className="modal-footer">
+                            <p style={{margin: 'auto'}}>New Around Here? <Link to="/create-account-modal" style={{color: '#3f0080'}}>Create account here.</Link></p>
+                        </div>
+                    </div>
                 </div>
-                <div className="modal-footer">
-                    <p style={{margin: 'auto'}}>New Around Here? <Link to="/create-account-modal" style={{color: '#3f0080'}}>Create account here.</Link></p>
-                </div>
-            </div>
             </div>
         )
     }
