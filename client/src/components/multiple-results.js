@@ -67,7 +67,7 @@ class MultipleResults extends Component {
                                     <div className="my-auto">
                                         <div className="product-detail">
                                             <h5 className="name">{name}</h5>                                              
-                                            <h6>by: {manufacturer_name}</h6>
+                                            <h6>from: {manufacturer_name}</h6>
                                         </div>
                                         <div className="description">
                                             <p className = "juice-description">{this.textTruncate(manufacturer_description)}</p>

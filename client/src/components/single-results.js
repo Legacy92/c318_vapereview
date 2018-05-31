@@ -102,7 +102,7 @@ class SingleResults extends Component {
                             </div>
 
                             <div className="col-md-12">
-                                <button className="mx-2 rounded" onClick={this.handleAddReviewClick.bind(this)}>Add Review</button>
+                                <button className="mx-2" onClick={this.handleAddReviewClick.bind(this)}>Add Review</button>
                                 {
                                     this.props.searchTerm
                                         ? <button onClick={this.handleBackButton.bind(this)}>Back</button>
