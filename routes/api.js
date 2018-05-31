@@ -24,7 +24,7 @@ module.exports = app => {
     app.post('/api/add-product', api.addJuice);
 
     //add review
-    app.post('/api/add-review', api.addReview);
+    app.post('/api/add-review',  requireAuth, api.addReview);
 
     //Get Flavor Categories
     app.get('/api/category-modal', api.getFlavorCategories);

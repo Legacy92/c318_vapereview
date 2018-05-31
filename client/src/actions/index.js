@@ -68,13 +68,13 @@ export function getRandomJuice(){
     }
 }
 export function addReview(values) {
-    const response = axios.post("/api/add-review", values);
-
-    return {
-        type: types.ADD_REVIEW,
-        payload: response
+    return async dispatch => {
+        try {
+            const response = await axios.post("/api/add-review", values, setAuthHeaders());
+        } catch(err){
+            console.log('Add Review Error:', err.message);
+        }
     }
-
 }
 
 export function pullJuiceData() {

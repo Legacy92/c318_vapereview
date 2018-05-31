@@ -22,17 +22,20 @@ class AddReview extends Component {
         const {juice_id} = this.props.match.params;
         await this.props.singleItem(juice_id);
     }
-    handleAddReview(values) {
+
+    async handleAddReview(values) {
         const {juice_id} = this.props.match.params;
         const {reviewFlavors: flavors} = this.props;
         const { rating } = this.state;
 
-        const newValues = {...values, juice_id, flavors, rating};
+        const review = {...values, juice_id, flavors, rating};
 
-        console.log("Add Review Values:", newValues);
-        //  this.props.addReview(newValues);
-        // this.props.history.push(`/single-results/${juice_id}`);
-
+        try {
+            await this.props.addReview(review);
+            this.props.history.push(`/single-results/${juice_id}`);
+        } catch(err){
+            // Review didn't save, do something
+        }
     }
 
     renderInput({label, input, meta: {touched, error}}) {
