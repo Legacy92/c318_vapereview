@@ -172,7 +172,8 @@ export function signIn(credentials){
             localStorage.setItem('token', response.data.token);
     
             dispatch({
-                type: types.SIGN_IN
+                type: types.SIGN_IN,
+                response: data
             });
         } catch(err){
             dispatch({

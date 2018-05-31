@@ -78,10 +78,18 @@ exports.signUp = async (req, res) => {
     }
 }
 
-exports.signIn = (req, res) => {
+exports.signIn = async (req, res) => {
+    const {username, email} = req.body;
+    const query = 'SELECT ?? FROM ?? WHERE ?? = ? OR ?? = ?';
+    const inserts = ['username', 'users', 'username', username, 'email', email];
+    const sql = mysql.format(query, inserts);
+    console.log('this is the user sql:', sql);
+    const results = await db.query(sql);
+    console.log(results);
     res.send({
         success: true,
-        token: tokenForUser(req.user)
+        token: tokenForUser(req.user),
+        data: results
     });
 }
 
