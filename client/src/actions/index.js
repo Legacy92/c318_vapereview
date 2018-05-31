@@ -1,9 +1,6 @@
 import types from "./types";
 import axios from "axios";
 
-
-
-
 export function setSearchTerm(searchTerm) {
     console.log("search term function");
 
@@ -20,17 +17,6 @@ export function getChartData(values){
     console.log("Chart Data:", response);
     return {
         type: types.GET_CHART_DATA,
-        payload: response
-    }
-}
-
-
-export function createAccount(values) {
-    console.log("Form Values:", values);
-    const response = axios.post("/api/create-user", values);
-
-    return {
-        type: types.CREATE_ACCOUNT,
         payload: response
     }
 }
@@ -53,10 +39,9 @@ export function searchByFlavorName(values){
     }
 }
 
-export function landingPageSearch(values){
-    console.log("Search Values:", values);
+export function landingPageSearch(term){
     const response = axios.get("/api/multiple-results", {
-        params: values
+        params: { term }
     });
 
     return{
@@ -66,7 +51,6 @@ export function landingPageSearch(values){
 }
 
 export function browseAllJuices(){
-    console.log('browse all function called');
     const response = axios.get("/api/multiple-results-browse");
 
     return{
@@ -76,7 +60,6 @@ export function browseAllJuices(){
 }
 
 export function getRandomJuice(){
-    console.log('get random juice function called');
     const response = axios.get("/api/random-juice");
 
     return{
@@ -104,9 +87,8 @@ export function pullJuiceData() {
 }
 
 export function singleItem(juice_id) {
-    console.log(juice_id);
     const response = axios.get("/api/single-juice-info", {
-        params: juice_id
+        params: { juice_id }
     });
 
     return {
@@ -115,10 +97,9 @@ export function singleItem(juice_id) {
     }
 }
 
-export function singleItemReviews(juiceId) {
-    console.log(juiceId);
+export function singleItemReviews(juice_id) {
     const response = axios.get("/api/single-juice-reviews", {
-        params: juiceId
+        params: { juice_id }
     });
 
     return {

@@ -59,7 +59,7 @@ class LandingPage extends Component {
                 </form>
                 <Link style={{margin:1.0+'%'}} className="btn btn-lg white-text" to="/multiple-results-browse">Browse</Link>
                 <Link style={{margin:1.0+'%'}} className="btn btn-lg white-text" to="/add-product">Add Juice</Link>
-                <Link style={{margin:1.0+'%'}} className="btn btn-lg white-text" to="/single-results/:juice_id">Random</Link>
+                <Link style={{margin:1.0+'%'}} className="btn btn-lg white-text" to="/single-results/random">Random</Link>
 
             </div>
         )
