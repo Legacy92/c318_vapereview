@@ -196,7 +196,7 @@ exports.addReview = async (req, res) => {
 
 exports.getFlavorCategories = async (req, res) => {
     try {
-        const query = 'SELECT * FROM ??';
+        const query = 'SELECT * FROM ??  ORDER BY `category` ASC';
         const inserts = ['category'];
         const sql = mysql.format(query, inserts);
 
