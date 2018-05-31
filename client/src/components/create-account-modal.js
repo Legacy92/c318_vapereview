@@ -51,7 +51,7 @@ function validate(values){
     const errors = {};
 
     if(!username) {
-        errors.username = "Please enter your username.";
+        errors.username = "Please enter a username.";
 
     }
     if(!email) {

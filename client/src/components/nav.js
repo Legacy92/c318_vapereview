@@ -38,10 +38,10 @@ class Header extends Component {
         return (
             <Fragment>
                 <li className="nav-item">
-                    <Link className="nav-link nav-link-text" to="/create-account-modal" onClick={this.closeNav}>Create Account</Link>
+                    <Link className="nav-link nav-link-text" to="/create-account-modal" onClick={this.toggleNav}>Create Account</Link>
                 </li>
                 <li className="nav-item">
-                    <Link className="nav-link nav-link-text" to="/user-sign-in" onClick={this.closeNav}>Sign In</Link>
+                    <Link className="nav-link nav-link-text" to="/user-sign-in" onClick={this.toggleNav}>Sign In</Link>
                 </li>
             </Fragment>
         );

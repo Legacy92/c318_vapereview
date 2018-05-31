@@ -30,7 +30,7 @@ class UserSignIn extends Component {
                     <h1 className = "sign-in-title">Sign In</h1>
                     <form style={{textAlign: 'center'}} onSubmit={handleSubmit(this.handleUserSignIn.bind(this))}>
                         <label>Email*</label>
-                        <Field name="email" type = "email" component={renderInput}/>
+                        <Field name="email" component={renderInput}/>
                         <label>Password*</label>
                         <Field name="password" type = "password" component={renderInput}/>
                         <button>Sign In</button>
@@ -52,11 +52,11 @@ function validate(values){
     const errors = {};
 
     if(!email) {
-        errors.email = 'Please enter your Email';
+        errors.email = 'Please enter your Email.';
 
     }
     if(!password){
-        errors.password = 'Please enter your Password';
+        errors.password = 'Please enter your Password.';
     }
 
     return errors;
