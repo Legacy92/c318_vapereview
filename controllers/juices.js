@@ -144,11 +144,8 @@ exports.addJuice = async (req, res) => {
         const query = 'INSERT INTO ?? (??, ??, ??, ??) VALUES ( ?, ?, ?, ?)';
         const inserts = ['juices', 'name', 'manufacturer_name', 'manufacturer_site', 'manufacturer_description', juice_name, manufacturer_name, manufacturer_site, manufacturer_description];
         const sql = mysql.format(query, inserts);
-        console.log('this is the formatted SQL query:', sql);
         const addResult =await db.query(sql);
-        console.log('this is the result', addResult);
         const juice_id = addResult.insertId;
-        console.log('this is the juice id',juice_id);
         if(!addResult.affectedRows) throw new Error('Error saving to database');
         const output = {
             success: true,

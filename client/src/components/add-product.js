@@ -13,7 +13,6 @@ class AddProduct extends Component {
     async handleAddProduct(values) {
         console.log("Form Values:", values);
         await this.props.addProduct(values);
-        console.log(this.props.juiceId);
         let juice_id=this.props.juiceId;
         console.log(juice_id);
         this.props.history.push(`/add-review/${juice_id}`);
