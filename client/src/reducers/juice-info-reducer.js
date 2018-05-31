@@ -23,8 +23,8 @@ export default (state = DEFAULT_STATE, action) => {
         case types.PULL_JUICE_DATA:
             return {...state, all : action.payload.data.data};
         case types.ADD_PRODUCT:
-            return{...state, juiceId: action.payload.data.data.insertId, all: action.payload.data.data
-            };
+        console.log('add product action:', action);
+            return{...state, juiceId: action.payload.data.data.insertId, all: action.payload.data.data};
         case types.SEARCH_BY_NAME:
             return {...state, all: action.payload.data.data, juiceId: action.payload.data.data.id};
         case types.SEARCH_BY_ANY:

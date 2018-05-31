@@ -10,10 +10,13 @@ import axios from 'axios';
 class AddProduct extends Component {
 
 
-    handleAddProduct(values) {
+    async handleAddProduct(values) {
         console.log("Form Values:", values);
-        this.props.addProduct(values);
-        this.props.history.push("/add-review");
+        await this.props.addProduct(values);
+        console.log(this.props.juiceId);
+        let juice_id=this.props.juiceId;
+        console.log(juice_id);
+        this.props.history.push(`/add-review/${juice_id}`);
     }
 
 
@@ -58,7 +61,7 @@ class AddProduct extends Component {
                         <Field  name="manufacturer_site"  component={renderInput} />
                         <label>Manufacturer Description:</label>
                         <Field  name="manufacturer_description" component={renderTextarea} />
-                        <Link to = "/add-review/:juice_id" className = "add-product-to-review btn">Next...</Link>
+                        <button className = "add-product-to-review btn">Next...</button>
                     </form>
                 </div>
             </div>
@@ -88,11 +91,18 @@ function validate({ juice_name, manufacturer_name, manufacturer_site, manufactur
     return errors;
 }
 
+function mapStateToProps(state) {
+    return {
+       
+        juiceId: state.juiceInfo.juiceId,
+       
+    };
 
+}
 
 AddProduct = reduxForm({
     form: "add-product",
     validate: validate
 })(AddProduct);
 
-export default connect(null, { addProduct })(AddProduct);
+export default connect(mapStateToProps, { addProduct })(AddProduct);
