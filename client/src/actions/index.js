@@ -12,9 +12,9 @@ export function setSearchTerm(searchTerm) {
 
 }
 
-export function getChartData(values){
-    const response = axios.get("/api/flavor-chart", values);
-    console.log("Chart Data:", response);
+export function getChartData(juice_id){
+    console.log("juiceID:", juice_id)
+    const response = axios.get("/api/flavor-chart", {params: {juice_id}});
     return {
         type: types.GET_CHART_DATA,
         payload: response

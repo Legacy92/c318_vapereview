@@ -92,7 +92,6 @@ h2, h5 {
 .juice-bottle-colors {
     height: 52%;
     width: 50%;
-    background-color: blue;
     top: 40%;
     left: 26%;
     position: relative;
@@ -145,11 +144,9 @@ h2, h5 {
 
 }
 .single-results-image {
-    height: 250px;
-    bottom: 74%;
+    height: 251px;
     position: relative;
-    right: 51%;
-
+    bottom: 132px;
 }
 
  @media (max-width:576px ){
@@ -158,7 +155,8 @@ h2, h5 {
 
      }
      .single-results-image {
-         height: 135px;
+         height: 130px;
+         bottom: 68px;
      }
      .juice-bottle-wrapper {
          height: 140px;
@@ -167,15 +165,48 @@ h2, h5 {
 
 @media (max-width: 768px) {
     .single-results-image {
-        height: 135px;
+        height: 130px;
+        bottom: 68px;
     }
     .juice-bottle-wrapper {
         height: 140px;
-
     }
-
-
 }
+
+/* /////////////////////////////////////////Graph Colors ///////////////////////////////////// */
+
+.fruity {
+    background-color: #E2062C;
+}
+
+.tobacco {
+    background-color: #664228;
+}
+
+.sweet {
+    background-color: #FE6F5E;
+}
+
+.spiced {
+    background-color: #F2BA49;
+}
+
+.minty {
+    background-color: #3EB489;
+}
+
+.drinks {
+    background-color: #007AA5;
+}
+
+.nutty {
+    background-color: #987456;
+}
+
+.other {
+    background-color: #66023C;
+}
+
 /* /////////////////////////////////////////Juice ReviewsPage //////////////////////////////// */
 
 
