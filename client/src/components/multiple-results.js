@@ -9,12 +9,12 @@ import ReactStars from 'react-stars';
 class MultipleResults extends Component {
 
     componentDidMount() {
-        // this.getReviewData();
         const { searchTerm } = this.props.match.params;
+
         this.props.setSearchTerm(searchTerm);
 
         if(searchTerm){
-            this.props.landingPageSearch({input: searchTerm});
+            this.props.landingPageSearch(searchTerm);
         }else{
             this.props.browseAllJuices();
         }
@@ -23,11 +23,6 @@ class MultipleResults extends Component {
     handleProductClick(id){
         this.props.history.push(`/single-results/${id}`);
 
-    }
-
-    async getReviewData() {
-        const response = await axios.get("/api/multiple-results");
-        console.log("Review Data:", response);
     }
 
     textTruncate(str, length, ending) {
@@ -45,10 +40,9 @@ class MultipleResults extends Component {
       };
 
     render() {
-
-        console.log("Multiple Results Props:",this.props);
         let juiceElements = [];
-        if (this.props.all) {
+        
+        if (this.props.all.length) {
             const juiceInfo = this.props.all;
 
             juiceElements = juiceInfo.map((item, index) => {
