@@ -18,16 +18,10 @@ a {
     color: black;
 }
 
-.add-product-to-review {
-    color: white;
-    font-size: 3rem;
-    border-bottom: #f8f4ff
-}
-
 button, .btn, .btn-lg {
     background-color: #2a0d30;
     border: 1px solid white;
-    font-size: 15px;
+    font-size: 1rem;
     color: white;
     cursor: pointer;
 }
@@ -37,12 +31,18 @@ button, .btn, .btn-lg {
     color: white
 }
 
-.text-danger {
+.text-danger, h6 {
     font-size: .75rem
 }
 
 input, label {
     font-size: 1rem;
+}
+
+h2, h5 {
+    
+    text-shadow: #420842 2px 2px 20px;
+    color: white;
 }
 
 .app {
@@ -55,7 +55,7 @@ input, label {
      min-height: 100vh;
      position: relative;
      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-     font-size: 20px;
+     font-size: 1rem;
      padding: 0;
      text-align: center;
      margin: 0
@@ -105,12 +105,12 @@ input, label {
 
 }
 
-.single-results-name {
+/* .single-results-name {
     text-shadow: #420842 2px 2px 20px;
     color: white;
 
 
-}
+} */
 .single-results-display {
     position: relative;
 }
@@ -122,7 +122,7 @@ input, label {
 }
 
 .single-results-description {
-    font-size: 16px;
+    font-size: 1rem;
     color: black;
     text-align: justify;
 
@@ -214,6 +214,7 @@ input, label {
     box-sizing: border-box;
     display: flex;
     justify-content: center;
+    cursor: pointer;
 }
 
 .product-detail {
@@ -236,7 +237,6 @@ input, label {
 
 .rating, .juice-description{
     margin-top: 5px;
-    font-size: 1rem;
    
 }
 
@@ -305,10 +305,6 @@ input, label {
     color: #ffc900;
 }
 
-/*.nav-link-text {*/
-    /*color: gold;*/
-/*}*/
-/* Create Acount and Sign In */
 .link{
     color:#5e2053;
      display:block
@@ -329,9 +325,8 @@ input, label {
     font-size: 2.5rem
 }
 
-
 .addProduct {
-    font-size: 2.1rem;
+    font-size: 2em;
     
 }
 
@@ -361,7 +356,7 @@ label {
 
 /* ////////////////////////////////////////// user sign in   ///////////////////////////// */
 .sign-in-title {
-    font-size: 1.5rem
+    font-size: 2em
 }
 
 .sign-in-body {
@@ -384,8 +379,10 @@ label {
     margin-top: 50px;
     background: linear-gradient(to bottom right,#a696c2, white);
     box-shadow: #ffc900 0px 0px 0px 2px;
+}
 
-
+.add-product-to-review {
+    margin-bottom: 1%
 }
 /* ////////////////////////////////////////// add review   ///////////////////////////// */
 

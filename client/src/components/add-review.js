@@ -50,8 +50,8 @@ class AddReview extends Component {
 
     render() {
         const {handleSubmit} = this.props;
-        if(this.props.singleItemInfo[0]){
-            const {name} = this.props.singleItemInfo[0];
+        if(this.props.singleItemInfo){
+            const {name} = this.props.singleItemInfo;
             return (
             <div className="add-review">
                 <h1 className="addReview">Add Review for <span className="juiceName">{name}</span> </h1>

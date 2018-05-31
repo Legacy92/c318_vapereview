@@ -60,11 +60,8 @@ class MultipleResults extends Component {
                                 <div className="col-7 d-flex align-items-center flex-column">
                                     <div className="my-auto">
                                         <div className="product-detail">
-                                            <h5 className="name">
-                                                <a href="#">
-                                                    {name}
-                                                </a>
-                                            </h5>
+                                            <h5 className="name">{name}</h5>                                              
+                                            <h6>from: {manufacturer_name}</h6>
                                         </div>
                                         <div className="description">
                                             <p className = "juice-description">{this.textTruncate(manufacturer_description)}</p>
