@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react';
 import { connect } from "react-redux";
-import {Field, reduxForm} from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
 import axios from 'axios';
-import { addReview, singleItem } from "../actions";
+import { addReview, singleItem, clearReviewFlavors } from "../actions";
 import Nav from './nav';
 import FlavorModal from './flavor-modal';
-import { renderInput, renderTextarea} from "../helpers";
+import { renderInput, renderTextarea } from "../helpers";
 import ReactStars from "react-stars";
 
 class AddReview extends Component {
@@ -21,6 +21,10 @@ class AddReview extends Component {
     async componentDidMount(){
         const {juice_id} = this.props.match.params;
         await this.props.singleItem(juice_id);
+    }
+
+    componentWillUnmount(){
+        this.props.clearReviewFlavors();
     }
 
     async handleAddReview(values) {
@@ -63,7 +67,6 @@ class AddReview extends Component {
     render() {
         const {handleSubmit} = this.props;
         const { rating } = this.state;
-        console.log('Rating:', rating);
         
         if(this.props.singleItemInfo){
             const {name} = this.props.singleItemInfo;
@@ -106,4 +109,4 @@ AddReview = reduxForm({
     form: "add-review"
 })(AddReview);
 
-export default connect(mapStateToProps, {addReview, singleItem})(AddReview);
+export default connect(mapStateToProps, {addReview, singleItem, clearReviewFlavors})(AddReview);

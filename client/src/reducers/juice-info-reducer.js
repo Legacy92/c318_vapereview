@@ -56,6 +56,8 @@ export default (state = DEFAULT_STATE, action) => {
         case types.GET_CHART_DATA:
             console.log("Chart Data Action: ", action);
             return {...state, chartData: action.payload.data.data};
+        case types.CLEAR_REVIEW_FLAVORS:
+            return {...state, categories: [], flavors: [], selectedCategory: {}, selectedFlavor: '', flavorList: [], reviewFlavors: []};
         default:
             return state;
     }
