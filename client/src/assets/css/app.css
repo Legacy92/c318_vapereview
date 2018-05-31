@@ -362,3 +362,12 @@ label {
     box-shadow: #ffc900 0px 0px 0px 2px;
 }
 
+/* ////////////////////////////////////////// add product ///////////////////////////// */
+
+.add-product-body {
+    margin-top: 50px;
+    background: linear-gradient(to bottom right,#a696c2, white);
+    box-shadow: #ffc900 0px 0px 0px 2px;
+
+
+}

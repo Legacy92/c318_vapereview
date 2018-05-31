@@ -26,6 +26,14 @@ class SingleResults extends Component {
 
     }
 
+    handleHomeButton(){
+        this.props.history.push(`/`);
+
+
+    }
+
+
+
     handleAddReviewClick() {
         const {juice_id} = this.props.match.params;
         console.log(this.props.singleItemInfo);
@@ -105,7 +113,11 @@ class SingleResults extends Component {
 
                             <div className="col-md-12">
                                 <button className="mx-2 rounded" onClick={this.handleAddReviewClick.bind(this)}>Add Review</button>
-                                <button onClick={this.handleBackButton.bind(this)}>Back To Results</button>
+                                {
+                                    this.props.searchTerm
+                                        ? <button onClick={this.handleBackButton.bind(this)}>Back</button>
+                                        : <button onClick={this.handleHomeButton.bind(this)}>Back</button>
+                                }
                             </div>
                         </div>
                     </div>

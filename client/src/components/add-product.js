@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { Route } from "react-router-dom";
 import { addProduct } from "../actions";
 import { Link } from "react-router-dom";
+import { renderInput, renderTextarea } from "../helpers";
 import axios from 'axios';
 
 class AddProduct extends Component {
@@ -16,17 +17,17 @@ class AddProduct extends Component {
     }
 
 
-    renderInput({ label, input, meta: { touched, error } }) {
-        // console.log(label, input);
-        return (
-            <div>
-                <div className="input-group justify-content-center pt-5">
-                <input className="align-middle input-field col-8" style={{marginTop: 1+'em', fontSize: 15+'px'}} placeholder={label} {...input} type="text" autoComplete="off"/>
-                </div>
-                <p className="text-danger">{touched && error}</p>
-            </div>
-        )
-    }
+    // renderInput({ label, input, meta: { touched, error } }) {
+    //     // console.log(label, input);
+    //     return (
+    //         <div>
+    //             <div className="input-group justify-content-center pt-5">
+    //             <input className="align-middle input-field col-8" style={{marginTop: 1+'em', fontSize: 15+'px'}} placeholder={label} {...input} type="text" autoComplete="off"/>
+    //             </div>
+    //             <p className="text-danger">{touched && error}</p>
+    //         </div>
+    //     )
+    // }
 
     renderTextarea({label, input, meta: {touched, error}}) {
         return (
@@ -45,15 +46,21 @@ class AddProduct extends Component {
     render() {
         const { handleSubmit } = this.props;
         return (
-            <div style={{marginTop: 1+'em'}}> 
-                <div className="pt-5 titanicFont display-4 addProduct goldenFont d-md-block">Add Product</div>
-                <form onSubmit={handleSubmit(this.handleAddProduct.bind(this))}>
-                    <Field className="align-middle" name="juice_name" label="Juice Name" component={this.renderInput} />
-                    <Field className="align-middle" name="manufacturer_name" label="Manufacturer Name" component={this.renderInput} />
-                    <Field className="align-middle" name="manufacturer_site" label="Manufacturer Site" component={this.renderInput} />
-                    <Field className="align-middle" name="manufacturer_description" label="Manufacturer Description" component={this.renderTextarea} />
-                    <Link to = "/add-review/:juice_id" className = "add-product-to-review btn">Next...</Link>
-                </form>
+            <div>
+                <h1 className="titanicFont display-4 addProduct goldenFont">Add Product</h1>
+                <div className="col-10 offset-1 card add-product-body">
+                    <form onSubmit={handleSubmit(this.handleAddProduct.bind(this))}>
+                        <label style={{paddingTop:"20px"}}>Juice Name:</label>
+                        <Field  name="juice_name"  component={renderInput} />
+                        <label>Manufacturer Name:</label>
+                        <Field  name="manufacturer_name"  component={renderInput} />
+                        <label>Manufacturer Site:</label>
+                        <Field  name="manufacturer_site"  component={renderInput} />
+                        <label>Manufacturer Description:</label>
+                        <Field  name="manufacturer_description" component={renderTextarea} />
+                        <Link to = "/add-review/:juice_id" className = "add-product-to-review btn">Next...</Link>
+                    </form>
+                </div>
             </div>
         )
     }
