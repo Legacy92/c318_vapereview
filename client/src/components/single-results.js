@@ -12,14 +12,14 @@ class SingleResults extends Component {
 
     componentDidMount(){
         const {juice_id}  = this.props.match.params;
-       
+
         if(juice_id !== 'random'){
             this.props.singleItem(juice_id);
             this.props.singleItemReviews(juice_id);
-            this.props.getChartData({juice_id});
+            this.props.getChartData(juice_id);
         }else{
             this.getRandomJuice();
-            this.props.getChartData({juice_id})
+            this.props.getChartData(juice_id)
         }
     }
 
@@ -58,6 +58,16 @@ class SingleResults extends Component {
     render(){
         let juiceData = [];
 
+        console.log(this.props.chartData)
+
+        const { chartData }= this.props
+
+        const flavorElements = Object.keys(chartData).map(key => {
+            return (
+                <div key={key} className={key} style={{height:`${chartData[key]}%`}}></div>
+            )
+        })
+
         if(this.props.singleItemInfo) {
 
             const {singleItemInfo: {name, manufacturer_name, manufacturer_site, manufacturer_description, rating}} = this.props
@@ -70,8 +80,9 @@ class SingleResults extends Component {
                                 <div className="product-image single-results-image-container">
                                     <div className="juice-bottle-wrapper rounded" >
                                         <div className="juice-bottle-colors">
-                                            <img  className="img-rounded single-results-image" src={juiceBottle}/>
+                                            {flavorElements}
                                         </div>
+                                        <img  className="img-rounded single-results-image" src={juiceBottle}/>
                                     </div>
                                 </div>
                             </div>
