@@ -29,9 +29,9 @@ exports.getRandomJuice = async (req, res) => {
 
         const output = {
             success: true,
-            data: randomJuice[0]
+            juice: randomJuice[0]
         }
-        console.log(output.data);
+        
         res.json(output);
     } catch(err){
         res.status(500).send('Error Getting Random Juice');
@@ -40,13 +40,11 @@ exports.getRandomJuice = async (req, res) => {
 
 exports.getSingleJuice = async (req, res) => {
     try {
-        // const { juice_id } = req.query;
-        const juice_id = req.query[Object.keys(req.query)[0]];
-        console.log(juice_id);
+        const { juice_id } = req.query;
+
         const query = 'SELECT `juices`.*, AVG(`reviews`.`rating`) as rating FROM ?? JOIN ?? ON ?? = ?? WHERE ?? = ?';
         const inserts = ['juices', 'reviews', 'juices.id', 'reviews.juice_id', 'juices.id', juice_id];
-
-        let sql = mysql.format(query, inserts);
+        const sql = mysql.format(query, inserts);
 
         const singleJuice = await db.query(sql);
 
@@ -54,7 +52,7 @@ exports.getSingleJuice = async (req, res) => {
 
         const output = {
             success: true,
-            data: singleJuice[0]
+            juice: singleJuice[0]
         }
         res.json(output);
     } catch(err){
@@ -64,18 +62,17 @@ exports.getSingleJuice = async (req, res) => {
 
 exports.getSingleJuiceReviews = async (req, res, next) => {
     try {
-        const juiceId = req.query[Object.keys(req.query)[0]];
+        const { juice_id } = req.query;
 
         const query = 'SELECT `id`,`rating`, `description` as review, `juice_id`, `user_id`, `created` FROM ?? WHERE ?? = ? ORDER BY `reviews`.`created` DESC';
-        const inserts = ['reviews', 'reviews.juice_id', juiceId];
-
-        let sql = mysql.format(query, inserts);
+        const inserts = ['reviews', 'reviews.juice_id', juice_id];
+        const sql = mysql.format(query, inserts);
 
         const reviews = await db.query(sql);
 
         const output = {
             success: true,
-            data: reviews
+            reviews
         }
         res.json(output);
     } catch(err){

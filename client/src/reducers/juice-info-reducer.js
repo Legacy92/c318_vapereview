@@ -41,8 +41,7 @@ export default (state = DEFAULT_STATE, action) => {
             return {...state, all : action.payload.data.data};
         case types.GET_RANDOM_JUICE:
         case types.SINGLE_ITEM:
-            console.log("Single_Item Active", action);
-            return {...state, singleItemInfo: action.payload.data.data};
+            return {...state, singleItemInfo: action.payload.data.juice};
         case types.GET_CATEGORIES:
             return {...state, categories: action.payload.data.data};
         case types.SET_CATEGORY:
@@ -57,8 +56,7 @@ export default (state = DEFAULT_STATE, action) => {
             const reviewFlavor= state.selectedFlavor.id;
             return {...state, selectedCategory: {}, selectedFlavor: {}, flavors: [], flavorList: [...state.flavorList, newFlavor], reviewFlavors:[...state.reviewFlavors, reviewFlavor]};
         case types.GET_SINGLE_ITEM_REVIEWS:
-            console.log("Single_Item Reviews", action);
-            return {...state, singleItemReviewsData: action.payload.data.data};            
+            return {...state, singleItemReviewsData: action.payload.data.reviews};            
         case types.CLEAR_SINGLE_ITEM:
             return {...state, singleItemReviewsData: [], juiceId: []};
         default:

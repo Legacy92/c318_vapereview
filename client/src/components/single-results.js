@@ -13,9 +13,9 @@ class SingleResults extends Component {
     componentDidMount(){
         const {juice_id}  = this.props.match.params;
        
-        if(juice_id !=='random'){
-            this.props.singleItem({juice_id});
-            this.props.singleItemReviews({juice_id});
+        if(juice_id !== 'random'){
+            this.props.singleItem(juice_id);
+            this.props.singleItemReviews(juice_id);
 
         }else{
             this.getRandomJuice();
@@ -44,7 +44,7 @@ class SingleResults extends Component {
 
         this.props.singleItemReviews(id);
     }
-    
+
     render(){
         let juiceData = [];
 
