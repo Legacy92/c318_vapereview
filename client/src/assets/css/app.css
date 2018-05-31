@@ -529,7 +529,7 @@ label {
 
 /* ////////////////////////////////////////// add review   ///////////////////////////// */
 
-.juiceName {
+.juiceName, .single-results-name, .name {
     color: #f8f4ff;
     font-family: luminari, fantasy;
     padding-top: 30px;
