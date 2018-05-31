@@ -5,6 +5,8 @@ import { connect } from "react-redux";
 import * as actions from "../actions";
 import vapeImage from "../assets/images/vape-image.jpeg";
 import ReactStars from 'react-stars';
+import juiceBottle from "../assets/images/vape-juice-bottle-transparent-smoke.png";
+
 
 class MultipleResults extends Component {
 
@@ -53,8 +55,12 @@ class MultipleResults extends Component {
                             <div className="card-container row">
                                 <div className="rating-container col-5 d-flex align-items-center flex-column">
                                     <div className="my-auto">
-                                        <div className="rating-text">Juice Rating: </div>
-                                        <ReactStars className="single-results-stars stars" size={15} edit={false} count={5} value={rating} color1="grey" color2="#ffc900"/>
+                                        <div className="multiple-results-img">
+                                            <img  className="img-rounded multiple-results-image" src={juiceBottle}/>
+                                        </div>
+                                        <div className = "multiple-results-star-container align-items-center">
+                                            <ReactStars className="single-results-stars stars" size={15} edit={false} count={5} value={rating} color1="grey" color2="#ffc900"/>
+                                        </div>
                                     </div>
                                 </div>
                                 <div className="col-7 d-flex align-items-center flex-column">

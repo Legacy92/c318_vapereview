@@ -217,6 +217,16 @@ h2, h5 {
     cursor: pointer;
 }
 
+.multiple-results-image {
+    height: 70%;
+    width: 70%;
+}
+
+.multiple-results-star-container {
+    display: inline-block;
+    margin-top: 5px
+}
+
 .product-detail {
     border-bottom: 1px solid black;
 }
