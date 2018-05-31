@@ -170,10 +170,10 @@ export function signIn(credentials){
             const response = await axios.post(`/auth/sign-in`, credentials);
 
             localStorage.setItem('token', response.data.token);
-    
+            console.log(response.data);
             dispatch({
                 type: types.SIGN_IN,
-                response: data
+                payload: response
             });
         } catch(err){
             dispatch({
