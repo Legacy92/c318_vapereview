@@ -23,6 +23,7 @@ class UserSignIn extends Component {
         const {handleSubmit, authError} = this.props;
 
         return (
+
             <div>
                 <h1 className = "titanicFont display-4 addProduct goldenFont">Sign In</h1>
                 <div className = "col-10 offset-1">
@@ -53,11 +54,11 @@ function validate(values){
     const errors = {};
 
     if(!email) {
-        errors.email = 'Please enter your Email';
+        errors.email = 'Please enter your Email.';
 
     }
     if(!password){
-        errors.password = 'Please enter your Password';
+        errors.password = 'Please enter your Password.';
     }
 
     return errors;
