@@ -18,9 +18,11 @@ class SingleResults extends Component {
         if(juice_id !==':juice_id'){
             this.props.singleItem({juice_id});
             this.props.singleItemReviews({juice_id});
+            this.props.getChartData({juice_id});
 
         }else{
             this.getRandomJuice();
+            this.props.getChartData({juice_id})
         }
 
 
@@ -65,7 +67,7 @@ class SingleResults extends Component {
 
 
     render(){
-        console.log(this.props);
+        console.log('single-page-render:', this.props);
         let juiceData = [];
 
         if(this.props.singleItemInfo[0]) {
@@ -131,7 +133,8 @@ function mapStateToProps(state) {
         juice: state.juiceInfo.juice,
         randomJuice: state.juiceInfo.randomJuice,
         singleItemInfo:state.juiceInfo.singleItemInfo,
-        searchTerm:state.juiceInfo.searchTerm
+        searchTerm:state.juiceInfo.searchTerm,
+        chartData:state.juiceInfo.chartData
     };
 
 }
