@@ -6,6 +6,7 @@ import { getCategories, setCategory, setFlavor, addSelectedFlavor } from '../../
 import './flavor-modal.css';
 import Dropdown from './dropdown';
 import FlavorList from './flavor_list';
+import purpArrow from "../../assets/images/trans-purple-arrow.png";
 
 class FlavorModal extends Component {
 
@@ -46,31 +47,33 @@ class FlavorModal extends Component {
 
         return (
             <div className="flavor-selection">
-                <h1 className="flavor-header mb-5">Select Flavors Tasted</h1>
-                <div>
-                    {
-                        selectedCategory.name && selectedFlavor.name
-                            ? <button onClick={this.handleAddFlavor.bind(this)} className="btn btn-default">Add Flavor</button>
-                            : null
-                    }
-                </div>
-                <div className="row">
-                    <div className="col-12">
+                <h3 className="flavor-header mb-3">Please Select Tasted Flavors</h3>
+                <img src={purpArrow} className="add-review-arrow col-12"/>
+
+                <div className="row card add-review-flavor-card col-10 offset-1">
+                    <div className="col-12 table-holder">
                         <FlavorList list={flavorList} />
                     </div>
                     <div className="col-12">
                         <div className="row">
-                            <div className="col-4 offset-2 dropdown-container">
+                            <div className="col-12 col-md-6 dropdown-container">
                                 {
                                     categories.length
-                                        ? <Dropdown action={this.handleSetCategory.bind(this)} btnText={`${selectedCategory.name ? selectedCategory.name : 'Category'}:`} menuItems={categories} keyNames={{ id: 'id', name: 'category' }} />
+                                        ? <Dropdown action={this.handleSetCategory.bind(this)} btnText={`${selectedCategory.name ? selectedCategory.name : 'Select Category'}:`} menuItems={categories} keyNames={{ id: 'id', name: 'category' }} />
                                         : null
                                 }
                             </div>
-                            <div className="col-4 dropdown-container">
+                            <div className=" col-12 col-md-6 dropdown-container">
                                 {
                                     true
                                         ? <Dropdown action={this.handleSetFlavor.bind(this)} btnText={`${selectedFlavor.name ? selectedFlavor.name : 'Select Flavor'}:`} menuItems={flavors} keyNames={{ id: 'id', name: 'flavor' }} />
+                                        : null
+                                }
+                            </div>
+                            <div className="col-12">
+                                {
+                                    selectedCategory.name && selectedFlavor.name
+                                        ? <button onClick={this.handleAddFlavor.bind(this)} className="btn btn-default">Add Flavor</button>
                                         : null
                                 }
                             </div>

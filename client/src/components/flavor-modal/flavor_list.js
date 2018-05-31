@@ -7,18 +7,18 @@ export default props => {
         const { category, flavor } = item;
         return (
             <tr key={category.id + '' + flavor.id}>
-                <td>{category.name}</td>
+                {/*<td>{category.name}</td>*/}
                 <td>{flavor.name}</td>
             </tr>
         )
     });
 
     return (
-        <table>
+        <table className="add-review-dropdown-table">
             <thead>
                 <tr>
-                    <th>Category</th>
-                    <th>Flavor</th>
+                    {/*<th className="col-12 col-md-6">Juice Category</th>*/}
+                    <th className="col-12 col-md-6">Flavors Chosen</th>
                 </tr>
             </thead>
             <tbody>
