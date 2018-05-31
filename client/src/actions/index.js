@@ -19,10 +19,9 @@ export function searchByFlavorName(values){
     }
 }
 
-export function landingPageSearch(values){
-    console.log("Search Values:", values);
+export function landingPageSearch(term){
     const response = axios.get("/api/multiple-results", {
-        params: values
+        params: { term }
     });
 
     return{
