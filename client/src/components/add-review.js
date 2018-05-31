@@ -71,11 +71,9 @@ class AddReview extends Component {
                         <form onSubmit={handleSubmit(this.handleAddReview.bind(this))}>
                             <FlavorModal/>
                             <label>{`How many stars would you give ${name}? (1-5)`}</label>
-                            <br/>
-                                <div className="add-review-stars-container">
-                                    <ReactStars value={rating} className="single-results-stars stars" onChange={rating => this.setState({rating})} size={15}  count={5}  color1="grey" color2="#ffc900"/>
-                                </div>
-                            <br/>
+                            <div className="my-4 add-review-stars-container">
+                                <ReactStars value={rating} className="single-results-stars stars" onChange={rating => this.setState({rating})} size={15}  count={5}  color1="grey" color2="#ffc900"/>
+                            </div>
                             <label>{`What did you think of ${name}`}</label>
                             <Field name="description" component={renderTextarea}/>
                             <button className="btn">Add Review</button>
