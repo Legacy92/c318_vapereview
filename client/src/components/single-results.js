@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import * as actions from "../actions";
 import types from "../actions/types";
 import JuiceReviews from "./juice-reviews";
-import juiceBottle from "../assets/images/vape-juice-bottle-transparent-smoke.png";
+import juiceBottle from "../assets/images/vape-juice-bottle-transparent-smokev2.png";
 
 class SingleResults extends Component {
 
