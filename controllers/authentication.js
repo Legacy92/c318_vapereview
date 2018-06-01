@@ -69,11 +69,9 @@ exports.signUp = async (req, res) => {
                 token: tokenForUser({id: saveResult.insertId})
             });
         } catch(err){
-            console.log('ERROR Creating new account:', err.message);
             res.status(500).send(['Error creating account']);
         }
     } catch(err){
-        console.log('ERROR Checking email and username in use:', err);
         res.status(500).send(['Error creating account']);
     }
 }
@@ -83,9 +81,9 @@ exports.signIn = async (req, res) => {
     const query = 'SELECT ?? FROM ?? WHERE ?? = ? OR ?? = ?';
     const inserts = ['username', 'users', 'username', username, 'email', email];
     const sql = mysql.format(query, inserts);
-    console.log('this is the user sql:', sql);
+    
     const results = await db.query(sql);
-    console.log(results);
+    
     res.send({
         success: true,
         token: tokenForUser(req.user),
@@ -100,8 +98,6 @@ async function encryptPassword(password){
 
         return passwordHash;
     } catch(err){
-        console.log('ERROR Encrypting password:', err.message);
-
         throw new error(`ERROR Encrypting password: ${err.message}`);
     }
 }

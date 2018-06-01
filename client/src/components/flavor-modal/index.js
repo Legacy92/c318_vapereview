@@ -9,15 +9,11 @@ import FlavorList from './flavor_list';
 import purpArrow from "../../assets/images/trans-purple-arrow.png";
 
 class FlavorModal extends Component {
-
-
     componentDidMount(){
         this.props.getCategories();
-        console.log(this.props);
     }
 
     handleSetCategory(id, name){
-        console.log('Set Cat:', id, name);
         this.props.setCategory(id, name);
     }
 
@@ -31,18 +27,12 @@ class FlavorModal extends Component {
 
     nextStep(){
         const flavorIds = this.props.flavorList.map(item => item.flavor.id);
-
-        console.log('Go to next step, withreviewFlavors:', this.props.reviewFlavors);
-        // this.props.history.go(-1);
     }
 
     stepBack(){
         this.props.history.go(-1);
     }
     render() {
-
-        console.log('FLAVOR PROPS:', this.props);
-
         const { categories, flavors, selectedCategory, selectedFlavor, flavorList } = this.props;
 
         return (

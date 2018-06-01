@@ -6,8 +6,6 @@ import { signIn, clearAuthError } from '../actions'
 import { renderInput } from '../helpers';
 import '../assets/css/app.css';
 
-
-
 class UserSignIn extends Component {
 
     componentWillUnmount(){
@@ -20,13 +18,11 @@ class UserSignIn extends Component {
     }
 
     render (){
-
         const {handleSubmit, authError} = this.props;
 
         return (
-
             <div>
-                <h1 className = "titanicFont display-4 addProduct goldenFont">Sign In</h1>
+                <h1 className = "titanicFont display-4  goldenFont">Sign In</h1>
                 <div className = "col-10 offset-1">
                     <div className ="sign-in-body">
                         <div className="modal-body">
@@ -45,10 +41,9 @@ class UserSignIn extends Component {
                     </div>
                 </div>
             </div>
-        )
+        );
     }
 }
-
 
 function validate(values){
     const {email, password} = values;

@@ -10,7 +10,6 @@ import rootReducer from "./reducers/index";
 import think from './middleware/think';
 import types from './actions/types';
 
-
 const store = createStore( rootReducer, {}, applyMiddleware(think, promise));
 
 if(localStorage.getItem('token')){

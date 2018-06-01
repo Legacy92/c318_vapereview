@@ -1,8 +1,14 @@
 /* /////////////////////////////////////////////////// over all app styling, body, colors, font ///////////////// */
 body {
     margin: 0;
+    letter-spacing: 1px;
 
 
+}
+
+td, .dropdown-item, .add-review-buttons{
+    text-transform: capitalize;
+    letter-spacing: 1px;
 }
 
 .no-margin {
@@ -15,11 +21,16 @@ body {
 }
 
 a {
-    color: black;
+    color: #5e2053;
+    cursor: pointer;
 }
 
 .btn.focus, .btn:focus {
     box-shadow: none;
+}
+
+a.mult-advanced-button.btn {
+    color: white
 }
 
 button:focus {
@@ -37,10 +48,11 @@ button:focus {
     background-color: #5e2053;
     color: white;
     border: .05rem solid white;
-    box-sizing: border-box
+    box-sizing: border-box;
+    letter-spacing: 1px;
 }
 
-.btn-sm, .mx-2 {
+.btn-sm, .mx-2, .mult-advanced-button {
     background-color: #5e2053;
     border-radius: .1rem;
     border: .05rem solid white;
@@ -84,7 +96,7 @@ button {
 }
 
 .text-danger, h6 {
-    font-size: .75rem
+    font-size: .6rem
 }
 
 input, label {
@@ -126,7 +138,6 @@ h2, h5 {
 
 .landing-page-body, .multiple-results-body, .single-results-body {
     position: relative;
-    margin-top: 60px;
 }
 
 /* /////////////////////////////////////////Single Results Page //////////////////////////////// */
@@ -148,6 +159,9 @@ h2, h5 {
     position: relative;
 }
 
+.single-results-header {
+
+}
 
 .single-results-written-content {
 
@@ -174,9 +188,11 @@ h2, h5 {
     box-shadow: #ffc900 0px 0px 0px 2px;
     background: linear-gradient(to bottom right,#a696c2, white);
 }
-
+.single-results-links {
+    font-size: .75rem;
+}
 .single-results-description {
-    font-size: 1rem;
+    font-size: .9rem;
     color: black;
     text-align: justify;
 
@@ -193,6 +209,15 @@ h2, h5 {
     text-shadow: none
 
 }
+.single-results-manufacturer-name {
+    font-size: 1.0rem;
+}
+
+.single-results-item-text {
+    border-top: 1px solid black;
+    text-align: left;
+}
+
 .single-results-stars-container {
     display: inline-block;
 
@@ -202,6 +227,11 @@ h2, h5 {
     height: 251px;
     position: relative;
     bottom: 132px;
+}
+
+h5.single-review-text {
+    font-size: 1rem;
+    text-align: justify;
 }
 
 
@@ -311,9 +341,9 @@ h2, h5 {
 /* //////////////////////////////////////// mulitple results card /////////////////// */
 
 
-#multiple-container, #product-info-main, .card-container {
-    height: 25vh;
+#multiple-container, #product-info-main {
     background: linear-gradient(to bottom right,#a696c2, white);
+    box-shadow: #ffc900 0px 0px 0px 2px;
     border-radius: 2px;
     box-sizing: border-box;
     display: flex;
@@ -341,12 +371,10 @@ h2, h5 {
     border-bottom: 1px solid black;
 }
 
-.card-container {
-    box-shadow: #ffc900 0px 0px 0px 2px;
 
+.no-results {
+    color: white
 }
-
-
 
 .name, .multiple-results-header {
     margin-top: 5px;
@@ -360,6 +388,12 @@ h2, h5 {
 
 .mult-advanced-button {
     margin-top: 10%
+}
+
+.juice-description {
+    font-size: .75rem;
+    font-family: lato;
+    text-align: justify;
 }
 
 
@@ -399,6 +433,10 @@ h2, h5 {
 @font-face {
     font-family: titanicfont;
     src: url(../fonts/TitanickDisplayNF.ttf);
+}
+@font-face{
+    font-family: luminari;
+    src: url(../fonts/Luminari.ttf);
 }
 
 .titanicFont {
@@ -517,9 +555,9 @@ label {
 
 /* ////////////////////////////////////////// add review   ///////////////////////////// */
 
-.juiceName {
+.juiceName, .single-results-name, .name {
     color: #f8f4ff;
-    font-family: luminari, fantasy;
+    font-family: luminari;
     padding-top: 30px;
     text-shadow: #420842 2px 2px 20px;
 
@@ -528,6 +566,10 @@ label {
 .add-review-arrow {
     height: 75px;
     width: auto;
+}
+
+.add-flavor, .add-review-button {
+    margin-bottom: 25px
 }
 
 .add-review-buttons {

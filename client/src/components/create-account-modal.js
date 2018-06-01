@@ -10,6 +10,7 @@ class CreateAccount extends Component {
 
     handleSignUp(values) {
         this.props.signUp(values);
+        this.props.history.push("/");
     }
 
     componentWillUnmount(){
@@ -20,7 +21,7 @@ class CreateAccount extends Component {
         const {handleSubmit, authError} = this.props;
         return (
             <div>
-                <h1 className = "titanicFont display-4 addProduct goldenFont">Create an Account</h1>
+                <h1 className = "titanicFont display-4 goldenFont">Create an Account</h1>
                 <div className="col-10 offset-1 create-account-body">
                     <div className="create-account-modal-body">
                             <form style={{textAlign: 'center'}} onSubmit={handleSubmit(this.handleSignUp.bind(this))}>

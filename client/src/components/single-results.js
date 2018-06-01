@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import * as actions from "../actions";
 import types from "../actions/types";
 import JuiceReviews from "./juice-reviews";
-import juiceBottle from "../assets/images/vape-juice-bottle-transparent-smoke.png";
+import juiceBottle from "../assets/images/vape-juice-bottle-transparent-smokev2.png";
 
 class SingleResults extends Component {
 
@@ -25,11 +25,7 @@ class SingleResults extends Component {
 
     handleHomeButton(){
         this.props.history.push(`/`);
-
-
     }
-
-
 
     handleAddReviewClick() {
         const {juice_id} = this.props.match.params;
@@ -42,7 +38,7 @@ class SingleResults extends Component {
     }
 
     handleManufacturerNameClick () {
-        console.log("Manufacturer Clicked");
+        // console.log("Manufacturer Clicked");
     }
 
     async getRandomJuice(){
@@ -58,15 +54,13 @@ class SingleResults extends Component {
     render(){
         let juiceData = [];
 
-        console.log(this.props.chartData)
-
         const { chartData }= this.props
 
         const flavorElements = Object.keys(chartData).map(key => {
             return (
                 <div key={key} className={`${key} chartText align-middle`} style={{height:`${chartData[key]}%`}}>{key}</div>
             )
-        })
+        });
 
         if(this.props.singleItemInfo) {
 
@@ -74,6 +68,7 @@ class SingleResults extends Component {
             
             return (
                 <div className="single-results-body">
+                    <h1 className = "single-results-header titanicFont display-4  goldenFont">Your Juice</h1>
                     <div className="single-results-item col-10 offset-1  card rounded  my-3">
                         <div className="row">
                             <div className="col-md-4 col-sm-12 col-12">
@@ -87,15 +82,15 @@ class SingleResults extends Component {
                                 </div>
                             </div>
                             <div className="col-md-7 col-sm-12 col-12 single-results-written-content">
-                
+                                    
                                 <div>
                                     <h2 className="single-results-name">{name}</h2>
                                 </div>
                                 <div>
-                                    <h3 onClick={this.handleManufacturerNameClick.bind(this)} className="manufacturer">{` By: ${manufacturer_name}`}</h3>
+                                    <h3 onClick={this.handleManufacturerNameClick.bind(this)} className="manufacturer single-results-manufacturer-name">{` By: ${manufacturer_name}`}</h3>
                                 </div>
                                 <div>
-                                    <h5 onClick={this.handleManufacturerNameClick.bind(this)} className="manufacturer"><a href={manufacturer_site}>{manufacturer_site}</a></h5>
+                                    <h5 onClick={this.handleManufacturerNameClick.bind(this)} className="manufacturer single-results-links"><a href={manufacturer_site}>{manufacturer_site}</a></h5>
                                 </div>
                                 <div className="single-results-stars-container">
                                     <ReactStars className="single-results-stars stars" size={20} edit={false} count={5} value={rating} color1="grey" color2="#ffc900"/>
@@ -117,15 +112,13 @@ class SingleResults extends Component {
                     </div>
                     <JuiceReviews/>
                 </div>
-            )
+            );
         }
     }
-
 }
 
 function mapStateToProps(state) {
     return {
-        all: [],
         juice: state.juiceInfo.juice,
         randomJuice: state.juiceInfo.randomJuice,
         singleItemInfo:state.juiceInfo.singleItemInfo,

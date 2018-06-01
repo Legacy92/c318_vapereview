@@ -72,7 +72,7 @@ class AddReview extends Component {
             const {name} = this.props.singleItemInfo;
             return (
                 <div>
-                    <h1 className="addReview titanicFont display-4 addProduct goldenFont">Add Review</h1>
+                    <h1 className="addReview titanicFont display-4 goldenFont">Add Review</h1>
                     <div className="add-review-body card col-10 offset-1">
                         <h1 className="juiceName">{name}</h1>
                         <form onSubmit={handleSubmit(this.handleAddReview.bind(this))}>
@@ -83,7 +83,7 @@ class AddReview extends Component {
                             </div>
                             <label>{`What did you think of ${name}`}</label>
                             <Field name="description" component={renderTextarea}/>
-                            <button className="btn">Add Review</button>
+                            <button className="add-review-button btn">Add Review</button>
                         </form>
                     </div>
                 </div>
@@ -105,6 +105,7 @@ function mapStateToProps(state) {
     };
 
 }
+
 AddReview = reduxForm({
     form: "add-review"
 })(AddReview);

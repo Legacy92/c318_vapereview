@@ -116,7 +116,6 @@ exports.getFlavorChartData = async (req, res) => {
         const categoryCounter = results.map(oldValue => {
             return oldValue.category;
         }).reduce((counters, category) => {
-            console.log('previous value: ', counters, '\ncurrent value: ', category);
             if (counters.hasOwnProperty(category)) {
                 counters[category] += 1 / categoryLength * 100;
             } else {
