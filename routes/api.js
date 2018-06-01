@@ -21,7 +21,7 @@ module.exports = app => {
     app.get("/api/flavor-chart", api.getFlavorChartData);
 
     //add product
-    app.post('/api/add-product', api.addJuice);
+    app.post('/api/add-product',  requireAuth, api.addJuice);
 
     //add review
     app.post('/api/add-review',  requireAuth, api.addReview);

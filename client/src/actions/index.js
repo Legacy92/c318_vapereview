@@ -189,7 +189,7 @@ export function signIn(credentials){
 
 export function signOut() {
     localStorage.removeItem("token");
-
+    localStorage.removeItem("username");
     return {
         type: types.SIGN_OUT
     }

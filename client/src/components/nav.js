@@ -28,9 +28,14 @@ class Header extends Component {
         const { auth, signOut, user } = this.props;
         if(auth){
             return (
+                <Fragment>
+                <li className="nav-item">
+                    <Link className="nav-link nav-link-text boldLink" to="/add-product" onClick={this.toggleNav}>Add Product</Link>
+                </li>
                 <li className="nav-item">
                     <Link className="nav-link nav-link-text" to="/" onClick={signOut}> Welcome, <span style={{fontStyle:'italic'}}>{user}</span>! <span className="boldLink">Sign Out</span></Link>
                 </li>
+                </Fragment>
             );
         }
 
@@ -63,9 +68,6 @@ class Header extends Component {
                         <ul className="navbar-nav  nav-fill w-100 align-items-start">
                             <li className="nav-item">
                             <Link className="nav-link nav-link-text boldLink" to="/" onClick={this.toggleNav}>Home</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link nav-link-text boldLink" to="/add-product" onClick={this.toggleNav}>Add Product</Link>
                             </li>
                             {this.renderAuthLinks()}
                         </ul>
