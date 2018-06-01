@@ -90,7 +90,7 @@ class SingleResults extends Component {
                                     <h3 onClick={this.handleManufacturerNameClick.bind(this)} className="manufacturer">{` By: ${manufacturer_name}`}</h3>
                                 </div>
                                 <div>
-                                    <h5 onClick={this.handleManufacturerNameClick.bind(this)} className="manufacturer"><a href={manufacturer_site}>{manufacturer_site}</a></h5>
+                                    <h5 onClick={this.handleManufacturerNameClick.bind(this)} className="manufacturer"><a target="_blank" href={manufacturer_site}>{manufacturer_site}</a></h5>
                                 </div>
                                 <div className="single-results-stars-container">
                                     <ReactStars className="single-results-stars stars" size={20} edit={false} count={5} value={rating} color1="grey" color2="#ffc900"/>
