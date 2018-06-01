@@ -28,7 +28,7 @@ class LandingPage extends Component {
         if(auth){
             return (
                 <Fragment>
-                   <Link style={{margin:1.0+'%'}} className="btn btn-lg white-text" to="/add-product">Add Juice</Link>
+                   <Link style={{margin:1.0+'%'}} className="btn btn-lg white-text" to="/add-product">Add Product</Link>
                 </Fragment>
             ); 
         }
