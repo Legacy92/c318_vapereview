@@ -364,7 +364,8 @@ h5.single-review-text {
 .multiple-results-image {
     height: 8.5em;
     width: 6em;
-    margin-top: 1em
+    margin-top: 1em;
+    background: radial-gradient(purple, black);
 }
 
 .multiple-results-star-container {
