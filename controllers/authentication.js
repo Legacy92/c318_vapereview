@@ -66,7 +66,8 @@ exports.signUp = async (req, res) => {
 
             res.send({
                 success: true,
-                token: tokenForUser({id: saveResult.insertId})
+                token: tokenForUser({id: saveResult.insertId}),
+                username
             });
         } catch(err){
             res.status(500).send(['Error creating account']);
@@ -77,17 +78,10 @@ exports.signUp = async (req, res) => {
 }
 
 exports.signIn = async (req, res) => {
-    const {username, email} = req.body;
-    const query = 'SELECT ?? FROM ?? WHERE ?? = ? OR ?? = ?';
-    const inserts = ['username', 'users', 'username', username, 'email', email];
-    const sql = mysql.format(query, inserts);
-    
-    const results = await db.query(sql);
-    
     res.send({
         success: true,
         token: tokenForUser(req.user),
-        data: results
+        username: req.user.username
     });
 }
 

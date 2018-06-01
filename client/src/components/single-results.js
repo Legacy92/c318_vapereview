@@ -64,7 +64,7 @@ class SingleResults extends Component {
 
         if(this.props.singleItemInfo) {
 
-            const {singleItemInfo: {name, manufacturer_name, manufacturer_site, manufacturer_description, rating}} = this.props;
+            const {auth, singleItemInfo: {name, manufacturer_name, manufacturer_site, manufacturer_description, rating}} = this.props;
             
             return (
                 <div className="single-results-body">
@@ -101,7 +101,7 @@ class SingleResults extends Component {
                             </div>
 
                             <div className="single-results-button col-md-12">
-                                <button className="mx-2" onClick={this.handleAddReviewClick.bind(this)}>Add Review</button>
+                                <button title={auth ? 'Add Review' : 'Sign In To Add a Review'} disabled={!auth} className="mx-2" onClick={this.handleAddReviewClick.bind(this)}>Add Review</button>
                                 {
                                     this.props.searchTerm
                                         ? <button onClick={this.handleBackButton.bind(this)}>Back</button>
@@ -119,6 +119,7 @@ class SingleResults extends Component {
 
 function mapStateToProps(state) {
     return {
+        auth: state.user.auth,
         juice: state.juiceInfo.juice,
         randomJuice: state.juiceInfo.randomJuice,
         singleItemInfo:state.juiceInfo.singleItemInfo,

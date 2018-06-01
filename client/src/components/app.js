@@ -13,6 +13,8 @@ import MultipleResults from "./multiple-results";
 import SingleResults from "./single-results";
 import FlavorModal from "./flavor-modal";
 import Test from "./test";
+import auth from '../hoc/auth';
+import redirect from '../hoc/redirect';
 
 const App = () => (
     <div className="app"> 
@@ -22,12 +24,12 @@ const App = () => (
             <Route path="/multiple-results/:searchTerm" component={MultipleResults} />
             <Route path="/multiple-results-browse" component={MultipleResults} />
             <Route path="/single-results/:juice_id" component={SingleResults} />
-            <Route path="/add-product" component={AddProduct} />
+            <Route path="/add-product" component={auth(AddProduct)} />
             <Route path="/hamburger-menu" component={HambugerMenu} />
-            <Route path="/add-review/:juice_id" component={AddReview} />
-            <Route path="/create-account-modal" component={CreateAccount} />
+            <Route path="/add-review/:juice_id" component={auth(AddReview)} />
+            <Route path="/create-account-modal" component={redirect(CreateAccount)} />
             <Route path="/advanced-search" component={AdvancedSearchModal} />
-            <Route path="/user-sign-in" component={UserSignIn} />
+            <Route path="/user-sign-in" component={redirect(UserSignIn)} />
             <Route exact path="/" component={LandingPage} />
             <Route  path="/test" component={Test} />
         </div>

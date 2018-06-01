@@ -87,8 +87,11 @@ button {
     border: .05rem solid white
 }
 
-
-
+button:disabled {
+    filter: brightness(1.7) grayscale(100%);
+    color: #808080;
+    border-color: #808080;
+}
 
 .btn:hover {
     background-color: #772969;

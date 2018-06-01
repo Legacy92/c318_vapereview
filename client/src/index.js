@@ -14,7 +14,8 @@ const store = createStore( rootReducer, {}, applyMiddleware(think, promise));
 
 if(localStorage.getItem('token')){
     store.dispatch({
-        type: types.SIGN_IN
+        type: types.SIGN_IN,
+        username: localStorage.getItem('username')
     });
 }
 
