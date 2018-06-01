@@ -432,6 +432,10 @@ h2, h5 {
     text-decoration: none
 }
 
+.boldLink{
+    font-weight: bold;
+}
+
 /* //////////////////////////////// stars styling ////////////////////////////// */
 
 

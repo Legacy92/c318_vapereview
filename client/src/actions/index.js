@@ -225,9 +225,3 @@ function setAuthHeaders(){
     }
 }
 
-function username(username){
-    console.log('username function:',username);
-    return{
-        payload: username
-    }
-}

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {username} from '../actions';
 
 
 export default function(WrappedComponent){
@@ -26,8 +25,7 @@ export default function(WrappedComponent){
 
     function mapStateToProps(state){
         return {
-            auth: state.user.auth,
-            user: state.user.user
+            auth: state.user.auth
         }
     }
 
