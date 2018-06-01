@@ -470,6 +470,10 @@ h5.single-review-text {
     text-decoration: none
 }
 
+.boldLink{
+    font-weight: bold;
+}
+
 /* //////////////////////////////// stars styling ////////////////////////////// */
 
 
