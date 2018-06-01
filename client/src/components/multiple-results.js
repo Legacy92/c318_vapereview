@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import * as actions from "../actions";
 import vapeImage from "../assets/images/vape-image.jpeg";
 import ReactStars from 'react-stars';
-import juiceBottleDefault from "../assets/images/vape-juice-bottle-questionmark.png";
+import juiceBottleDefault from "../assets/images/vape-juice-bottle-transparent-smokev2.png";
 
 class MultipleResults extends Component {
 

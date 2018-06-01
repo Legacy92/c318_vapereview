@@ -244,21 +244,23 @@ h5.single-review-text {
 
      }
      .single-results-image {
-         height: 130px;
-         bottom: 68px;
+         height: 155px;
+         bottom: 80px;
      }
      .juice-bottle-wrapper {
-         height: 140px;
+         height: 165px;
+         top: 20px;
      }
 }
 
 @media (max-width: 768px) {
     .single-results-image {
-        height: 130px;
-        bottom: 68px;
+        height: 155px;
+        bottom: 80px;
     }
     .juice-bottle-wrapper {
-        height: 140px;
+        height: 165px;
+        top: 20px;
     }
 }
 
@@ -362,7 +364,8 @@ h5.single-review-text {
 .multiple-results-image {
     height: 8.5em;
     width: 6em;
-    margin-top: 1em
+    margin-top: 1em;
+    background: radial-gradient(purple, black);
 }
 
 .multiple-results-star-container {
