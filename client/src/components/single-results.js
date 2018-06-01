@@ -34,7 +34,7 @@ class SingleResults extends Component {
 
     handleBackButton() {
         const searchTerm = this.props.searchTerm;
-        this.props.history.push(`/multiple-results/${searchTerm}`)
+        this.props.history.push(`/multiple-results/${searchTerm}`);
     }
 
     handleManufacturerNameClick () {
@@ -54,7 +54,7 @@ class SingleResults extends Component {
     render(){
         let juiceData = [];
 
-        const { chartData }= this.props
+        const { chartData }= this.props;
 
         const flavorElements = Object.keys(chartData).map(key => {
             return (
@@ -64,7 +64,7 @@ class SingleResults extends Component {
 
         if(this.props.singleItemInfo) {
 
-            const {singleItemInfo: {name, manufacturer_name, manufacturer_site, manufacturer_description, rating}} = this.props
+            const {singleItemInfo: {name, manufacturer_name, manufacturer_site, manufacturer_description, rating}} = this.props;
             
             return (
                 <div className="single-results-body">
