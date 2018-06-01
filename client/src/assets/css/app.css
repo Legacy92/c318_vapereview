@@ -141,7 +141,9 @@ h2, h5 {
 }
 
 /* /////////////////////////////////////////Single Results Page //////////////////////////////// */
-
+.chartText {
+    text-transform: capitalize;
+}
 .juice-bottle-wrapper {
     display: inline-block;
     height: 260px;
@@ -157,6 +159,7 @@ h2, h5 {
     top: 40%;
     left: 26%;
     position: relative;
+    filter: brightness(65%);
 }
 
 .single-results-header {
@@ -619,9 +622,7 @@ label {
     padding-bottom: 3%;
 }
 
-#add-review-overflow {
-    /*overflow: auto;*/
-}
+
 
 .add-review-chosen-flavor {
     color: black;
