@@ -96,7 +96,7 @@ button {
 }
 
 .text-danger, h6 {
-    font-size: .75rem
+    font-size: .6rem
 }
 
 input, label {
@@ -188,9 +188,11 @@ h2, h5 {
     box-shadow: #ffc900 0px 0px 0px 2px;
     background: linear-gradient(to bottom right,#a696c2, white);
 }
-
+.single-results-links {
+    font-size: .75rem;
+}
 .single-results-description {
-    font-size: 1rem;
+    font-size: .9rem;
     color: black;
     text-align: justify;
 
@@ -207,9 +209,13 @@ h2, h5 {
     text-shadow: none
 
 }
+.single-results-manufacturer-name {
+    font-size: 1.0rem;
+}
 
 .single-results-item-text {
-    border-top: 1px solid black
+    border-top: 1px solid black;
+    text-align: left;
 }
 
 .single-results-stars-container {
@@ -335,8 +341,9 @@ h5.single-review-text {
 /* //////////////////////////////////////// mulitple results card /////////////////// */
 
 
-#multiple-container, #product-info-main, .card-container {
+#multiple-container, #product-info-main {
     background: linear-gradient(to bottom right,#a696c2, white);
+    box-shadow: #ffc900 0px 0px 0px 2px;
     border-radius: 2px;
     box-sizing: border-box;
     display: flex;
@@ -364,10 +371,6 @@ h5.single-review-text {
     border-bottom: 1px solid black;
 }
 
-.card-container {
-    box-shadow: #ffc900 0px 0px 0px 2px;
-
-}
 
 .no-results {
     color: white
@@ -385,6 +388,12 @@ h5.single-review-text {
 
 .mult-advanced-button {
     margin-top: 10%
+}
+
+.juice-description {
+    font-size: .75rem;
+    font-family: lato;
+    text-align: justify;
 }
 
 
@@ -459,6 +468,10 @@ h5.single-review-text {
 .link:hover{
     color: #12100e;
     text-decoration: none
+}
+
+.boldLink{
+    font-weight: bold;
 }
 
 /* //////////////////////////////// stars styling ////////////////////////////// */

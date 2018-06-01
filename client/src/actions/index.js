@@ -173,7 +173,7 @@ export function signIn(credentials){
             const response = await axios.post(`/auth/sign-in`, credentials);
 
             localStorage.setItem('token', response.data.token);
-
+            localStorage.setItem('username', response.data.data[0].username);
             dispatch({
                 type: types.SIGN_IN,
                 payload: response
@@ -208,3 +208,4 @@ function setAuthHeaders(){
         }
     }
 }
+
