@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { Link } from 'react-router-dom';
 import { reduxForm, Field } from "redux-form";
 import { connect } from "react-redux";
@@ -21,6 +21,17 @@ class LandingPage extends Component {
 
     async getRandomJuice(values) {
         await this.props.getRandomJuice();
+    }
+
+    renderAuthButton(){
+        const { auth, signOut, user } = this.props;
+        if(auth){
+            return (
+                <Fragment>
+                   <Link style={{margin:1.0+'%'}} className="btn btn-lg white-text" to="/add-product">Add Product</Link>
+                </Fragment>
+            ); 
+        }
     }
 
     renderInput({ label, input, meta: { touched, error } }) {
@@ -49,7 +60,7 @@ class LandingPage extends Component {
                     <Field className="align-middle" name="input" component={this.renderInput} />
                 </form>
                 <Link style={{margin:1.0+'%'}} className="btn btn-lg white-text" to="/multiple-results-browse">Browse</Link>
-                <Link style={{margin:1.0+'%'}} className="btn btn-lg white-text" to="/add-product">Add Juice</Link>
+                {this.renderAuthButton()}
                 <Link style={{margin:1.0+'%'}} className="btn btn-lg white-text" to="/single-results/random">Random</Link>
 
             </div>
@@ -72,4 +83,10 @@ function validate({ input }) {
     return errors;
 }
 
-export default connect(null, actions)(LandingPage);
+function mapStateToProps(state){
+    return {
+        auth: state.user.auth,
+        user: state.user.user
+    }
+}
+export default connect(mapStateToProps, actions)(LandingPage);
