@@ -1,0 +1,20 @@
+.dropdown-container {
+    height: 75px;
+}
+
+.flavor-selection table {
+    color: #5e2053;
+    margin: auto;
+    font-size: 1.5rem;
+}
+
+.flavor-header {
+    color: white;
+    padding-top: 30px;
+}
+
+.flavor-selection .dropdown-menu {
+    cursor: pointer;
+    max-height: 208px;
+    overflow: scroll;
+}

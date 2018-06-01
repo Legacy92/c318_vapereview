@@ -1,17 +1,18 @@
 import React, {Component} from "react";
 import axios from "axios";
+import { connect } from 'react-redux';
+import { authTest } from '../actions';
 
 class Test extends Component{
-
-
 
     componentDidMount(){
         //  this.testConnect();
         // this.addProduct();
         // this.createUser();
         // this.getReviewData();
+        this.getChartData();
+        this.props.authTest();
     }
-
 
     // example response
     async testConnect(){
@@ -20,9 +21,9 @@ class Test extends Component{
     }
 
     // pull all review data
-    async getReviewData(){
-        const response = await axios.get("/api/multiple-results");
-        console.log("Review Data:", response);
+    async getChartData(){
+        const response = await axios.get("/api/flavor-chart");
+        console.log("Chart Data:", response);
     }
 
      // create user
@@ -37,8 +38,8 @@ class Test extends Component{
         console.log("user login information received");
     }
 
-      // add product
-      async addProduct(){
+    // add product
+    async addProduct(){
         const response = await axios.post("/api/add-product");
         console.log("addProduct Response:", response);
     }
@@ -49,13 +50,9 @@ class Test extends Component{
         console.log("addReview response:", response);
     }
 
-
-
     render() {
         return <h1>This is a test</h1>
     }
-
-
 }
 
-export default Test;
+export default connect(null, { authTest })(Test);

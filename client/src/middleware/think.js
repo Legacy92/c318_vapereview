@@ -3,6 +3,5 @@ export default store => next => action => {
         return next(action);
     }
 
-    action(store.dispatch);
+    return action(store.dispatch);
 }
-

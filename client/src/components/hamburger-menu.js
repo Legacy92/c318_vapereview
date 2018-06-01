@@ -19,7 +19,6 @@ class HamburgerMenu extends Component {
         };
 
         this.closeNav = this.closeNav.bind(this);
-
     }
 
     closeNav() {
@@ -28,7 +27,6 @@ class HamburgerMenu extends Component {
             show: !show
         });
     }
-
 
     render() {
         const {show} = this.state;
@@ -40,7 +38,6 @@ class HamburgerMenu extends Component {
                 <div></div>
             </button>
         );
-
 
         if (show) {
             return (
@@ -74,9 +71,7 @@ class HamburgerMenu extends Component {
                 </nav>
             );
         }
-
         return button;
-
     }
 }
 

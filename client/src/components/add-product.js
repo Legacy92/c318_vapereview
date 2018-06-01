@@ -4,87 +4,84 @@ import { connect } from "react-redux";
 import { Route } from "react-router-dom";
 import { addProduct } from "../actions";
 import { Link } from "react-router-dom";
+import { renderInput, renderTextarea } from "../helpers";
 import axios from 'axios';
 
 class AddProduct extends Component {
 
 
-    handleAddProduct(values) {
-        console.log("Form Values:", values);
-        this.props.addProduct(values);
-        this.props.history.push("/add-review");
-    }
+    async handleAddProduct(values) {
+        await this.props.addProduct(values);
+        
+        let { juiceId } =this.props;
 
-
-    renderInput({ label, input, meta: { touched, error } }) {
-        // console.log(label, input);
-        return (
-            <div className="container">
-                <input style={{marginTop: 2+'em'}} placeholder={label} {...input} type="text" autoComplete="off" className="col-xs-10 col-xs-offset-1" />
-                <p className="red-text text-darken-2">{touched && error}</p>
-            </div>
-        )
+        this.props.history.push(`/add-review/${juiceId}`);
     }
 
     renderTextarea({label, input, meta: {touched, error}}) {
         return (
-            <div className="container">
-                <label style={{textAlign: 'left'}}>{label}</label>
-                <textarea style={{marginTop: 2+'em'}} {...input} type="text" autoComplete="off" className="col-xs-10 col-xs-offset-1"/>
-                <p className="red-text text-darken-2" style={{textAlign: 'left'}}>{touched && error}</p>
+            <div>
+                <div className="input-group justify-content-center pt-5">
+                <textarea className="align-middle input-field col-8" style={{marginTop: 1+'em', fontSize: 15+'px'}}  {...input} type="text" autoComplete="off"  placeholder={label}/>
+                </div>
+                <p className="text-danger">{touched && error}</p>
             </div>
         )
     }
 
-
-
-
     render() {
-        console.log(this.props);
         const { handleSubmit } = this.props;
         return (
-            <div style={{marginTop: 5+'em'}}> 
-                <h1>Add Product</h1>
-                <form onSubmit={handleSubmit(this.handleAddProduct.bind(this))}>
-                    <Field name="name" label="Juice Name" component={this.renderInput} />
-                    <Field name="manufacturer" label="Manufacturer Name" component={this.renderInput} />
-                    <Field name="site" label="Manufacturer Site" component={this.renderInput} />
-                    <Field name="description" label="Manufacturer Description" component={this.renderTextarea} />
-                    <button style={{fontSize:1+'em', marginTop: 1+'em'}} className="btn col-xs-6 col-xs-offset-3">Add Product</button>
-                </form>
+            <div>
+                <h1 className="titanicFont display-4 goldenFont">Add Product</h1>
+                <div className="col-10 offset-1 card add-product-body">
+                    <form onSubmit={handleSubmit(this.handleAddProduct.bind(this))}>
+                        <label style={{paddingTop:"20px"}}>Juice Name:</label>
+                        <Field  name="juice_name"  component={renderInput} />
+                        <label>Manufacturer Name:</label>
+                        <Field  name="manufacturer_name"  component={renderInput} />
+                        <label>Manufacturer Site:</label>
+                        <Field  name="manufacturer_site"  component={renderInput} />
+                        <label>Manufacturer Description:</label>
+                        <Field  name="manufacturer_description" component={renderTextarea} />
+                        <button className = "add-product-to-review btn">Next...</button>
+                    </form>
+                </div>
             </div>
         )
     }
 }
 
 
-function validate({ juice_name, manufacturer_name, manufacturer_site, manufacturer_desc }) {
+function validate({ juice_name, manufacturer_name, manufacturer_site, manufacturer_description }) {
     const errors = {};
 
     if (!juice_name) {
-        errors.juice_name = "Please enter a juice name.";
-
+        errors.juice_name = "Please enter a Juice Name";
     }
 
     if (!manufacturer_name) {
-        errors.manufacturer_name = "Please enter a manufacturer name.";
+        errors.manufacturer_name = "Please enter a Manufacturer Name";
     }
     if (!manufacturer_site) {
-        errors.manufacturer_site = "Please enter a manufacturer website.";
+        errors.manufacturer_site = "Please enter a Manufacturer website";
     }
-    if (!manufacturer_desc) {
-        errors.manufacturer_desc = "Please enter a manufacturer description";
+    if (!manufacturer_description) {
+        errors.manufacturer_description = "Please enter a Manufacturer Description";
     }
-
 
     return errors;
 }
 
-
+function mapStateToProps(state) {
+    return {
+        juiceId: state.juiceInfo.juiceId,
+    };
+}
 
 AddProduct = reduxForm({
     form: "add-product",
     validate: validate
 })(AddProduct);
 
-export default connect(null, { addProduct })(AddProduct);
+export default connect(mapStateToProps, { addProduct })(AddProduct);

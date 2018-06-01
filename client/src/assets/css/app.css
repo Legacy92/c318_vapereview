@@ -1,32 +1,125 @@
 /* /////////////////////////////////////////////////// over all app styling, body, colors, font ///////////////// */
 body {
     margin: 0;
+    letter-spacing: 1px;
 
+
+}
+
+td, .dropdown-item, .add-review-buttons{
+    text-transform: capitalize;
+    letter-spacing: 1px;
+}
+
+.no-margin {
+    margin-top: 0;
+}
+
+.main-app-body {
+    padding-top: 65px;
+    padding-bottom: 65px;
 }
 
 a {
-    color: white;
+    color: #5e2053;
+    cursor: pointer;
 }
 
-button, .btn, .btn-large {
-    background-color: #3f0080;
-    border: 1px solid white;
+.btn.focus, .btn:focus {
+    box-shadow: none;
+}
+
+a.mult-advanced-button.btn {
     color: white
 }
 
+button:focus {
+    outline: 1px dotted;
+    outline: none;
+}
+
+.btn-group-lg>.btn, .btn-lg {
+    padding: .5rem 2rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    border-radius: .1rem;
+    cursor: pointer;
+    font-size: 1rem;
+    background-color: #5e2053;
+    color: white;
+    border: .05rem solid white;
+    box-sizing: border-box;
+    letter-spacing: 1px;
+}
+
+.btn-sm, .mx-2, .mult-advanced-button {
+    background-color: #5e2053;
+    border-radius: .1rem;
+    border: .05rem solid white;
+    box-sizing: border-box
+}
+
+input:focus, textarea:focus {
+    outline-offset: -2px;
+    outline-color: #ffc900;
+
+}
+
+.add-product-to-review:focus {
+    outline: none
+}
+
+btn:not(:disabled):not(.disabled) {
+    background-color: #5e2053;
+    cursor: pointer;
+    outline: none;
+}
+
+button {
+    padding: .5rem 2rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    border-radius: .1rem;
+    cursor: pointer;
+    font-size: 1rem;
+    background-color: #5e2053;
+    color: white;
+    border: .05rem solid white
+}
+
+
+
+
 .btn:hover {
-    background-color: #3f0080;
+    background-color: #772969;
+    color: white
+}
+
+.text-danger, h6 {
+    font-size: .6rem
+}
+
+input, label {
+    font-size: 1rem;
+}
+
+h2, h5 {
+    
+    text-shadow: #420842 2px 2px 20px;
+    color: white;
 }
 
 .app {
-     background-color: gray;
-     /* text-shadow: 1px 2px 2px rgba(255, 255, 255, 0.767); */
+     background-image: url(../images/Juice-Query-Temp-Background.png);
+     background-size: cover;
+     background-repeat: no-repeat;
+     background-attachment: fixed;
      color: black;
      width: 100vw;
      min-height: 100vh;
-     position: absolute;
-     font-family: sans-serif;
-     font-size: 20px;
+     position: relative;
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+     font-size: 1rem;
      padding: 0;
      text-align: center;
      margin: 0
@@ -34,44 +127,504 @@ button, .btn, .btn-large {
 
 
 .add-review {
-    background: #a49aab;
     position: fixed;
     height: 85%;
     width: 100%;
-    top: 10%;
-}
-
-/* /////////////////////////////////////// flavor modal //////////////////////////////////////// */
-
-.flavor-body {
-    border: 1px solid white;
-    background-color: #11100e;
-    color: white;
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    margin-top: 22%
-}
-
-.dropdown {
-    position: relative;
-    margin: 15%;
-}
-
-.flavor-header {
-    margin-top: 10px;
+    margin-top: 10%;
+    color: #ffc900;
 }
 
 /* /////////////////////////////////////////landing page //////////////////////////////// */
 
-.landing-page-body, .multiple-results-body {
+.landing-page-body, .multiple-results-body, .single-results-body {
     position: relative;
-    top: 15vh;
 }
+
+/* /////////////////////////////////////////Single Results Page //////////////////////////////// */
+
+.juice-bottle-wrapper {
+    display: inline-block;
+    height: 260px;
+    position: relative;
+    background-color: #12100e;
+    box-shadow: #420842 0px 0px 20px 8px;
+
+}
+
+.juice-bottle-colors {
+    height: 52%;
+    width: 50%;
+    top: 40%;
+    left: 26%;
+    position: relative;
+}
+
+.single-results-header {
+
+}
+
+.single-results-written-content {
+
+    padding-top: 7px;
+
+}
+
+.single-results-button {
+    padding-bottom: 1%
+}
+
+/* .single-results-name {
+    text-shadow: #420842 2px 2px 20px;
+    color: white;
+
+
+} */
+.single-results-display {
+    position: relative;
+}
+
+.single-results-item {
+    min-height: 40vh;
+    box-shadow: #ffc900 0px 0px 0px 2px;
+    background: linear-gradient(to bottom right,#a696c2, white);
+}
+.single-results-links {
+    font-size: .75rem;
+}
+.single-results-description {
+    font-size: .9rem;
+    color: black;
+    text-align: justify;
+
+}
+.single-results-image-container {
+    position: relative;
+    margin-top: 5.7%;
+}
+
+.single-results-item-text, .single-review-text {
+    letter-spacing: 1px;
+    font-family: lato;
+    color: black;
+    text-shadow: none
+
+}
+.single-results-manufacturer-name {
+    font-size: 1.0rem;
+}
+
+.single-results-item-text {
+    border-top: 1px solid black;
+    text-align: left;
+}
+
+.single-results-stars-container {
+    display: inline-block;
+
+
+}
+.single-results-image {
+    height: 251px;
+    position: relative;
+    bottom: 132px;
+}
+
+h5.single-review-text {
+    font-size: 1rem;
+    text-align: justify;
+}
+
+
+ @media (max-width:576px ){
+     .single-results-image-container {
+         margin-top: 4.5%;
+
+     }
+     .single-results-image {
+         height: 130px;
+         bottom: 68px;
+     }
+     .juice-bottle-wrapper {
+         height: 140px;
+     }
+}
+
+@media (max-width: 768px) {
+    .single-results-image {
+        height: 130px;
+        bottom: 68px;
+    }
+    .juice-bottle-wrapper {
+        height: 140px;
+    }
+}
+
+/* /////////////////////////////////////////Graph Colors ///////////////////////////////////// */
+
+.fruity {
+    background-color: #E2062C;
+}
+
+.tobacco {
+    background-color: #664228;
+}
+
+.sweet {
+    background-color: #FE6F5E;
+}
+
+.spiced {
+    background-color: #F2BA49;
+}
+
+.minty {
+    background-color: #3EB489;
+}
+
+.drinks {
+    background-color: #007AA5;
+}
+
+.nutty {
+    background-color: #987456;
+}
+
+.other {
+    background-color: #66023C;
+}
+
+.chartText {
+    font-size: 0.6em;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+@media (max-width: 768px) {
+
+    .chartText {
+        font-size: 0;
+    }
+
+}
+
+/* /////////////////////////////////////////Juice ReviewsPage //////////////////////////////// */
+
+
+.juice-reviews-stars {
+    display: inline-block;
+}
+
+.juice-review-container {
+    box-shadow: #ffc900 0px 0px 0px 2px;
+    background: linear-gradient(to bottom right,#a696c2, white);
+
+
+}
+
+/* /////////////////////////////////////////Create Account Page //////////////////////////////// */
+
+.create-account-body {
+    margin-top: 60px;
+
+}
+
+/* /////////////////////////////////////////Sign In Page //////////////////////////////// */
+
+.sign-in-body {
+    margin-top: 60px;
+}
+
 
 /* //////////////////////////////////////// mulitple results card /////////////////// */
 
 
-.product-detail, .description, .product-info, .row {
-    border: 1px solid white
+#multiple-container, #product-info-main {
+    background: linear-gradient(to bottom right,#a696c2, white);
+    box-shadow: #ffc900 0px 0px 0px 2px;
+    border-radius: 2px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.rating-container {
+    height: 100%;
+    width: 100%;
+}
+
+.multiple-results-image {
+    height: 8.5em;
+    width: 6em;
+    margin-top: 1em
+}
+
+.multiple-results-star-container {
+    display: inline-block;
+    margin-top: .75em
+}
+
+.product-detail {
+    border-bottom: 1px solid black;
+}
+
+
+.no-results {
+    color: white
+}
+
+.name, .multiple-results-header {
+    margin-top: 5px;
+    color: white;
+}
+
+.rating, .juice-description{
+    margin-top: 5px;
+   
+}
+
+.mult-advanced-button {
+    margin-top: 10%
+}
+
+.juice-description {
+    font-size: .75rem;
+    font-family: lato;
+    text-align: justify;
+}
+
+
+
+
+/* //////////////////////////////// Colors //////////////////////////////// */
+
+
+.brightGold {
+   background-color:  #ffc900;
+}
+
+
+.golden {
+    background-color: #a67c00;
+}
+
+.purpleWhite {
+    background-color: #f8f4ff;
+}
+
+.purpleSolid {
+    background-color: #5e2053;
+}
+.darkPurple {
+    background-color: #2a0d30;
+}
+.charcoal {
+    background-color: #12100e;
+}
+.blacker {
+    background-color: #000000;
+}
+
+/* //////////////////////////////// Fonts ////////////////////////////// */
+
+@font-face {
+    font-family: titanicfont;
+    src: url(../fonts/TitanickDisplayNF.ttf);
+}
+@font-face{
+    font-family: luminari;
+    src: url(../fonts/Luminari.ttf);
+}
+
+.titanicFont {
+    font-family: titanicfont;
+}
+
+.goldenFont {
+    background-image: linear-gradient(#a67c00, #ffcc00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Nav Bar */
+
+
+.header-container {
+    box-shadow: #ffc900 0px 0px 0px 2px;
+    color: #ffc900;
+}
+
+.navbar-dark .navbar-nav .nav-link.nav-link-text {
+    color: #ffc900;
+}
+
+.link{
+    color:#5e2053;
+     display:block
+}
+.link:hover{
+    color: #12100e;
+    text-decoration: none
+}
+
+.boldLink{
+    font-weight: bold;
+}
+
+/* //////////////////////////////// stars styling ////////////////////////////// */
+
+
+.stars{
+    text-shadow:  #12100e 1px 1px
+}
+
+.headerTitle{
+    font-size: 2.5rem
+}
+
+.addProduct {
+    font-size: 2em;
+    
+}
+
+
+/* ////////////////////////////////////////// create account ///////////////////////////// */
+.create-header {
+    color: black;
+    opacity: 0;
+}
+
+.create-account-title {
+    font-size: 1.5rem
+}
+
+label {
+    font-size: 1rem
+}
+
+.create-account-body {
+    background: linear-gradient(to bottom right,#a696c2, white);
+    border-radius: 2px;
+    padding: 15px;
+    box-sizing: border-box;
+    box-shadow: #ffc900 0px 0px 0px 2px;
+}
+
+
+/* ////////////////////////////////////////// user sign in   ///////////////////////////// */
+.sign-in-title {
+    font-size: 2em
+}
+
+.sign-in-body {
+    background: linear-gradient(to bottom right,#a696c2, white);
+    border-radius: 2px;
+    padding: 15px;
+    box-sizing: border-box;
+    box-shadow: #ffc900 0px 0px 0px 2px;
+}
+
+
+label {
+    font-size: 1rem
+}
+
+
+/* ////////////////////////////////////////// add product ///////////////////////////// */
+
+.add-product-body {
+    margin-top: 50px;
+    background: linear-gradient(to bottom right,#a696c2, white);
+    box-shadow: #ffc900 0px 0px 0px 2px;
+}
+
+.add-product-to-review {
+    margin-bottom: 1%;
+    padding: .5rem 2.5rem;
+    background-color: #5e2053;
+    cursor: pointer;
+    outline: none;
+    color: white;
+    border-radius: .1rem;
+    border: .05rem solid white;
+}
+
+
+/* ////////////////////////////////////////// add review   ///////////////////////////// */
+
+.juiceName, .single-results-name, .name {
+    color: #f8f4ff;
+    font-family: luminari;
+    padding-top: 30px;
+    text-shadow: #420842 2px 2px 20px;
+
+}
+
+.add-review-arrow {
+    height: 75px;
+    width: auto;
+}
+
+.add-flavor, .add-review-button {
+    margin-bottom: 25px
+}
+
+.add-review-buttons {
+    padding: .5rem 1rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .1rem;
+    cursor: pointer;
+    font-size: 1rem;
+    background-color: #5e2053;
+    color: white;
+    border: .05rem solid white;
+}
+
+.add-review-body {
+    background: linear-gradient(to bottom right,#a696c2, white);
+    box-shadow: #ffc900 0px 0px 0px 2px;
+
+}
+
+.add-review-stars-container {
+    margin-top: 15px;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.add-review-stars {
+    display: inline-block;
+}
+
+.add-review-dropdown-table {
+    table-layout: fixed;
+    width: 100%;
+
+}
+
+.add-review-flavor-card {
+    background: linear-gradient(to bottom right,#a696c2, white);
+    box-shadow: #7e03a7 0px 0px 0px 2px;
+    margin-bottom: 25px;
+    margin-top: 25px;
+
+}
+
+.table-holder {
+    padding-top: 3%;
+    padding-bottom: 3%;
+}
+
+#add-review-overflow {
+    /*overflow: auto;*/
+}
+
+.add-review-chosen-flavor {
+    color: black;
+    font-size: 1.3rem;
+
 }

@@ -1,17 +1,21 @@
 import types from "./types";
 import axios from "axios";
 
+export function setSearchTerm(searchTerm) {
+    return {
+        type: types.SET_SEARCH_TERM,
+        payload: searchTerm
+    }
 
 
-export function createAccount(values) {
-    console.log("Form Values:", values);
-    const response = axios.post("/api/create-user", values);
-
-
-return {
-    type: types.CREATE_ACCOUNT,
-    payload: response
 }
+
+export function getChartData(juice_id){
+    const response = axios.get("/api/flavor-chart", {params: {juice_id}});
+    return {
+        type: types.GET_CHART_DATA,
+        payload: response
+    }
 }
 
 export function addProduct(values) {
@@ -21,7 +25,6 @@ export function addProduct(values) {
         type: types.ADD_PRODUCT,
         payload: response
     }
-
 }
 
 export function searchByFlavorName(values){
@@ -33,10 +36,9 @@ export function searchByFlavorName(values){
     }
 }
 
-export function landingPageSearch(values){
-    console.log("Search Values:", values);
+export function landingPageSearch(term){
     const response = axios.get("/api/multiple-results", {
-        params: values
+        params: { term }
     });
 
     return{
@@ -46,7 +48,6 @@ export function landingPageSearch(values){
 }
 
 export function browseAllJuices(){
-    console.log('browse all function called');
     const response = axios.get("/api/multiple-results-browse");
 
     return{
@@ -56,7 +57,6 @@ export function browseAllJuices(){
 }
 
 export function getRandomJuice(){
-    console.log('get random juice function called');
     const response = axios.get("/api/random-juice");
 
     return{
@@ -65,13 +65,19 @@ export function getRandomJuice(){
     }
 }
 export function addReview(values) {
-    const response = axios.post("/api/add-review", values);
-
-    return {
-        type: types.ADD_REVIEW,
-        payload: response
+    return async dispatch => {
+        try {
+            const response = await axios.post("/api/add-review", values, setAuthHeaders());
+        } catch(err){
+            console.log('Add Review Error:', err.message);
+        }
     }
+}
 
+export function clearReviewFlavors(){
+    return {
+        type: types.CLEAR_REVIEW_FLAVORS
+    }
 }
 
 export function pullJuiceData() {
@@ -83,10 +89,9 @@ export function pullJuiceData() {
     }
 }
 
-export function singleItem(juiceId) {
-    console.log(juiceId);
+export function singleItem(juice_id) {
     const response = axios.get("/api/single-juice-info", {
-        params: juiceId
+        params: { juice_id }
     });
 
     return {
@@ -95,10 +100,9 @@ export function singleItem(juiceId) {
     }
 }
 
-export function singleItemReviews(juiceId) {
-    console.log(juiceId);
+export function singleItemReviews(juice_id) {
     const response = axios.get("/api/single-juice-reviews", {
-        params: juiceId
+        params: { juice_id }
     });
 
     return {
@@ -108,33 +112,48 @@ export function singleItemReviews(juiceId) {
 }
 
 
-export function categories() {
+export function getCategories() {
     const response = axios.get("/api/category-modal");
-    console.log("categories: ", response);
+    
     return {
-        type: types.CATEGORIES,
+        type: types.GET_CATEGORIES,
         payload: response
     }
 }
 
-export function flavors() {
-    const response = axios.get("/api/flavor-modal");
-    console.log("flavors: ", response);
+export function setCategory(id, category) {
+    return async dispatch => {
 
-    return {
-        type: types.FLAVORS,
-        payload: response
+        const response = await axios.get("/api/flavor-modal", {
+            params: {category: id}
+        });
+
+        dispatch({
+            type: types.SET_CATEGORY,
+            payload: response.data.flavors,
+            selectedCategory: {id, name: category}
+        });
     }
 }
 
+export function setFlavor(id, flavor) {
+    return {
+        type: types.SET_FLAVOR,
+        selectedFlavor: {id, name: flavor}
+    }
+}
 
-// User Auth Actions // //change Base URL 
-const BASE_URL = 'http://api.reactprototypes.com'
+export function addSelectedFlavor(){
+    return {
+        type: types.ADD_SELECTED_FLAVOR
+    }
+}
 
 export function signUp(credentials){
     return async (dispatch) => {
         try {
-            const response = await axios.post(`${BASE_URL}/signup`, credentials);
+            const response = await axios.post('/auth/sign-up', credentials);
+
 
             localStorage.setItem('token', response.data.token);
     
@@ -142,17 +161,7 @@ export function signUp(credentials){
                 type: types.SIGN_UP
             });
         } catch(err){
-            if(err.response && err.response.data){
-                return dispatch({
-                    type: types.AUTH_ERROR,
-                    error: err.response.data.error
-                });
-            }
-
-            dispatch({
-                type: types.AUTH_ERROR,
-                error: 'Error creating new account'
-            });
+            console.log('Sign Up Error:', err.response.data);
         }
 
     }
@@ -161,12 +170,13 @@ export function signUp(credentials){
 export function signIn(credentials){
     return async (dispatch) => {
         try {
-            const response = await axios.post(`${BASE_URL}/signin`, credentials);
+            const response = await axios.post(`/auth/sign-in`, credentials);
 
             localStorage.setItem('token', response.data.token);
-    
+            localStorage.setItem('username', response.data.data[0].username);
             dispatch({
-                type: types.SIGN_IN
+                type: types.SIGN_IN,
+                payload: response
             });
         } catch(err){
             dispatch({
@@ -190,3 +200,12 @@ export function clearAuthError(){
         type: types.CLEAR_AUTH_ERROR
     };
 }
+
+function setAuthHeaders(){
+    return {
+        headers: {
+            authorization: localStorage.getItem('token')
+        }
+    }
+}
+

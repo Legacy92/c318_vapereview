@@ -9,8 +9,8 @@ import axios from 'axios';
 class CreateAccount extends Component {
 
     handleSignUp(values) {
-        console.log("Form Values:", values);
         this.props.signUp(values);
+        this.props.history.push("/");
     }
 
     componentWillUnmount(){
@@ -20,22 +20,25 @@ class CreateAccount extends Component {
     render() {
         const {handleSubmit, authError} = this.props;
         return (
-            <div className="create-account">
-                <div className ="modal-content">
-                    <div className="modal-body">
-                        <form onSubmit={handleSubmit(this.handleSignUp.bind(this))}>
-                          <Field name="username" label="Enter Username" component={renderInput}/>
-                          <Field name="password" label="Enter Password" component={renderInput}/>
-                          <Field name="confirm_password" label="Confirm Password" component={renderInput}/>
-                            <button>Create Account</button>
-                            <p>{authError}</p>
-                      </form>
+            <div>
+                <h1 className = "titanicFont display-4 goldenFont">Create an Account</h1>
+                <div className="col-10 offset-1 create-account-body">
+                    <div className="create-account-modal-body">
+                            <form style={{textAlign: 'center'}} onSubmit={handleSubmit(this.handleSignUp.bind(this))}>
+                                <label>Email:</label>
+                                <Field name = "email"  component= {renderInput}/>
+                                <label>Username:</label>
+                                <Field name="username" component={renderInput}/>
+                                <label>Password:</label>
+                                <Field name="password" type = "password" component={renderInput}/>
+                                <label>Confirm Password:</label>
+                                <Field name="confirm_password" type = "password" component={renderInput}/>
+                                <button>Create an Account</button>
+                                <p>{authError}</p>
+                          </form>
                     </div>
                     <div className="modal-footer">
-                        <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                    <div>
-                        <p>Been here before? <Link to = "/user-sign-in-modal">Sign in.</Link></p>
+                        <p style={{margin: 'auto'}}>Been here before? <Link to="/user-sign-in" style={{color: '#3f0080'}}>Sign in.</Link></p>
                     </div>
                 </div>
             </div>
@@ -44,11 +47,15 @@ class CreateAccount extends Component {
 }
 
 function validate(values){
-    const {username, password, confirm_password} = values;
+    const {username, password, confirm_password, email} = values;
     const errors = {};
 
     if(!username) {
-        errors.username = "Please enter your username.";
+        errors.username = "Please enter a username.";
+
+    }
+    if(!email) {
+        errors.email = "Please enter your email.";
 
     }
     if(!password) {
@@ -78,4 +85,4 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps, {CreateAccount, clearAuthError})(CreateAccount); 
+export default connect(mapStateToProps, {signUp, clearAuthError})(CreateAccount); 

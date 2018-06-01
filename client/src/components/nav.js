@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import HamburgerMenu from './hamburger-menu';
 import { Link } from 'react-router-dom';
-
-
+import { connect } from 'react-redux';
+import { signOut } from '../actions';
 
 class Header extends Component {
 
@@ -24,40 +24,63 @@ class Header extends Component {
         });
     }
 
+    renderAuthLinks(){
+        const { auth, signOut, user } = this.props;
+        if(auth){
+            return (
+                <li className="nav-item">
+                    <Link className="nav-link nav-link-text" to="/" onClick={signOut}> Welcome, <span style={{fontStyle:'italic'}}>{user}</span>! <span className="boldLink">Sign Out</span></Link>
+                </li>
+            );
+        }
+
+        return (
+            <Fragment>
+                <li className="nav-item">
+                    <Link className="nav-link nav-link-text boldLink" to="/create-account-modal" onClick={this.toggleNav}>Create Account</Link>
+                </li>
+                <li className="nav-item">
+                    <Link className="nav-link nav-link-text boldLink" to="/user-sign-in" onClick={this.toggleNav}>Sign In</Link>
+                </li>
+            </Fragment>
+        );
+    }
+
     render() {
         const {shown} = this.state;
         let btnClass = "collapse navbar-collapse";
         if(shown) {
             btnClass = "collapse navbar-collapse show";
         }
-        console.log(btnClass)
         return (
             <Fragment>
-                <nav className="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
+                <nav className="navbar header-container fixed-top navbar-expand-md navbar-dark blacker" >
                     <button onClick={this.toggleNav} className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent">
                         <span className="navbar-toggler-icon"></span>
                     </button>
-                    <a className="navbar-brand mx-auto" href="/">Juice Query</a>
+                    <a className=" d-md-none mx-auto titanicFont h1 headerTitle goldenFont" href="/">Juice Query</a>
                     <div className={btnClass} id="navbarContent">
-                        <ul className="navbar-nav ml-auto">
+                        <ul className="navbar-nav  nav-fill w-100 align-items-start">
                             <li className="nav-item">
-                            <Link className="nav-link" to="/" onClick={this.toggleNav}>Home</Link>
+                            <Link className="nav-link nav-link-text boldLink" to="/" onClick={this.toggleNav}>Home</Link>
                             </li>
-                            <li>
-                                <Link className="nav-link" to="/add-product" onClick={this.toggleNav}>Add Product</Link>
+                            <li className="nav-item">
+                                <Link className="nav-link nav-link-text boldLink" to="/add-product" onClick={this.toggleNav}>Add Product</Link>
                             </li>
-                            <li>
-                                <Link className="nav-link" to="/create-account-modal" onClick={this.closeNav}>Create Account</Link>
-                            </li>
-                            <li>
-                                <Link className="nav-link" to="/user-sign-in" onClick={this.closeNav}>Sign In</Link>
-                            </li>
+                            {this.renderAuthLinks()}
                         </ul>
                     </div>
                 </nav>
             </Fragment>
-        )
+        );
     }
 }
 
-export default Header;
+function mapStateToProps(state){
+    return {
+        auth: state.user.auth,
+        user: state.user.user
+    }
+}
+
+export default connect(mapStateToProps, { signOut })(Header);

@@ -21,12 +21,18 @@
   },
   "homepage": "https://github.com/Learning-Fuze/c318_vapereview#readme",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "cors": "^2.8.4",
     "express": "^4.16.3",
-    "materialize-css": "^0.100.2",
+    "jwt-simple": "^0.5.1",
     "mysql": "^2.15.0",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
+    "react-stars": "^2.2.5",
     "redux-form": "^7.3.0",
-    "redux-promise": "^0.6.0"
+    "redux-promise": "^0.6.0",
+    "uuid": "^3.2.1"
   },
   "devDependencies": {
     "nodemon": "^1.17.4",
