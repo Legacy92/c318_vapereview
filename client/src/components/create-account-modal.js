@@ -10,7 +10,6 @@ class CreateAccount extends Component {
 
     handleSignUp(values) {
         this.props.signUp(values);
-        this.props.history.push("/");
     }
 
     componentWillUnmount(){

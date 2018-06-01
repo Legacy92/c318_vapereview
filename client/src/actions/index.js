@@ -154,11 +154,14 @@ export function signUp(credentials){
         try {
             const response = await axios.post('/auth/sign-up', credentials);
 
+            const { username } = response.data;
 
             localStorage.setItem('token', response.data.token);
+            localStorage.setItem('username', username);
     
             dispatch({
-                type: types.SIGN_UP
+                type: types.SIGN_UP,
+                username
             });
         } catch(err){
             console.log('Sign Up Error:', err.response.data);
@@ -172,11 +175,14 @@ export function signIn(credentials){
         try {
             const response = await axios.post(`/auth/sign-in`, credentials);
 
+            const { username } = response.data;
+
             localStorage.setItem('token', response.data.token);
-            localStorage.setItem('username', response.data.data[0].username);
+            localStorage.setItem('username', username);
+
             dispatch({
                 type: types.SIGN_IN,
-                payload: response
+                username
             });
         } catch(err){
             dispatch({
@@ -188,7 +194,8 @@ export function signIn(credentials){
 }
 
 export function signOut() {
-    localStorage.removeItem("token");
+    localStorage.removeItem('token');
+    localStorage.removeItem('username')
 
     return {
         type: types.SIGN_OUT

@@ -5,7 +5,6 @@ export default function(WrappedComponent){
     class Auth extends Component {
 
         componentDidMount(){
-            console.log("this is from auth");
             if(!this.props.auth){
                 this.props.history.push('/');
             }
