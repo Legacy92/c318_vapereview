@@ -1,7 +1,7 @@
 import types from "../actions/types";
 
 const DEFAULT_STATE = {
-    all:[],
+    all: null,
     juice: {},
     juiceId: [],
     singleItemInfo: {},

@@ -8,7 +8,7 @@ import ReactStars from 'react-stars';
 import juiceBottleDefault from "../assets/images/vape-juice-bottle-transparent-smokev2.png";
 
 class MultipleResults extends Component {
-
+   
     componentDidMount() {
         const { searchTerm } = this.props.match.params;
 
@@ -42,14 +42,29 @@ class MultipleResults extends Component {
 
 
     render() {
-        let juiceElements = [];
 
+        if (!this.props.all) {
+
+            console.log(this.props.all);
+            
+            return (
+                <div>
+                    <h4 className="loading">Loading...</h4>
+                </div>
+            )
+        } 
+
+        let juiceElements = [];
+        
+        console.log("props: ", this.props.all);
         
         if (this.props.all.length) {
             const juiceInfo = this.props.all;
 
             juiceElements = juiceInfo.map((item, index) => {
+
                 const { name, manufacturer_name, manufacturer_site, manufacturer_description, id, rating } = item;
+
                 return (
                     <div onClick={() => this.handleProductClick(id)} key={index} id= "multiple-container" className="container col-10 col-sm-10 col-md-5 bg-dark card my-2 mx-2">
                         <div id = "prod-info-main" className="prod-info-main prod-wrap">
@@ -90,13 +105,15 @@ class MultipleResults extends Component {
                     { 
                         juiceElements.length
                             ? juiceElements
-                            : <h4 className = "no-results">No Results Found.</h4>
+                            : <h4 className = "no-results">No Results Found.</h4> 
                     }
+                        
                 </div>
                 <Link className="mult-advanced-button btn" to="/">Home</Link>
             </div>
         );
     }
+    
 }
 
 function mapStateToProps(state) {

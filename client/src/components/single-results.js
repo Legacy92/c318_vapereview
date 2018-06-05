@@ -52,6 +52,16 @@ class SingleResults extends Component {
     }
 
     render(){
+
+        if (!this.props.singleItemInfo) {
+            
+            return (
+                <div>
+                    <h4 className="loading">Loading...</h4>
+                </div>
+            )
+        } 
+
         let juiceData = [];
 
         const { chartData }= this.props;
@@ -61,6 +71,8 @@ class SingleResults extends Component {
                 <div key={key} className={`${key} chartText align-middle`} style={{height:`${chartData[key]}%`}}>{key}</div>
             )
         });
+
+        console.log(this.props.singleItemInfo);
 
         if(this.props.singleItemInfo) {
 
