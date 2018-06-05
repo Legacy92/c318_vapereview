@@ -33,6 +33,10 @@ a.mult-advanced-button.btn {
     color: white
 }
 
+.loading {
+    color: white;
+}
+
 button:focus {
     outline: 1px dotted;
     outline: none;
